@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Migration Measures | Handling, Measuring, Estimating and Visualizing Migration Data in R</title>
+  <meta name="description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Migration Measures | Handling, Measuring, Estimating and Visualizing Migration Data in R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Migration Measures | Handling, Measuring, Estimating and Visualizing Migration Data in R" />
+  
+  <meta name="twitter:description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  
+
+<meta name="author" content="Guy J. Abel, James Raymer, Ellen Kraly" />
+
+
+<meta name="date" content="2023-05-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="migration-concepts.html"/>
+<link rel="next" href="cross.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a></li>
+<li class="chapter" data-level="2" data-path="migration-concepts.html"><a href="migration-concepts.html"><i class="fa fa-check"></i><b>2</b> Migration Concepts</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="migration-concepts.html"><a href="migration-concepts.html#spatial"><i class="fa fa-check"></i><b>2.1</b> Spatial</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="migration-concepts.html"><a href="migration-concepts.html#usual-residence"><i class="fa fa-check"></i><b>2.1.1</b> Usual Residence</a></li>
+<li class="chapter" data-level="2.1.2" data-path="migration-concepts.html"><a href="migration-concepts.html#origin"><i class="fa fa-check"></i><b>2.1.2</b> Origin</a></li>
+<li class="chapter" data-level="2.1.3" data-path="migration-concepts.html"><a href="migration-concepts.html#migrant-transition-data"><i class="fa fa-check"></i><b>2.1.3</b> Migrant Transition Data</a></li>
+<li class="chapter" data-level="2.1.4" data-path="migration-concepts.html"><a href="migration-concepts.html#migation-event-data"><i class="fa fa-check"></i><b>2.1.4</b> Migation Event Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="migration-concepts.html"><a href="migration-concepts.html#temporal"><i class="fa fa-check"></i><b>2.2</b> Temporal</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="migration-concepts.html"><a href="migration-concepts.html#migration-interval"><i class="fa fa-check"></i><b>2.2.1</b> Migration Interval</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="migration-measures.html"><a href="migration-measures.html"><i class="fa fa-check"></i><b>3</b> Migration Measures</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="migration-measures.html"><a href="migration-measures.html#mesaure-details"><i class="fa fa-check"></i><b>3.1</b> Mesaure Details</a></li>
+<li class="chapter" data-level="3.2" data-path="migration-measures.html"><a href="migration-measures.html#region-to-region-measures"><i class="fa fa-check"></i><b>3.2</b> Region-to-region measures</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="migration-measures.html"><a href="migration-measures.html#region-totals"><i class="fa fa-check"></i><b>3.2.1</b> Region Totals</a></li>
+<li class="chapter" data-level="3.2.2" data-path="migration-measures.html"><a href="migration-measures.html#rates"><i class="fa fa-check"></i><b>3.2.2</b> Rates</a></li>
+<li class="chapter" data-level="3.2.3" data-path="migration-measures.html"><a href="migration-measures.html#rates-1"><i class="fa fa-check"></i><b>3.2.3</b> Rates</a></li>
+<li class="chapter" data-level="3.2.4" data-path="migration-measures.html"><a href="migration-measures.html#references"><i class="fa fa-check"></i><b>3.2.4</b> References</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>4</b> Cross-references</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>4.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="4.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>4.2</b> Captioned figures and tables</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>5</b> Parts</a></li>
+<li class="chapter" data-level="6" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>6</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>6.1</b> Footnotes</a></li>
+<li class="chapter" data-level="6.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>6.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>7</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>7.1</b> Equations</a></li>
+<li class="chapter" data-level="7.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>7.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="7.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>7.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>8</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>8.1</b> Publishing</a></li>
+<li class="chapter" data-level="8.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>8.2</b> 404 pages</a></li>
+<li class="chapter" data-level="8.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>8.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Handling, Measuring, Estimating and Visualizing Migration Data in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="migration-measures" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Migration Measures<a href="migration-measures.html#migration-measures" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Migration measures are used to quantify the magnitude and direction of population movements between places or regions. These measures can provide important insights into the demographic and social dynamics of populations. There are several different types of migration measures that are commonly used in research and policy analysis, each with its own strengths and limitations.</p>
+<p>One of the most common migration measures is the migration rate, which is defined as the number of migrants divided by the total population at risk. The migration rate can be calculated for different migration types discussed above, such as one year or five years, and can be used to compare migration across different places or regions.</p>
+<p>Other migration measures include the count of the number of migrants, the migration intensity, which is the number of migrants per unit of population, and the migration propensity, which is the proportion of the population that have migrated. These measures can be useful for identifying patterns in migration behavior, such as the prevalence of long-distance migration or the likelihood of migration among certain demographic groups.</p>
+<p>It is important to note that migration measures can be affected by data quality issues, such as underreporting of migrants or errors in place of residence information. Additionally, different measures may be more appropriate for different research questions or policy applications. For example, the migration rate may be more useful for understanding the overall magnitude of migration in the population, while the count of migrants can provide a basic understanding of the scale of migration patterns over time and between different spatial units.</p>
+<div id="mesaure-details" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Mesaure Details<a href="migration-measures.html#mesaure-details" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Migration measures can be defined at different levels of detail, ranging from region-to-region measures, to region totals, to system totals or index measures. Region-to-region measures capture the flow of migrants between two specific regions, while region totals capture the total number of migrants coming in or going out of a specific region. System totals, or index measures, provide an overall picture of migration within a given system or country, which we will discuss in more detail in the next chapter.</p>
+</div>
+<div id="region-to-region-measures" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Region-to-region measures<a href="migration-measures.html#region-to-region-measures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Region-to-region migration measures also known as <em>bilateral</em> migration, migration <em>streams</em> or <em>origin-destination</em> migration, refer to a migration measure that cross-classified by region of origin and region of destination, forming a matrix of <span class="math inline">\(n \times (n-1)\)</span> streams along each origin-destination combination, where <span class="math inline">\(n\)</span> represents the number of regions. The set of region-to-region migration measures can be represented by <span class="math inline">\(m_{ij}\)</span>, where the sub-scripts <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> represent the same set of regions for each origin-destination combination. The set of bilateral migration flows provide a basis to asses the compartive volumnes and directions of migration between a set of regions.</p>
+<p>The <em>gross interchange</em> represents the total number of migrants moving between a particular pair of regions, i.e. <span class="math inline">\(m_{ij} + m_{ji}\)</span>. The <em>net migration steam</em> or <em>bilateral net migration</em> represents the difference in migration between a pair of region i.e. <span class="math inline">\(m_{ij} - m_{ji}\)</span>. For a pair of streams that are of unequal size, where the net migration stream is not close to zero, there exists a <em>dominant stream</em> which is far large than the <em>reverse</em> or <em>counter</em> stream in the opposite direction.</p>
+<div id="region-totals" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Region Totals<a href="migration-measures.html#region-totals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Every migration event can be considered an out-migration in relation to the region of origin and an in-migration in relation to the region of destination. When migration events involve changes of countries, migration events are typically described as emigration and immigration, rather than out-migration and in-migration. Totals on in- or out-migration for each region are typically used to evaluate the volume of migration to or from a particular set of regions. In some countries, data is collected or aggregated without reference to the place of origin for in-migration totals or destination for out-migration totals. Consequently the migration totals provide the most detailed measure of regional migration but with little information on the direction of the migration flows between each region. A summary of the common terms for migration totals are shown in Table 1. The in-migration (or immigration) totals can be represented by replacing the origin <span class="math inline">\(i\)</span> index with a <span class="math inline">\(+\)</span>; <span class="math inline">\(m_{+j}\)</span>. Similarly, the out-migration (or emigration) totals can be represented by replacing the destination <span class="math inline">\(j\)</span> index with <span class="math inline">\(+\)</span>; <span class="math inline">\(m_{+j}\)</span>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Scale</th>
+<th>Area</th>
+<th>Event Term</th>
+<th>Migrant Term</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Internal</td>
+<td>Origin</td>
+<td>out-migration</td>
+<td>out-migrant</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Destination</td>
+<td>in-migration</td>
+<td>in-migrant</td>
+</tr>
+<tr class="odd">
+<td>International</td>
+<td>Origin</td>
+<td>emigration</td>
+<td>emigrant</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Destination</td>
+<td>immigration</td>
+<td>immigrant</td>
+</tr>
+</tbody>
+</table>
+<p>The sum of the in-migration and out-migration totals (<span class="math inline">\(m_{i+} + m_{+j}\)</span>) provides the <em>turnover</em> of each region. Net migration totals provides a balance of movements in opposing directions from the difference between in-migration and out-migration (<span class="math inline">\(m_{+j} - m_{i+}\)</span>). Net migration measures are more typically obtained via demographic accounting, as a residual from the differences in population change, births and deaths over a period in each region. As this calculation does not require expensive migration data collection systems, net migration measures are one of the most common forms of migration measures. However, net migration measures have a number of notable drawbacks, as highlighted by <span class="citation">(<a href="#ref-rogers1990rnm" role="doc-biblioref"><strong>rogers1990rnm?</strong></a>)</span>.
+- Net migration mis-specifies the spatial dynamics generating observed settlement patterns.
+- Obscure regularities in age profiles of migration
+- Net migration rates confound changing migration propensities with changing population stocks.<br />
+### Rate measures</p>
+<ul>
+<li>Out-migration or emigration rates calculated by dividing events in a period by exposure population:
+<span class="math display">\[
+e^{[t, t +1]} = \frac{E^{[t, t +1]}}{P}k
+\]</span>
+where <span class="math inline">\(e^{[t, t +1]}\)</span> is the out or emigration rate, <span class="math inline">\(E\)</span> is the number of out-migrants or emigrants during the period, <span class="math inline">\(P\)</span> is the population exposed to the likelihood of migration during the period and <span class="math inline">\(k\)</span> is a constant, usually 1000.</li>
+<li>Exposure population is typically either the
+<ul>
+<li>Population at the mid-interval, under the assumption that migration is uniformly distributed across the interval.</li>
+<li>Population at the start or end of the interval under the assumption that migration has a negligible effect on population change.</li>
+</ul></li>
+<li>Can be decomposed by a subset of the population such age and/or sex<br />
+<span class="math display">\[
+e^{[t, t +1]}_{i} = \frac{E_{i}^{[t, t +1]}}{P_{i}}k
+\]</span></li>
+</ul>
+</div>
+<div id="rates" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Rates<a href="migration-measures.html#rates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>In-migration or immigration, the population exposed to the risk of migrating into a region is the entire population of the world living elsewhere.</p></li>
+<li><p>However, rates calculated by dividing events by the exposure time of the current residents (the population group <strong>not</strong> exposed to risk).
+<span class="math display">\[
+i^{[t, t +1]} = \frac{I^{[t, t +1]}}{P}k
+\]</span></p></li>
+<li><p>Net migration rates, like in-migration rates, are calculated by dividing events by the exposure time of the current residents (the population group <strong>not</strong> exposed to risk).
+<span class="math display">\[
+m^{[t, t +1]} = \frac{M^{[t, t +1]}}{P}k
+\]</span></p></li>
+</ul>
+</div>
+<div id="rates-1" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Rates<a href="migration-measures.html#rates-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>In-migration and net migration rates are unlike other demographic rates.
+<ul>
+<li>Not using the true population at risk in the denominator</li>
+</ul></li>
+<li>However, using the resident population satisfies the needs of the demographic balancing equation, since rates of gain and loss are measured relative to the same population.
+<span class="math display">\[
+\begin{aligned}
+P^{t+1} &amp;=  P^{t} + B^{[t, t +1]} - D^{[t, t +1]} +  M^{[t, t +1]} \\
+P^{t+1} &amp;=  P^{t} \left(1 + b^{[t, t +1]} - d^{[t, t +1]} +  m^{[t, t +1]} \right)\\
+&amp;= P^{t} \left(1 + b^{[t, t +1]} - d^{[t, t +1]} +  i^{[t, t +1]} - e^{[t, t +1]} \right)
+\end{aligned}
+\]</span>
+where we can substitute net migration <span class="math inline">\(M^{[t, t +1]}\)</span> with difference of in- and out-migration over the period (<span class="math inline">\(I^{[t, t +1]} - O^{[t, t +1]}\)</span>)
+<span class="math display">\[
+\begin{aligned}
+P^{t+1}&amp;= P^{t} + B^{[t, t +1]} - D^{[t, t +1]} +  I^{[t, t +1]} - O^{[t, t +1]} \\
+&amp;= P^{t} \left(1 + b^{[t, t +1]} - d^{[t, t +1]} +  i^{[t, t +1]} - o^{[t, t +1]} \right)
+\end{aligned}
+\]</span></li>
+</ul>
+</div>
+<div id="references" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> References<a href="migration-measures.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="migration-concepts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cross.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-concepts.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
