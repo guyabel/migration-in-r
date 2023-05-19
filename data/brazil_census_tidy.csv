@@ -1,0 +1,2107 @@
+﻿year,orig,dest,flow
+1991,Rondônia,Acre,3728
+1991,Rondônia,Amazonas,2515
+1991,Rondônia,Roraima,1504
+1991,Rondônia,Pará,2520
+1991,Rondônia,Amapá,74
+1991,Rondônia,Tocantins,1043
+1991,Rondônia,Maranhão,1167
+1991,Rondônia,Piauí,268
+1991,Rondônia,Ceará,1750
+1991,Rondônia,Rio Grande do Norte,791
+1991,Rondônia,Paraíba,873
+1991,Rondônia,Pernambuco,987
+1991,Rondônia,Alagoas,239
+1991,Rondônia,Sergipe,146
+1991,Rondônia,Bahia,1464
+1991,Rondônia,Minas Gerais,7712
+1991,Rondônia,Espírito Santo,4794
+1991,Rondônia,Rio de Janeiro,1697
+1991,Rondônia,São Paulo,12737
+1991,Rondônia,Paraná,16321
+1991,Rondônia,Santa Catarina,1619
+1991,Rondônia,Rio Grande do Sul,1245
+1991,Rondônia,Mato Grosso do Sul,6520
+1991,Rondônia,Mato Grosso,18289
+1991,Rondônia,Goiás,3462
+1991,Rondônia,Distrito Federal,997
+1991,Acre,Rondônia,5374
+1991,Acre,Amazonas,3052
+1991,Acre,Roraima,303
+1991,Acre,Pará,413
+1991,Acre,Amapá,15
+1991,Acre,Tocantins,22
+1991,Acre,Maranhão,45
+1991,Acre,Piauí,43
+1991,Acre,Ceará,382
+1991,Acre,Rio Grande do Norte,176
+1991,Acre,Paraíba,124
+1991,Acre,Pernambuco,98
+1991,Acre,Alagoas,0
+1991,Acre,Sergipe,51
+1991,Acre,Bahia,58
+1991,Acre,Minas Gerais,423
+1991,Acre,Espírito Santo,139
+1991,Acre,Rio de Janeiro,353
+1991,Acre,São Paulo,810
+1991,Acre,Paraná,409
+1991,Acre,Santa Catarina,137
+1991,Acre,Rio Grande do Sul,321
+1991,Acre,Mato Grosso do Sul,189
+1991,Acre,Mato Grosso,792
+1991,Acre,Goiás,260
+1991,Acre,Distrito Federal,355
+1991,Amazonas,Rondônia,7660
+1991,Amazonas,Acre,3371
+1991,Amazonas,Roraima,3426
+1991,Amazonas,Pará,7181
+1991,Amazonas,Amapá,276
+1991,Amazonas,Tocantins,169
+1991,Amazonas,Maranhão,996
+1991,Amazonas,Piauí,485
+1991,Amazonas,Ceará,2910
+1991,Amazonas,Rio Grande do Norte,780
+1991,Amazonas,Paraíba,250
+1991,Amazonas,Pernambuco,967
+1991,Amazonas,Alagoas,126
+1991,Amazonas,Sergipe,189
+1991,Amazonas,Bahia,754
+1991,Amazonas,Minas Gerais,2557
+1991,Amazonas,Espírito Santo,187
+1991,Amazonas,Rio de Janeiro,3037
+1991,Amazonas,São Paulo,3742
+1991,Amazonas,Paraná,1070
+1991,Amazonas,Santa Catarina,282
+1991,Amazonas,Rio Grande do Sul,746
+1991,Amazonas,Mato Grosso do Sul,659
+1991,Amazonas,Mato Grosso,611
+1991,Amazonas,Goiás,738
+1991,Amazonas,Distrito Federal,1118
+1991,Roraima,Rondônia,704
+1991,Roraima,Acre,14
+1991,Roraima,Amazonas,795
+1991,Roraima,Pará,868
+1991,Roraima,Amapá,71
+1991,Roraima,Tocantins,196
+1991,Roraima,Maranhão,301
+1991,Roraima,Piauí,45
+1991,Roraima,Ceará,498
+1991,Roraima,Rio Grande do Norte,296
+1991,Roraima,Paraíba,230
+1991,Roraima,Pernambuco,208
+1991,Roraima,Alagoas,0
+1991,Roraima,Sergipe,0
+1991,Roraima,Bahia,127
+1991,Roraima,Minas Gerais,221
+1991,Roraima,Espírito Santo,86
+1991,Roraima,Rio de Janeiro,205
+1991,Roraima,São Paulo,418
+1991,Roraima,Paraná,61
+1991,Roraima,Santa Catarina,92
+1991,Roraima,Rio Grande do Sul,359
+1991,Roraima,Mato Grosso do Sul,56
+1991,Roraima,Mato Grosso,115
+1991,Roraima,Goiás,377
+1991,Roraima,Distrito Federal,350
+1991,Pará,Rondônia,5397
+1991,Pará,Acre,377
+1991,Pará,Amazonas,24188
+1991,Pará,Roraima,7393
+1991,Pará,Amapá,17824
+1991,Pará,Tocantins,16161
+1991,Pará,Maranhão,28080
+1991,Pará,Piauí,4011
+1991,Pará,Ceará,8574
+1991,Pará,Rio Grande do Norte,2399
+1991,Pará,Paraíba,993
+1991,Pará,Pernambuco,2634
+1991,Pará,Alagoas,631
+1991,Pará,Sergipe,315
+1991,Pará,Bahia,2830
+1991,Pará,Minas Gerais,6053
+1991,Pará,Espírito Santo,1825
+1991,Pará,Rio de Janeiro,6949
+1991,Pará,São Paulo,14655
+1991,Pará,Paraná,2854
+1991,Pará,Santa Catarina,1094
+1991,Pará,Rio Grande do Sul,1229
+1991,Pará,Mato Grosso do Sul,1012
+1991,Pará,Mato Grosso,7827
+1991,Pará,Goiás,12916
+1991,Pará,Distrito Federal,4976
+1991,Amapá,Rondônia,70
+1991,Amapá,Acre,14
+1991,Amapá,Amazonas,240
+1991,Amapá,Roraima,62
+1991,Amapá,Pará,4070
+1991,Amapá,Tocantins,59
+1991,Amapá,Maranhão,476
+1991,Amapá,Piauí,80
+1991,Amapá,Ceará,615
+1991,Amapá,Rio Grande do Norte,81
+1991,Amapá,Paraíba,0
+1991,Amapá,Pernambuco,101
+1991,Amapá,Alagoas,0
+1991,Amapá,Sergipe,0
+1991,Amapá,Bahia,49
+1991,Amapá,Minas Gerais,254
+1991,Amapá,Espírito Santo,91
+1991,Amapá,Rio de Janeiro,217
+1991,Amapá,São Paulo,226
+1991,Amapá,Paraná,0
+1991,Amapá,Santa Catarina,128
+1991,Amapá,Rio Grande do Sul,7
+1991,Amapá,Mato Grosso do Sul,18
+1991,Amapá,Mato Grosso,74
+1991,Amapá,Goiás,26
+1991,Amapá,Distrito Federal,191
+1991,Tocantins,Rondônia,403
+1991,Tocantins,Acre,0
+1991,Tocantins,Amazonas,111
+1991,Tocantins,Roraima,405
+1991,Tocantins,Pará,22519
+1991,Tocantins,Amapá,49
+1991,Tocantins,Maranhão,7637
+1991,Tocantins,Piauí,887
+1991,Tocantins,Ceará,305
+1991,Tocantins,Rio Grande do Norte,156
+1991,Tocantins,Paraíba,110
+1991,Tocantins,Pernambuco,83
+1991,Tocantins,Alagoas,12
+1991,Tocantins,Sergipe,2
+1991,Tocantins,Bahia,577
+1991,Tocantins,Minas Gerais,1402
+1991,Tocantins,Espírito Santo,69
+1991,Tocantins,Rio de Janeiro,208
+1991,Tocantins,São Paulo,2209
+1991,Tocantins,Paraná,464
+1991,Tocantins,Santa Catarina,110
+1991,Tocantins,Rio Grande do Sul,634
+1991,Tocantins,Mato Grosso do Sul,147
+1991,Tocantins,Mato Grosso,2908
+1991,Tocantins,Goiás,26040
+1991,Tocantins,Distrito Federal,4357
+1991,Maranhão,Rondônia,5307
+1991,Maranhão,Acre,160
+1991,Maranhão,Amazonas,4805
+1991,Maranhão,Roraima,12696
+1991,Maranhão,Pará,84538
+1991,Maranhão,Amapá,1611
+1991,Maranhão,Tocantins,17672
+1991,Maranhão,Piauí,27831
+1991,Maranhão,Ceará,8841
+1991,Maranhão,Rio Grande do Norte,869
+1991,Maranhão,Paraíba,1067
+1991,Maranhão,Pernambuco,2787
+1991,Maranhão,Alagoas,332
+1991,Maranhão,Sergipe,613
+1991,Maranhão,Bahia,1784
+1991,Maranhão,Minas Gerais,3168
+1991,Maranhão,Espírito Santo,800
+1991,Maranhão,Rio de Janeiro,7362
+1991,Maranhão,São Paulo,18030
+1991,Maranhão,Paraná,784
+1991,Maranhão,Santa Catarina,189
+1991,Maranhão,Rio Grande do Sul,626
+1991,Maranhão,Mato Grosso do Sul,509
+1991,Maranhão,Mato Grosso,11947
+1991,Maranhão,Goiás,9170
+1991,Maranhão,Distrito Federal,14431
+1991,Piauí,Rondônia,712
+1991,Piauí,Acre,94
+1991,Piauí,Amazonas,1698
+1991,Piauí,Roraima,1104
+1991,Piauí,Pará,8099
+1991,Piauí,Amapá,472
+1991,Piauí,Tocantins,3161
+1991,Piauí,Maranhão,24228
+1991,Piauí,Ceará,10497
+1991,Piauí,Rio Grande do Norte,865
+1991,Piauí,Paraíba,727
+1991,Piauí,Pernambuco,4443
+1991,Piauí,Alagoas,174
+1991,Piauí,Sergipe,252
+1991,Piauí,Bahia,3143
+1991,Piauí,Minas Gerais,1120
+1991,Piauí,Espírito Santo,199
+1991,Piauí,Rio de Janeiro,3394
+1991,Piauí,São Paulo,43523
+1991,Piauí,Paraná,436
+1991,Piauí,Santa Catarina,222
+1991,Piauí,Rio Grande do Sul,121
+1991,Piauí,Mato Grosso do Sul,265
+1991,Piauí,Mato Grosso,854
+1991,Piauí,Goiás,7665
+1991,Piauí,Distrito Federal,21979
+1991,Ceará,Rondônia,4437
+1991,Ceará,Acre,545
+1991,Ceará,Amazonas,6524
+1991,Ceará,Roraima,2598
+1991,Ceará,Pará,12784
+1991,Ceará,Amapá,652
+1991,Ceará,Tocantins,2572
+1991,Ceará,Maranhão,8929
+1991,Ceará,Piauí,11493
+1991,Ceará,Rio Grande do Norte,9701
+1991,Ceará,Paraíba,4552
+1991,Ceará,Pernambuco,13043
+1991,Ceará,Alagoas,997
+1991,Ceará,Sergipe,864
+1991,Ceará,Bahia,7477
+1991,Ceará,Minas Gerais,5468
+1991,Ceará,Espírito Santo,1728
+1991,Ceará,Rio de Janeiro,23346
+1991,Ceará,São Paulo,94930
+1991,Ceará,Paraná,1702
+1991,Ceará,Santa Catarina,771
+1991,Ceará,Rio Grande do Sul,1274
+1991,Ceará,Mato Grosso do Sul,2132
+1991,Ceará,Mato Grosso,2315
+1991,Ceará,Goiás,8179
+1991,Ceará,Distrito Federal,16153
+1991,Rio Grande do Norte,Rondônia,851
+1991,Rio Grande do Norte,Acre,227
+1991,Rio Grande do Norte,Amazonas,762
+1991,Rio Grande do Norte,Roraima,600
+1991,Rio Grande do Norte,Pará,1571
+1991,Rio Grande do Norte,Amapá,324
+1991,Rio Grande do Norte,Tocantins,223
+1991,Rio Grande do Norte,Maranhão,608
+1991,Rio Grande do Norte,Piauí,587
+1991,Rio Grande do Norte,Ceará,7572
+1991,Rio Grande do Norte,Paraíba,10397
+1991,Rio Grande do Norte,Pernambuco,4977
+1991,Rio Grande do Norte,Alagoas,795
+1991,Rio Grande do Norte,Sergipe,532
+1991,Rio Grande do Norte,Bahia,1645
+1991,Rio Grande do Norte,Minas Gerais,2255
+1991,Rio Grande do Norte,Espírito Santo,392
+1991,Rio Grande do Norte,Rio de Janeiro,8676
+1991,Rio Grande do Norte,São Paulo,23656
+1991,Rio Grande do Norte,Paraná,445
+1991,Rio Grande do Norte,Santa Catarina,304
+1991,Rio Grande do Norte,Rio Grande do Sul,347
+1991,Rio Grande do Norte,Mato Grosso do Sul,501
+1991,Rio Grande do Norte,Mato Grosso,419
+1991,Rio Grande do Norte,Goiás,3137
+1991,Rio Grande do Norte,Distrito Federal,4640
+1991,Paraíba,Rondônia,1664
+1991,Paraíba,Acre,122
+1991,Paraíba,Amazonas,648
+1991,Paraíba,Roraima,393
+1991,Paraíba,Pará,1917
+1991,Paraíba,Amapá,279
+1991,Paraíba,Tocantins,634
+1991,Paraíba,Maranhão,1634
+1991,Paraíba,Piauí,934
+1991,Paraíba,Ceará,6729
+1991,Paraíba,Rio Grande do Norte,18368
+1991,Paraíba,Pernambuco,24341
+1991,Paraíba,Alagoas,1401
+1991,Paraíba,Sergipe,576
+1991,Paraíba,Bahia,5200
+1991,Paraíba,Minas Gerais,2045
+1991,Paraíba,Espírito Santo,428
+1991,Paraíba,Rio de Janeiro,30434
+1991,Paraíba,São Paulo,58743
+1991,Paraíba,Paraná,927
+1991,Paraíba,Santa Catarina,182
+1991,Paraíba,Rio Grande do Sul,411
+1991,Paraíba,Mato Grosso do Sul,555
+1991,Paraíba,Mato Grosso,847
+1991,Paraíba,Goiás,4379
+1991,Paraíba,Distrito Federal,10267
+1991,Pernambuco,Rondônia,1870
+1991,Pernambuco,Acre,98
+1991,Pernambuco,Amazonas,996
+1991,Pernambuco,Roraima,379
+1991,Pernambuco,Pará,3660
+1991,Pernambuco,Amapá,153
+1991,Pernambuco,Tocantins,1476
+1991,Pernambuco,Maranhão,4326
+1991,Pernambuco,Piauí,3571
+1991,Pernambuco,Ceará,10889
+1991,Pernambuco,Rio Grande do Norte,6555
+1991,Pernambuco,Paraíba,21611
+1991,Pernambuco,Alagoas,24862
+1991,Pernambuco,Sergipe,4467
+1991,Pernambuco,Bahia,25477
+1991,Pernambuco,Minas Gerais,4050
+1991,Pernambuco,Espírito Santo,975
+1991,Pernambuco,Rio de Janeiro,19392
+1991,Pernambuco,São Paulo,164907
+1991,Pernambuco,Paraná,2264
+1991,Pernambuco,Santa Catarina,372
+1991,Pernambuco,Rio Grande do Sul,860
+1991,Pernambuco,Mato Grosso do Sul,2028
+1991,Pernambuco,Mato Grosso,1484
+1991,Pernambuco,Goiás,3424
+1991,Pernambuco,Distrito Federal,7086
+1991,Alagoas,Rondônia,584
+1991,Alagoas,Acre,123
+1991,Alagoas,Amazonas,32
+1991,Alagoas,Roraima,94
+1991,Alagoas,Pará,756
+1991,Alagoas,Amapá,23
+1991,Alagoas,Tocantins,541
+1991,Alagoas,Maranhão,586
+1991,Alagoas,Piauí,182
+1991,Alagoas,Ceará,1746
+1991,Alagoas,Rio Grande do Norte,1029
+1991,Alagoas,Paraíba,1667
+1991,Alagoas,Pernambuco,21267
+1991,Alagoas,Sergipe,11845
+1991,Alagoas,Bahia,8471
+1991,Alagoas,Minas Gerais,996
+1991,Alagoas,Espírito Santo,898
+1991,Alagoas,Rio de Janeiro,4250
+1991,Alagoas,São Paulo,52326
+1991,Alagoas,Paraná,733
+1991,Alagoas,Santa Catarina,162
+1991,Alagoas,Rio Grande do Sul,467
+1991,Alagoas,Mato Grosso do Sul,709
+1991,Alagoas,Mato Grosso,1535
+1991,Alagoas,Goiás,682
+1991,Alagoas,Distrito Federal,928
+1991,Sergipe,Rondônia,253
+1991,Sergipe,Acre,0
+1991,Sergipe,Amazonas,227
+1991,Sergipe,Roraima,144
+1991,Sergipe,Pará,285
+1991,Sergipe,Amapá,0
+1991,Sergipe,Tocantins,55
+1991,Sergipe,Maranhão,354
+1991,Sergipe,Piauí,179
+1991,Sergipe,Ceará,538
+1991,Sergipe,Rio Grande do Norte,783
+1991,Sergipe,Paraíba,620
+1991,Sergipe,Pernambuco,2260
+1991,Sergipe,Alagoas,4085
+1991,Sergipe,Bahia,10947
+1991,Sergipe,Minas Gerais,778
+1991,Sergipe,Espírito Santo,392
+1991,Sergipe,Rio de Janeiro,2305
+1991,Sergipe,São Paulo,15848
+1991,Sergipe,Paraná,358
+1991,Sergipe,Santa Catarina,194
+1991,Sergipe,Rio Grande do Sul,329
+1991,Sergipe,Mato Grosso do Sul,233
+1991,Sergipe,Mato Grosso,123
+1991,Sergipe,Goiás,352
+1991,Sergipe,Distrito Federal,571
+1991,Bahia,Rondônia,5711
+1991,Bahia,Acre,167
+1991,Bahia,Amazonas,983
+1991,Bahia,Roraima,358
+1991,Bahia,Pará,13332
+1991,Bahia,Amapá,164
+1991,Bahia,Tocantins,2062
+1991,Bahia,Maranhão,2383
+1991,Bahia,Piauí,2986
+1991,Bahia,Ceará,5193
+1991,Bahia,Rio Grande do Norte,2372
+1991,Bahia,Paraíba,3469
+1991,Bahia,Pernambuco,18550
+1991,Bahia,Alagoas,6477
+1991,Bahia,Sergipe,18215
+1991,Bahia,Minas Gerais,28959
+1991,Bahia,Espírito Santo,24086
+1991,Bahia,Rio de Janeiro,19026
+1991,Bahia,São Paulo,248599
+1991,Bahia,Paraná,3880
+1991,Bahia,Santa Catarina,1096
+1991,Bahia,Rio Grande do Sul,2106
+1991,Bahia,Mato Grosso do Sul,1692
+1991,Bahia,Mato Grosso,6591
+1991,Bahia,Goiás,28191
+1991,Bahia,Distrito Federal,22443
+1991,Minas Gerais,Rondônia,11240
+1991,Minas Gerais,Acre,303
+1991,Minas Gerais,Amazonas,1046
+1991,Minas Gerais,Roraima,277
+1991,Minas Gerais,Pará,8004
+1991,Minas Gerais,Amapá,210
+1991,Minas Gerais,Tocantins,3802
+1991,Minas Gerais,Maranhão,2134
+1991,Minas Gerais,Piauí,431
+1991,Minas Gerais,Ceará,1858
+1991,Minas Gerais,Rio Grande do Norte,1259
+1991,Minas Gerais,Paraíba,735
+1991,Minas Gerais,Pernambuco,2658
+1991,Minas Gerais,Alagoas,566
+1991,Minas Gerais,Sergipe,585
+1991,Minas Gerais,Bahia,18314
+1991,Minas Gerais,Espírito Santo,51402
+1991,Minas Gerais,Rio de Janeiro,45555
+1991,Minas Gerais,São Paulo,236086
+1991,Minas Gerais,Paraná,9746
+1991,Minas Gerais,Santa Catarina,2066
+1991,Minas Gerais,Rio Grande do Sul,2501
+1991,Minas Gerais,Mato Grosso do Sul,5064
+1991,Minas Gerais,Mato Grosso,10406
+1991,Minas Gerais,Goiás,35795
+1991,Minas Gerais,Distrito Federal,27355
+1991,Espírito Santo,Rondônia,14695
+1991,Espírito Santo,Acre,125
+1991,Espírito Santo,Amazonas,215
+1991,Espírito Santo,Roraima,57
+1991,Espírito Santo,Pará,3935
+1991,Espírito Santo,Amapá,24
+1991,Espírito Santo,Tocantins,143
+1991,Espírito Santo,Maranhão,311
+1991,Espírito Santo,Piauí,153
+1991,Espírito Santo,Ceará,602
+1991,Espírito Santo,Rio Grande do Norte,355
+1991,Espírito Santo,Paraíba,142
+1991,Espírito Santo,Pernambuco,565
+1991,Espírito Santo,Alagoas,120
+1991,Espírito Santo,Sergipe,195
+1991,Espírito Santo,Bahia,9372
+1991,Espírito Santo,Minas Gerais,27725
+1991,Espírito Santo,Rio de Janeiro,16980
+1991,Espírito Santo,São Paulo,8864
+1991,Espírito Santo,Paraná,1292
+1991,Espírito Santo,Santa Catarina,624
+1991,Espírito Santo,Rio Grande do Sul,551
+1991,Espírito Santo,Mato Grosso do Sul,278
+1991,Espírito Santo,Mato Grosso,1153
+1991,Espírito Santo,Goiás,1171
+1991,Espírito Santo,Distrito Federal,1261
+1991,Rio de Janeiro,Rondônia,2381
+1991,Rio de Janeiro,Acre,433
+1991,Rio de Janeiro,Amazonas,3033
+1991,Rio de Janeiro,Roraima,742
+1991,Rio de Janeiro,Pará,5853
+1991,Rio de Janeiro,Amapá,418
+1991,Rio de Janeiro,Tocantins,578
+1991,Rio de Janeiro,Maranhão,4510
+1991,Rio de Janeiro,Piauí,2048
+1991,Rio de Janeiro,Ceará,13417
+1991,Rio de Janeiro,Rio Grande do Norte,9730
+1991,Rio de Janeiro,Paraíba,18135
+1991,Rio de Janeiro,Pernambuco,12045
+1991,Rio de Janeiro,Alagoas,3751
+1991,Rio de Janeiro,Sergipe,4348
+1991,Rio de Janeiro,Bahia,14677
+1991,Rio de Janeiro,Minas Gerais,58084
+1991,Rio de Janeiro,Espírito Santo,29262
+1991,Rio de Janeiro,São Paulo,63291
+1991,Rio de Janeiro,Paraná,8773
+1991,Rio de Janeiro,Santa Catarina,5656
+1991,Rio de Janeiro,Rio Grande do Sul,8434
+1991,Rio de Janeiro,Mato Grosso do Sul,4019
+1991,Rio de Janeiro,Mato Grosso,2413
+1991,Rio de Janeiro,Goiás,5710
+1991,Rio de Janeiro,Distrito Federal,13330
+1991,São Paulo,Rondônia,8179
+1991,São Paulo,Acre,782
+1991,São Paulo,Amazonas,2623
+1991,São Paulo,Roraima,579
+1991,São Paulo,Pará,5656
+1991,São Paulo,Amapá,323
+1991,São Paulo,Tocantins,3290
+1991,São Paulo,Maranhão,5760
+1991,São Paulo,Piauí,10821
+1991,São Paulo,Ceará,28584
+1991,São Paulo,Rio Grande do Norte,13181
+1991,São Paulo,Paraíba,18649
+1991,São Paulo,Pernambuco,52322
+1991,São Paulo,Alagoas,13360
+1991,São Paulo,Sergipe,10192
+1991,São Paulo,Bahia,58544
+1991,São Paulo,Minas Gerais,145823
+1991,São Paulo,Espírito Santo,10825
+1991,São Paulo,Rio de Janeiro,32659
+1991,São Paulo,Paraná,97961
+1991,São Paulo,Santa Catarina,19421
+1991,São Paulo,Rio Grande do Sul,13395
+1991,São Paulo,Mato Grosso do Sul,41888
+1991,São Paulo,Mato Grosso,25005
+1991,São Paulo,Goiás,20498
+1991,São Paulo,Distrito Federal,7674
+1991,Paraná,Rondônia,23475
+1991,Paraná,Acre,564
+1991,Paraná,Amazonas,1379
+1991,Paraná,Roraima,254
+1991,Paraná,Pará,4381
+1991,Paraná,Amapá,266
+1991,Paraná,Tocantins,1119
+1991,Paraná,Maranhão,407
+1991,Paraná,Piauí,112
+1991,Paraná,Ceará,938
+1991,Paraná,Rio Grande do Norte,287
+1991,Paraná,Paraíba,331
+1991,Paraná,Pernambuco,1071
+1991,Paraná,Alagoas,731
+1991,Paraná,Sergipe,391
+1991,Paraná,Bahia,2898
+1991,Paraná,Minas Gerais,15309
+1991,Paraná,Espírito Santo,1589
+1991,Paraná,Rio de Janeiro,4881
+1991,Paraná,São Paulo,217405
+1991,Paraná,Santa Catarina,81685
+1991,Paraná,Rio Grande do Sul,26639
+1991,Paraná,Mato Grosso do Sul,27412
+1991,Paraná,Mato Grosso,55218
+1991,Paraná,Goiás,4554
+1991,Paraná,Distrito Federal,1894
+1991,Santa Catarina,Rondônia,2257
+1991,Santa Catarina,Acre,39
+1991,Santa Catarina,Amazonas,239
+1991,Santa Catarina,Roraima,20
+1991,Santa Catarina,Pará,789
+1991,Santa Catarina,Amapá,54
+1991,Santa Catarina,Tocantins,391
+1991,Santa Catarina,Maranhão,149
+1991,Santa Catarina,Piauí,108
+1991,Santa Catarina,Ceará,311
+1991,Santa Catarina,Rio Grande do Norte,220
+1991,Santa Catarina,Paraíba,65
+1991,Santa Catarina,Pernambuco,133
+1991,Santa Catarina,Alagoas,112
+1991,Santa Catarina,Sergipe,84
+1991,Santa Catarina,Bahia,762
+1991,Santa Catarina,Minas Gerais,1439
+1991,Santa Catarina,Espírito Santo,234
+1991,Santa Catarina,Rio de Janeiro,2147
+1991,Santa Catarina,São Paulo,11642
+1991,Santa Catarina,Paraná,47328
+1991,Santa Catarina,Rio Grande do Sul,40036
+1991,Santa Catarina,Mato Grosso do Sul,2902
+1991,Santa Catarina,Mato Grosso,11604
+1991,Santa Catarina,Goiás,1357
+1991,Santa Catarina,Distrito Federal,579
+1991,Rio Grande do Sul,Rondônia,1652
+1991,Rio Grande do Sul,Acre,290
+1991,Rio Grande do Sul,Amazonas,1156
+1991,Rio Grande do Sul,Roraima,254
+1991,Rio Grande do Sul,Pará,1407
+1991,Rio Grande do Sul,Amapá,127
+1991,Rio Grande do Sul,Tocantins,1307
+1991,Rio Grande do Sul,Maranhão,485
+1991,Rio Grande do Sul,Piauí,69
+1991,Rio Grande do Sul,Ceará,883
+1991,Rio Grande do Sul,Rio Grande do Norte,507
+1991,Rio Grande do Sul,Paraíba,426
+1991,Rio Grande do Sul,Pernambuco,1230
+1991,Rio Grande do Sul,Alagoas,831
+1991,Rio Grande do Sul,Sergipe,276
+1991,Rio Grande do Sul,Bahia,2813
+1991,Rio Grande do Sul,Minas Gerais,3621
+1991,Rio Grande do Sul,Espírito Santo,1036
+1991,Rio Grande do Sul,Rio de Janeiro,6593
+1991,Rio Grande do Sul,São Paulo,16223
+1991,Rio Grande do Sul,Paraná,26377
+1991,Rio Grande do Sul,Santa Catarina,46342
+1991,Rio Grande do Sul,Mato Grosso do Sul,7158
+1991,Rio Grande do Sul,Mato Grosso,11397
+1991,Rio Grande do Sul,Goiás,3854
+1991,Rio Grande do Sul,Distrito Federal,2543
+1991,Mato Grosso do Sul,Rondônia,5539
+1991,Mato Grosso do Sul,Acre,284
+1991,Mato Grosso do Sul,Amazonas,289
+1991,Mato Grosso do Sul,Roraima,159
+1991,Mato Grosso do Sul,Pará,961
+1991,Mato Grosso do Sul,Amapá,37
+1991,Mato Grosso do Sul,Tocantins,545
+1991,Mato Grosso do Sul,Maranhão,426
+1991,Mato Grosso do Sul,Piauí,209
+1991,Mato Grosso do Sul,Ceará,545
+1991,Mato Grosso do Sul,Rio Grande do Norte,292
+1991,Mato Grosso do Sul,Paraíba,224
+1991,Mato Grosso do Sul,Pernambuco,645
+1991,Mato Grosso do Sul,Alagoas,264
+1991,Mato Grosso do Sul,Sergipe,299
+1991,Mato Grosso do Sul,Bahia,499
+1991,Mato Grosso do Sul,Minas Gerais,2995
+1991,Mato Grosso do Sul,Espírito Santo,350
+1991,Mato Grosso do Sul,Rio de Janeiro,1770
+1991,Mato Grosso do Sul,São Paulo,35854
+1991,Mato Grosso do Sul,Paraná,14806
+1991,Mato Grosso do Sul,Santa Catarina,1815
+1991,Mato Grosso do Sul,Rio Grande do Sul,2963
+1991,Mato Grosso do Sul,Mato Grosso,29037
+1991,Mato Grosso do Sul,Goiás,3325
+1991,Mato Grosso do Sul,Distrito Federal,889
+1991,Mato Grosso,Rondônia,11659
+1991,Mato Grosso,Acre,652
+1991,Mato Grosso,Amazonas,709
+1991,Mato Grosso,Roraima,752
+1991,Mato Grosso,Pará,3692
+1991,Mato Grosso,Amapá,46
+1991,Mato Grosso,Tocantins,1930
+1991,Mato Grosso,Maranhão,1126
+1991,Mato Grosso,Piauí,190
+1991,Mato Grosso,Ceará,832
+1991,Mato Grosso,Rio Grande do Norte,407
+1991,Mato Grosso,Paraíba,249
+1991,Mato Grosso,Pernambuco,440
+1991,Mato Grosso,Alagoas,183
+1991,Mato Grosso,Sergipe,118
+1991,Mato Grosso,Bahia,960
+1991,Mato Grosso,Minas Gerais,5935
+1991,Mato Grosso,Espírito Santo,572
+1991,Mato Grosso,Rio de Janeiro,1337
+1991,Mato Grosso,São Paulo,21190
+1991,Mato Grosso,Paraná,25513
+1991,Mato Grosso,Santa Catarina,3717
+1991,Mato Grosso,Rio Grande do Sul,4508
+1991,Mato Grosso,Mato Grosso do Sul,13797
+1991,Mato Grosso,Goiás,15809
+1991,Mato Grosso,Distrito Federal,2009
+1991,Goiás,Rondônia,4144
+1991,Goiás,Acre,190
+1991,Goiás,Amazonas,567
+1991,Goiás,Roraima,609
+1991,Goiás,Pará,11034
+1991,Goiás,Amapá,80
+1991,Goiás,Tocantins,20842
+1991,Goiás,Maranhão,2793
+1991,Goiás,Piauí,895
+1991,Goiás,Ceará,1275
+1991,Goiás,Rio Grande do Norte,1172
+1991,Goiás,Paraíba,736
+1991,Goiás,Pernambuco,1182
+1991,Goiás,Alagoas,253
+1991,Goiás,Sergipe,187
+1991,Goiás,Bahia,4190
+1991,Goiás,Minas Gerais,30346
+1991,Goiás,Espírito Santo,411
+1991,Goiás,Rio de Janeiro,1804
+1991,Goiás,São Paulo,17331
+1991,Goiás,Paraná,2029
+1991,Goiás,Santa Catarina,665
+1991,Goiás,Rio Grande do Sul,1825
+1991,Goiás,Mato Grosso do Sul,3347
+1991,Goiás,Mato Grosso,21901
+1991,Goiás,Distrito Federal,26857
+1991,Distrito Federal,Rondônia,843
+1991,Distrito Federal,Acre,279
+1991,Distrito Federal,Amazonas,534
+1991,Distrito Federal,Roraima,184
+1991,Distrito Federal,Pará,2212
+1991,Distrito Federal,Amapá,69
+1991,Distrito Federal,Tocantins,2334
+1991,Distrito Federal,Maranhão,3596
+1991,Distrito Federal,Piauí,4331
+1991,Distrito Federal,Ceará,5365
+1991,Distrito Federal,Rio Grande do Norte,2939
+1991,Distrito Federal,Paraíba,2521
+1991,Distrito Federal,Pernambuco,2640
+1991,Distrito Federal,Alagoas,579
+1991,Distrito Federal,Sergipe,1234
+1991,Distrito Federal,Bahia,3582
+1991,Distrito Federal,Minas Gerais,13150
+1991,Distrito Federal,Espírito Santo,2651
+1991,Distrito Federal,Rio de Janeiro,8825
+1991,Distrito Federal,São Paulo,9547
+1991,Distrito Federal,Paraná,2547
+1991,Distrito Federal,Santa Catarina,1359
+1991,Distrito Federal,Rio Grande do Sul,2361
+1991,Distrito Federal,Mato Grosso do Sul,956
+1991,Distrito Federal,Mato Grosso,2040
+1991,Distrito Federal,Goiás,66992
+2000,Rondônia,Acre,3530
+2000,Rondônia,Amazonas,6307
+2000,Rondônia,Roraima,1118
+2000,Rondônia,Pará,1527
+2000,Rondônia,Amapá,109
+2000,Rondônia,Tocantins,598
+2000,Rondônia,Maranhão,1192
+2000,Rondônia,Piauí,313
+2000,Rondônia,Ceará,2056
+2000,Rondônia,Rio Grande do Norte,628
+2000,Rondônia,Paraíba,838
+2000,Rondônia,Pernambuco,586
+2000,Rondônia,Alagoas,73
+2000,Rondônia,Sergipe,118
+2000,Rondônia,Bahia,1134
+2000,Rondônia,Minas Gerais,4036
+2000,Rondônia,Espírito Santo,2116
+2000,Rondônia,Rio de Janeiro,1104
+2000,Rondônia,São Paulo,7235
+2000,Rondônia,Paraná,7970
+2000,Rondônia,Santa Catarina,1512
+2000,Rondônia,Rio Grande do Sul,1153
+2000,Rondônia,Mato Grosso do Sul,2629
+2000,Rondônia,Mato Grosso,20606
+2000,Rondônia,Goiás,3077
+2000,Rondônia,Distrito Federal,1169
+2000,Acre,Rondônia,5070
+2000,Acre,Amazonas,4293
+2000,Acre,Roraima,331
+2000,Acre,Pará,236
+2000,Acre,Amapá,53
+2000,Acre,Tocantins,80
+2000,Acre,Maranhão,52
+2000,Acre,Piauí,26
+2000,Acre,Ceará,569
+2000,Acre,Rio Grande do Norte,330
+2000,Acre,Paraíba,187
+2000,Acre,Pernambuco,38
+2000,Acre,Alagoas,14
+2000,Acre,Sergipe,30
+2000,Acre,Bahia,76
+2000,Acre,Minas Gerais,449
+2000,Acre,Espírito Santo,220
+2000,Acre,Rio de Janeiro,291
+2000,Acre,São Paulo,775
+2000,Acre,Paraná,615
+2000,Acre,Santa Catarina,141
+2000,Acre,Rio Grande do Sul,101
+2000,Acre,Mato Grosso do Sul,183
+2000,Acre,Mato Grosso,494
+2000,Acre,Goiás,991
+2000,Acre,Distrito Federal,424
+2000,Amazonas,Rondônia,7086
+2000,Amazonas,Acre,4750
+2000,Amazonas,Roraima,8561
+2000,Amazonas,Pará,11619
+2000,Amazonas,Amapá,487
+2000,Amazonas,Tocantins,331
+2000,Amazonas,Maranhão,1546
+2000,Amazonas,Piauí,788
+2000,Amazonas,Ceará,3763
+2000,Amazonas,Rio Grande do Norte,802
+2000,Amazonas,Paraíba,453
+2000,Amazonas,Pernambuco,1216
+2000,Amazonas,Alagoas,192
+2000,Amazonas,Sergipe,307
+2000,Amazonas,Bahia,755
+2000,Amazonas,Minas Gerais,1504
+2000,Amazonas,Espírito Santo,350
+2000,Amazonas,Rio de Janeiro,3647
+2000,Amazonas,São Paulo,3468
+2000,Amazonas,Paraná,1504
+2000,Amazonas,Santa Catarina,532
+2000,Amazonas,Rio Grande do Sul,1185
+2000,Amazonas,Mato Grosso do Sul,721
+2000,Amazonas,Mato Grosso,550
+2000,Amazonas,Goiás,1243
+2000,Amazonas,Distrito Federal,1298
+2000,Roraima,Rondônia,650
+2000,Roraima,Acre,82
+2000,Roraima,Amazonas,2556
+2000,Roraima,Pará,1761
+2000,Roraima,Amapá,95
+2000,Roraima,Tocantins,104
+2000,Roraima,Maranhão,1456
+2000,Roraima,Piauí,471
+2000,Roraima,Ceará,1165
+2000,Roraima,Rio Grande do Norte,516
+2000,Roraima,Paraíba,293
+2000,Roraima,Pernambuco,216
+2000,Roraima,Alagoas,40
+2000,Roraima,Sergipe,32
+2000,Roraima,Bahia,277
+2000,Roraima,Minas Gerais,574
+2000,Roraima,Espírito Santo,184
+2000,Roraima,Rio de Janeiro,971
+2000,Roraima,São Paulo,561
+2000,Roraima,Paraná,387
+2000,Roraima,Santa Catarina,49
+2000,Roraima,Rio Grande do Sul,232
+2000,Roraima,Mato Grosso do Sul,329
+2000,Roraima,Mato Grosso,335
+2000,Roraima,Goiás,818
+2000,Roraima,Distrito Federal,226
+2000,Pará,Rondônia,2802
+2000,Pará,Acre,417
+2000,Pará,Amazonas,42185
+2000,Pará,Roraima,13982
+2000,Pará,Amapá,33744
+2000,Pará,Tocantins,19569
+2000,Pará,Maranhão,28586
+2000,Pará,Piauí,3988
+2000,Pará,Ceará,8546
+2000,Pará,Rio Grande do Norte,1751
+2000,Pará,Paraíba,1007
+2000,Pará,Pernambuco,2217
+2000,Pará,Alagoas,272
+2000,Pará,Sergipe,247
+2000,Pará,Bahia,2944
+2000,Pará,Minas Gerais,6681
+2000,Pará,Espírito Santo,2411
+2000,Pará,Rio de Janeiro,8235
+2000,Pará,São Paulo,13911
+2000,Pará,Paraná,3063
+2000,Pará,Santa Catarina,1090
+2000,Pará,Rio Grande do Sul,1342
+2000,Pará,Mato Grosso do Sul,1166
+2000,Pará,Mato Grosso,6047
+2000,Pará,Goiás,21462
+2000,Pará,Distrito Federal,6570
+2000,Amapá,Rondônia,179
+2000,Amapá,Acre,40
+2000,Amapá,Amazonas,751
+2000,Amapá,Roraima,437
+2000,Amapá,Pará,8267
+2000,Amapá,Tocantins,137
+2000,Amapá,Maranhão,1153
+2000,Amapá,Piauí,129
+2000,Amapá,Ceará,891
+2000,Amapá,Rio Grande do Norte,323
+2000,Amapá,Paraíba,111
+2000,Amapá,Pernambuco,266
+2000,Amapá,Alagoas,15
+2000,Amapá,Sergipe,42
+2000,Amapá,Bahia,29
+2000,Amapá,Minas Gerais,289
+2000,Amapá,Espírito Santo,65
+2000,Amapá,Rio de Janeiro,291
+2000,Amapá,São Paulo,496
+2000,Amapá,Paraná,184
+2000,Amapá,Santa Catarina,36
+2000,Amapá,Rio Grande do Sul,267
+2000,Amapá,Mato Grosso do Sul,49
+2000,Amapá,Mato Grosso,167
+2000,Amapá,Goiás,328
+2000,Amapá,Distrito Federal,171
+2000,Tocantins,Rondônia,413
+2000,Tocantins,Acre,14
+2000,Tocantins,Amazonas,383
+2000,Tocantins,Roraima,634
+2000,Tocantins,Pará,15507
+2000,Tocantins,Amapá,160
+2000,Tocantins,Maranhão,6801
+2000,Tocantins,Piauí,1188
+2000,Tocantins,Ceará,773
+2000,Tocantins,Rio Grande do Norte,257
+2000,Tocantins,Paraíba,443
+2000,Tocantins,Pernambuco,514
+2000,Tocantins,Alagoas,161
+2000,Tocantins,Sergipe,101
+2000,Tocantins,Bahia,1535
+2000,Tocantins,Minas Gerais,3333
+2000,Tocantins,Espírito Santo,117
+2000,Tocantins,Rio de Janeiro,606
+2000,Tocantins,São Paulo,4265
+2000,Tocantins,Paraná,809
+2000,Tocantins,Santa Catarina,54
+2000,Tocantins,Rio Grande do Sul,728
+2000,Tocantins,Mato Grosso do Sul,316
+2000,Tocantins,Mato Grosso,3145
+2000,Tocantins,Goiás,34915
+2000,Tocantins,Distrito Federal,5341
+2000,Maranhão,Rondônia,2775
+2000,Maranhão,Acre,111
+2000,Maranhão,Amazonas,5912
+2000,Maranhão,Roraima,13475
+2000,Maranhão,Pará,70956
+2000,Maranhão,Amapá,5220
+2000,Maranhão,Tocantins,23610
+2000,Maranhão,Piauí,24533
+2000,Maranhão,Ceará,8218
+2000,Maranhão,Rio Grande do Norte,1412
+2000,Maranhão,Paraíba,1081
+2000,Maranhão,Pernambuco,2068
+2000,Maranhão,Alagoas,580
+2000,Maranhão,Sergipe,425
+2000,Maranhão,Bahia,1941
+2000,Maranhão,Minas Gerais,5078
+2000,Maranhão,Espírito Santo,912
+2000,Maranhão,Rio de Janeiro,12442
+2000,Maranhão,São Paulo,32551
+2000,Maranhão,Paraná,1590
+2000,Maranhão,Santa Catarina,488
+2000,Maranhão,Rio Grande do Sul,766
+2000,Maranhão,Mato Grosso do Sul,537
+2000,Maranhão,Mato Grosso,4823
+2000,Maranhão,Goiás,29166
+2000,Maranhão,Distrito Federal,23800
+2000,Piauí,Rondônia,683
+2000,Piauí,Acre,31
+2000,Piauí,Amazonas,1470
+2000,Piauí,Roraima,824
+2000,Piauí,Pará,5021
+2000,Piauí,Amapá,308
+2000,Piauí,Tocantins,2830
+2000,Piauí,Maranhão,16863
+2000,Piauí,Ceará,11986
+2000,Piauí,Rio Grande do Norte,733
+2000,Piauí,Paraíba,541
+2000,Piauí,Pernambuco,3355
+2000,Piauí,Alagoas,185
+2000,Piauí,Sergipe,389
+2000,Piauí,Bahia,2924
+2000,Piauí,Minas Gerais,1936
+2000,Piauí,Espírito Santo,257
+2000,Piauí,Rio de Janeiro,5641
+2000,Piauí,São Paulo,45577
+2000,Piauí,Paraná,612
+2000,Piauí,Santa Catarina,310
+2000,Piauí,Rio Grande do Sul,510
+2000,Piauí,Mato Grosso do Sul,450
+2000,Piauí,Mato Grosso,821
+2000,Piauí,Goiás,15081
+2000,Piauí,Distrito Federal,21477
+2000,Ceará,Rondônia,2124
+2000,Ceará,Acre,361
+2000,Ceará,Amazonas,3723
+2000,Ceará,Roraima,1386
+2000,Ceará,Pará,7113
+2000,Ceará,Amapá,622
+2000,Ceará,Tocantins,1863
+2000,Ceará,Maranhão,5346
+2000,Ceará,Piauí,8335
+2000,Ceará,Rio Grande do Norte,7862
+2000,Ceará,Paraíba,5076
+2000,Ceará,Pernambuco,8734
+2000,Ceará,Alagoas,996
+2000,Ceará,Sergipe,843
+2000,Ceará,Bahia,6655
+2000,Ceará,Minas Gerais,5526
+2000,Ceará,Espírito Santo,958
+2000,Ceará,Rio de Janeiro,27349
+2000,Ceará,São Paulo,66384
+2000,Ceará,Paraná,1521
+2000,Ceará,Santa Catarina,1316
+2000,Ceará,Rio Grande do Sul,1752
+2000,Ceará,Mato Grosso do Sul,1050
+2000,Ceará,Mato Grosso,1608
+2000,Ceará,Goiás,7891
+2000,Ceará,Distrito Federal,10315
+2000,Rio Grande do Norte,Rondônia,552
+2000,Rio Grande do Norte,Acre,41
+2000,Rio Grande do Norte,Amazonas,870
+2000,Rio Grande do Norte,Roraima,529
+2000,Rio Grande do Norte,Pará,1068
+2000,Rio Grande do Norte,Amapá,328
+2000,Rio Grande do Norte,Tocantins,240
+2000,Rio Grande do Norte,Maranhão,857
+2000,Rio Grande do Norte,Piauí,826
+2000,Rio Grande do Norte,Ceará,7611
+2000,Rio Grande do Norte,Paraíba,9044
+2000,Rio Grande do Norte,Pernambuco,4752
+2000,Rio Grande do Norte,Alagoas,326
+2000,Rio Grande do Norte,Sergipe,595
+2000,Rio Grande do Norte,Bahia,1673
+2000,Rio Grande do Norte,Minas Gerais,2674
+2000,Rio Grande do Norte,Espírito Santo,469
+2000,Rio Grande do Norte,Rio de Janeiro,9658
+2000,Rio Grande do Norte,São Paulo,19450
+2000,Rio Grande do Norte,Paraná,744
+2000,Rio Grande do Norte,Santa Catarina,685
+2000,Rio Grande do Norte,Rio Grande do Sul,789
+2000,Rio Grande do Norte,Mato Grosso do Sul,308
+2000,Rio Grande do Norte,Mato Grosso,460
+2000,Rio Grande do Norte,Goiás,3112
+2000,Rio Grande do Norte,Distrito Federal,3625
+2000,Paraíba,Rondônia,1007
+2000,Paraíba,Acre,104
+2000,Paraíba,Amazonas,627
+2000,Paraíba,Roraima,672
+2000,Paraíba,Pará,1376
+2000,Paraíba,Amapá,201
+2000,Paraíba,Tocantins,808
+2000,Paraíba,Maranhão,1472
+2000,Paraíba,Piauí,1016
+2000,Paraíba,Ceará,5278
+2000,Paraíba,Rio Grande do Norte,13912
+2000,Paraíba,Pernambuco,18802
+2000,Paraíba,Alagoas,1124
+2000,Paraíba,Sergipe,1010
+2000,Paraíba,Bahia,4423
+2000,Paraíba,Minas Gerais,2625
+2000,Paraíba,Espírito Santo,539
+2000,Paraíba,Rio de Janeiro,44146
+2000,Paraíba,São Paulo,48777
+2000,Paraíba,Paraná,1225
+2000,Paraíba,Santa Catarina,583
+2000,Paraíba,Rio Grande do Sul,645
+2000,Paraíba,Mato Grosso do Sul,422
+2000,Paraíba,Mato Grosso,885
+2000,Paraíba,Goiás,4878
+2000,Paraíba,Distrito Federal,6928
+2000,Pernambuco,Rondônia,1513
+2000,Pernambuco,Acre,85
+2000,Pernambuco,Amazonas,1528
+2000,Pernambuco,Roraima,388
+2000,Pernambuco,Pará,3120
+2000,Pernambuco,Amapá,255
+2000,Pernambuco,Tocantins,2070
+2000,Pernambuco,Maranhão,2584
+2000,Pernambuco,Piauí,3655
+2000,Pernambuco,Ceará,11681
+2000,Pernambuco,Rio Grande do Norte,7086
+2000,Pernambuco,Paraíba,21043
+2000,Pernambuco,Alagoas,17414
+2000,Pernambuco,Sergipe,3289
+2000,Pernambuco,Bahia,23139
+2000,Pernambuco,Minas Gerais,5216
+2000,Pernambuco,Espírito Santo,1321
+2000,Pernambuco,Rio de Janeiro,22595
+2000,Pernambuco,São Paulo,131488
+2000,Pernambuco,Paraná,2346
+2000,Pernambuco,Santa Catarina,1124
+2000,Pernambuco,Rio Grande do Sul,1365
+2000,Pernambuco,Mato Grosso do Sul,1862
+2000,Pernambuco,Mato Grosso,2445
+2000,Pernambuco,Goiás,5900
+2000,Pernambuco,Distrito Federal,5777
+2000,Alagoas,Rondônia,352
+2000,Alagoas,Acre,31
+2000,Alagoas,Amazonas,196
+2000,Alagoas,Roraima,92
+2000,Alagoas,Pará,1100
+2000,Alagoas,Amapá,2
+2000,Alagoas,Tocantins,661
+2000,Alagoas,Maranhão,614
+2000,Alagoas,Piauí,468
+2000,Alagoas,Ceará,2001
+2000,Alagoas,Rio Grande do Norte,667
+2000,Alagoas,Paraíba,1403
+2000,Alagoas,Pernambuco,18826
+2000,Alagoas,Sergipe,11318
+2000,Alagoas,Bahia,7832
+2000,Alagoas,Minas Gerais,3659
+2000,Alagoas,Espírito Santo,926
+2000,Alagoas,Rio de Janeiro,5409
+2000,Alagoas,São Paulo,62609
+2000,Alagoas,Paraná,1035
+2000,Alagoas,Santa Catarina,472
+2000,Alagoas,Rio Grande do Sul,381
+2000,Alagoas,Mato Grosso do Sul,1173
+2000,Alagoas,Mato Grosso,3799
+2000,Alagoas,Goiás,1840
+2000,Alagoas,Distrito Federal,1083
+2000,Sergipe,Rondônia,238
+2000,Sergipe,Acre,22
+2000,Sergipe,Amazonas,117
+2000,Sergipe,Roraima,110
+2000,Sergipe,Pará,272
+2000,Sergipe,Amapá,40
+2000,Sergipe,Tocantins,583
+2000,Sergipe,Maranhão,310
+2000,Sergipe,Piauí,355
+2000,Sergipe,Ceará,691
+2000,Sergipe,Rio Grande do Norte,429
+2000,Sergipe,Paraíba,732
+2000,Sergipe,Pernambuco,2015
+2000,Sergipe,Alagoas,4615
+2000,Sergipe,Bahia,13433
+2000,Sergipe,Minas Gerais,1599
+2000,Sergipe,Espírito Santo,853
+2000,Sergipe,Rio de Janeiro,4450
+2000,Sergipe,São Paulo,21505
+2000,Sergipe,Paraná,1066
+2000,Sergipe,Santa Catarina,258
+2000,Sergipe,Rio Grande do Sul,259
+2000,Sergipe,Mato Grosso do Sul,470
+2000,Sergipe,Mato Grosso,679
+2000,Sergipe,Goiás,1106
+2000,Sergipe,Distrito Federal,724
+2000,Bahia,Rondônia,2621
+2000,Bahia,Acre,190
+2000,Bahia,Amazonas,819
+2000,Bahia,Roraima,225
+2000,Bahia,Pará,5000
+2000,Bahia,Amapá,170
+2000,Bahia,Tocantins,2071
+2000,Bahia,Maranhão,1729
+2000,Bahia,Piauí,3736
+2000,Bahia,Ceará,7346
+2000,Bahia,Rio Grande do Norte,2963
+2000,Bahia,Paraíba,4698
+2000,Bahia,Pernambuco,17696
+2000,Bahia,Alagoas,3885
+2000,Bahia,Sergipe,17094
+2000,Bahia,Minas Gerais,36772
+2000,Bahia,Espírito Santo,31743
+2000,Bahia,Rio de Janeiro,29035
+2000,Bahia,São Paulo,277306
+2000,Bahia,Paraná,5145
+2000,Bahia,Santa Catarina,1904
+2000,Bahia,Rio Grande do Sul,2136
+2000,Bahia,Mato Grosso do Sul,1621
+2000,Bahia,Mato Grosso,4479
+2000,Bahia,Goiás,32067
+2000,Bahia,Distrito Federal,25587
+2000,Minas Gerais,Rondônia,6699
+2000,Minas Gerais,Acre,521
+2000,Minas Gerais,Amazonas,1354
+2000,Minas Gerais,Roraima,506
+2000,Minas Gerais,Pará,5782
+2000,Minas Gerais,Amapá,356
+2000,Minas Gerais,Tocantins,5179
+2000,Minas Gerais,Maranhão,3236
+2000,Minas Gerais,Piauí,1473
+2000,Minas Gerais,Ceará,3385
+2000,Minas Gerais,Rio Grande do Norte,1950
+2000,Minas Gerais,Paraíba,1548
+2000,Minas Gerais,Pernambuco,3825
+2000,Minas Gerais,Alagoas,1073
+2000,Minas Gerais,Sergipe,807
+2000,Minas Gerais,Bahia,19859
+2000,Minas Gerais,Espírito Santo,38516
+2000,Minas Gerais,Rio de Janeiro,48324
+2000,Minas Gerais,São Paulo,178422
+2000,Minas Gerais,Paraná,9463
+2000,Minas Gerais,Santa Catarina,3050
+2000,Minas Gerais,Rio Grande do Sul,3158
+2000,Minas Gerais,Mato Grosso do Sul,3357
+2000,Minas Gerais,Mato Grosso,6557
+2000,Minas Gerais,Goiás,34261
+2000,Minas Gerais,Distrito Federal,25998
+2000,Espírito Santo,Rondônia,7754
+2000,Espírito Santo,Acre,117
+2000,Espírito Santo,Amazonas,265
+2000,Espírito Santo,Roraima,99
+2000,Espírito Santo,Pará,1855
+2000,Espírito Santo,Amapá,84
+2000,Espírito Santo,Tocantins,316
+2000,Espírito Santo,Maranhão,605
+2000,Espírito Santo,Piauí,320
+2000,Espírito Santo,Ceará,988
+2000,Espírito Santo,Rio Grande do Norte,360
+2000,Espírito Santo,Paraíba,407
+2000,Espírito Santo,Pernambuco,1196
+2000,Espírito Santo,Alagoas,410
+2000,Espírito Santo,Sergipe,154
+2000,Espírito Santo,Bahia,14447
+2000,Espírito Santo,Minas Gerais,29529
+2000,Espírito Santo,Rio de Janeiro,18250
+2000,Espírito Santo,São Paulo,10826
+2000,Espírito Santo,Paraná,1468
+2000,Espírito Santo,Santa Catarina,727
+2000,Espírito Santo,Rio Grande do Sul,831
+2000,Espírito Santo,Mato Grosso do Sul,173
+2000,Espírito Santo,Mato Grosso,981
+2000,Espírito Santo,Goiás,1226
+2000,Espírito Santo,Distrito Federal,1778
+2000,Rio de Janeiro,Rondônia,1571
+2000,Rio de Janeiro,Acre,558
+2000,Rio de Janeiro,Amazonas,5280
+2000,Rio de Janeiro,Roraima,612
+2000,Rio de Janeiro,Pará,6587
+2000,Rio de Janeiro,Amapá,258
+2000,Rio de Janeiro,Tocantins,577
+2000,Rio de Janeiro,Maranhão,4179
+2000,Rio de Janeiro,Piauí,2231
+2000,Rio de Janeiro,Ceará,16014
+2000,Rio de Janeiro,Rio Grande do Norte,10062
+2000,Rio de Janeiro,Paraíba,16761
+2000,Rio de Janeiro,Pernambuco,10866
+2000,Rio de Janeiro,Alagoas,2771
+2000,Rio de Janeiro,Sergipe,3028
+2000,Rio de Janeiro,Bahia,15280
+2000,Rio de Janeiro,Minas Gerais,57049
+2000,Rio de Janeiro,Espírito Santo,28927
+2000,Rio de Janeiro,São Paulo,46959
+2000,Rio de Janeiro,Paraná,7842
+2000,Rio de Janeiro,Santa Catarina,6127
+2000,Rio de Janeiro,Rio Grande do Sul,8269
+2000,Rio de Janeiro,Mato Grosso do Sul,3849
+2000,Rio de Janeiro,Mato Grosso,1557
+2000,Rio de Janeiro,Goiás,4550
+2000,Rio de Janeiro,Distrito Federal,12448
+2000,São Paulo,Rondônia,8701
+2000,São Paulo,Acre,626
+2000,São Paulo,Amazonas,4176
+2000,São Paulo,Roraima,670
+2000,São Paulo,Pará,9002
+2000,São Paulo,Amapá,631
+2000,São Paulo,Tocantins,5330
+2000,São Paulo,Maranhão,9865
+2000,São Paulo,Piauí,23367
+2000,São Paulo,Ceará,52502
+2000,São Paulo,Rio Grande do Norte,17855
+2000,São Paulo,Paraíba,28349
+2000,São Paulo,Pernambuco,58364
+2000,São Paulo,Alagoas,19105
+2000,São Paulo,Sergipe,10293
+2000,São Paulo,Bahia,105691
+2000,São Paulo,Minas Gerais,201880
+2000,São Paulo,Espírito Santo,11850
+2000,São Paulo,Rio de Janeiro,45105
+2000,São Paulo,Paraná,131094
+2000,São Paulo,Santa Catarina,28343
+2000,São Paulo,Rio Grande do Sul,14546
+2000,São Paulo,Mato Grosso do Sul,36250
+2000,São Paulo,Mato Grosso,19793
+2000,São Paulo,Goiás,27976
+2000,São Paulo,Distrito Federal,12520
+2000,Paraná,Rondônia,9008
+2000,Paraná,Acre,498
+2000,Paraná,Amazonas,990
+2000,Paraná,Roraima,507
+2000,Paraná,Pará,3505
+2000,Paraná,Amapá,352
+2000,Paraná,Tocantins,1338
+2000,Paraná,Maranhão,1323
+2000,Paraná,Piauí,343
+2000,Paraná,Ceará,1795
+2000,Paraná,Rio Grande do Norte,916
+2000,Paraná,Paraíba,654
+2000,Paraná,Pernambuco,1468
+2000,Paraná,Alagoas,642
+2000,Paraná,Sergipe,313
+2000,Paraná,Bahia,4023
+2000,Paraná,Minas Gerais,14054
+2000,Paraná,Espírito Santo,1404
+2000,Paraná,Rio de Janeiro,5793
+2000,Paraná,São Paulo,131294
+2000,Paraná,Santa Catarina,80905
+2000,Paraná,Rio Grande do Sul,22132
+2000,Paraná,Mato Grosso do Sul,17186
+2000,Paraná,Mato Grosso,27942
+2000,Paraná,Goiás,5141
+2000,Paraná,Distrito Federal,3472
+2000,Santa Catarina,Rondônia,1239
+2000,Santa Catarina,Acre,140
+2000,Santa Catarina,Amazonas,511
+2000,Santa Catarina,Roraima,201
+2000,Santa Catarina,Pará,1295
+2000,Santa Catarina,Amapá,38
+2000,Santa Catarina,Tocantins,538
+2000,Santa Catarina,Maranhão,435
+2000,Santa Catarina,Piauí,219
+2000,Santa Catarina,Ceará,1088
+2000,Santa Catarina,Rio Grande do Norte,438
+2000,Santa Catarina,Paraíba,221
+2000,Santa Catarina,Pernambuco,572
+2000,Santa Catarina,Alagoas,117
+2000,Santa Catarina,Sergipe,161
+2000,Santa Catarina,Bahia,1215
+2000,Santa Catarina,Minas Gerais,2851
+2000,Santa Catarina,Espírito Santo,583
+2000,Santa Catarina,Rio de Janeiro,3370
+2000,Santa Catarina,São Paulo,16134
+2000,Santa Catarina,Paraná,53293
+2000,Santa Catarina,Rio Grande do Sul,41155
+2000,Santa Catarina,Mato Grosso do Sul,2465
+2000,Santa Catarina,Mato Grosso,7736
+2000,Santa Catarina,Goiás,1995
+2000,Santa Catarina,Distrito Federal,1655
+2000,Rio Grande do Sul,Rondônia,1390
+2000,Rio Grande do Sul,Acre,223
+2000,Rio Grande do Sul,Amazonas,1277
+2000,Rio Grande do Sul,Roraima,534
+2000,Rio Grande do Sul,Pará,2172
+2000,Rio Grande do Sul,Amapá,210
+2000,Rio Grande do Sul,Tocantins,1024
+2000,Rio Grande do Sul,Maranhão,1046
+2000,Rio Grande do Sul,Piauí,815
+2000,Rio Grande do Sul,Ceará,2665
+2000,Rio Grande do Sul,Rio Grande do Norte,879
+2000,Rio Grande do Sul,Paraíba,674
+2000,Rio Grande do Sul,Pernambuco,1514
+2000,Rio Grande do Sul,Alagoas,390
+2000,Rio Grande do Sul,Sergipe,372
+2000,Rio Grande do Sul,Bahia,3600
+2000,Rio Grande do Sul,Minas Gerais,3766
+2000,Rio Grande do Sul,Espírito Santo,812
+2000,Rio Grande do Sul,Rio de Janeiro,7755
+2000,Rio Grande do Sul,São Paulo,18159
+2000,Rio Grande do Sul,Paraná,23669
+2000,Rio Grande do Sul,Santa Catarina,58586
+2000,Rio Grande do Sul,Mato Grosso do Sul,4258
+2000,Rio Grande do Sul,Mato Grosso,9271
+2000,Rio Grande do Sul,Goiás,3780
+2000,Rio Grande do Sul,Distrito Federal,4050
+2000,Mato Grosso do Sul,Rondônia,3748
+2000,Mato Grosso do Sul,Acre,277
+2000,Mato Grosso do Sul,Amazonas,563
+2000,Mato Grosso do Sul,Roraima,204
+2000,Mato Grosso do Sul,Pará,1126
+2000,Mato Grosso do Sul,Amapá,104
+2000,Mato Grosso do Sul,Tocantins,708
+2000,Mato Grosso do Sul,Maranhão,443
+2000,Mato Grosso do Sul,Piauí,317
+2000,Mato Grosso do Sul,Ceará,1015
+2000,Mato Grosso do Sul,Rio Grande do Norte,914
+2000,Mato Grosso do Sul,Paraíba,561
+2000,Mato Grosso do Sul,Pernambuco,948
+2000,Mato Grosso do Sul,Alagoas,220
+2000,Mato Grosso do Sul,Sergipe,151
+2000,Mato Grosso do Sul,Bahia,1299
+2000,Mato Grosso do Sul,Minas Gerais,4377
+2000,Mato Grosso do Sul,Espírito Santo,410
+2000,Mato Grosso do Sul,Rio de Janeiro,3248
+2000,Mato Grosso do Sul,São Paulo,34812
+2000,Mato Grosso do Sul,Paraná,18696
+2000,Mato Grosso do Sul,Santa Catarina,3302
+2000,Mato Grosso do Sul,Rio Grande do Sul,3342
+2000,Mato Grosso do Sul,Mato Grosso,21302
+2000,Mato Grosso do Sul,Goiás,4786
+2000,Mato Grosso do Sul,Distrito Federal,1865
+2000,Mato Grosso,Rondônia,12365
+2000,Mato Grosso,Acre,515
+2000,Mato Grosso,Amazonas,1381
+2000,Mato Grosso,Roraima,855
+2000,Mato Grosso,Pará,6785
+2000,Mato Grosso,Amapá,246
+2000,Mato Grosso,Tocantins,2042
+2000,Mato Grosso,Maranhão,2011
+2000,Mato Grosso,Piauí,883
+2000,Mato Grosso,Ceará,1348
+2000,Mato Grosso,Rio Grande do Norte,567
+2000,Mato Grosso,Paraíba,552
+2000,Mato Grosso,Pernambuco,905
+2000,Mato Grosso,Alagoas,504
+2000,Mato Grosso,Sergipe,329
+2000,Mato Grosso,Bahia,1891
+2000,Mato Grosso,Minas Gerais,6507
+2000,Mato Grosso,Espírito Santo,638
+2000,Mato Grosso,Rio de Janeiro,1892
+2000,Mato Grosso,São Paulo,21454
+2000,Mato Grosso,Paraná,17593
+2000,Mato Grosso,Santa Catarina,4231
+2000,Mato Grosso,Rio Grande do Sul,2958
+2000,Mato Grosso,Mato Grosso do Sul,12280
+2000,Mato Grosso,Goiás,20354
+2000,Mato Grosso,Distrito Federal,2640
+2000,Goiás,Rondônia,2225
+2000,Goiás,Acre,290
+2000,Goiás,Amazonas,949
+2000,Goiás,Roraima,561
+2000,Goiás,Pará,7936
+2000,Goiás,Amapá,342
+2000,Goiás,Tocantins,19535
+2000,Goiás,Maranhão,3210
+2000,Goiás,Piauí,2171
+2000,Goiás,Ceará,2348
+2000,Goiás,Rio Grande do Norte,1648
+2000,Goiás,Paraíba,1656
+2000,Goiás,Pernambuco,1480
+2000,Goiás,Alagoas,302
+2000,Goiás,Sergipe,296
+2000,Goiás,Bahia,7580
+2000,Goiás,Minas Gerais,30618
+2000,Goiás,Espírito Santo,680
+2000,Goiás,Rio de Janeiro,2710
+2000,Goiás,São Paulo,19564
+2000,Goiás,Paraná,2608
+2000,Goiás,Santa Catarina,2278
+2000,Goiás,Rio Grande do Sul,1557
+2000,Goiás,Mato Grosso do Sul,3786
+2000,Goiás,Mato Grosso,18309
+2000,Goiás,Distrito Federal,35259
+2000,Distrito Federal,Rondônia,560
+2000,Distrito Federal,Acre,61
+2000,Distrito Federal,Amazonas,1143
+2000,Distrito Federal,Roraima,237
+2000,Distrito Federal,Pará,2057
+2000,Distrito Federal,Amapá,167
+2000,Distrito Federal,Tocantins,3288
+2000,Distrito Federal,Maranhão,3906
+2000,Distrito Federal,Piauí,6770
+2000,Distrito Federal,Ceará,7203
+2000,Distrito Federal,Rio Grande do Norte,2657
+2000,Distrito Federal,Paraíba,3672
+2000,Distrito Federal,Pernambuco,2433
+2000,Distrito Federal,Alagoas,541
+2000,Distrito Federal,Sergipe,365
+2000,Distrito Federal,Bahia,6917
+2000,Distrito Federal,Minas Gerais,15199
+2000,Distrito Federal,Espírito Santo,1908
+2000,Distrito Federal,Rio de Janeiro,7432
+2000,Distrito Federal,São Paulo,9827
+2000,Distrito Federal,Paraná,1766
+2000,Distrito Federal,Santa Catarina,1548
+2000,Distrito Federal,Rio Grande do Sul,1836
+2000,Distrito Federal,Mato Grosso do Sul,819
+2000,Distrito Federal,Mato Grosso,1506
+2000,Distrito Federal,Goiás,104758
+2010,Rondônia,Acre,3387
+2010,Rondônia,Amazonas,6686
+2010,Rondônia,Roraima,748
+2010,Rondônia,Pará,1316
+2010,Rondônia,Amapá,73
+2010,Rondônia,Tocantins,375
+2010,Rondônia,Maranhão,531
+2010,Rondônia,Piauí,178
+2010,Rondônia,Ceará,884
+2010,Rondônia,Rio Grande do Norte,251
+2010,Rondônia,Paraíba,432
+2010,Rondônia,Pernambuco,694
+2010,Rondônia,Alagoas,184
+2010,Rondônia,Sergipe,122
+2010,Rondônia,Bahia,1014
+2010,Rondônia,Minas Gerais,1840
+2010,Rondônia,Espírito Santo,2397
+2010,Rondônia,Rio de Janeiro,841
+2010,Rondônia,São Paulo,4189
+2010,Rondônia,Paraná,6018
+2010,Rondônia,Santa Catarina,1372
+2010,Rondônia,Rio Grande do Sul,656
+2010,Rondônia,Mato Grosso do Sul,2351
+2010,Rondônia,Mato Grosso,13786
+2010,Rondônia,Goiás,2401
+2010,Rondônia,Distrito Federal,913
+2010,Acre,Rondônia,5017
+2010,Acre,Amazonas,3514
+2010,Acre,Roraima,174
+2010,Acre,Pará,280
+2010,Acre,Amapá,9
+2010,Acre,Tocantins,87
+2010,Acre,Maranhão,65
+2010,Acre,Piauí,8
+2010,Acre,Ceará,336
+2010,Acre,Rio Grande do Norte,111
+2010,Acre,Paraíba,44
+2010,Acre,Pernambuco,149
+2010,Acre,Alagoas,76
+2010,Acre,Sergipe,20
+2010,Acre,Bahia,68
+2010,Acre,Minas Gerais,443
+2010,Acre,Espírito Santo,95
+2010,Acre,Rio de Janeiro,472
+2010,Acre,São Paulo,702
+2010,Acre,Paraná,348
+2010,Acre,Santa Catarina,253
+2010,Acre,Rio Grande do Sul,150
+2010,Acre,Mato Grosso do Sul,221
+2010,Acre,Mato Grosso,782
+2010,Acre,Goiás,836
+2010,Acre,Distrito Federal,487
+2010,Amazonas,Rondônia,6145
+2010,Amazonas,Acre,4079
+2010,Amazonas,Roraima,5370
+2010,Amazonas,Pará,10615
+2010,Amazonas,Amapá,533
+2010,Amazonas,Tocantins,238
+2010,Amazonas,Maranhão,1909
+2010,Amazonas,Piauí,455
+2010,Amazonas,Ceará,2063
+2010,Amazonas,Rio Grande do Norte,851
+2010,Amazonas,Paraíba,507
+2010,Amazonas,Pernambuco,1309
+2010,Amazonas,Alagoas,377
+2010,Amazonas,Sergipe,93
+2010,Amazonas,Bahia,682
+2010,Amazonas,Minas Gerais,1028
+2010,Amazonas,Espírito Santo,334
+2010,Amazonas,Rio de Janeiro,4097
+2010,Amazonas,São Paulo,3766
+2010,Amazonas,Paraná,961
+2010,Amazonas,Santa Catarina,672
+2010,Amazonas,Rio Grande do Sul,1052
+2010,Amazonas,Mato Grosso do Sul,459
+2010,Amazonas,Mato Grosso,853
+2010,Amazonas,Goiás,1239
+2010,Amazonas,Distrito Federal,1615
+2010,Roraima,Rondônia,685
+2010,Roraima,Acre,28
+2010,Roraima,Amazonas,3012
+2010,Roraima,Pará,1110
+2010,Roraima,Amapá,42
+2010,Roraima,Tocantins,138
+2010,Roraima,Maranhão,1476
+2010,Roraima,Piauí,92
+2010,Roraima,Ceará,612
+2010,Roraima,Rio Grande do Norte,249
+2010,Roraima,Paraíba,241
+2010,Roraima,Pernambuco,271
+2010,Roraima,Alagoas,80
+2010,Roraima,Sergipe,0
+2010,Roraima,Bahia,130
+2010,Roraima,Minas Gerais,412
+2010,Roraima,Espírito Santo,101
+2010,Roraima,Rio de Janeiro,351
+2010,Roraima,São Paulo,513
+2010,Roraima,Paraná,188
+2010,Roraima,Santa Catarina,127
+2010,Roraima,Rio Grande do Sul,304
+2010,Roraima,Mato Grosso do Sul,171
+2010,Roraima,Mato Grosso,189
+2010,Roraima,Goiás,400
+2010,Roraima,Distrito Federal,285
+2010,Pará,Rondônia,2869
+2010,Pará,Acre,440
+2010,Pará,Amazonas,27504
+2010,Pará,Roraima,6607
+2010,Pará,Amapá,28450
+2010,Pará,Tocantins,17578
+2010,Pará,Maranhão,29091
+2010,Pará,Piauí,3105
+2010,Pará,Ceará,6478
+2010,Pará,Rio Grande do Norte,1056
+2010,Pará,Paraíba,1105
+2010,Pará,Pernambuco,2323
+2010,Pará,Alagoas,341
+2010,Pará,Sergipe,471
+2010,Pará,Bahia,4171
+2010,Pará,Minas Gerais,5143
+2010,Pará,Espírito Santo,1688
+2010,Pará,Rio de Janeiro,7137
+2010,Pará,São Paulo,12379
+2010,Pará,Paraná,3650
+2010,Pará,Santa Catarina,2577
+2010,Pará,Rio Grande do Sul,1660
+2010,Pará,Mato Grosso do Sul,1285
+2010,Pará,Mato Grosso,8738
+2010,Pará,Goiás,21585
+2010,Pará,Distrito Federal,4401
+2010,Amapá,Rondônia,117
+2010,Amapá,Acre,0
+2010,Amapá,Amazonas,679
+2010,Amapá,Roraima,121
+2010,Amapá,Pará,8398
+2010,Amapá,Tocantins,115
+2010,Amapá,Maranhão,1375
+2010,Amapá,Piauí,239
+2010,Amapá,Ceará,705
+2010,Amapá,Rio Grande do Norte,395
+2010,Amapá,Paraíba,188
+2010,Amapá,Pernambuco,191
+2010,Amapá,Alagoas,0
+2010,Amapá,Sergipe,47
+2010,Amapá,Bahia,55
+2010,Amapá,Minas Gerais,422
+2010,Amapá,Espírito Santo,87
+2010,Amapá,Rio de Janeiro,167
+2010,Amapá,São Paulo,612
+2010,Amapá,Paraná,183
+2010,Amapá,Santa Catarina,115
+2010,Amapá,Rio Grande do Sul,100
+2010,Amapá,Mato Grosso do Sul,21
+2010,Amapá,Mato Grosso,86
+2010,Amapá,Goiás,285
+2010,Amapá,Distrito Federal,523
+2010,Tocantins,Rondônia,1109
+2010,Tocantins,Acre,105
+2010,Tocantins,Amazonas,178
+2010,Tocantins,Roraima,342
+2010,Tocantins,Pará,15920
+2010,Tocantins,Amapá,141
+2010,Tocantins,Maranhão,6966
+2010,Tocantins,Piauí,988
+2010,Tocantins,Ceará,622
+2010,Tocantins,Rio Grande do Norte,125
+2010,Tocantins,Paraíba,260
+2010,Tocantins,Pernambuco,626
+2010,Tocantins,Alagoas,138
+2010,Tocantins,Sergipe,124
+2010,Tocantins,Bahia,1330
+2010,Tocantins,Minas Gerais,3102
+2010,Tocantins,Espírito Santo,232
+2010,Tocantins,Rio de Janeiro,547
+2010,Tocantins,São Paulo,3350
+2010,Tocantins,Paraná,900
+2010,Tocantins,Santa Catarina,521
+2010,Tocantins,Rio Grande do Sul,468
+2010,Tocantins,Mato Grosso do Sul,753
+2010,Tocantins,Mato Grosso,2465
+2010,Tocantins,Goiás,31176
+2010,Tocantins,Distrito Federal,4564
+2010,Maranhão,Rondônia,2599
+2010,Maranhão,Acre,197
+2010,Maranhão,Amazonas,4030
+2010,Maranhão,Roraima,4734
+2010,Maranhão,Pará,62638
+2010,Maranhão,Amapá,3295
+2010,Maranhão,Tocantins,19757
+2010,Maranhão,Piauí,17734
+2010,Maranhão,Ceará,5000
+2010,Maranhão,Rio Grande do Norte,628
+2010,Maranhão,Paraíba,1010
+2010,Maranhão,Pernambuco,2019
+2010,Maranhão,Alagoas,383
+2010,Maranhão,Sergipe,131
+2010,Maranhão,Bahia,1935
+2010,Maranhão,Minas Gerais,9730
+2010,Maranhão,Espírito Santo,1007
+2010,Maranhão,Rio de Janeiro,10840
+2010,Maranhão,São Paulo,39323
+2010,Maranhão,Paraná,1577
+2010,Maranhão,Santa Catarina,2024
+2010,Maranhão,Rio Grande do Sul,914
+2010,Maranhão,Mato Grosso do Sul,874
+2010,Maranhão,Mato Grosso,14454
+2010,Maranhão,Goiás,43846
+2010,Maranhão,Distrito Federal,19984
+2010,Piauí,Rondônia,357
+2010,Piauí,Acre,96
+2010,Piauí,Amazonas,1196
+2010,Piauí,Roraima,341
+2010,Piauí,Pará,4225
+2010,Piauí,Amapá,337
+2010,Piauí,Tocantins,2459
+2010,Piauí,Maranhão,16493
+2010,Piauí,Ceará,7763
+2010,Piauí,Rio Grande do Norte,822
+2010,Piauí,Paraíba,752
+2010,Piauí,Pernambuco,4265
+2010,Piauí,Alagoas,243
+2010,Piauí,Sergipe,218
+2010,Piauí,Bahia,3468
+2010,Piauí,Minas Gerais,3882
+2010,Piauí,Espírito Santo,575
+2010,Piauí,Rio de Janeiro,4414
+2010,Piauí,São Paulo,53570
+2010,Piauí,Paraná,960
+2010,Piauí,Santa Catarina,744
+2010,Piauí,Rio Grande do Sul,708
+2010,Piauí,Mato Grosso do Sul,780
+2010,Piauí,Mato Grosso,2297
+2010,Piauí,Goiás,14754
+2010,Piauí,Distrito Federal,18317
+2010,Ceará,Rondônia,1626
+2010,Ceará,Acre,440
+2010,Ceará,Amazonas,2955
+2010,Ceará,Roraima,885
+2010,Ceará,Pará,5515
+2010,Ceará,Amapá,668
+2010,Ceará,Tocantins,1196
+2010,Ceará,Maranhão,4692
+2010,Ceará,Piauí,7790
+2010,Ceará,Rio Grande do Norte,8377
+2010,Ceará,Paraíba,4838
+2010,Ceará,Pernambuco,9368
+2010,Ceará,Alagoas,1222
+2010,Ceará,Sergipe,782
+2010,Ceará,Bahia,7509
+2010,Ceará,Minas Gerais,9321
+2010,Ceará,Espírito Santo,877
+2010,Ceará,Rio de Janeiro,25819
+2010,Ceará,São Paulo,60066
+2010,Ceará,Paraná,2345
+2010,Ceará,Santa Catarina,3282
+2010,Ceará,Rio Grande do Sul,2592
+2010,Ceará,Mato Grosso do Sul,1273
+2010,Ceará,Mato Grosso,1815
+2010,Ceará,Goiás,7018
+2010,Ceará,Distrito Federal,8952
+2010,Rio Grande do Norte,Rondônia,448
+2010,Rio Grande do Norte,Acre,57
+2010,Rio Grande do Norte,Amazonas,689
+2010,Rio Grande do Norte,Roraima,355
+2010,Rio Grande do Norte,Pará,820
+2010,Rio Grande do Norte,Amapá,249
+2010,Rio Grande do Norte,Tocantins,392
+2010,Rio Grande do Norte,Maranhão,391
+2010,Rio Grande do Norte,Piauí,448
+2010,Rio Grande do Norte,Ceará,5300
+2010,Rio Grande do Norte,Paraíba,9331
+2010,Rio Grande do Norte,Pernambuco,3343
+2010,Rio Grande do Norte,Alagoas,666
+2010,Rio Grande do Norte,Sergipe,307
+2010,Rio Grande do Norte,Bahia,1715
+2010,Rio Grande do Norte,Minas Gerais,2371
+2010,Rio Grande do Norte,Espírito Santo,485
+2010,Rio Grande do Norte,Rio de Janeiro,5685
+2010,Rio Grande do Norte,São Paulo,11927
+2010,Rio Grande do Norte,Paraná,519
+2010,Rio Grande do Norte,Santa Catarina,791
+2010,Rio Grande do Norte,Rio Grande do Sul,904
+2010,Rio Grande do Norte,Mato Grosso do Sul,564
+2010,Rio Grande do Norte,Mato Grosso,335
+2010,Rio Grande do Norte,Goiás,3132
+2010,Rio Grande do Norte,Distrito Federal,2790
+2010,Paraíba,Rondônia,825
+2010,Paraíba,Acre,71
+2010,Paraíba,Amazonas,249
+2010,Paraíba,Roraima,368
+2010,Paraíba,Pará,965
+2010,Paraíba,Amapá,144
+2010,Paraíba,Tocantins,386
+2010,Paraíba,Maranhão,1288
+2010,Paraíba,Piauí,646
+2010,Paraíba,Ceará,4534
+2010,Paraíba,Rio Grande do Norte,12536
+2010,Paraíba,Pernambuco,17483
+2010,Paraíba,Alagoas,913
+2010,Paraíba,Sergipe,777
+2010,Paraíba,Bahia,4081
+2010,Paraíba,Minas Gerais,3417
+2010,Paraíba,Espírito Santo,545
+2010,Paraíba,Rio de Janeiro,24172
+2010,Paraíba,São Paulo,38130
+2010,Paraíba,Paraná,1453
+2010,Paraíba,Santa Catarina,1527
+2010,Paraíba,Rio Grande do Sul,896
+2010,Paraíba,Mato Grosso do Sul,566
+2010,Paraíba,Mato Grosso,1604
+2010,Paraíba,Goiás,4591
+2010,Paraíba,Distrito Federal,3356
+2010,Pernambuco,Rondônia,805
+2010,Pernambuco,Acre,169
+2010,Pernambuco,Amazonas,1881
+2010,Pernambuco,Roraima,672
+2010,Pernambuco,Pará,2800
+2010,Pernambuco,Amapá,182
+2010,Pernambuco,Tocantins,1225
+2010,Pernambuco,Maranhão,2674
+2010,Pernambuco,Piauí,2972
+2010,Pernambuco,Ceará,10124
+2010,Pernambuco,Rio Grande do Norte,7024
+2010,Pernambuco,Paraíba,22025
+2010,Pernambuco,Alagoas,15777
+2010,Pernambuco,Sergipe,3111
+2010,Pernambuco,Bahia,17872
+2010,Pernambuco,Minas Gerais,7755
+2010,Pernambuco,Espírito Santo,1301
+2010,Pernambuco,Rio de Janeiro,14717
+2010,Pernambuco,São Paulo,87462
+2010,Pernambuco,Paraná,2945
+2010,Pernambuco,Santa Catarina,3489
+2010,Pernambuco,Rio Grande do Sul,1232
+2010,Pernambuco,Mato Grosso do Sul,2319
+2010,Pernambuco,Mato Grosso,3767
+2010,Pernambuco,Goiás,5719
+2010,Pernambuco,Distrito Federal,3567
+2010,Alagoas,Rondônia,436
+2010,Alagoas,Acre,55
+2010,Alagoas,Amazonas,360
+2010,Alagoas,Roraima,102
+2010,Alagoas,Pará,413
+2010,Alagoas,Amapá,96
+2010,Alagoas,Tocantins,757
+2010,Alagoas,Maranhão,793
+2010,Alagoas,Piauí,482
+2010,Alagoas,Ceará,1323
+2010,Alagoas,Rio Grande do Norte,1083
+2010,Alagoas,Paraíba,1242
+2010,Alagoas,Pernambuco,15542
+2010,Alagoas,Sergipe,11237
+2010,Alagoas,Bahia,8141
+2010,Alagoas,Minas Gerais,14428
+2010,Alagoas,Espírito Santo,2709
+2010,Alagoas,Rio de Janeiro,3861
+2010,Alagoas,São Paulo,49775
+2010,Alagoas,Paraná,1789
+2010,Alagoas,Santa Catarina,1518
+2010,Alagoas,Rio Grande do Sul,279
+2010,Alagoas,Mato Grosso do Sul,2130
+2010,Alagoas,Mato Grosso,6501
+2010,Alagoas,Goiás,4081
+2010,Alagoas,Distrito Federal,1174
+2010,Sergipe,Rondônia,216
+2010,Sergipe,Acre,7
+2010,Sergipe,Amazonas,129
+2010,Sergipe,Roraima,42
+2010,Sergipe,Pará,483
+2010,Sergipe,Amapá,36
+2010,Sergipe,Tocantins,240
+2010,Sergipe,Maranhão,305
+2010,Sergipe,Piauí,231
+2010,Sergipe,Ceará,471
+2010,Sergipe,Rio Grande do Norte,413
+2010,Sergipe,Paraíba,448
+2010,Sergipe,Pernambuco,1249
+2010,Sergipe,Alagoas,4575
+2010,Sergipe,Bahia,11526
+2010,Sergipe,Minas Gerais,2023
+2010,Sergipe,Espírito Santo,795
+2010,Sergipe,Rio de Janeiro,2754
+2010,Sergipe,São Paulo,14765
+2010,Sergipe,Paraná,673
+2010,Sergipe,Santa Catarina,766
+2010,Sergipe,Rio Grande do Sul,321
+2010,Sergipe,Mato Grosso do Sul,256
+2010,Sergipe,Mato Grosso,439
+2010,Sergipe,Goiás,817
+2010,Sergipe,Distrito Federal,1163
+2010,Bahia,Rondônia,1895
+2010,Bahia,Acre,378
+2010,Bahia,Amazonas,841
+2010,Bahia,Roraima,361
+2010,Bahia,Pará,3337
+2010,Bahia,Amapá,134
+2010,Bahia,Tocantins,2756
+2010,Bahia,Maranhão,2555
+2010,Bahia,Piauí,2960
+2010,Bahia,Ceará,5181
+2010,Bahia,Rio Grande do Norte,2383
+2010,Bahia,Paraíba,3270
+2010,Bahia,Pernambuco,18165
+2010,Bahia,Alagoas,4351
+2010,Bahia,Sergipe,17733
+2010,Bahia,Minas Gerais,38101
+2010,Bahia,Espírito Santo,39523
+2010,Bahia,Rio de Janeiro,27031
+2010,Bahia,São Paulo,215005
+2010,Bahia,Paraná,6376
+2010,Bahia,Santa Catarina,7392
+2010,Bahia,Rio Grande do Sul,2889
+2010,Bahia,Mato Grosso do Sul,2216
+2010,Bahia,Mato Grosso,3538
+2010,Bahia,Goiás,37144
+2010,Bahia,Distrito Federal,20845
+2010,Minas Gerais,Rondônia,3962
+2010,Minas Gerais,Acre,598
+2010,Minas Gerais,Amazonas,1494
+2010,Minas Gerais,Roraima,314
+2010,Minas Gerais,Pará,5768
+2010,Minas Gerais,Amapá,455
+2010,Minas Gerais,Tocantins,3646
+2010,Minas Gerais,Maranhão,2565
+2010,Minas Gerais,Piauí,1164
+2010,Minas Gerais,Ceará,3058
+2010,Minas Gerais,Rio Grande do Norte,1734
+2010,Minas Gerais,Paraíba,1451
+2010,Minas Gerais,Pernambuco,3557
+2010,Minas Gerais,Alagoas,1256
+2010,Minas Gerais,Sergipe,724
+2010,Minas Gerais,Bahia,20627
+2010,Minas Gerais,Espírito Santo,37534
+2010,Minas Gerais,Rio de Janeiro,46865
+2010,Minas Gerais,São Paulo,162112
+2010,Minas Gerais,Paraná,11721
+2010,Minas Gerais,Santa Catarina,4972
+2010,Minas Gerais,Rio Grande do Sul,3884
+2010,Minas Gerais,Mato Grosso do Sul,4761
+2010,Minas Gerais,Mato Grosso,5074
+2010,Minas Gerais,Goiás,36017
+2010,Minas Gerais,Distrito Federal,25311
+2010,Espírito Santo,Rondônia,2231
+2010,Espírito Santo,Acre,40
+2010,Espírito Santo,Amazonas,244
+2010,Espírito Santo,Roraima,64
+2010,Espírito Santo,Pará,752
+2010,Espírito Santo,Amapá,56
+2010,Espírito Santo,Tocantins,126
+2010,Espírito Santo,Maranhão,428
+2010,Espírito Santo,Piauí,305
+2010,Espírito Santo,Ceará,457
+2010,Espírito Santo,Rio Grande do Norte,261
+2010,Espírito Santo,Paraíba,301
+2010,Espírito Santo,Pernambuco,621
+2010,Espírito Santo,Alagoas,165
+2010,Espírito Santo,Sergipe,225
+2010,Espírito Santo,Bahia,11010
+2010,Espírito Santo,Minas Gerais,21605
+2010,Espírito Santo,Rio de Janeiro,17788
+2010,Espírito Santo,São Paulo,7339
+2010,Espírito Santo,Paraná,1175
+2010,Espírito Santo,Santa Catarina,909
+2010,Espírito Santo,Rio Grande do Sul,698
+2010,Espírito Santo,Mato Grosso do Sul,463
+2010,Espírito Santo,Mato Grosso,554
+2010,Espírito Santo,Goiás,1136
+2010,Espírito Santo,Distrito Federal,1167
+2010,Rio de Janeiro,Rondônia,1094
+2010,Rio de Janeiro,Acre,412
+2010,Rio de Janeiro,Amazonas,5491
+2010,Rio de Janeiro,Roraima,568
+2010,Rio de Janeiro,Pará,4527
+2010,Rio de Janeiro,Amapá,395
+2010,Rio de Janeiro,Tocantins,888
+2010,Rio de Janeiro,Maranhão,3961
+2010,Rio de Janeiro,Piauí,2057
+2010,Rio de Janeiro,Ceará,12264
+2010,Rio de Janeiro,Rio Grande do Norte,9118
+2010,Rio de Janeiro,Paraíba,16538
+2010,Rio de Janeiro,Pernambuco,9802
+2010,Rio de Janeiro,Alagoas,2329
+2010,Rio de Janeiro,Sergipe,3081
+2010,Rio de Janeiro,Bahia,13891
+2010,Rio de Janeiro,Minas Gerais,45487
+2010,Rio de Janeiro,Espírito Santo,22977
+2010,Rio de Janeiro,São Paulo,46379
+2010,Rio de Janeiro,Paraná,7915
+2010,Rio de Janeiro,Santa Catarina,6941
+2010,Rio de Janeiro,Rio Grande do Sul,8408
+2010,Rio de Janeiro,Mato Grosso do Sul,4431
+2010,Rio de Janeiro,Mato Grosso,1477
+2010,Rio de Janeiro,Goiás,4625
+2010,Rio de Janeiro,Distrito Federal,12252
+2010,São Paulo,Rondônia,5936
+2010,São Paulo,Acre,992
+2010,São Paulo,Amazonas,2864
+2010,São Paulo,Roraima,868
+2010,São Paulo,Pará,7142
+2010,São Paulo,Amapá,563
+2010,São Paulo,Tocantins,4211
+2010,São Paulo,Maranhão,10758
+2010,São Paulo,Piauí,17555
+2010,São Paulo,Ceará,32773
+2010,São Paulo,Rio Grande do Norte,13421
+2010,São Paulo,Paraíba,23652
+2010,São Paulo,Pernambuco,47977
+2010,São Paulo,Alagoas,17266
+2010,São Paulo,Sergipe,10672
+2010,São Paulo,Bahia,89695
+2010,São Paulo,Minas Gerais,145402
+2010,São Paulo,Espírito Santo,10902
+2010,São Paulo,Rio de Janeiro,41101
+2010,São Paulo,Paraná,112683
+2010,São Paulo,Santa Catarina,36554
+2010,São Paulo,Rio Grande do Sul,14532
+2010,São Paulo,Mato Grosso do Sul,33457
+2010,São Paulo,Mato Grosso,16261
+2010,São Paulo,Goiás,25035
+2010,São Paulo,Distrito Federal,13245
+2010,Paraná,Rondônia,5121
+2010,Paraná,Acre,439
+2010,Paraná,Amazonas,1529
+2010,Paraná,Roraima,489
+2010,Paraná,Pará,2142
+2010,Paraná,Amapá,197
+2010,Paraná,Tocantins,1500
+2010,Paraná,Maranhão,1178
+2010,Paraná,Piauí,318
+2010,Paraná,Ceará,1403
+2010,Paraná,Rio Grande do Norte,608
+2010,Paraná,Paraíba,742
+2010,Paraná,Pernambuco,1142
+2010,Paraná,Alagoas,392
+2010,Paraná,Sergipe,397
+2010,Paraná,Bahia,4661
+2010,Paraná,Minas Gerais,9407
+2010,Paraná,Espírito Santo,1299
+2010,Paraná,Rio de Janeiro,5086
+2010,Paraná,São Paulo,80398
+2010,Paraná,Santa Catarina,118200
+2010,Paraná,Rio Grande do Sul,16997
+2010,Paraná,Mato Grosso do Sul,14560
+2010,Paraná,Mato Grosso,17995
+2010,Paraná,Goiás,4753
+2010,Paraná,Distrito Federal,2741
+2010,Santa Catarina,Rondônia,1878
+2010,Santa Catarina,Acre,112
+2010,Santa Catarina,Amazonas,480
+2010,Santa Catarina,Roraima,226
+2010,Santa Catarina,Pará,667
+2010,Santa Catarina,Amapá,105
+2010,Santa Catarina,Tocantins,376
+2010,Santa Catarina,Maranhão,489
+2010,Santa Catarina,Piauí,251
+2010,Santa Catarina,Ceará,726
+2010,Santa Catarina,Rio Grande do Norte,599
+2010,Santa Catarina,Paraíba,515
+2010,Santa Catarina,Pernambuco,1053
+2010,Santa Catarina,Alagoas,395
+2010,Santa Catarina,Sergipe,105
+2010,Santa Catarina,Bahia,1541
+2010,Santa Catarina,Minas Gerais,3081
+2010,Santa Catarina,Espírito Santo,539
+2010,Santa Catarina,Rio de Janeiro,3703
+2010,Santa Catarina,São Paulo,18132
+2010,Santa Catarina,Paraná,50047
+2010,Santa Catarina,Rio Grande do Sul,31902
+2010,Santa Catarina,Mato Grosso do Sul,2881
+2010,Santa Catarina,Mato Grosso,4079
+2010,Santa Catarina,Goiás,2480
+2010,Santa Catarina,Distrito Federal,2526
+2010,Rio Grande do Sul,Rondônia,1446
+2010,Rio Grande do Sul,Acre,231
+2010,Rio Grande do Sul,Amazonas,1523
+2010,Rio Grande do Sul,Roraima,373
+2010,Rio Grande do Sul,Pará,1537
+2010,Rio Grande do Sul,Amapá,91
+2010,Rio Grande do Sul,Tocantins,645
+2010,Rio Grande do Sul,Maranhão,764
+2010,Rio Grande do Sul,Piauí,725
+2010,Rio Grande do Sul,Ceará,1794
+2010,Rio Grande do Sul,Rio Grande do Norte,763
+2010,Rio Grande do Sul,Paraíba,888
+2010,Rio Grande do Sul,Pernambuco,1751
+2010,Rio Grande do Sul,Alagoas,467
+2010,Rio Grande do Sul,Sergipe,521
+2010,Rio Grande do Sul,Bahia,3443
+2010,Rio Grande do Sul,Minas Gerais,3684
+2010,Rio Grande do Sul,Espírito Santo,922
+2010,Rio Grande do Sul,Rio de Janeiro,7545
+2010,Rio Grande do Sul,São Paulo,17425
+2010,Rio Grande do Sul,Paraná,21853
+2010,Rio Grande do Sul,Santa Catarina,91953
+2010,Rio Grande do Sul,Mato Grosso do Sul,3843
+2010,Rio Grande do Sul,Mato Grosso,5949
+2010,Rio Grande do Sul,Goiás,3031
+2010,Rio Grande do Sul,Distrito Federal,4095
+2010,Mato Grosso do Sul,Rondônia,2210
+2010,Mato Grosso do Sul,Acre,350
+2010,Mato Grosso do Sul,Amazonas,303
+2010,Mato Grosso do Sul,Roraima,358
+2010,Mato Grosso do Sul,Pará,855
+2010,Mato Grosso do Sul,Amapá,91
+2010,Mato Grosso do Sul,Tocantins,472
+2010,Mato Grosso do Sul,Maranhão,397
+2010,Mato Grosso do Sul,Piauí,283
+2010,Mato Grosso do Sul,Ceará,382
+2010,Mato Grosso do Sul,Rio Grande do Norte,640
+2010,Mato Grosso do Sul,Paraíba,825
+2010,Mato Grosso do Sul,Pernambuco,490
+2010,Mato Grosso do Sul,Alagoas,268
+2010,Mato Grosso do Sul,Sergipe,215
+2010,Mato Grosso do Sul,Bahia,1317
+2010,Mato Grosso do Sul,Minas Gerais,3528
+2010,Mato Grosso do Sul,Espírito Santo,566
+2010,Mato Grosso do Sul,Rio de Janeiro,3341
+2010,Mato Grosso do Sul,São Paulo,23327
+2010,Mato Grosso do Sul,Paraná,14651
+2010,Mato Grosso do Sul,Santa Catarina,4093
+2010,Mato Grosso do Sul,Rio Grande do Sul,2887
+2010,Mato Grosso do Sul,Mato Grosso,13410
+2010,Mato Grosso do Sul,Goiás,4572
+2010,Mato Grosso do Sul,Distrito Federal,1076
+2010,Mato Grosso,Rondônia,13876
+2010,Mato Grosso,Acre,756
+2010,Mato Grosso,Amazonas,1608
+2010,Mato Grosso,Roraima,324
+2010,Mato Grosso,Pará,8295
+2010,Mato Grosso,Amapá,232
+2010,Mato Grosso,Tocantins,2921
+2010,Mato Grosso,Maranhão,2179
+2010,Mato Grosso,Piauí,835
+2010,Mato Grosso,Ceará,691
+2010,Mato Grosso,Rio Grande do Norte,422
+2010,Mato Grosso,Paraíba,321
+2010,Mato Grosso,Pernambuco,838
+2010,Mato Grosso,Alagoas,765
+2010,Mato Grosso,Sergipe,379
+2010,Mato Grosso,Bahia,2199
+2010,Mato Grosso,Minas Gerais,4733
+2010,Mato Grosso,Espírito Santo,840
+2010,Mato Grosso,Rio de Janeiro,1728
+2010,Mato Grosso,São Paulo,15134
+2010,Mato Grosso,Paraná,15957
+2010,Mato Grosso,Santa Catarina,6171
+2010,Mato Grosso,Rio Grande do Sul,3780
+2010,Mato Grosso,Mato Grosso do Sul,13777
+2010,Mato Grosso,Goiás,20696
+2010,Mato Grosso,Distrito Federal,2132
+2010,Goiás,Rondônia,2553
+2010,Goiás,Acre,208
+2010,Goiás,Amazonas,820
+2010,Goiás,Roraima,386
+2010,Goiás,Pará,9263
+2010,Goiás,Amapá,217
+2010,Goiás,Tocantins,18829
+2010,Goiás,Maranhão,5430
+2010,Goiás,Piauí,3311
+2010,Goiás,Ceará,2182
+2010,Goiás,Rio Grande do Norte,1380
+2010,Goiás,Paraíba,1382
+2010,Goiás,Pernambuco,1394
+2010,Goiás,Alagoas,341
+2010,Goiás,Sergipe,307
+2010,Goiás,Bahia,8336
+2010,Goiás,Minas Gerais,22402
+2010,Goiás,Espírito Santo,621
+2010,Goiás,Rio de Janeiro,2519
+2010,Goiás,São Paulo,14741
+2010,Goiás,Paraná,2716
+2010,Goiás,Santa Catarina,2110
+2010,Goiás,Rio Grande do Sul,1834
+2010,Goiás,Mato Grosso do Sul,3794
+2010,Goiás,Mato Grosso,16087
+2010,Goiás,Distrito Federal,32941
+2010,Distrito Federal,Rondônia,409
+2010,Distrito Federal,Acre,232
+2010,Distrito Federal,Amazonas,1191
+2010,Distrito Federal,Roraima,363
+2010,Distrito Federal,Pará,2222
+2010,Distrito Federal,Amapá,235
+2010,Distrito Federal,Tocantins,4391
+2010,Distrito Federal,Maranhão,6929
+2010,Distrito Federal,Piauí,8482
+2010,Distrito Federal,Ceará,5246
+2010,Distrito Federal,Rio Grande do Norte,2478
+2010,Distrito Federal,Paraíba,3720
+2010,Distrito Federal,Pernambuco,2876
+2010,Distrito Federal,Alagoas,621
+2010,Distrito Federal,Sergipe,1239
+2010,Distrito Federal,Bahia,8809
+2010,Distrito Federal,Minas Gerais,13772
+2010,Distrito Federal,Espírito Santo,1869
+2010,Distrito Federal,Rio de Janeiro,7831
+2010,Distrito Federal,São Paulo,10792
+2010,Distrito Federal,Paraná,2578
+2010,Distrito Federal,Santa Catarina,2270
+2010,Distrito Federal,Rio Grande do Sul,2566
+2010,Distrito Federal,Mato Grosso do Sul,766
+2010,Distrito Federal,Mato Grosso,1421
+2010,Distrito Federal,Goiás,82564

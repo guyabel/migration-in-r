@@ -1,0 +1,145 @@
+orig,dest,flow
+North East,North East,0
+North East,North West,8111
+North East,Yorkshire and The Humber,12388
+North East,East Midlands,3771
+North East,West Midlands,2764
+North East,East,3277
+North East,London,7345
+North East,South East,4535
+North East,South West,2487
+North East,Wales,944
+North East,Scotland,3324
+North East,Northern Ireland,494
+North West,North East,8054
+North West,North West,0
+North West,Yorkshire and The Humber,26101
+North West,East Midlands,12696
+North West,West Midlands,16744
+North West,East,7377
+North West,London,18157
+North West,South East,11648
+North West,South West,9449
+North West,Wales,10981
+North West,Scotland,6284
+North West,Northern Ireland,1678
+Yorkshire and The Humber,North East,13187
+Yorkshire and The Humber,North West,27267
+Yorkshire and The Humber,Yorkshire and The Humber,0
+Yorkshire and The Humber,East Midlands,23155
+Yorkshire and The Humber,West Midlands,9975
+Yorkshire and The Humber,East,8858
+Yorkshire and The Humber,London,15932
+Yorkshire and The Humber,South East,10553
+Yorkshire and The Humber,South West,6998
+Yorkshire and The Humber,Wales,2985
+Yorkshire and The Humber,Scotland,4653
+Yorkshire and The Humber,Northern Ireland,599
+East Midlands,North East,4314
+East Midlands,North West,13147
+East Midlands,Yorkshire and The Humber,23606
+East Midlands,East Midlands,0
+East Midlands,West Midlands,21898
+East Midlands,East,18242
+East Midlands,London,18236
+East Midlands,South East,16982
+East Midlands,South West,10119
+East Midlands,Wales,3705
+East Midlands,Scotland,3144
+East Midlands,Northern Ireland,526
+West Midlands,North East,3093
+West Midlands,North West,18071
+West Midlands,Yorkshire and The Humber,10302
+West Midlands,East Midlands,24518
+West Midlands,West Midlands,0
+West Midlands,East,9100
+West Midlands,London,19547
+West Midlands,South East,16108
+West Midlands,South West,18652
+West Midlands,Wales,10117
+West Midlands,Scotland,2906
+West Midlands,Northern Ireland,577
+East,North East,4393
+East,North West,9780
+East,Yorkshire and The Humber,11734
+East,East Midlands,26984
+East,West Midlands,11743
+East,East,0
+East,London,43422
+East,South East,35535
+East,South West,16428
+East,Wales,4308
+East,Scotland,4117
+East,Northern Ireland,744
+London,North East,5864
+London,North West,19338
+London,Yorkshire and The Humber,15383
+London,East Midlands,21901
+London,West Midlands,24047
+London,East,82606
+London,London,0
+London,South East,124751
+London,South West,30533
+London,Wales,6656
+London,Scotland,7869
+London,Northern Ireland,1550
+South East,North East,6184
+South East,North West,15022
+South East,Yorkshire and The Humber,13280
+South East,East Midlands,23511
+South East,West Midlands,20445
+South East,East,32493
+South East,London,74646
+South East,South East,0
+South East,South West,57919
+South East,Wales,11447
+South East,Scotland,7341
+South East,Northern Ireland,1313
+South West,North East,2830
+South West,North West,8844
+South West,Yorkshire and The Humber,6750
+South West,East Midlands,8362
+South West,West Midlands,16192
+South West,East,10901
+South West,London,24675
+South West,South East,40527
+South West,South West,0
+South West,Wales,16348
+South West,Scotland,4139
+South West,Northern Ireland,724
+Wales,North East,1057
+Wales,North West,10873
+Wales,Yorkshire and The Humber,2989
+Wales,East Midlands,3399
+Wales,West Midlands,9007
+Wales,East,3236
+Wales,London,6799
+Wales,South East,7701
+Wales,South West,13181
+Wales,Wales,0
+Wales,Scotland,1651
+Wales,Northern Ireland,396
+Scotland,North East,3306
+Scotland,North West,5348
+Scotland,Yorkshire and The Humber,3249
+Scotland,East Midlands,2222
+Scotland,West Midlands,2326
+Scotland,East,2842
+Scotland,London,7152
+Scotland,South East,4954
+Scotland,South West,3161
+Scotland,Wales,1312
+Scotland,Scotland,0
+Scotland,Northern Ireland,1801
+Northern Ireland,North East,572
+Northern Ireland,North West,2016
+Northern Ireland,Yorkshire and The Humber,553
+Northern Ireland,East Midlands,425
+Northern Ireland,West Midlands,572
+Northern Ireland,East,536
+Northern Ireland,London,1359
+Northern Ireland,South East,974
+Northern Ireland,South West,644
+Northern Ireland,Wales,318
+Northern Ireland,Scotland,2225
+Northern Ireland,Northern Ireland,0

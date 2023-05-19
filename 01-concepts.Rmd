@@ -81,58 +81,36 @@ Every migration event can be considered an out-migration in relation to the regi
 |          | Destination | immigration | immigrant |
 
 
-The sum of the in-migration and out-migration totals ($m_{i+} + m_{+j}$) provides the *turnover* of each region. Net migration totals provides a balance of movements in opposing directions from the difference between in-migration and out-migration ($m_{+j} - m_{i+}$). Net migration measures are more typically obtained via demographic accounting, as a residual from the differences in population change, births and deaths over a period in each region. As this calculation does not require expensive migration data collection systems, net migration measures are one of the most common forms of migration measures. However, net migration measures have a number of notable drawbacks, as highlighted by @rogers1990rnm. 
-    - Net migration mis-specifies the spatial dynamics generating observed settlement patterns.
-    - Obscure regularities in age profiles of migration
-    - Net migration rates confound changing migration propensities with changing population stocks.   
+The sum of the in-migration and out-migration totals ($m_{i+} + m_{+j}$) provides the *turnover* of each region. Net migration totals provides a balance of movements in opposing directions from the difference between in-migration and out-migration ($m_{+j} - m_{i+}$). Net migration measures are more typically obtained via demographic accounting, as a residual from the differences in population change, births and deaths over a period in each region. As this calculation does not require expensive migration data collection systems, net migration measures are one of the most common forms of migration measures. However, net migration measures have a number of notable drawbacks, as highlighted by @rogers1990rnm. In particular, net migration does not enumerate migrants themselves, but instead follows a residual of in-migrants and out-migrants. Consequently, the dynamics related to the observed migration patterns can be missed. For example, an net migration of -100 might involve a region receiving no in-migrants and sending 100 out-migrants or receiving 1,000,000 migrants and sending 1,000,100 out-migrants. Further migration dynamics are also missed when looking at net migration rates (discussed in the next section) and regularities in age profiles of migration (discussed in Chapter X) are often preculded when using age-specicifc net migration measures. 
+
 ### Rate measures
 
-- Out-migration or emigration rates calculated by dividing events in a period by exposure population:
-$$
-e^{[t, t +1]} = \frac{E^{[t, t +1]}}{P}k
-$$
-where $e^{[t, t +1]}$ is the out or emigration rate, $E$ is the number of out-migrants or emigrants during the period, $P$ is the population exposed to the likelihood of migration during the period and $k$ is a constant, usually 1000.
-- Exposure population is typically either the
-    - Population at the mid-interval, under the assumption that migration is uniformly distributed across the interval.
-    - Population at the start or end of the interval under the assumption that migration has a negligible effect on population change.
-- Can be decomposed by a subset of the population such age and/or sex  
-$$
-e^{[t, t +1]}_{i} = \frac{E_{i}^{[t, t +1]}}{P_{i}}k
-$$
+Migration rates are important indicators for understanding the dynamics of population movement. Out-migration or emigration rates are calculated by dividing the number of out-migrants or emigrants during a specific period by the population exposed to the likelihood of migration. This is represented by the formula:
 
-### Rates
+\[ e^{[t, t+1]} = \frac{E^{[t, t+1]}}{P}k \]
 
-- In-migration or immigration, the population exposed to the risk of migrating into a region is the entire population of the world living elsewhere. 
-- However, rates calculated by dividing events by the exposure time of the current residents (the population group **not** exposed to risk). 
-$$
-i^{[t, t +1]} = \frac{I^{[t, t +1]}}{P}k
-$$
+Here, \( e^{[t, t+1]} \) represents the out or emigration rate, \( E \) is the number of out-migrants or emigrants during the period, \( P \) is the population exposed to the likelihood of migration, and \( k \) is a constant, often set as 1000. The exposure population can be the population at the mid-interval, assuming migration is evenly distributed, or the population at the start or end of the interval if migration has a negligible effect on population change. Additionally, out-migration rates can be further decomposed by subsets of the population, such as age or sex:
 
-- Net migration rates, like in-migration rates, are calculated by dividing events by the exposure time of the current residents (the population group **not** exposed to risk). 
-$$
-m^{[t, t +1]} = \frac{M^{[t, t +1]}}{P}k
-$$
+\[ e^{[t, t+1]}_i = \frac{E^{[t, t+1]}_i}{P_i}k \]
 
-### Rates
+On the other hand, in-migration or immigration rates are calculated by dividing the number of in-migrants or immigrants by the population not exposed to the risk of migrating into the region. The formula for in-migration rate is:
 
-- In-migration and net migration rates are unlike other demographic rates.
-  - Not using the true population at risk in the denominator
-- However, using the resident population satisfies the needs of the demographic balancing equation, since rates of gain and loss are measured relative to the same population. 
-$$
-\begin{aligned}
-P^{t+1} &=  P^{t} + B^{[t, t +1]} - D^{[t, t +1]} +  M^{[t, t +1]} \\
-P^{t+1} &=  P^{t} \left(1 + b^{[t, t +1]} - d^{[t, t +1]} +  m^{[t, t +1]} \right)\\
-&= P^{t} \left(1 + b^{[t, t +1]} - d^{[t, t +1]} +  i^{[t, t +1]} - e^{[t, t +1]} \right)
-\end{aligned}
-$$
-where we can substitute net migration $M^{[t, t +1]}$ with difference of in- and out-migration over the period ($I^{[t, t +1]} - O^{[t, t +1]}$)
-$$
-\begin{aligned}
-P^{t+1}&= P^{t} + B^{[t, t +1]} - D^{[t, t +1]} +  I^{[t, t +1]} - O^{[t, t +1]} \\
-&= P^{t} \left(1 + b^{[t, t +1]} - d^{[t, t +1]} +  i^{[t, t +1]} - o^{[t, t +1]} \right)
-\end{aligned}
-$$
+\[ i^{[t, t+1]} = \frac{I^{[t, t+1]}}{P}k \]
+
+Similarly, net migration rates are calculated by dividing the net migration (difference between in-migration and out-migration) by the population not exposed to migration risk:
+
+\[ m^{[t, t+1]} = \frac{M^{[t, t+1]}}{P}k \]
+
+It is worth noting that in-migration and net migration rates are different from other demographic rates because they use the resident population (population not exposed to risk) in the denominator. This approach satisfies the needs of the demographic balancing equation, as rates of gain and loss are measured relative to the same population. The demographic balancing equation is expressed as:
+
+\[ P^{t+1} = P^t \left(1 + b^{[t, t+1]} - d^{[t, t+1]} + i^{[t, t+1]} - e^{[t, t+1]} \right) \]
+
+where \( P^{t+1} \) is the population at the next time point, \( b^{[t, t+1]} \) and \( d^{[t, t+1]} \) represent births and deaths during the period, and \( i^{[t, t+1]} \) and \( e^{[t, t+1]} \) denote in-migration and out-migration rates. Net migration (\( M^{[t, t+1]} \)) can be substituted with the difference between in-migration and out-migration (\( I^{[t, t+1]} - O^{[t, t+1]} \)). The equation can be simplified as:
+
+\[ P^{t+1} = P^t \left(1 + b^{[t, t+1]} - d^{[t, t+1]} + i^{[t, t+1]} - o^{[t, t+1]} \right) \]
+
+This formulation allows for the analysis of population change considering the effects of births, deaths, in-migration, and out-migration.
 
 
-### References
+## References
 

@@ -1,0 +1,18 @@
+region,label_en,label_kr,area,order,col,gap
+Gangwon-do,Gangwon,강원,North East,1,#3383AC,4
+Daegu,Daegu,대구,Daegu,2,#379881,4
+Gyeongsangbuk-do,Gyeongbuk,경북,Daegu,3,#52E4C2,6
+Busan,Busan,부산,South West,4,#9F9C1F,4
+Ulsan,Ulsan,울산,South West,5,#C7C427,4
+Gyeongsangnam-do,Gyeongnam,경남,South West,6,#EEEB2E,6
+Jeju,Jeju,제주,Jeju,7,#C99422,6
+Gwangju,Gwangju,광주,Gwangju,8,#C6641C,4
+Jeollanam-do,Jeonnam,전남,Gwangju,9,#FF962A,6
+Jeollabuk-do,Jeonbuk,전북,Jeonbuk,10,#B43726,6
+Daejeon,Daejeon,대전,Daejeon,11,#884999,4
+Sejong,Sejong,세종,Daejeon,12,#AB5CC0,4
+Chungcheongnam-do,Chungnam,충남,Daejeon,13,#CD6EE6,6
+Chungcheongbuk-do,Chungbuk,충북,Chungbuk,14,#0948A4,6
+Seoul,Seoul,서울,North East,15,#3B99C9,4
+Incheon,Incheon,인천,North East,16,#44AEE6,4
+Gyeonggi-do,Gyeonggi,경기,North East,17,#4CC4FF,6

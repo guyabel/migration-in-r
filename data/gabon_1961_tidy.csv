@@ -1,0 +1,517 @@
+sex,place_of_enumeration,place_of_birth,migrants
+male,Woleu N'Tern,Woleu N'Tern,33827
+male,Woleu N'Tern,Estuaire,103
+male,Woleu N'Tern,Ogooué Maritime,0
+male,Woleu N'Tern,Moyen Ogooué,10
+male,Woleu N'Tern,Ogooué Ivindo,150
+male,Woleu N'Tern,Ogooué Lolo,0
+male,Woleu N'Tern,Haut Ogooué,31
+male,Woleu N'Tern,N'Gounie,26
+male,Woleu N'Tern,Nyanga,47
+male,Woleu N'Tern,Total Gabon,34193
+male,Woleu N'Tern,Abroad,771
+male,Woleu N'Tern,Grand total,34965
+male,Estuaire,Woleu N'Tern,2505
+male,Estuaire,Estuaire,15260
+male,Estuaire,Ogooué Maritime,440
+male,Estuaire,Moyen Ogooué,584
+male,Estuaire,Ogooué Ivindo,1289
+male,Estuaire,Ogooué Lolo,1411
+male,Estuaire,Haut Ogooué,1189
+male,Estuaire,N'Gounie,3871
+male,Estuaire,Nyanga,1687
+male,Estuaire,Total Gabon,28236
+male,Estuaire,Abroad,3265
+male,Estuaire,Grand total,31523
+male,Ogooué Maritime,Woleu N'Tern,127
+male,Ogooué Maritime,Estuaire,567
+male,Ogooué Maritime,Ogooué Maritime,10575
+male,Ogooué Maritime,Moyen Ogooué,1303
+male,Ogooué Maritime,Ogooué Ivindo,68
+male,Ogooué Maritime,Ogooué Lolo,1352
+male,Ogooué Maritime,Haut Ogooué,1049
+male,Ogooué Maritime,N'Gounie,2892
+male,Ogooué Maritime,Nyanga,1316
+male,Ogooué Maritime,Total Gabon,19249
+male,Ogooué Maritime,Abroad,1883
+male,Ogooué Maritime,Grand total,21137
+male,Moyen Ogooué,Woleu N'Tern,92
+male,Moyen Ogooué,Estuaire,68
+male,Moyen Ogooué,Ogooué Maritime,417
+male,Moyen Ogooué,Moyen Ogooué,11773
+male,Moyen Ogooué,Ogooué Ivindo,367
+male,Moyen Ogooué,Ogooué Lolo,890
+male,Moyen Ogooué,Haut Ogooué,213
+male,Moyen Ogooué,N'Gounie,2442
+male,Moyen Ogooué,Nyanga,716
+male,Moyen Ogooué,Total Gabon,16976
+male,Moyen Ogooué,Abroad,228
+male,Moyen Ogooué,Grand total,17213
+male,Ogooué Ivindo,Woleu N'Tern,90
+male,Ogooué Ivindo,Estuaire,45
+male,Ogooué Ivindo,Ogooué Maritime,11
+male,Ogooué Ivindo,Moyen Ogooué,45
+male,Ogooué Ivindo,Ogooué Ivindo,15739
+male,Ogooué Ivindo,Ogooué Lolo,11
+male,Ogooué Ivindo,Haut Ogooué,11
+male,Ogooué Ivindo,N'Gounie,11
+male,Ogooué Ivindo,Nyanga,0
+male,Ogooué Ivindo,Total Gabon,15966
+male,Ogooué Ivindo,Abroad,249
+male,Ogooué Ivindo,Grand total,16214
+male,Ogooué Lolo,Woleu N'Tern,0
+male,Ogooué Lolo,Estuaire,19
+male,Ogooué Lolo,Ogooué Maritime,19
+male,Ogooué Lolo,Moyen Ogooué,0
+male,Ogooué Lolo,Ogooué Ivindo,0
+male,Ogooué Lolo,Ogooué Lolo,15350
+male,Ogooué Lolo,Haut Ogooué,77
+male,Ogooué Lolo,N'Gounie,10
+male,Ogooué Lolo,Nyanga,19
+male,Ogooué Lolo,Total Gabon,15494
+male,Ogooué Lolo,Abroad,38
+male,Ogooué Lolo,Grand total,15590
+male,Haut Ogooué,Woleu N'Tern,0
+male,Haut Ogooué,Estuaire,0
+male,Haut Ogooué,Ogooué Maritime,0
+male,Haut Ogooué,Moyen Ogooué,0
+male,Haut Ogooué,Ogooué Ivindo,0
+male,Haut Ogooué,Ogooué Lolo,98
+male,Haut Ogooué,Haut Ogooué,17392
+male,Haut Ogooué,N'Gounie,0
+male,Haut Ogooué,Nyanga,0
+male,Haut Ogooué,Total Gabon,17491
+male,Haut Ogooué,Abroad,517
+male,Haut Ogooué,Grand total,18032
+male,N'Gounie,Woleu N'Tern,37
+male,N'Gounie,Estuaire,356
+male,N'Gounie,Ogooué Maritime,198
+male,N'Gounie,Moyen Ogooué,230
+male,N'Gounie,Ogooué Ivindo,16
+male,N'Gounie,Ogooué Lolo,528
+male,N'Gounie,Haut Ogooué,22
+male,N'Gounie,N'Gounie,31765
+male,N'Gounie,Nyanga,812
+male,N'Gounie,Total Gabon,33964
+male,N'Gounie,Abroad,594
+male,N'Gounie,Grand total,34558
+male,Nyanga,Woleu N'Tern,0
+male,Nyanga,Estuaire,0
+male,Nyanga,Ogooué Maritime,49
+male,Nyanga,Moyen Ogooué,82
+male,Nyanga,Ogooué Ivindo,0
+male,Nyanga,Ogooué Lolo,0
+male,Nyanga,Haut Ogooué,0
+male,Nyanga,N'Gounie,197
+male,Nyanga,Nyanga,14776
+male,Nyanga,Total Gabon,15104
+male,Nyanga,Abroad,361
+male,Nyanga,Grand total,15465
+male,Total,Woleu N'Tern,36678
+male,Total,Estuaire,16418
+male,Total,Ogooué Maritime,11709
+male,Total,Moyen Ogooué,14027
+male,Total,Ogooué Ivindo,17629
+male,Total,Ogooué Lolo,19640
+male,Total,Haut Ogooué,19984
+male,Total,N'Gounie,41214
+male,Total,Nyanga,19373
+male,Total,Total Gabon,196673
+male,Total,Abroad,7906
+male,Total,Grand total,204698
+female,Woleu N'Tern,Woleu N'Tern,40783
+female,Woleu N'Tern,Estuaire,423
+female,Woleu N'Tern,Ogooué Maritime,21
+female,Woleu N'Tern,Moyen Ogooué,41
+female,Woleu N'Tern,Ogooué Ivindo,412
+female,Woleu N'Tern,Ogooué Lolo,0
+female,Woleu N'Tern,Haut Ogooué,16
+female,Woleu N'Tern,N'Gounie,57
+female,Woleu N'Tern,Nyanga,155
+female,Woleu N'Tern,Total Gabon,41907
+female,Woleu N'Tern,Abroad,1440
+female,Woleu N'Tern,Grand total,43346
+female,Estuaire,Woleu N'Tern,2394
+female,Estuaire,Estuaire,17428
+female,Estuaire,Ogooué Maritime,385
+female,Estuaire,Moyen Ogooué,704
+female,Estuaire,Ogooué Ivindo,781
+female,Estuaire,Ogooué Lolo,928
+female,Estuaire,Haut Ogooué,485
+female,Estuaire,N'Gounie,2501
+female,Estuaire,Nyanga,1213
+female,Estuaire,Total Gabon,26821
+female,Estuaire,Abroad,2695
+female,Estuaire,Grand total,29552
+female,Ogooué Maritime,Woleu N'Tern,64
+female,Ogooué Maritime,Estuaire,612
+female,Ogooué Maritime,Ogooué Maritime,12037
+female,Ogooué Maritime,Moyen Ogooué,1320
+female,Ogooué Maritime,Ogooué Ivindo,50
+female,Ogooué Maritime,Ogooué Lolo,942
+female,Ogooué Maritime,Haut Ogooué,458
+female,Ogooué Maritime,N'Gounie,2938
+female,Ogooué Maritime,Nyanga,868
+female,Ogooué Maritime,Total Gabon,19289
+female,Ogooué Maritime,Abroad,1063
+female,Ogooué Maritime,Grand total,20366
+female,Moyen Ogooué,Woleu N'Tern,29
+female,Moyen Ogooué,Estuaire,139
+female,Moyen Ogooué,Ogooué Maritime,502
+female,Moyen Ogooué,Moyen Ogooué,12230
+female,Moyen Ogooué,Ogooué Ivindo,292
+female,Moyen Ogooué,Ogooué Lolo,647
+female,Moyen Ogooué,Haut Ogooué,150
+female,Moyen Ogooué,N'Gounie,2309
+female,Moyen Ogooué,Nyanga,384
+female,Moyen Ogooué,Total Gabon,16680
+female,Moyen Ogooué,Abroad,164
+female,Moyen Ogooué,Grand total,16844
+female,Ogooué Ivindo,Woleu N'Tern,23
+female,Ogooué Ivindo,Estuaire,34
+female,Ogooué Ivindo,Ogooué Maritime,0
+female,Ogooué Ivindo,Moyen Ogooué,79
+female,Ogooué Ivindo,Ogooué Ivindo,18420
+female,Ogooué Ivindo,Ogooué Lolo,11
+female,Ogooué Ivindo,Haut Ogooué,34
+female,Ogooué Ivindo,N'Gounie,68
+female,Ogooué Ivindo,Nyanga,11
+female,Ogooué Ivindo,Total Gabon,18680
+female,Ogooué Ivindo,Abroad,260
+female,Ogooué Ivindo,Grand total,18940
+female,Ogooué Lolo,Woleu N'Tern,0
+female,Ogooué Lolo,Estuaire,29
+female,Ogooué Lolo,Ogooué Maritime,29
+female,Ogooué Lolo,Moyen Ogooué,10
+female,Ogooué Lolo,Ogooué Ivindo,48
+female,Ogooué Lolo,Ogooué Lolo,20496
+female,Ogooué Lolo,Haut Ogooué,192
+female,Ogooué Lolo,N'Gounie,48
+female,Ogooué Lolo,Nyanga,19
+female,Ogooué Lolo,Total Gabon,20870
+female,Ogooué Lolo,Abroad,38
+female,Ogooué Lolo,Grand total,21072
+female,Haut Ogooué,Woleu N'Tern,0
+female,Haut Ogooué,Estuaire,0
+female,Haut Ogooué,Ogooué Maritime,0
+female,Haut Ogooué,Moyen Ogooué,0
+female,Haut Ogooué,Ogooué Ivindo,148
+female,Haut Ogooué,Ogooué Lolo,172
+female,Haut Ogooué,Haut Ogooué,23173
+female,Haut Ogooué,N'Gounie,0
+female,Haut Ogooué,Nyanga,0
+female,Haut Ogooué,Total Gabon,23493
+female,Haut Ogooué,Abroad,615
+female,Haut Ogooué,Grand total,24157
+female,N'Gounie,Woleu N'Tern,26
+female,N'Gounie,Estuaire,205
+female,N'Gounie,Ogooué Maritime,215
+female,N'Gounie,Moyen Ogooué,293
+female,N'Gounie,Ogooué Ivindo,42
+female,N'Gounie,Ogooué Lolo,581
+female,N'Gounie,Haut Ogooué,44
+female,N'Gounie,N'Gounie,40981
+female,N'Gounie,Nyanga,1199
+female,N'Gounie,Total Gabon,43587
+female,N'Gounie,Abroad,498
+female,N'Gounie,Grand total,44084
+female,Nyanga,Woleu N'Tern,0
+female,Nyanga,Estuaire,66
+female,Nyanga,Ogooué Maritime,66
+female,Nyanga,Moyen Ogooué,115
+female,Nyanga,Ogooué Ivindo,0
+female,Nyanga,Ogooué Lolo,0
+female,Nyanga,Haut Ogooué,0
+female,Nyanga,N'Gounie,640
+female,Nyanga,Nyanga,20024
+female,Nyanga,Total Gabon,20910
+female,Nyanga,Abroad,279
+female,Nyanga,Grand total,21205
+female,Total,Woleu N'Tern,43319
+female,Total,Estuaire,18936
+female,Total,Ogooué Maritime,13255
+female,Total,Moyen Ogooué,14792
+female,Total,Ogooué Ivindo,20193
+female,Total,Ogooué Lolo,23777
+female,Total,Haut Ogooué,24552
+female,Total,N'Gounie,49542
+female,Total,Nyanga,23873
+female,Total,Total Gabon,232237
+female,Total,Abroad,7052
+female,Total,Grand total,239567
+total,Woleu N'Tern,Woleu N'Tern,74609
+total,Woleu N'Tern,Estuaire,526
+total,Woleu N'Tern,Ogooué Maritime,21
+total,Woleu N'Tern,Moyen Ogooué,52
+total,Woleu N'Tern,Ogooué Ivindo,562
+total,Woleu N'Tern,Ogooué Lolo,0
+total,Woleu N'Tern,Haut Ogooué,47
+total,Woleu N'Tern,N'Gounie,83
+total,Woleu N'Tern,Nyanga,202
+total,Woleu N'Tern,Total Gabon,76100
+total,Woleu N'Tern,Abroad,2211
+total,Woleu N'Tern,Grand total,78311
+total,Estuaire,Woleu N'Tern,4899
+total,Estuaire,Estuaire,32688
+total,Estuaire,Ogooué Maritime,825
+total,Estuaire,Moyen Ogooué,1288
+total,Estuaire,Ogooué Ivindo,2070
+total,Estuaire,Ogooué Lolo,2339
+total,Estuaire,Haut Ogooué,1674
+total,Estuaire,N'Gounie,6372
+total,Estuaire,Nyanga,2900
+total,Estuaire,Total Gabon,55057
+total,Estuaire,Abroad,5960
+total,Estuaire,Grand total,61075
+total,Ogooué Maritime,Woleu N'Tern,191
+total,Ogooué Maritime,Estuaire,1180
+total,Ogooué Maritime,Ogooué Maritime,22612
+total,Ogooué Maritime,Moyen Ogooué,2623
+total,Ogooué Maritime,Ogooué Ivindo,118
+total,Ogooué Maritime,Ogooué Lolo,2294
+total,Ogooué Maritime,Haut Ogooué,1506
+total,Ogooué Maritime,N'Gounie,5830
+total,Ogooué Maritime,Nyanga,2184
+total,Ogooué Maritime,Total Gabon,38538
+total,Ogooué Maritime,Abroad,2946
+total,Ogooué Maritime,Grand total,41503
+total,Moyen Ogooué,Woleu N'Tern,121
+total,Moyen Ogooué,Estuaire,207
+total,Moyen Ogooué,Ogooué Maritime,918
+total,Moyen Ogooué,Moyen Ogooué,24003
+total,Moyen Ogooué,Ogooué Ivindo,659
+total,Moyen Ogooué,Ogooué Lolo,1537
+total,Moyen Ogooué,Haut Ogooué,362
+total,Moyen Ogooué,N'Gounie,4751
+total,Moyen Ogooué,Nyanga,1100
+total,Moyen Ogooué,Total Gabon,33656
+total,Moyen Ogooué,Abroad,392
+total,Moyen Ogooué,Grand total,34057
+total,Ogooué Ivindo,Woleu N'Tern,113
+total,Ogooué Ivindo,Estuaire,79
+total,Ogooué Ivindo,Ogooué Maritime,11
+total,Ogooué Ivindo,Moyen Ogooué,124
+total,Ogooué Ivindo,Ogooué Ivindo,34160
+total,Ogooué Ivindo,Ogooué Lolo,23
+total,Ogooué Ivindo,Haut Ogooué,45
+total,Ogooué Ivindo,N'Gounie,79
+total,Ogooué Ivindo,Nyanga,11
+total,Ogooué Ivindo,Total Gabon,34646
+total,Ogooué Ivindo,Abroad,509
+total,Ogooué Ivindo,Grand total,35154
+total,Ogooué Lolo,Woleu N'Tern,0
+total,Ogooué Lolo,Estuaire,48
+total,Ogooué Lolo,Ogooué Maritime,48
+total,Ogooué Lolo,Moyen Ogooué,10
+total,Ogooué Lolo,Ogooué Ivindo,48
+total,Ogooué Lolo,Ogooué Lolo,35846
+total,Ogooué Lolo,Haut Ogooué,269
+total,Ogooué Lolo,N'Gounie,58
+total,Ogooué Lolo,Nyanga,38
+total,Ogooué Lolo,Total Gabon,36364
+total,Ogooué Lolo,Abroad,77
+total,Ogooué Lolo,Grand total,36662
+total,Haut Ogooué,Woleu N'Tern,0
+total,Haut Ogooué,Estuaire,0
+total,Haut Ogooué,Ogooué Maritime,0
+total,Haut Ogooué,Moyen Ogooué,0
+total,Haut Ogooué,Ogooué Ivindo,148
+total,Haut Ogooué,Ogooué Lolo,271
+total,Haut Ogooué,Haut Ogooué,40565
+total,Haut Ogooué,N'Gounie,0
+total,Haut Ogooué,Nyanga,0
+total,Haut Ogooué,Total Gabon,40984
+total,Haut Ogooué,Abroad,1132
+total,Haut Ogooué,Grand total,42189
+total,N'Gounie,Woleu N'Tern,62
+total,N'Gounie,Estuaire,561
+total,N'Gounie,Ogooué Maritime,413
+total,N'Gounie,Moyen Ogooué,523
+total,N'Gounie,Ogooué Ivindo,58
+total,N'Gounie,Ogooué Lolo,1109
+total,N'Gounie,Haut Ogooué,66
+total,N'Gounie,N'Gounie,72746
+total,N'Gounie,Nyanga,2011
+total,N'Gounie,Total Gabon,77551
+total,N'Gounie,Abroad,1092
+total,N'Gounie,Grand total,78642
+total,Nyanga,Woleu N'Tern,0
+total,Nyanga,Estuaire,66
+total,Nyanga,Ogooué Maritime,115
+total,Nyanga,Moyen Ogooué,197
+total,Nyanga,Ogooué Ivindo,0
+total,Nyanga,Ogooué Lolo,0
+total,Nyanga,Haut Ogooué,0
+total,Nyanga,N'Gounie,836
+total,Nyanga,Nyanga,34800
+total,Nyanga,Total Gabon,36014
+total,Nyanga,Abroad,640
+total,Nyanga,Grand total,36670
+total,Total,Woleu N'Tern,79995
+total,Total,Estuaire,35355
+total,Total,Ogooué Maritime,24963
+total,Total,Moyen Ogooué,28820
+total,Total,Ogooué Ivindo,37823
+total,Total,Ogooué Lolo,43419
+total,Total,Haut Ogooué,44534
+total,Total,N'Gounie,90755
+total,Total,Nyanga,43246
+total,Total,Total Gabon,428910
+total,Total,Abroad,14958
+total,Total,Grand total,444264
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+NA,NA,Woleu N'Tern,NA
+NA,NA,Estuaire,NA
+NA,NA,Ogooué Maritime,NA
+NA,NA,Moyen Ogooué,NA
+NA,NA,Ogooué Ivindo,NA
+NA,NA,Ogooué Lolo,NA
+NA,NA,Haut Ogooué,NA
+NA,NA,N'Gounie,NA
+NA,NA,Nyanga,NA
+NA,NA,Total Gabon,NA
+NA,NA,Abroad,NA
+NA,NA,Grand total,NA
+74609,NA,Woleu N'Tern,NA
+74609,NA,Estuaire,NA
+74609,NA,Ogooué Maritime,NA
+74609,NA,Moyen Ogooué,NA
+74609,NA,Ogooué Ivindo,NA
+74609,NA,Ogooué Lolo,NA
+74609,NA,Haut Ogooué,NA
+74609,NA,N'Gounie,NA
+74609,NA,Nyanga,NA
+74609,NA,Total Gabon,NA
+74609,NA,Abroad,NA
+74609,NA,Grand total,NA

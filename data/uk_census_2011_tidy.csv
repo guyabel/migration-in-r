@@ -1,0 +1,1441 @@
+orig,dest,age,sex,flow
+North East,North East,1-15,Males,0
+North East,North West,1-15,Males,246
+North East,Yorkshire and The Humber,1-15,Males,416
+North East,East Midlands,1-15,Males,136
+North East,West Midlands,1-15,Males,100
+North East,East,1-15,Males,139
+North East,London,1-15,Males,217
+North East,South East,1-15,Males,181
+North East,South West,1-15,Males,107
+North East,Wales,1-15,Males,47
+North East,Scotland,1-15,Males,229
+North East,Northern Ireland,1-15,Males,18
+North West,North East,1-15,Males,274
+North West,North West,1-15,Males,0
+North West,Yorkshire and The Humber,1-15,Males,810
+North West,East Midlands,1-15,Males,404
+North West,West Midlands,1-15,Males,592
+North West,East,1-15,Males,306
+North West,London,1-15,Males,585
+North West,South East,1-15,Males,502
+North West,South West,1-15,Males,305
+North West,Wales,1-15,Males,411
+North West,Scotland,1-15,Males,346
+North West,Northern Ireland,1-15,Males,60
+Yorkshire and The Humber,North East,1-15,Males,384
+Yorkshire and The Humber,North West,1-15,Males,720
+Yorkshire and The Humber,Yorkshire and The Humber,1-15,Males,0
+Yorkshire and The Humber,East Midlands,1-15,Males,725
+Yorkshire and The Humber,West Midlands,1-15,Males,371
+Yorkshire and The Humber,East,1-15,Males,379
+Yorkshire and The Humber,London,1-15,Males,478
+Yorkshire and The Humber,South East,1-15,Males,505
+Yorkshire and The Humber,South West,1-15,Males,280
+Yorkshire and The Humber,Wales,1-15,Males,118
+Yorkshire and The Humber,Scotland,1-15,Males,290
+Yorkshire and The Humber,Northern Ireland,1-15,Males,39
+East Midlands,North East,1-15,Males,119
+East Midlands,North West,1-15,Males,478
+East Midlands,Yorkshire and The Humber,1-15,Males,837
+East Midlands,East Midlands,1-15,Males,0
+East Midlands,West Midlands,1-15,Males,827
+East Midlands,East,1-15,Males,940
+East Midlands,London,1-15,Males,582
+East Midlands,South East,1-15,Males,935
+East Midlands,South West,1-15,Males,316
+East Midlands,Wales,1-15,Males,133
+East Midlands,Scotland,1-15,Males,174
+East Midlands,Northern Ireland,1-15,Males,61
+West Midlands,North East,1-15,Males,112
+West Midlands,North West,1-15,Males,607
+West Midlands,Yorkshire and The Humber,1-15,Males,366
+West Midlands,East Midlands,1-15,Males,794
+West Midlands,West Midlands,1-15,Males,0
+West Midlands,East,1-15,Males,409
+West Midlands,London,1-15,Males,656
+West Midlands,South East,1-15,Males,668
+West Midlands,South West,1-15,Males,577
+West Midlands,Wales,1-15,Males,355
+West Midlands,Scotland,1-15,Males,173
+West Midlands,Northern Ireland,1-15,Males,63
+East,North East,1-15,Males,131
+East,North West,1-15,Males,326
+East,Yorkshire and The Humber,1-15,Males,356
+East,East Midlands,1-15,Males,693
+East,West Midlands,1-15,Males,344
+East,East,1-15,Males,0
+East,London,1-15,Males,3912
+East,South East,1-15,Males,1254
+East,South West,1-15,Males,412
+East,Wales,1-15,Males,143
+East,Scotland,1-15,Males,229
+East,Northern Ireland,1-15,Males,81
+London,North East,1-15,Males,136
+London,North West,1-15,Males,409
+London,Yorkshire and The Humber,1-15,Males,387
+London,East Midlands,1-15,Males,288
+London,West Midlands,1-15,Males,496
+London,East,1-15,Males,1221
+London,London,1-15,Males,0
+London,South East,1-15,Males,1843
+London,South West,1-15,Males,427
+London,Wales,1-15,Males,173
+London,Scotland,1-15,Males,252
+London,Northern Ireland,1-15,Males,41
+South East,North East,1-15,Males,164
+South East,North West,1-15,Males,508
+South East,Yorkshire and The Humber,1-15,Males,530
+South East,East Midlands,1-15,Males,720
+South East,West Midlands,1-15,Males,649
+South East,East,1-15,Males,1471
+South East,London,1-15,Males,6815
+South East,South East,1-15,Males,0
+South East,South West,1-15,Males,1656
+South East,Wales,1-15,Males,314
+South East,Scotland,1-15,Males,432
+South East,Northern Ireland,1-15,Males,120
+South West,North East,1-15,Males,101
+South West,North West,1-15,Males,387
+South West,Yorkshire and The Humber,1-15,Males,364
+South West,East Midlands,1-15,Males,480
+South West,West Midlands,1-15,Males,793
+South West,East,1-15,Males,706
+South West,London,1-15,Males,1180
+South West,South East,1-15,Males,2465
+South West,South West,1-15,Males,0
+South West,Wales,1-15,Males,408
+South West,Scotland,1-15,Males,256
+South West,Northern Ireland,1-15,Males,53
+Wales,North East,1-15,Males,43
+Wales,North West,1-15,Males,490
+Wales,Yorkshire and The Humber,1-15,Males,126
+Wales,East Midlands,1-15,Males,176
+Wales,West Midlands,1-15,Males,398
+Wales,East,1-15,Males,164
+Wales,London,1-15,Males,247
+Wales,South East,1-15,Males,361
+Wales,South West,1-15,Males,466
+Wales,Wales,1-15,Males,0
+Wales,Scotland,1-15,Males,105
+Wales,Northern Ireland,1-15,Males,21
+Scotland,North East,1-15,Males,198
+Scotland,North West,1-15,Males,365
+Scotland,Yorkshire and The Humber,1-15,Males,233
+Scotland,East Midlands,1-15,Males,214
+Scotland,West Midlands,1-15,Males,185
+Scotland,East,1-15,Males,196
+Scotland,London,1-15,Males,228
+Scotland,South East,1-15,Males,398
+Scotland,South West,1-15,Males,203
+Scotland,Wales,1-15,Males,107
+Scotland,Scotland,1-15,Males,0
+Scotland,Northern Ireland,1-15,Males,97
+Northern Ireland,North East,1-15,Males,30
+Northern Ireland,North West,1-15,Males,79
+Northern Ireland,Yorkshire and The Humber,1-15,Males,49
+Northern Ireland,East Midlands,1-15,Males,32
+Northern Ireland,West Midlands,1-15,Males,50
+Northern Ireland,East,1-15,Males,57
+Northern Ireland,London,1-15,Males,82
+Northern Ireland,South East,1-15,Males,112
+Northern Ireland,South West,1-15,Males,50
+Northern Ireland,Wales,1-15,Males,16
+Northern Ireland,Scotland,1-15,Males,143
+Northern Ireland,Northern Ireland,1-15,Males,0
+North East,North East,1-15,Females,0
+North East,North West,1-15,Females,268
+North East,Yorkshire and The Humber,1-15,Females,408
+North East,East Midlands,1-15,Females,144
+North East,West Midlands,1-15,Females,110
+North East,East,1-15,Females,137
+North East,London,1-15,Females,147
+North East,South East,1-15,Females,188
+North East,South West,1-15,Females,99
+North East,Wales,1-15,Females,42
+North East,Scotland,1-15,Females,230
+North East,Northern Ireland,1-15,Females,23
+North West,North East,1-15,Females,218
+North West,North West,1-15,Females,0
+North West,Yorkshire and The Humber,1-15,Females,759
+North West,East Midlands,1-15,Females,391
+North West,West Midlands,1-15,Females,599
+North West,East,1-15,Females,302
+North West,London,1-15,Females,549
+North West,South East,1-15,Females,490
+North West,South West,1-15,Females,303
+North West,Wales,1-15,Females,386
+North West,Scotland,1-15,Females,319
+North West,Northern Ireland,1-15,Females,60
+Yorkshire and The Humber,North East,1-15,Females,349
+Yorkshire and The Humber,North West,1-15,Females,688
+Yorkshire and The Humber,Yorkshire and The Humber,1-15,Females,0
+Yorkshire and The Humber,East Midlands,1-15,Females,758
+Yorkshire and The Humber,West Midlands,1-15,Females,395
+Yorkshire and The Humber,East,1-15,Females,349
+Yorkshire and The Humber,London,1-15,Females,383
+Yorkshire and The Humber,South East,1-15,Females,501
+Yorkshire and The Humber,South West,1-15,Females,256
+Yorkshire and The Humber,Wales,1-15,Females,142
+Yorkshire and The Humber,Scotland,1-15,Females,237
+Yorkshire and The Humber,Northern Ireland,1-15,Females,38
+East Midlands,North East,1-15,Females,133
+East Midlands,North West,1-15,Females,421
+East Midlands,Yorkshire and The Humber,1-15,Females,869
+East Midlands,East Midlands,1-15,Females,0
+East Midlands,West Midlands,1-15,Females,809
+East Midlands,East,1-15,Females,839
+East Midlands,London,1-15,Females,618
+East Midlands,South East,1-15,Females,856
+East Midlands,South West,1-15,Females,302
+East Midlands,Wales,1-15,Females,144
+East Midlands,Scotland,1-15,Females,222
+East Midlands,Northern Ireland,1-15,Females,55
+West Midlands,North East,1-15,Females,120
+West Midlands,North West,1-15,Females,556
+West Midlands,Yorkshire and The Humber,1-15,Females,344
+West Midlands,East Midlands,1-15,Females,757
+West Midlands,West Midlands,1-15,Females,0
+West Midlands,East,1-15,Females,407
+West Midlands,London,1-15,Females,573
+West Midlands,South East,1-15,Females,598
+West Midlands,South West,1-15,Females,585
+West Midlands,Wales,1-15,Females,374
+West Midlands,Scotland,1-15,Females,192
+West Midlands,Northern Ireland,1-15,Females,55
+East,North East,1-15,Females,129
+East,North West,1-15,Females,333
+East,Yorkshire and The Humber,1-15,Females,341
+East,East Midlands,1-15,Females,658
+East,West Midlands,1-15,Females,327
+East,East,1-15,Females,0
+East,London,1-15,Females,3613
+East,South East,1-15,Females,1187
+East,South West,1-15,Females,418
+East,Wales,1-15,Females,145
+East,Scotland,1-15,Females,243
+East,Northern Ireland,1-15,Females,61
+London,North East,1-15,Females,143
+London,North West,1-15,Females,400
+London,Yorkshire and The Humber,1-15,Females,340
+London,East Midlands,1-15,Females,287
+London,West Midlands,1-15,Females,484
+London,East,1-15,Females,1198
+London,London,1-15,Females,0
+London,South East,1-15,Females,1752
+London,South West,1-15,Females,401
+London,Wales,1-15,Females,161
+London,Scotland,1-15,Females,222
+London,Northern Ireland,1-15,Females,46
+South East,North East,1-15,Females,165
+South East,North West,1-15,Females,516
+South East,Yorkshire and The Humber,1-15,Females,515
+South East,East Midlands,1-15,Females,669
+South East,West Midlands,1-15,Females,606
+South East,East,1-15,Females,1456
+South East,London,1-15,Females,6428
+South East,South East,1-15,Females,0
+South East,South West,1-15,Females,1521
+South East,Wales,1-15,Females,338
+South East,Scotland,1-15,Females,388
+South East,Northern Ireland,1-15,Females,112
+South West,North East,1-15,Females,106
+South West,North West,1-15,Females,390
+South West,Yorkshire and The Humber,1-15,Females,340
+South West,East Midlands,1-15,Females,469
+South West,West Midlands,1-15,Females,825
+South West,East,1-15,Females,594
+South West,London,1-15,Females,1093
+South West,South East,1-15,Females,2228
+South West,South West,1-15,Females,0
+South West,Wales,1-15,Females,403
+South West,Scotland,1-15,Females,209
+South West,Northern Ireland,1-15,Females,38
+Wales,North East,1-15,Females,50
+Wales,North West,1-15,Females,493
+Wales,Yorkshire and The Humber,1-15,Females,133
+Wales,East Midlands,1-15,Females,157
+Wales,West Midlands,1-15,Females,384
+Wales,East,1-15,Females,133
+Wales,London,1-15,Females,227
+Wales,South East,1-15,Females,371
+Wales,South West,1-15,Females,421
+Wales,Wales,1-15,Females,0
+Wales,Scotland,1-15,Females,93
+Wales,Northern Ireland,1-15,Females,13
+Scotland,North East,1-15,Females,180
+Scotland,North West,1-15,Females,377
+Scotland,Yorkshire and The Humber,1-15,Females,258
+Scotland,East Midlands,1-15,Females,219
+Scotland,West Midlands,1-15,Females,163
+Scotland,East,1-15,Females,208
+Scotland,London,1-15,Females,223
+Scotland,South East,1-15,Females,390
+Scotland,South West,1-15,Females,202
+Scotland,Wales,1-15,Females,80
+Scotland,Scotland,1-15,Females,0
+Scotland,Northern Ireland,1-15,Females,84
+Northern Ireland,North East,1-15,Females,18
+Northern Ireland,North West,1-15,Females,53
+Northern Ireland,Yorkshire and The Humber,1-15,Females,75
+Northern Ireland,East Midlands,1-15,Females,38
+Northern Ireland,West Midlands,1-15,Females,52
+Northern Ireland,East,1-15,Females,55
+Northern Ireland,London,1-15,Females,79
+Northern Ireland,South East,1-15,Females,103
+Northern Ireland,South West,1-15,Females,51
+Northern Ireland,Wales,1-15,Females,27
+Northern Ireland,Scotland,1-15,Females,102
+Northern Ireland,Northern Ireland,1-15,Females,0
+North East,North East,16-49,Males,0
+North East,North West,16-49,Males,2914
+North East,Yorkshire and The Humber,16-49,Males,4141
+North East,East Midlands,16-49,Males,1326
+North East,West Midlands,16-49,Males,982
+North East,East,16-49,Males,1167
+North East,London,16-49,Males,1529
+North East,South East,16-49,Males,1828
+North East,South West,16-49,Males,948
+North East,Wales,16-49,Males,348
+North East,Scotland,16-49,Males,1287
+North East,Northern Ireland,16-49,Males,387
+North West,North East,16-49,Males,2381
+North West,North West,16-49,Males,0
+North West,Yorkshire and The Humber,16-49,Males,7379
+North West,East Midlands,16-49,Males,3810
+North West,West Midlands,16-49,Males,5148
+North West,East,16-49,Males,2524
+North West,London,16-49,Males,4456
+North West,South East,16-49,Males,4042
+North West,South West,16-49,Males,2636
+North West,Wales,16-49,Males,3191
+North West,Scotland,16-49,Males,2027
+North West,Northern Ireland,16-49,Males,1074
+Yorkshire and The Humber,North East,16-49,Males,3678
+Yorkshire and The Humber,North West,16-49,Males,8573
+Yorkshire and The Humber,Yorkshire and The Humber,16-49,Males,0
+Yorkshire and The Humber,East Midlands,16-49,Males,7073
+Yorkshire and The Humber,West Midlands,16-49,Males,3605
+Yorkshire and The Humber,East,16-49,Males,3504
+Yorkshire and The Humber,London,16-49,Males,3911
+Yorkshire and The Humber,South East,16-49,Males,4259
+Yorkshire and The Humber,South West,16-49,Males,2328
+Yorkshire and The Humber,Wales,16-49,Males,1049
+Yorkshire and The Humber,Scotland,16-49,Males,1566
+Yorkshire and The Humber,Northern Ireland,16-49,Males,331
+East Midlands,North East,16-49,Males,1028
+East Midlands,North West,16-49,Males,3578
+East Midlands,Yorkshire and The Humber,16-49,Males,5940
+East Midlands,East Midlands,16-49,Males,0
+East Midlands,West Midlands,16-49,Males,6542
+East Midlands,East,16-49,Males,6209
+East Midlands,London,16-49,Males,5077
+East Midlands,South East,16-49,Males,6259
+East Midlands,South West,16-49,Males,2501
+East Midlands,Wales,16-49,Males,968
+East Midlands,Scotland,16-49,Males,992
+East Midlands,Northern Ireland,16-49,Males,287
+West Midlands,North East,16-49,Males,851
+West Midlands,North West,16-49,Males,4638
+West Midlands,Yorkshire and The Humber,16-49,Males,2922
+West Midlands,East Midlands,16-49,Males,6011
+West Midlands,West Midlands,16-49,Males,0
+West Midlands,East,16-49,Males,3647
+West Midlands,London,16-49,Males,4948
+West Midlands,South East,16-49,Males,5794
+West Midlands,South West,16-49,Males,4612
+West Midlands,Wales,16-49,Males,2519
+West Midlands,Scotland,16-49,Males,1117
+West Midlands,Northern Ireland,16-49,Males,317
+East,North East,16-49,Males,923
+East,North West,16-49,Males,2223
+East,Yorkshire and The Humber,16-49,Males,2562
+East,East Midlands,16-49,Males,4771
+East,West Midlands,16-49,Males,2690
+East,East,16-49,Males,0
+East,London,16-49,Males,19968
+East,South East,16-49,Males,8789
+East,South West,16-49,Males,3083
+East,Wales,16-49,Males,983
+East,Scotland,16-49,Males,1348
+East,Northern Ireland,16-49,Males,353
+London,North East,16-49,Males,2057
+London,North West,16-49,Males,5947
+London,Yorkshire and The Humber,16-49,Males,5254
+London,East Midlands,16-49,Males,5290
+London,West Midlands,16-49,Males,5912
+London,East,16-49,Males,15694
+London,London,16-49,Males,0
+London,South East,16-49,Males,28207
+London,South West,16-49,Males,8968
+London,Wales,16-49,Males,2476
+London,Scotland,16-49,Males,3629
+London,Northern Ireland,16-49,Males,839
+South East,North East,16-49,Males,1366
+South East,North West,16-49,Males,3990
+South East,Yorkshire and The Humber,16-49,Males,3565
+South East,East Midlands,16-49,Males,5357
+South East,West Midlands,16-49,Males,5319
+South East,East,16-49,Males,10873
+South East,London,16-49,Males,33081
+South East,South East,16-49,Males,0
+South East,South West,16-49,Males,12633
+South East,Wales,16-49,Males,2456
+South East,Scotland,16-49,Males,2282
+South East,Northern Ireland,16-49,Males,609
+South West,North East,16-49,Males,897
+South West,North West,16-49,Males,2853
+South West,Yorkshire and The Humber,16-49,Males,2418
+South West,East Midlands,16-49,Males,2903
+South West,West Midlands,16-49,Males,5392
+South West,East,16-49,Males,4413
+South West,London,16-49,Males,7308
+South West,South East,16-49,Males,15434
+South West,South West,16-49,Males,0
+South West,Wales,16-49,Males,3666
+South West,Scotland,16-49,Males,1433
+South West,Northern Ireland,16-49,Males,353
+Wales,North East,16-49,Males,328
+Wales,North West,16-49,Males,3215
+Wales,Yorkshire and The Humber,16-49,Males,1045
+Wales,East Midlands,16-49,Males,1092
+Wales,West Midlands,16-49,Males,2821
+Wales,East,16-49,Males,1271
+Wales,London,16-49,Males,1889
+Wales,South East,16-49,Males,3229
+Wales,South West,16-49,Males,4244
+Wales,Wales,16-49,Males,0
+Wales,Scotland,16-49,Males,559
+Wales,Northern Ireland,16-49,Males,161
+Scotland,North East,16-49,Males,1308
+Scotland,North West,16-49,Males,2163
+Scotland,Yorkshire and The Humber,16-49,Males,1516
+Scotland,East Midlands,16-49,Males,1090
+Scotland,West Midlands,16-49,Males,970
+Scotland,East,16-49,Males,1315
+Scotland,London,16-49,Males,2386
+Scotland,South East,16-49,Males,2238
+Scotland,South West,16-49,Males,1347
+Scotland,Wales,16-49,Males,609
+Scotland,Scotland,16-49,Males,0
+Scotland,Northern Ireland,16-49,Males,1070
+Northern Ireland,North East,16-49,Males,279
+Northern Ireland,North West,16-49,Males,739
+Northern Ireland,Yorkshire and The Humber,16-49,Males,304
+Northern Ireland,East Midlands,16-49,Males,230
+Northern Ireland,West Midlands,16-49,Males,224
+Northern Ireland,East,16-49,Males,262
+Northern Ireland,London,16-49,Males,604
+Northern Ireland,South East,16-49,Males,516
+Northern Ireland,South West,16-49,Males,311
+Northern Ireland,Wales,16-49,Males,116
+Northern Ireland,Scotland,16-49,Males,794
+Northern Ireland,Northern Ireland,16-49,Males,0
+North East,North East,16-49,Females,0
+North East,North West,16-49,Females,2273
+North East,Yorkshire and The Humber,16-49,Females,3856
+North East,East Midlands,16-49,Females,1129
+North East,West Midlands,16-49,Females,753
+North East,East,16-49,Females,1032
+North East,London,16-49,Females,1412
+North East,South East,16-49,Females,1512
+North East,South West,16-49,Females,732
+North East,Wales,16-49,Females,262
+North East,Scotland,16-49,Females,1250
+North East,Northern Ireland,16-49,Females,468
+North West,North East,16-49,Females,2168
+North West,North West,16-49,Females,0
+North West,Yorkshire and The Humber,16-49,Females,6933
+North West,East Midlands,16-49,Females,3571
+North West,West Midlands,16-49,Females,4940
+North West,East,16-49,Females,2351
+North West,London,16-49,Females,4211
+North West,South East,16-49,Females,3610
+North West,South West,16-49,Females,2240
+North West,Wales,16-49,Females,2902
+North West,Scotland,16-49,Females,1722
+North West,Northern Ireland,16-49,Females,1326
+Yorkshire and The Humber,North East,16-49,Females,3368
+Yorkshire and The Humber,North West,16-49,Females,8040
+Yorkshire and The Humber,Yorkshire and The Humber,16-49,Females,0
+Yorkshire and The Humber,East Midlands,16-49,Females,6720
+Yorkshire and The Humber,West Midlands,16-49,Females,3132
+Yorkshire and The Humber,East,16-49,Females,3410
+Yorkshire and The Humber,London,16-49,Females,3669
+Yorkshire and The Humber,South East,16-49,Females,3803
+Yorkshire and The Humber,South West,16-49,Females,1849
+Yorkshire and The Humber,Wales,16-49,Females,851
+Yorkshire and The Humber,Scotland,16-49,Females,1316
+Yorkshire and The Humber,Northern Ireland,16-49,Females,312
+East Midlands,North East,16-49,Females,931
+East Midlands,North West,16-49,Females,3253
+East Midlands,Yorkshire and The Humber,16-49,Females,5644
+East Midlands,East Midlands,16-49,Females,0
+East Midlands,West Midlands,16-49,Females,5926
+East Midlands,East,16-49,Females,5815
+East Midlands,London,16-49,Females,4671
+East Midlands,South East,16-49,Females,5485
+East Midlands,South West,16-49,Females,2171
+East Midlands,Wales,16-49,Females,840
+East Midlands,Scotland,16-49,Females,862
+East Midlands,Northern Ireland,16-49,Females,256
+West Midlands,North East,16-49,Females,645
+West Midlands,North West,16-49,Females,4103
+West Midlands,Yorkshire and The Humber,16-49,Females,2516
+West Midlands,East Midlands,16-49,Females,5340
+West Midlands,West Midlands,16-49,Females,0
+West Midlands,East,16-49,Females,3052
+West Midlands,London,16-49,Females,4661
+West Midlands,South East,16-49,Females,4861
+West Midlands,South West,16-49,Females,4084
+West Midlands,Wales,16-49,Females,2258
+West Midlands,Scotland,16-49,Females,829
+West Midlands,Northern Ireland,16-49,Females,283
+East,North East,16-49,Females,776
+East,North West,16-49,Females,2036
+East,Yorkshire and The Humber,16-49,Females,2446
+East,East Midlands,16-49,Females,4323
+East,West Midlands,16-49,Females,2317
+East,East,16-49,Females,0
+East,London,16-49,Females,18909
+East,South East,16-49,Females,7916
+East,South West,16-49,Females,2701
+East,Wales,16-49,Females,874
+East,Scotland,16-49,Females,1273
+East,Northern Ireland,16-49,Females,328
+London,North East,16-49,Females,2011
+London,North West,16-49,Females,5691
+London,Yorkshire and The Humber,16-49,Females,4916
+London,East Midlands,16-49,Females,4964
+London,West Midlands,16-49,Females,5530
+London,East,16-49,Females,14474
+London,London,16-49,Females,0
+London,South East,16-49,Females,25907
+London,South West,16-49,Females,8343
+London,Wales,16-49,Females,2280
+London,Scotland,16-49,Females,3346
+London,Northern Ireland,16-49,Females,762
+South East,North East,16-49,Females,1123
+South East,North West,16-49,Females,3336
+South East,Yorkshire and The Humber,16-49,Females,3168
+South East,East Midlands,16-49,Females,4596
+South East,West Midlands,16-49,Females,4524
+South East,East,16-49,Females,9654
+South East,London,16-49,Females,31373
+South East,South East,16-49,Females,0
+South East,South West,16-49,Females,11229
+South East,Wales,16-49,Females,2260
+South East,Scotland,16-49,Females,1938
+South East,Northern Ireland,16-49,Females,571
+South West,North East,16-49,Females,607
+South West,North West,16-49,Females,2288
+South West,Yorkshire and The Humber,16-49,Females,1875
+South West,East Midlands,16-49,Females,2437
+South West,West Midlands,16-49,Females,4820
+South West,East,16-49,Females,3806
+South West,London,16-49,Females,6959
+South West,South East,16-49,Females,13653
+South West,South West,16-49,Females,0
+South West,Wales,16-49,Females,3365
+South West,Scotland,16-49,Females,1141
+South West,Northern Ireland,16-49,Females,300
+Wales,North East,16-49,Females,251
+Wales,North West,16-49,Females,2780
+Wales,Yorkshire and The Humber,16-49,Females,841
+Wales,East Midlands,16-49,Females,923
+Wales,West Midlands,16-49,Females,2641
+Wales,East,16-49,Females,1060
+Wales,London,16-49,Females,1544
+Wales,South East,16-49,Females,2835
+Wales,South West,16-49,Females,3959
+Wales,Wales,16-49,Females,0
+Wales,Scotland,16-49,Females,429
+Wales,Northern Ireland,16-49,Females,182
+Scotland,North East,16-49,Females,1199
+Scotland,North West,16-49,Females,1971
+Scotland,Yorkshire and The Humber,16-49,Females,1367
+Scotland,East Midlands,16-49,Females,881
+Scotland,West Midlands,16-49,Females,804
+Scotland,East,16-49,Females,1125
+Scotland,London,16-49,Females,2145
+Scotland,South East,16-49,Females,1959
+Scotland,South West,16-49,Females,1067
+Scotland,Wales,16-49,Females,440
+Scotland,Scotland,16-49,Females,0
+Scotland,Northern Ireland,16-49,Females,1109
+Northern Ireland,North East,16-49,Females,250
+Northern Ireland,North West,16-49,Females,789
+Northern Ireland,Yorkshire and The Humber,16-49,Females,271
+Northern Ireland,East Midlands,16-49,Females,152
+Northern Ireland,West Midlands,16-49,Females,209
+Northern Ireland,East,16-49,Females,264
+Northern Ireland,London,16-49,Females,556
+Northern Ireland,South East,16-49,Females,401
+Northern Ireland,South West,16-49,Females,257
+Northern Ireland,Wales,16-49,Females,123
+Northern Ireland,Scotland,16-49,Females,882
+Northern Ireland,Northern Ireland,16-49,Females,0
+North East,North East,50-64,Males,0
+North East,North West,50-64,Males,207
+North East,Yorkshire and The Humber,50-64,Males,329
+North East,East Midlands,50-64,Males,110
+North East,West Midlands,50-64,Males,59
+North East,East,50-64,Males,115
+North East,London,50-64,Males,109
+North East,South East,50-64,Males,167
+North East,South West,50-64,Males,77
+North East,Wales,50-64,Males,27
+North East,Scotland,50-64,Males,165
+North East,Northern Ireland,50-64,Males,4
+North West,North East,50-64,Males,198
+North West,North West,50-64,Males,0
+North West,Yorkshire and The Humber,50-64,Males,526
+North West,East Midlands,50-64,Males,354
+North West,West Midlands,50-64,Males,417
+North West,East,50-64,Males,232
+North West,London,50-64,Males,318
+North West,South East,50-64,Males,436
+North West,South West,50-64,Males,295
+North West,Wales,50-64,Males,352
+North West,Scotland,50-64,Males,276
+North West,Northern Ireland,50-64,Males,44
+Yorkshire and The Humber,North East,50-64,Males,318
+Yorkshire and The Humber,North West,50-64,Males,542
+Yorkshire and The Humber,Yorkshire and The Humber,50-64,Males,0
+Yorkshire and The Humber,East Midlands,50-64,Males,599
+Yorkshire and The Humber,West Midlands,50-64,Males,208
+Yorkshire and The Humber,East,50-64,Males,272
+Yorkshire and The Humber,London,50-64,Males,224
+Yorkshire and The Humber,South East,50-64,Males,301
+Yorkshire and The Humber,South West,50-64,Males,185
+Yorkshire and The Humber,Wales,50-64,Males,74
+Yorkshire and The Humber,Scotland,50-64,Males,167
+Yorkshire and The Humber,Northern Ireland,50-64,Males,26
+East Midlands,North East,50-64,Males,128
+East Midlands,North West,50-64,Males,359
+East Midlands,Yorkshire and The Humber,50-64,Males,735
+East Midlands,East Midlands,50-64,Males,0
+East Midlands,West Midlands,50-64,Males,593
+East Midlands,East,50-64,Males,694
+East Midlands,London,50-64,Males,402
+East Midlands,South East,50-64,Males,690
+East Midlands,South West,50-64,Males,255
+East Midlands,Wales,50-64,Males,94
+East Midlands,Scotland,50-64,Males,132
+East Midlands,Northern Ireland,50-64,Males,21
+West Midlands,North East,50-64,Males,67
+West Midlands,North West,50-64,Males,458
+West Midlands,Yorkshire and The Humber,50-64,Males,173
+West Midlands,East Midlands,50-64,Males,477
+West Midlands,West Midlands,50-64,Males,0
+West Midlands,East,50-64,Males,265
+West Midlands,London,50-64,Males,302
+West Midlands,South East,50-64,Males,541
+West Midlands,South West,50-64,Males,559
+West Midlands,Wales,50-64,Males,304
+West Midlands,Scotland,50-64,Males,122
+West Midlands,Northern Ireland,50-64,Males,19
+East,North East,50-64,Males,100
+East,North West,50-64,Males,241
+East,Yorkshire and The Humber,50-64,Males,244
+East,East Midlands,50-64,Males,547
+East,West Midlands,50-64,Males,232
+East,East,50-64,Males,0
+East,London,50-64,Males,2505
+East,South East,50-64,Males,1145
+East,South West,50-64,Males,350
+East,Wales,50-64,Males,119
+East,Scotland,50-64,Males,176
+East,Northern Ireland,50-64,Males,16
+London,North East,50-64,Males,87
+London,North West,50-64,Males,311
+London,Yorkshire and The Humber,50-64,Males,230
+London,East Midlands,50-64,Males,279
+London,West Midlands,50-64,Males,241
+London,East,50-64,Males,1057
+London,London,50-64,Males,0
+London,South East,50-64,Males,1920
+London,South West,50-64,Males,599
+London,Wales,50-64,Males,147
+London,Scotland,50-64,Males,261
+London,Northern Ireland,50-64,Males,28
+South East,North East,50-64,Males,119
+South East,North West,50-64,Males,393
+South East,Yorkshire and The Humber,50-64,Males,279
+South East,East Midlands,50-64,Males,527
+South East,West Midlands,50-64,Males,424
+South East,East,50-64,Males,1165
+South East,London,50-64,Males,4008
+South East,South East,50-64,Males,0
+South East,South West,50-64,Males,1343
+South East,Wales,50-64,Males,263
+South East,Scotland,50-64,Males,262
+South East,Northern Ireland,50-64,Males,26
+South West,North East,50-64,Males,87
+South West,North West,50-64,Males,386
+South West,Yorkshire and The Humber,50-64,Males,261
+South West,East Midlands,50-64,Males,430
+South West,West Midlands,50-64,Males,904
+South West,East,50-64,Males,775
+South West,London,50-64,Males,1361
+South West,South East,50-64,Males,2550
+South West,South West,50-64,Males,0
+South West,Wales,50-64,Males,328
+South West,Scotland,50-64,Males,194
+South West,Northern Ireland,50-64,Males,13
+Wales,North East,50-64,Males,28
+Wales,North West,50-64,Males,762
+Wales,Yorkshire and The Humber,50-64,Males,135
+Wales,East Midlands,50-64,Males,169
+Wales,West Midlands,50-64,Males,585
+Wales,East,50-64,Males,167
+Wales,London,50-64,Males,246
+Wales,South East,50-64,Males,496
+Wales,South West,50-64,Males,423
+Wales,Wales,50-64,Males,0
+Wales,Scotland,50-64,Males,66
+Wales,Northern Ireland,50-64,Males,8
+Scotland,North East,50-64,Males,204
+Scotland,North West,50-64,Males,366
+Scotland,Yorkshire and The Humber,50-64,Males,231
+Scotland,East Midlands,50-64,Males,186
+Scotland,West Midlands,50-64,Males,146
+Scotland,East,50-64,Males,209
+Scotland,London,50-64,Males,237
+Scotland,South East,50-64,Males,365
+Scotland,South West,50-64,Males,182
+Scotland,Wales,50-64,Males,80
+Scotland,Scotland,50-64,Males,0
+Scotland,Northern Ireland,50-64,Males,53
+Northern Ireland,North East,50-64,Males,18
+Northern Ireland,North West,50-64,Males,68
+Northern Ireland,Yorkshire and The Humber,50-64,Males,26
+Northern Ireland,East Midlands,50-64,Males,23
+Northern Ireland,West Midlands,50-64,Males,29
+Northern Ireland,East,50-64,Males,49
+Northern Ireland,London,50-64,Males,54
+Northern Ireland,South East,50-64,Males,58
+Northern Ireland,South West,50-64,Males,18
+Northern Ireland,Wales,50-64,Males,17
+Northern Ireland,Scotland,50-64,Males,66
+Northern Ireland,Northern Ireland,50-64,Males,0
+North East,North East,50-64,Females,0
+North East,North West,50-64,Females,151
+North East,Yorkshire and The Humber,50-64,Females,309
+North East,East Midlands,50-64,Females,95
+North East,West Midlands,50-64,Females,53
+North East,East,50-64,Females,111
+North East,London,50-64,Females,93
+North East,South East,50-64,Females,160
+North East,South West,50-64,Females,61
+North East,Wales,50-64,Females,26
+North East,Scotland,50-64,Females,126
+North East,Northern Ireland,50-64,Females,7
+North West,North East,50-64,Females,155
+North West,North West,50-64,Females,0
+North West,Yorkshire and The Humber,50-64,Females,459
+North West,East Midlands,50-64,Females,294
+North West,West Midlands,50-64,Females,355
+North West,East,50-64,Females,209
+North West,London,50-64,Females,297
+North West,South East,50-64,Females,339
+North West,South West,50-64,Females,239
+North West,Wales,50-64,Females,305
+North West,Scotland,50-64,Females,230
+North West,Northern Ireland,50-64,Females,29
+Yorkshire and The Humber,North East,50-64,Females,265
+Yorkshire and The Humber,North West,50-64,Females,447
+Yorkshire and The Humber,Yorkshire and The Humber,50-64,Females,0
+Yorkshire and The Humber,East Midlands,50-64,Females,537
+Yorkshire and The Humber,West Midlands,50-64,Females,174
+Yorkshire and The Humber,East,50-64,Females,262
+Yorkshire and The Humber,London,50-64,Females,209
+Yorkshire and The Humber,South East,50-64,Females,317
+Yorkshire and The Humber,South West,50-64,Females,206
+Yorkshire and The Humber,Wales,50-64,Females,71
+Yorkshire and The Humber,Scotland,50-64,Females,151
+Yorkshire and The Humber,Northern Ireland,50-64,Females,22
+East Midlands,North East,50-64,Females,93
+East Midlands,North West,50-64,Females,289
+East Midlands,Yorkshire and The Humber,50-64,Females,637
+East Midlands,East Midlands,50-64,Females,0
+East Midlands,West Midlands,50-64,Females,553
+East Midlands,East,50-64,Females,664
+East Midlands,London,50-64,Females,377
+East Midlands,South East,50-64,Females,676
+East Midlands,South West,50-64,Females,243
+East Midlands,Wales,50-64,Females,86
+East Midlands,Scotland,50-64,Females,139
+East Midlands,Northern Ireland,50-64,Females,11
+West Midlands,North East,50-64,Females,56
+West Midlands,North West,50-64,Females,349
+West Midlands,Yorkshire and The Humber,50-64,Females,150
+West Midlands,East Midlands,50-64,Females,403
+West Midlands,West Midlands,50-64,Females,0
+West Midlands,East,50-64,Females,249
+West Midlands,London,50-64,Females,268
+West Midlands,South East,50-64,Females,483
+West Midlands,South West,50-64,Females,498
+West Midlands,Wales,50-64,Females,293
+West Midlands,Scotland,50-64,Females,110
+West Midlands,Northern Ireland,50-64,Females,13
+East,North East,50-64,Females,91
+East,North West,50-64,Females,221
+East,Yorkshire and The Humber,50-64,Females,216
+East,East Midlands,50-64,Females,530
+East,West Midlands,50-64,Females,236
+East,East,50-64,Females,0
+East,London,50-64,Females,2404
+East,South East,50-64,Females,1048
+East,South West,50-64,Females,358
+East,Wales,50-64,Females,103
+East,Scotland,50-64,Females,164
+East,Northern Ireland,50-64,Females,24
+London,North East,50-64,Females,51
+London,North West,50-64,Females,211
+London,Yorkshire and The Humber,50-64,Females,177
+London,East Midlands,50-64,Females,191
+London,West Midlands,50-64,Females,193
+London,East,50-64,Females,846
+London,London,50-64,Females,0
+London,South East,50-64,Females,1469
+London,South West,50-64,Females,449
+London,Wales,50-64,Females,103
+London,Scotland,50-64,Females,121
+London,Northern Ireland,50-64,Females,29
+South East,North East,50-64,Females,95
+South East,North West,50-64,Females,338
+South East,Yorkshire and The Humber,50-64,Females,237
+South East,East Midlands,50-64,Females,495
+South East,West Midlands,50-64,Females,383
+South East,East,50-64,Females,1092
+South East,London,50-64,Females,3798
+South East,South East,50-64,Females,0
+South East,South West,50-64,Females,1358
+South East,Wales,50-64,Females,214
+South East,Scotland,50-64,Females,240
+South East,Northern Ireland,50-64,Females,30
+South West,North East,50-64,Females,81
+South West,North West,50-64,Females,379
+South West,Yorkshire and The Humber,50-64,Females,266
+South West,East Midlands,50-64,Females,425
+South West,West Midlands,50-64,Females,900
+South West,East,50-64,Females,832
+South West,London,50-64,Females,1231
+South West,South East,50-64,Females,2592
+South West,South West,50-64,Females,0
+South West,Wales,50-64,Females,343
+South West,Scotland,50-64,Females,184
+South West,Northern Ireland,50-64,Females,15
+Wales,North East,50-64,Females,22
+Wales,North West,50-64,Females,700
+Wales,Yorkshire and The Humber,50-64,Females,112
+Wales,East Midlands,50-64,Females,169
+Wales,West Midlands,50-64,Females,576
+Wales,East,50-64,Females,169
+Wales,London,50-64,Females,240
+Wales,South East,50-64,Females,454
+Wales,South West,50-64,Females,415
+Wales,Wales,50-64,Females,0
+Wales,Scotland,50-64,Females,59
+Wales,Northern Ireland,50-64,Females,5
+Scotland,North East,50-64,Females,145
+Scotland,North West,50-64,Females,327
+Scotland,Yorkshire and The Humber,50-64,Females,191
+Scotland,East Midlands,50-64,Females,156
+Scotland,West Midlands,50-64,Females,113
+Scotland,East,50-64,Females,188
+Scotland,London,50-64,Females,203
+Scotland,South East,50-64,Females,354
+Scotland,South West,50-64,Females,163
+Scotland,Wales,50-64,Females,45
+Scotland,Scotland,50-64,Females,0
+Scotland,Northern Ireland,50-64,Females,34
+Northern Ireland,North East,50-64,Females,13
+Northern Ireland,North West,50-64,Females,69
+Northern Ireland,Yorkshire and The Humber,50-64,Females,18
+Northern Ireland,East Midlands,50-64,Females,21
+Northern Ireland,West Midlands,50-64,Females,29
+Northern Ireland,East,50-64,Females,32
+Northern Ireland,London,50-64,Females,47
+Northern Ireland,South East,50-64,Females,45
+Northern Ireland,South West,50-64,Females,26
+Northern Ireland,Wales,50-64,Females,15
+Northern Ireland,Scotland,50-64,Females,67
+Northern Ireland,Northern Ireland,50-64,Females,0
+North East,North East,65-74,Males,0
+North East,North West,65-74,Males,70
+North East,Yorkshire and The Humber,65-74,Males,104
+North East,East Midlands,65-74,Males,38
+North East,West Midlands,65-74,Males,36
+North East,East,65-74,Males,26
+North East,London,65-74,Males,26
+North East,South East,65-74,Males,57
+North East,South West,65-74,Males,20
+North East,Wales,65-74,Males,3
+North East,Scotland,65-74,Males,42
+North East,Northern Ireland,65-74,Males,6
+North West,North East,65-74,Males,40
+North West,North West,65-74,Males,0
+North West,Yorkshire and The Humber,65-74,Males,162
+North West,East Midlands,65-74,Males,72
+North West,West Midlands,65-74,Males,119
+North West,East,65-74,Males,66
+North West,London,65-74,Males,78
+North West,South East,65-74,Males,130
+North West,South West,65-74,Males,91
+North West,Wales,65-74,Males,125
+North West,Scotland,65-74,Males,75
+North West,Northern Ireland,65-74,Males,6
+Yorkshire and The Humber,North East,65-74,Males,86
+Yorkshire and The Humber,North West,65-74,Males,138
+Yorkshire and The Humber,Yorkshire and The Humber,65-74,Males,0
+Yorkshire and The Humber,East Midlands,65-74,Males,200
+Yorkshire and The Humber,West Midlands,65-74,Males,55
+Yorkshire and The Humber,East,65-74,Males,77
+Yorkshire and The Humber,London,65-74,Males,67
+Yorkshire and The Humber,South East,65-74,Males,93
+Yorkshire and The Humber,South West,65-74,Males,74
+Yorkshire and The Humber,Wales,65-74,Males,31
+Yorkshire and The Humber,Scotland,65-74,Males,51
+Yorkshire and The Humber,Northern Ireland,65-74,Males,14
+East Midlands,North East,65-74,Males,35
+East Midlands,North West,65-74,Males,89
+East Midlands,Yorkshire and The Humber,65-74,Males,226
+East Midlands,East Midlands,65-74,Males,0
+East Midlands,West Midlands,65-74,Males,165
+East Midlands,East,65-74,Males,258
+East Midlands,London,65-74,Males,119
+East Midlands,South East,65-74,Males,209
+East Midlands,South West,65-74,Males,128
+East Midlands,Wales,65-74,Males,37
+East Midlands,Scotland,65-74,Males,65
+East Midlands,Northern Ireland,65-74,Males,5
+West Midlands,North East,65-74,Males,23
+West Midlands,North West,65-74,Males,133
+West Midlands,Yorkshire and The Humber,65-74,Males,67
+West Midlands,East Midlands,65-74,Males,148
+West Midlands,West Midlands,65-74,Males,0
+West Midlands,East,65-74,Males,89
+West Midlands,London,65-74,Males,107
+West Midlands,South East,65-74,Males,145
+West Midlands,South West,65-74,Males,195
+West Midlands,Wales,65-74,Males,148
+West Midlands,Scotland,65-74,Males,41
+West Midlands,Northern Ireland,65-74,Males,8
+East,North East,65-74,Males,24
+East,North West,65-74,Males,70
+East,Yorkshire and The Humber,65-74,Males,73
+East,East Midlands,65-74,Males,202
+East,West Midlands,65-74,Males,77
+East,East,65-74,Males,0
+East,London,65-74,Males,886
+East,South East,65-74,Males,389
+East,South West,65-74,Males,137
+East,Wales,65-74,Males,36
+East,Scotland,65-74,Males,57
+East,Northern Ireland,65-74,Males,5
+London,North East,65-74,Males,35
+London,North West,65-74,Males,58
+London,Yorkshire and The Humber,65-74,Males,46
+London,East Midlands,65-74,Males,51
+London,West Midlands,65-74,Males,60
+London,East,65-74,Males,284
+London,London,65-74,Males,0
+London,South East,65-74,Males,557
+London,South West,65-74,Males,176
+London,Wales,65-74,Males,44
+London,Scotland,65-74,Males,48
+London,Northern Ireland,65-74,Males,9
+South East,North East,65-74,Males,51
+South East,North West,65-74,Males,144
+South East,Yorkshire and The Humber,65-74,Males,102
+South East,East Midlands,65-74,Males,168
+South East,West Midlands,65-74,Males,159
+South East,East,65-74,Males,394
+South East,London,65-74,Males,1368
+South East,South East,65-74,Males,0
+South East,South West,65-74,Males,486
+South East,Wales,65-74,Males,96
+South East,Scotland,65-74,Males,93
+South East,Northern Ireland,65-74,Males,11
+South West,North East,65-74,Males,23
+South West,North West,65-74,Males,139
+South West,Yorkshire and The Humber,65-74,Males,101
+South West,East Midlands,65-74,Males,184
+South West,West Midlands,65-74,Males,379
+South West,East,65-74,Males,271
+South West,London,65-74,Males,510
+South West,South East,65-74,Males,969
+South West,South West,65-74,Males,0
+South West,Wales,65-74,Males,153
+South West,Scotland,65-74,Males,78
+South West,Northern Ireland,65-74,Males,7
+Wales,North East,65-74,Males,11
+Wales,North West,65-74,Males,318
+Wales,Yorkshire and The Humber,65-74,Males,52
+Wales,East Midlands,65-74,Males,79
+Wales,West Midlands,65-74,Males,243
+Wales,East,65-74,Males,96
+Wales,London,65-74,Males,105
+Wales,South East,65-74,Males,139
+Wales,South West,65-74,Males,161
+Wales,Wales,65-74,Males,0
+Wales,Scotland,65-74,Males,16
+Wales,Northern Ireland,65-74,Males,5
+Scotland,North East,65-74,Males,37
+Scotland,North West,65-74,Males,90
+Scotland,Yorkshire and The Humber,65-74,Males,57
+Scotland,East Midlands,65-74,Males,47
+Scotland,West Midlands,65-74,Males,35
+Scotland,East,65-74,Males,72
+Scotland,London,65-74,Males,58
+Scotland,South East,65-74,Males,97
+Scotland,South West,65-74,Males,47
+Scotland,Wales,65-74,Males,18
+Scotland,Scotland,65-74,Males,0
+Scotland,Northern Ireland,65-74,Males,18
+Northern Ireland,North East,65-74,Males,6
+Northern Ireland,North West,65-74,Males,29
+Northern Ireland,Yorkshire and The Humber,65-74,Males,6
+Northern Ireland,East Midlands,65-74,Males,6
+Northern Ireland,West Midlands,65-74,Males,14
+Northern Ireland,East,65-74,Males,13
+Northern Ireland,London,65-74,Males,44
+Northern Ireland,South East,65-74,Males,20
+Northern Ireland,South West,65-74,Males,4
+Northern Ireland,Wales,65-74,Males,4
+Northern Ireland,Scotland,65-74,Males,14
+Northern Ireland,Northern Ireland,65-74,Males,0
+North East,North East,65-74,Females,0
+North East,North West,65-74,Females,45
+North East,Yorkshire and The Humber,65-74,Females,87
+North East,East Midlands,65-74,Females,34
+North East,West Midlands,65-74,Females,16
+North East,East,65-74,Females,30
+North East,London,65-74,Females,34
+North East,South East,65-74,Females,61
+North East,South West,65-74,Females,35
+North East,Wales,65-74,Females,11
+North East,Scotland,65-74,Females,43
+North East,Northern Ireland,65-74,Females,1
+North West,North East,65-74,Females,55
+North West,North West,65-74,Females,0
+North West,Yorkshire and The Humber,65-74,Females,162
+North West,East Midlands,65-74,Females,94
+North West,West Midlands,65-74,Females,122
+North West,East,65-74,Females,74
+North West,London,65-74,Females,77
+North West,South East,65-74,Females,133
+North West,South West,65-74,Females,94
+North West,Wales,65-74,Females,120
+North West,Scotland,65-74,Females,77
+North West,Northern Ireland,65-74,Females,5
+Yorkshire and The Humber,North East,65-74,Females,76
+Yorkshire and The Humber,North West,65-74,Females,164
+Yorkshire and The Humber,Yorkshire and The Humber,65-74,Females,0
+Yorkshire and The Humber,East Midlands,65-74,Females,182
+Yorkshire and The Humber,West Midlands,65-74,Females,62
+Yorkshire and The Humber,East,65-74,Females,75
+Yorkshire and The Humber,London,65-74,Females,69
+Yorkshire and The Humber,South East,65-74,Females,95
+Yorkshire and The Humber,South West,65-74,Females,74
+Yorkshire and The Humber,Wales,65-74,Females,38
+Yorkshire and The Humber,Scotland,65-74,Females,69
+Yorkshire and The Humber,Northern Ireland,65-74,Females,9
+East Midlands,North East,65-74,Females,36
+East Midlands,North West,65-74,Females,104
+East Midlands,Yorkshire and The Humber,65-74,Females,209
+East Midlands,East Midlands,65-74,Females,0
+East Midlands,West Midlands,65-74,Females,151
+East Midlands,East,65-74,Females,236
+East Midlands,London,65-74,Females,121
+East Midlands,South East,65-74,Females,221
+East Midlands,South West,65-74,Females,145
+East Midlands,Wales,65-74,Females,54
+East Midlands,Scotland,65-74,Females,61
+East Midlands,Northern Ireland,65-74,Females,10
+West Midlands,North East,65-74,Females,21
+West Midlands,North West,65-74,Females,112
+West Midlands,Yorkshire and The Humber,65-74,Females,59
+West Midlands,East Midlands,65-74,Females,122
+West Midlands,West Midlands,65-74,Females,0
+West Midlands,East,65-74,Females,93
+West Midlands,London,65-74,Females,102
+West Midlands,South East,65-74,Females,131
+West Midlands,South West,65-74,Females,202
+West Midlands,Wales,65-74,Females,146
+West Midlands,Scotland,65-74,Females,24
+West Midlands,Northern Ireland,65-74,Females,9
+East,North East,65-74,Females,27
+East,North West,65-74,Females,92
+East,Yorkshire and The Humber,65-74,Females,71
+East,East Midlands,65-74,Females,201
+East,West Midlands,65-74,Females,68
+East,East,65-74,Females,0
+East,London,65-74,Females,855
+East,South East,65-74,Females,356
+East,South West,65-74,Females,157
+East,Wales,65-74,Females,38
+East,Scotland,65-74,Females,46
+East,Northern Ireland,65-74,Females,6
+London,North East,65-74,Females,26
+London,North West,65-74,Females,71
+London,Yorkshire and The Humber,65-74,Females,48
+London,East Midlands,65-74,Females,57
+London,West Midlands,65-74,Females,76
+London,East,65-74,Females,278
+London,London,65-74,Females,0
+London,South East,65-74,Females,501
+London,South West,65-74,Females,159
+London,Wales,65-74,Females,39
+London,Scotland,65-74,Females,52
+London,Northern Ireland,65-74,Females,5
+South East,North East,65-74,Females,31
+South East,North West,65-74,Females,153
+South East,Yorkshire and The Humber,65-74,Females,114
+South East,East Midlands,65-74,Females,169
+South East,West Midlands,65-74,Females,152
+South East,East,65-74,Females,436
+South East,London,65-74,Females,1378
+South East,South East,65-74,Females,0
+South East,South West,65-74,Females,608
+South East,Wales,65-74,Females,109
+South East,Scotland,65-74,Females,96
+South East,Northern Ireland,65-74,Females,15
+South West,North East,65-74,Females,21
+South West,North West,65-74,Females,166
+South West,Yorkshire and The Humber,65-74,Females,123
+South West,East Midlands,65-74,Females,162
+South West,West Midlands,65-74,Females,352
+South West,East,65-74,Females,232
+South West,London,65-74,Females,478
+South West,South East,65-74,Females,882
+South West,South West,65-74,Females,0
+South West,Wales,65-74,Females,139
+South West,Scotland,65-74,Females,66
+South West,Northern Ireland,65-74,Females,9
+Wales,North East,65-74,Females,5
+Wales,North West,65-74,Females,259
+Wales,Yorkshire and The Humber,65-74,Females,40
+Wales,East Midlands,65-74,Females,63
+Wales,West Midlands,65-74,Females,209
+Wales,East,65-74,Females,69
+Wales,London,65-74,Females,96
+Wales,South East,65-74,Females,131
+Wales,South West,65-74,Females,137
+Wales,Wales,65-74,Females,0
+Wales,Scotland,65-74,Females,22
+Wales,Northern Ireland,65-74,Females,5
+Scotland,North East,65-74,Females,36
+Scotland,North West,65-74,Females,82
+Scotland,Yorkshire and The Humber,65-74,Females,50
+Scotland,East Midlands,65-74,Females,39
+Scotland,West Midlands,65-74,Females,40
+Scotland,East,65-74,Females,58
+Scotland,London,65-74,Females,39
+Scotland,South East,65-74,Females,97
+Scotland,South West,65-74,Females,44
+Scotland,Wales,65-74,Females,23
+Scotland,Scotland,65-74,Females,0
+Scotland,Northern Ireland,65-74,Females,6
+Northern Ireland,North East,65-74,Females,0
+Northern Ireland,North West,65-74,Females,32
+Northern Ireland,Yorkshire and The Humber,65-74,Females,12
+Northern Ireland,East Midlands,65-74,Females,8
+Northern Ireland,West Midlands,65-74,Females,5
+Northern Ireland,East,65-74,Females,14
+Northern Ireland,London,65-74,Females,25
+Northern Ireland,South East,65-74,Females,22
+Northern Ireland,South West,65-74,Females,4
+Northern Ireland,Wales,65-74,Females,9
+Northern Ireland,Scotland,65-74,Females,17
+Northern Ireland,Northern Ireland,65-74,Females,0
+North East,North East,75+,Males,0
+North East,North West,75+,Males,34
+North East,Yorkshire and The Humber,75+,Males,69
+North East,East Midlands,75+,Males,26
+North East,West Midlands,75+,Males,10
+North East,East,75+,Males,18
+North East,London,75+,Males,14
+North East,South East,75+,Males,27
+North East,South West,75+,Males,20
+North East,Wales,75+,Males,5
+North East,Scotland,75+,Males,18
+North East,Northern Ireland,75+,Males,1
+North West,North East,75+,Males,34
+North West,North West,75+,Males,0
+North West,Yorkshire and The Humber,75+,Males,104
+North West,East Midlands,75+,Males,64
+North West,West Midlands,75+,Males,92
+North West,East,75+,Males,47
+North West,London,75+,Males,39
+North West,South East,75+,Males,89
+North West,South West,75+,Males,70
+North West,Wales,75+,Males,68
+North West,Scotland,75+,Males,59
+North West,Northern Ireland,75+,Males,4
+Yorkshire and The Humber,North East,75+,Males,58
+Yorkshire and The Humber,North West,75+,Males,107
+Yorkshire and The Humber,Yorkshire and The Humber,75+,Males,0
+Yorkshire and The Humber,East Midlands,75+,Males,100
+Yorkshire and The Humber,West Midlands,75+,Males,39
+Yorkshire and The Humber,East,75+,Males,55
+Yorkshire and The Humber,London,75+,Males,27
+Yorkshire and The Humber,South East,75+,Males,51
+Yorkshire and The Humber,South West,75+,Males,36
+Yorkshire and The Humber,Wales,75+,Males,20
+Yorkshire and The Humber,Scotland,75+,Males,25
+Yorkshire and The Humber,Northern Ireland,75+,Males,1
+East Midlands,North East,75+,Males,32
+East Midlands,North West,75+,Males,80
+East Midlands,Yorkshire and The Humber,75+,Males,128
+East Midlands,East Midlands,75+,Males,0
+East Midlands,West Midlands,75+,Males,115
+East Midlands,East,75+,Males,128
+East Midlands,London,75+,Males,63
+East Midlands,South East,75+,Males,112
+East Midlands,South West,75+,Males,83
+East Midlands,Wales,75+,Males,38
+East Midlands,Scotland,75+,Males,21
+East Midlands,Northern Ireland,75+,Males,1
+West Midlands,North East,75+,Males,17
+West Midlands,North West,75+,Males,80
+West Midlands,Yorkshire and The Humber,75+,Males,38
+West Midlands,East Midlands,75+,Males,96
+West Midlands,West Midlands,75+,Males,0
+West Midlands,East,75+,Males,56
+West Midlands,London,75+,Males,67
+West Midlands,South East,75+,Males,102
+West Midlands,South West,75+,Males,159
+West Midlands,Wales,75+,Males,75
+West Midlands,Scotland,75+,Males,12
+West Midlands,Northern Ireland,75+,Males,2
+East,North East,75+,Males,20
+East,North West,75+,Males,67
+East,Yorkshire and The Humber,75+,Males,49
+East,East Midlands,75+,Males,131
+East,West Midlands,75+,Males,46
+East,East,75+,Males,0
+East,London,75+,Males,585
+East,South East,75+,Males,225
+East,South West,75+,Males,124
+East,Wales,75+,Males,36
+East,Scotland,75+,Males,25
+East,Northern Ireland,75+,Males,0
+London,North East,75+,Males,9
+London,North West,75+,Males,42
+London,Yorkshire and The Humber,75+,Males,28
+London,East Midlands,75+,Males,36
+London,West Midlands,75+,Males,29
+London,East,75+,Males,177
+London,London,75+,Males,0
+London,South East,75+,Males,298
+London,South West,75+,Males,93
+London,Wales,75+,Males,26
+London,Scotland,75+,Males,26
+London,Northern Ireland,75+,Males,4
+South East,North East,75+,Males,23
+South East,North West,75+,Males,107
+South East,Yorkshire and The Humber,75+,Males,65
+South East,East Midlands,75+,Males,148
+South East,West Midlands,75+,Males,88
+South East,East,75+,Males,332
+South East,London,75+,Males,912
+South East,South East,75+,Males,0
+South East,South West,75+,Males,513
+South East,Wales,75+,Males,79
+South East,Scotland,75+,Males,61
+South East,Northern Ireland,75+,Males,2
+South West,North East,75+,Males,23
+South West,North West,75+,Males,91
+South West,Yorkshire and The Humber,75+,Males,53
+South West,East Midlands,75+,Males,97
+South West,West Midlands,75+,Males,208
+South West,East,75+,Males,151
+South West,London,75+,Males,219
+South West,South East,75+,Males,466
+South West,South West,75+,Males,0
+South West,Wales,75+,Males,96
+South West,Scotland,75+,Males,30
+South West,Northern Ireland,75+,Males,8
+Wales,North East,75+,Males,11
+Wales,North West,75+,Males,128
+Wales,Yorkshire and The Humber,75+,Males,24
+Wales,East Midlands,75+,Males,40
+Wales,West Midlands,75+,Males,108
+Wales,East,75+,Males,37
+Wales,London,75+,Males,41
+Wales,South East,75+,Males,78
+Wales,South West,75+,Males,75
+Wales,Wales,75+,Males,0
+Wales,Scotland,75+,Males,15
+Wales,Northern Ireland,75+,Males,0
+Scotland,North East,75+,Males,25
+Scotland,North West,75+,Males,63
+Scotland,Yorkshire and The Humber,75+,Males,25
+Scotland,East Midlands,75+,Males,19
+Scotland,West Midlands,75+,Males,40
+Scotland,East,75+,Males,22
+Scotland,London,75+,Males,37
+Scotland,South East,75+,Males,54
+Scotland,South West,75+,Males,28
+Scotland,Wales,75+,Males,11
+Scotland,Scotland,75+,Males,0
+Scotland,Northern Ireland,75+,Males,6
+Northern Ireland,North East,75+,Males,2
+Northern Ireland,North West,75+,Males,20
+Northern Ireland,Yorkshire and The Humber,75+,Males,3
+Northern Ireland,East Midlands,75+,Males,2
+Northern Ireland,West Midlands,75+,Males,3
+Northern Ireland,East,75+,Males,4
+Northern Ireland,London,75+,Males,14
+Northern Ireland,South East,75+,Males,13
+Northern Ireland,South West,75+,Males,3
+Northern Ireland,Wales,75+,Males,3
+Northern Ireland,Scotland,75+,Males,13
+Northern Ireland,Northern Ireland,75+,Males,0
+North East,North East,75+,Females,0
+North East,North West,75+,Females,68
+North East,Yorkshire and The Humber,75+,Females,102
+North East,East Midlands,75+,Females,36
+North East,West Midlands,75+,Females,23
+North East,East,75+,Females,34
+North East,London,75+,Females,19
+North East,South East,75+,Females,51
+North East,South West,75+,Females,36
+North East,Wales,75+,Females,12
+North East,Scotland,75+,Females,43
+North East,Northern Ireland,75+,Females,2
+North West,North East,75+,Females,80
+North West,North West,75+,Females,0
+North West,Yorkshire and The Humber,75+,Females,187
+North West,East Midlands,75+,Females,102
+North West,West Midlands,75+,Females,168
+North West,East,75+,Females,80
+North West,London,75+,Females,82
+North West,South East,75+,Females,150
+North West,South West,75+,Females,108
+North West,Wales,75+,Females,135
+North West,Scotland,75+,Females,62
+North West,Northern Ireland,75+,Females,5
+Yorkshire and The Humber,North East,75+,Females,107
+Yorkshire and The Humber,North West,75+,Females,220
+Yorkshire and The Humber,Yorkshire and The Humber,75+,Females,0
+Yorkshire and The Humber,East Midlands,75+,Females,168
+Yorkshire and The Humber,West Midlands,75+,Females,66
+Yorkshire and The Humber,East,75+,Females,84
+Yorkshire and The Humber,London,75+,Females,59
+Yorkshire and The Humber,South East,75+,Females,102
+Yorkshire and The Humber,South West,75+,Females,70
+Yorkshire and The Humber,Wales,75+,Females,31
+Yorkshire and The Humber,Scotland,75+,Females,45
+Yorkshire and The Humber,Northern Ireland,75+,Females,3
+East Midlands,North East,75+,Females,45
+East Midlands,North West,75+,Females,142
+East Midlands,Yorkshire and The Humber,75+,Females,264
+East Midlands,East Midlands,75+,Females,0
+East Midlands,West Midlands,75+,Females,221
+East Midlands,East,75+,Females,239
+East Midlands,London,75+,Females,107
+East Midlands,South East,75+,Females,225
+East Midlands,South West,75+,Females,136
+East Midlands,Wales,75+,Females,46
+East Midlands,Scotland,75+,Females,56
+East Midlands,Northern Ireland,75+,Females,3
+West Midlands,North East,75+,Females,26
+West Midlands,North West,75+,Females,153
+West Midlands,Yorkshire and The Humber,75+,Females,75
+West Midlands,East Midlands,75+,Females,167
+West Midlands,West Midlands,75+,Females,0
+West Midlands,East,75+,Females,112
+West Midlands,London,75+,Females,106
+West Midlands,South East,75+,Females,195
+West Midlands,South West,75+,Females,235
+West Midlands,Wales,75+,Females,154
+West Midlands,Scotland,75+,Females,28
+West Midlands,Northern Ireland,75+,Females,13
+East,North East,75+,Females,48
+East,North West,75+,Females,90
+East,Yorkshire and The Humber,75+,Females,111
+East,East Midlands,75+,Females,221
+East,West Midlands,75+,Females,114
+East,East,75+,Females,0
+East,London,75+,Females,1077
+East,South East,75+,Females,492
+East,South West,75+,Females,223
+East,Wales,75+,Females,62
+East,Scotland,75+,Females,55
+East,Northern Ireland,75+,Females,7
+London,North East,75+,Females,24
+London,North West,75+,Females,79
+London,Yorkshire and The Humber,75+,Females,47
+London,East Midlands,75+,Females,52
+London,West Midlands,75+,Females,64
+London,East,75+,Females,290
+London,London,75+,Females,0
+London,South East,75+,Females,501
+London,South West,75+,Females,149
+London,Wales,75+,Females,40
+London,Scotland,75+,Females,41
+London,Northern Ireland,75+,Females,8
+South East,North East,75+,Females,58
+South East,North West,75+,Females,178
+South East,Yorkshire and The Humber,75+,Females,135
+South East,East Midlands,75+,Females,214
+South East,West Midlands,75+,Females,194
+South East,East,75+,Females,528
+South East,London,75+,Females,1631
+South East,South East,75+,Females,0
+South East,South West,75+,Females,823
+South East,Wales,75+,Females,162
+South East,Scotland,75+,Females,94
+South East,Northern Ireland,75+,Females,9
+South West,North East,75+,Females,45
+South West,North West,75+,Females,171
+South West,Yorkshire and The Humber,75+,Females,110
+South West,East Midlands,75+,Females,131
+South West,West Midlands,75+,Females,304
+South West,East,75+,Females,277
+South West,London,75+,Females,395
+South West,South East,75+,Females,787
+South West,South West,75+,Females,0
+South West,Wales,75+,Females,160
+South West,Scotland,75+,Females,55
+South West,Northern Ireland,75+,Females,9
+Wales,North East,75+,Females,12
+Wales,North West,75+,Females,176
+Wales,Yorkshire and The Humber,75+,Females,32
+Wales,East Midlands,75+,Females,39
+Wales,West Midlands,75+,Females,168
+Wales,East,75+,Females,56
+Wales,London,75+,Females,57
+Wales,South East,75+,Females,117
+Wales,South West,75+,Females,144
+Wales,Wales,75+,Females,0
+Wales,Scotland,75+,Females,21
+Wales,Northern Ireland,75+,Females,0
+Scotland,North East,75+,Females,35
+Scotland,North West,75+,Females,88
+Scotland,Yorkshire and The Humber,75+,Females,40
+Scotland,East Midlands,75+,Females,38
+Scotland,West Midlands,75+,Females,56
+Scotland,East,75+,Females,40
+Scotland,London,75+,Females,49
+Scotland,South East,75+,Females,62
+Scotland,South West,75+,Females,60
+Scotland,Wales,75+,Females,13
+Scotland,Scotland,75+,Females,0
+Scotland,Northern Ireland,75+,Females,9
+Northern Ireland,North East,75+,Females,4
+Northern Ireland,North West,75+,Females,27
+Northern Ireland,Yorkshire and The Humber,75+,Females,6
+Northern Ireland,East Midlands,75+,Females,4
+Northern Ireland,West Midlands,75+,Females,2
+Northern Ireland,East,75+,Females,4
+Northern Ireland,London,75+,Females,15
+Northern Ireland,South East,75+,Females,14
+Northern Ireland,South West,75+,Females,0
+Northern Ireland,Wales,75+,Females,6
+Northern Ireland,Scotland,75+,Females,10
+Northern Ireland,Northern Ireland,75+,Females,0
