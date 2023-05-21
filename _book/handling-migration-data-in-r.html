@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Handling Migration Data in R | Handling, Measuring, Estimating and Visualizing Migration Data in R</title>
+  <meta name="description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Handling Migration Data in R | Handling, Measuring, Estimating and Visualizing Migration Data in R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Handling Migration Data in R | Handling, Measuring, Estimating and Visualizing Migration Data in R" />
+  
+  <meta name="twitter:description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  
+
+<meta name="author" content="Guy J. Abel, James Raymer, Ellen Kraly" />
+
+
+<meta name="date" content="2023-05-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="migration-concepts.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Migration in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="migration-concepts.html"><a href="migration-concepts.html"><i class="fa fa-check"></i><b>2</b> Migration Concepts</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="migration-concepts.html"><a href="migration-concepts.html#spatial"><i class="fa fa-check"></i><b>2.1</b> Spatial</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="migration-concepts.html"><a href="migration-concepts.html#usual-residence"><i class="fa fa-check"></i><b>2.1.1</b> Usual Residence</a></li>
+<li class="chapter" data-level="2.1.2" data-path="migration-concepts.html"><a href="migration-concepts.html#origin"><i class="fa fa-check"></i><b>2.1.2</b> Origin</a></li>
+<li class="chapter" data-level="2.1.3" data-path="migration-concepts.html"><a href="migration-concepts.html#migrant-transition-data"><i class="fa fa-check"></i><b>2.1.3</b> Migrant Transition Data</a></li>
+<li class="chapter" data-level="2.1.4" data-path="migration-concepts.html"><a href="migration-concepts.html#migation-event-data"><i class="fa fa-check"></i><b>2.1.4</b> Migation Event Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="migration-concepts.html"><a href="migration-concepts.html#temporal"><i class="fa fa-check"></i><b>2.2</b> Temporal</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="migration-concepts.html"><a href="migration-concepts.html#migration-interval"><i class="fa fa-check"></i><b>2.2.1</b> Migration Interval</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="migration-concepts.html"><a href="migration-concepts.html#migration-measures"><i class="fa fa-check"></i><b>2.3</b> Migration Measures</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="migration-concepts.html"><a href="migration-concepts.html#region-to-region"><i class="fa fa-check"></i><b>2.3.1</b> Region-to-region</a></li>
+<li class="chapter" data-level="2.3.2" data-path="migration-concepts.html"><a href="migration-concepts.html#region-totals"><i class="fa fa-check"></i><b>2.3.2</b> Region Totals</a></li>
+<li class="chapter" data-level="2.3.3" data-path="migration-concepts.html"><a href="migration-concepts.html#rate-measures"><i class="fa fa-check"></i><b>2.3.3</b> Rate measures</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="migration-concepts.html"><a href="migration-concepts.html#references"><i class="fa fa-check"></i><b>2.4</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html"><i class="fa fa-check"></i><b>3</b> Handling Migration Data in R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#contingency-table"><i class="fa fa-check"></i><b>3.1</b> Contingency Table</a></li>
+<li class="chapter" data-level="3.2" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#data-creation"><i class="fa fa-check"></i><b>3.2</b> Data Creation</a></li>
+<li class="chapter" data-level="3.3" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#data-manipulation"><i class="fa fa-check"></i><b>3.3</b> Data Manipulation</a></li>
+<li class="chapter" data-level="3.4" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#matrix-operations"><i class="fa fa-check"></i><b>3.4</b> Matrix Operations</a></li>
+<li class="chapter" data-level="3.5" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#summaries"><i class="fa fa-check"></i><b>3.5</b> Summaries</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#bilateral-measures"><i class="fa fa-check"></i><b>3.5.1</b> Bilateral measures</a></li>
+<li class="chapter" data-level="3.5.2" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#total-measures"><i class="fa fa-check"></i><b>3.5.2</b> Total Measures</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Handling, Measuring, Estimating and Visualizing Migration Data in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="handling-migration-data-in-r" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Handling Migration Data in R<a href="handling-migration-data-in-r.html#handling-migration-data-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The R statistical language provides many powerful tools to carry out data analysis. In this chapter we highlight some useful R functions to manipulate migration data into specific formats that might be required for more advanced functions to analysis or visualization.</p>
+<div id="contingency-table" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Contingency Table<a href="handling-migration-data-in-r.html#contingency-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Bilateral migration data is often organized and represented in square tables, commonly referred to as migration matrices. These tables or matrices are form of contingency tables, otherwise know as cross-tabulations or frequency tables, often used in data analysis and statistics. Migration tables provide a structured way to organize and summarize origin-destination migration data, often with table rows containing the region of origin and the table columns based on the regions of destinations. The cells in the table typically capture the counts of migration from one region of origin to another region of destination, where each non-diagonal cell in the table represents the number of migrants moving between a specific pair of regions. The inspection of migration tables themselves often provides valuable first insights into the magnitude and direction of migration flows between different areas.</p>
+<table>
+<tr>
+<td colspan="1">
+<em>Origin</em>
+</td>
+<td colspan="5" style="text-align:center">
+<em>Destination</em>
+</td>
+</tr>
+<tr style="border-bottom:2px solid black">
+<td>
+</td>
+<td>
+A
+</td>
+<td>
+B
+</td>
+<td>
+C
+</td>
+<td>
+D
+</td>
+<td>
+Sum
+</td>
+</tr>
+<tr>
+<td>
+A
+</td>
+<td>
+</td>
+<td>
+100
+</td>
+<td>
+30
+</td>
+<td>
+70
+</td>
+<td>
+200
+</td>
+</tr>
+<tr>
+<td>
+B
+</td>
+<td>
+50
+</td>
+<td>
+</td>
+<td>
+45
+</td>
+<td>
+5
+</td>
+<td>
+100
+</td>
+</tr>
+<tr>
+<td>
+C
+</td>
+<td>
+60
+</td>
+<td>
+35
+</td>
+<td>
+</td>
+<td>
+40
+</td>
+<td>
+135
+</td>
+</tr>
+<tr>
+<td>
+D
+</td>
+<td>
+20
+</td>
+<td>
+25
+</td>
+<td>
+20
+</td>
+<td>
+</td>
+<td>
+65
+</td>
+</tr>
+<tr>
+<td>
+Sum
+</td>
+<td>
+130
+</td>
+<td>
+160
+</td>
+<td>
+95
+</td>
+<td>
+115
+</td>
+<td>
+500
+</td>
+</tr>
+</table>
+<p>The diagonal cells in migration tables, when provided, typically represent populations that either do not migrate or move within the same region. These values are often not presented or are assigned a specific value to indicate a non-moving or within-region population for allow for a clearer comparisons of the migration patterns in the non-diagonal cells.</p>
+</div>
+<div id="data-creation" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Data Creation<a href="handling-migration-data-in-r.html#data-creation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In R, we may create migration tables directly using the <code>matrix()</code> or <code>array()</code> functions. Both functions output create <code>array</code> type objects, are sometimes a pre-requisite for more complicated functions used for describing, estimating or visualising bilateral migration data.</p>
+<p>The <code>matrix()</code> function allows users to specify the dimensions of the matrix and populate it with desired values. It can be used to create matrices of any size, and supports various options for filling the matrix, such as using a sequence of numbers, replicating values, or using external data sources. Data is provided via a vector passed to the <code>data</code> argument. By default the data populates the matrix from the first column on, which can be altered by setting <code>byrow = FALSE</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="handling-migration-data-in-r.html#cb1-1" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">30</span>, <span class="dv">70</span>, <span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">45</span>, <span class="dv">5</span>, <span class="dv">60</span>, <span class="dv">35</span>, <span class="dv">0</span>, <span class="dv">40</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">20</span>, <span class="dv">0</span>),</span>
+<span id="cb1-2"><a href="handling-migration-data-in-r.html#cb1-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-3"><a href="handling-migration-data-in-r.html#cb1-3" aria-hidden="true" tabindex="-1"></a>m0</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    0  100   30   70
+## [2,]   50    0   45    5
+## [3,]   60   35    0   40
+## [4,]   20   25   20    0</code></pre>
+<p>It is often valuable to supply a vector of character strings for the origin and destination names to the <code>matrix</code> data object. These can be provided to an existing <code>matrix</code> object using the <code>dimnames()</code> via the <code>dimnames</code> argument or can be set via the <code>dimnames</code> argument within the <code>matrix()</code>. The corresponding <code>rownames()</code> and <code>colnames()</code> functions can be used to assign or display individual dimension names.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="handling-migration-data-in-r.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create region labels</span></span>
+<span id="cb3-2"><a href="handling-migration-data-in-r.html#cb3-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb3-3"><a href="handling-migration-data-in-r.html#cb3-3" aria-hidden="true" tabindex="-1"></a>r</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="handling-migration-data-in-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check dimension names</span></span>
+<span id="cb5-2"><a href="handling-migration-data-in-r.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(m0)</span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="handling-migration-data-in-r.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add dimension names</span></span>
+<span id="cb7-2"><a href="handling-migration-data-in-r.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(m0) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">orig =</span> r, <span class="at">dest =</span> r)</span>
+<span id="cb7-3"><a href="handling-migration-data-in-r.html#cb7-3" aria-hidden="true" tabindex="-1"></a>m0</span></code></pre></div>
+<pre><code>##     dest
+## orig  A   B  C  D
+##    A  0 100 30 70
+##    B 50   0 45  5
+##    C 60  35  0 40
+##    D 20  25 20  0</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="handling-migration-data-in-r.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create matrix with dimension names directly</span></span>
+<span id="cb9-2"><a href="handling-migration-data-in-r.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># m0 &lt;- matrix(data = c(0, 100, 30, 70, 50, 0, 45, 5, 60, 35, 0, 40, 20, 25, 20, 0),</span></span>
+<span id="cb9-3"><a href="handling-migration-data-in-r.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#              nrow = 4, ncol = 4, byrow = TRUE,</span></span>
+<span id="cb9-4"><a href="handling-migration-data-in-r.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#              dimnames = list(orig = r, dest = r))</span></span></code></pre></div>
+<p>In R, the <code>array()</code> function is used to create multidimensional arrays, which can have more than two dimensions. While the <code>matrix()</code> function creates two-dimensional structures, the <code>array()</code> function extends this capability to higher dimensions.</p>
+<p>Similar to the <code>matrix()</code> function, the <code>array()</code> function allows users to define the dimensions of the array and populate it with desired values. However, in the <code>array()</code> function, the dimensions are specified as a vector to the <code>dim</code> argument, indicating the size of each dimension.
+The <code>array()</code> function can be seen as a generalization of the <code>matrix()</code> function, as matrices are a specific type of two-dimensional arrays. By using the <code>array()</code> function, users can work with data that requires more complex organization and analysis, such as migration data cross classified by origin, destination and additional variables such as sex, age or education.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="handling-migration-data-in-r.html#cb10-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">data =</span> <span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">size =</span> <span class="dv">32</span>),</span>
+<span id="cb10-2"><a href="handling-migration-data-in-r.html#cb10-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb10-3"><a href="handling-migration-data-in-r.html#cb10-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="at">orig =</span> r, <span class="at">dest =</span> r, <span class="at">sex =</span> <span class="fu">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>)))</span>
+<span id="cb10-4"><a href="handling-migration-data-in-r.html#cb10-4" aria-hidden="true" tabindex="-1"></a>m1</span></code></pre></div>
+<pre><code>## , , sex = female
+## 
+##     dest
+## orig  A  B  C  D
+##    A 30 60  5 91
+##    B 62 68 79 22
+##    C 98 50  1 70
+##    D 19 95  7 73
+## 
+## , , sex = male
+## 
+##     dest
+## orig  A  B  C  D
+##    A 21 54 88 61
+##    B 76 96 82  9
+##    C 80 33 93 28
+##    D 26 99 72 31</code></pre>
+</div>
+<div id="data-manipulation" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Data Manipulation<a href="handling-migration-data-in-r.html#data-manipulation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Statistical offices, government agencies, and international organizations collect and disseminate migration data in different formats to accommodate the needs of users and researchers. The format of the data may not necessarily be in square matrices that can be read directly into R and converted into a <code>matrix</code> object. However, there are useful functions in R that can be employed to convert data into appropriate formats for migration analysis.</p>
+<p>The <code>xtabs()</code> function is particularly helpful as it enables the conversion of data frames in a tidy format <span class="citation">Wickham (<a href="#ref-Wickham2014" role="doc-biblioref">2014</a>)</span> into matrices or arrays. It requires a <code>formula</code> argument that specifies the column names in the data frame that will be used to construct and populate the <code>matrix</code> or <code>array</code>. The formula consists of the left-hand side representing the column name with the data to fill, the <code>~</code> symbol to separate the left and right-hand sides, and the right-hand side representing the columns used for cross-classifying the left-hand variable (separated by <code>+</code>). The <code>data</code> argument specifies the data object where the data in a tidy format with the variables to be used in the formula.</p>
+<pre><code>## # A tibble: 16 × 3
+##    orig  dest   flow
+##    &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
+##  1 A     A         1
+##  2 A     B         2
+##  3 A     C         3
+##  4 A     D         4
+##  5 B     A         5
+##  6 B     B         6
+##  7 B     C         7
+##  8 B     D         8
+##  9 C     A         9
+## 10 C     B        10
+## 11 C     C        11
+## 12 C     D        12
+## 13 D     A        13
+## 14 D     B        14
+## 15 D     C        15
+## 16 D     D        16</code></pre>
+<pre><code>##     dest
+## orig  A  B  C  D
+##    A  1  2  3  4
+##    B  5  6  7  8
+##    C  9 10 11 12
+##    D 13 14 15 16</code></pre>
+<p>The <code>as.data.frame.table()</code> function provides an inverse of the data manipulation of the <code>xtabs()</code> function, whereby it takes a <code>matrix</code> or <code>array</code> and converts it into a data frame based on the array dimension names. The <code>responseName</code> argument can be used to set the column name of the values in the cells of the <code>matrix</code> or <code>array</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="handling-migration-data-in-r.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert previous matrix back to tibble</span></span>
+<span id="cb14-2"><a href="handling-migration-data-in-r.html#cb14-2" aria-hidden="true" tabindex="-1"></a>m2 <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="handling-migration-data-in-r.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame.table</span>(<span class="at">responseName =</span> <span class="st">&quot;migration&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="handling-migration-data-in-r.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 16 × 3
+##    orig  dest  migration
+##    &lt;fct&gt; &lt;fct&gt;     &lt;int&gt;
+##  1 A     A             1
+##  2 B     A             5
+##  3 C     A             9
+##  4 D     A            13
+##  5 A     B             2
+##  6 B     B             6
+##  7 C     B            10
+##  8 D     B            14
+##  9 A     C             3
+## 10 B     C             7
+## 11 C     C            11
+## 12 D     C            15
+## 13 A     D             4
+## 14 B     D             8
+## 15 C     D            12
+## 16 D     D            16</code></pre>
+<p>Note, above we use <code>as_tibble()</code> to convert the <code>data.frame</code> object returned from <code>as.data.frame.table()</code> to the more user friendly <code>tibble</code> object type (insert citation) and use the pipe line function <code>%&gt;%</code> to combine together a sequence of R functions.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="handling-migration-data-in-r.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert array to tibble</span></span>
+<span id="cb16-2"><a href="handling-migration-data-in-r.html#cb16-2" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> m1 <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="handling-migration-data-in-r.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame.table</span>(<span class="at">responseName =</span> <span class="st">&quot;flow&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="handling-migration-data-in-r.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb16-5"><a href="handling-migration-data-in-r.html#cb16-5" aria-hidden="true" tabindex="-1"></a>d1</span></code></pre></div>
+<pre><code>## # A tibble: 32 × 4
+##    orig  dest  sex     flow
+##    &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;int&gt;
+##  1 A     A     female    30
+##  2 B     A     female    62
+##  3 C     A     female    98
+##  4 D     A     female    19
+##  5 A     B     female    60
+##  6 B     B     female    68
+##  7 C     B     female    50
+##  8 D     B     female    95
+##  9 A     C     female     5
+## 10 B     C     female    79
+## # … with 22 more rows</code></pre>
+</div>
+<div id="matrix-operations" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Matrix Operations<a href="handling-migration-data-in-r.html#matrix-operations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When working with <code>matrix</code> objects based on migration data in R there are additional functions that are useful for further formatting and data exploration. The <code>addmargins()</code> function is a useful tool for adding row and column margin totals to a <code>matrix</code> or <code>array</code> object.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="handling-migration-data-in-r.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="at">A =</span> m0)</span></code></pre></div>
+<pre><code>##      dest
+## orig    A   B  C   D Sum
+##   A     0 100 30  70 200
+##   B    50   0 45   5 100
+##   C    60  35  0  40 135
+##   D    20  25 20   0  65
+##   Sum 130 160 95 115 500</code></pre>
+<p>When working with migration matrices in R, it can sometimes be challenging to effectively view and analyze the data due to various factors such as lengthy dimension names and large unit sizes. Additionally, the inclusion of diagonal terms, which are often not of interest in migration analysis, can further complicate the interpretation of the matrix. However, R provides several helpful functions that can assist in adapting migration matrix objects for easier viewing and analysis. To illustrate their application, we will use the <code>uar_1960</code> object from the <strong>migest</strong> package, which represents a lifetime migration matrix for the Governorates of the United Arab Republic in 1960 as documented in the United Nations manual by <span class="citation">United Nations Department of Economic and Social Affairs Population Division (<a href="#ref-UnitedNations1983" role="doc-biblioref">1970</a>)</span>. Notice how by default the object is difficult to completely view due to the forementioned issues:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="handling-migration-data-in-r.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(migest)</span>
+<span id="cb20-2"><a href="handling-migration-data-in-r.html#cb20-2" aria-hidden="true" tabindex="-1"></a>uar_1960</span></code></pre></div>
+<pre><code>##             dest
+## orig           Cairo Alexandria Port-Said Ismailia Kalyubia Gharbia Menoufia
+##   Cairo      2079434      31049      5293     9813    23837   10034     7038
+##   Alexandria   47220    1085602      2641     2625     2135    4921     1505
+##   Port-Said     9464       2562    168046     6461      496     817      323
+##   Ismailia      9518       1395      3490   171297      718     910      306
+##   Kalyubia     90668       4730       758     3182   886464    3727     3523
+##   Gharbia      99179      39953      1742     3347     7870 1604851     6313
+##   Menoufia    216764      46781      1640     3338     2918   29580  1308283
+##   Giza         64584       4899       513     2013     2887    1503     2161
+##   Assyiut     100305      25497      1738     2522      122    2245      636
+##   Souhag      100100      63712     12087     9436      295    2791     1095
+##   All others  456464     177476     43898    66973    49816   47315    12179
+##             dest
+## orig            Giza Assyiut  Souhag All others
+##   Cairo        88543    4951    2569      58476
+##   Alexandria    6910    1355    1467      29534
+##   Port-Said     1505     326     454      11184
+##   Ismailia      1593     319     263      10269
+##   Kalyubia     10279     340     128      18076
+##   Gharbia      14529     848     491      64140
+##   Menoufia     30915     567     401      47843
+##   Giza       1040179     540     433      13518
+##   Assyiut      13153 1290255    5955      35157
+##   Souhag       17958   11608 1540020      53224
+##   All others   94577   14690   22375   11900302</code></pre>
+<p>When working with names or labels that are lengthy or contain unnecessary details, the <code>abbreviate()</code> function can be helpful. The function applies an algorithm to shorten the names while still retaining their essential information.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="handling-migration-data-in-r.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(uar_1960)</span></code></pre></div>
+<pre><code>## $orig
+##  [1] &quot;Cairo&quot;      &quot;Alexandria&quot; &quot;Port-Said&quot;  &quot;Ismailia&quot;   &quot;Kalyubia&quot;  
+##  [6] &quot;Gharbia&quot;    &quot;Menoufia&quot;   &quot;Giza&quot;       &quot;Assyiut&quot;    &quot;Souhag&quot;    
+## [11] &quot;All others&quot;
+## 
+## $dest
+##  [1] &quot;Cairo&quot;      &quot;Alexandria&quot; &quot;Port-Said&quot;  &quot;Ismailia&quot;   &quot;Kalyubia&quot;  
+##  [6] &quot;Gharbia&quot;    &quot;Menoufia&quot;   &quot;Giza&quot;       &quot;Assyiut&quot;    &quot;Souhag&quot;    
+## [11] &quot;All others&quot;</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="handling-migration-data-in-r.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a copy</span></span>
+<span id="cb24-2"><a href="handling-migration-data-in-r.html#cb24-2" aria-hidden="true" tabindex="-1"></a>u0 <span class="ot">&lt;-</span> uar_1960</span>
+<span id="cb24-3"><a href="handling-migration-data-in-r.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># new abbreviated region names</span></span>
+<span id="cb24-4"><a href="handling-migration-data-in-r.html#cb24-4" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">orig =</span> uar_1960 <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href="handling-migration-data-in-r.html#cb24-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rownames</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-6"><a href="handling-migration-data-in-r.html#cb24-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">abbreviate</span>(),</span>
+<span id="cb24-7"><a href="handling-migration-data-in-r.html#cb24-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">dest =</span> uar_1960 <span class="sc">%&gt;%</span></span>
+<span id="cb24-8"><a href="handling-migration-data-in-r.html#cb24-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">colnames</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-9"><a href="handling-migration-data-in-r.html#cb24-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">abbreviate</span>())</span>
+<span id="cb24-10"><a href="handling-migration-data-in-r.html#cb24-10" aria-hidden="true" tabindex="-1"></a>r</span></code></pre></div>
+<pre><code>## $orig
+##      Cairo Alexandria  Port-Said   Ismailia   Kalyubia    Gharbia   Menoufia 
+##     &quot;Cair&quot;     &quot;Alxn&quot;     &quot;Pr-S&quot;     &quot;Isml&quot;     &quot;Klyb&quot;     &quot;Ghrb&quot;     &quot;Menf&quot; 
+##       Giza    Assyiut     Souhag All others 
+##     &quot;Giza&quot;     &quot;Assy&quot;     &quot;Sohg&quot;     &quot;Allo&quot; 
+## 
+## $dest
+##      Cairo Alexandria  Port-Said   Ismailia   Kalyubia    Gharbia   Menoufia 
+##     &quot;Cair&quot;     &quot;Alxn&quot;     &quot;Pr-S&quot;     &quot;Isml&quot;     &quot;Klyb&quot;     &quot;Ghrb&quot;     &quot;Menf&quot; 
+##       Giza    Assyiut     Souhag All others 
+##     &quot;Giza&quot;     &quot;Assy&quot;     &quot;Sohg&quot;     &quot;Allo&quot;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="handling-migration-data-in-r.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apply the abbreviated region names</span></span>
+<span id="cb26-2"><a href="handling-migration-data-in-r.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(u0) <span class="ot">&lt;-</span> r</span>
+<span id="cb26-3"><a href="handling-migration-data-in-r.html#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="handling-migration-data-in-r.html#cb26-4" aria-hidden="true" tabindex="-1"></a>u0</span></code></pre></div>
+<pre><code>##       dest
+## orig      Cair    Alxn   Pr-S   Isml   Klyb    Ghrb    Menf    Giza    Assy
+##   Cair 2079434   31049   5293   9813  23837   10034    7038   88543    4951
+##   Alxn   47220 1085602   2641   2625   2135    4921    1505    6910    1355
+##   Pr-S    9464    2562 168046   6461    496     817     323    1505     326
+##   Isml    9518    1395   3490 171297    718     910     306    1593     319
+##   Klyb   90668    4730    758   3182 886464    3727    3523   10279     340
+##   Ghrb   99179   39953   1742   3347   7870 1604851    6313   14529     848
+##   Menf  216764   46781   1640   3338   2918   29580 1308283   30915     567
+##   Giza   64584    4899    513   2013   2887    1503    2161 1040179     540
+##   Assy  100305   25497   1738   2522    122    2245     636   13153 1290255
+##   Sohg  100100   63712  12087   9436    295    2791    1095   17958   11608
+##   Allo  456464  177476  43898  66973  49816   47315   12179   94577   14690
+##       dest
+## orig      Sohg     Allo
+##   Cair    2569    58476
+##   Alxn    1467    29534
+##   Pr-S     454    11184
+##   Isml     263    10269
+##   Klyb     128    18076
+##   Ghrb     491    64140
+##   Menf     401    47843
+##   Giza     433    13518
+##   Assy    5955    35157
+##   Sohg 1540020    53224
+##   Allo   22375 11900302</code></pre>
+<p>Basic arithmetic operators can be employed to scale the data to an appropriate level, such as dividing the values by a common factor or multiplying them to achieve a desired magnitude. This can be useful when working with migration matrices to adjust the values and make them more interpretable or comparable. The <code>round()</code> function which allows users to specify the precision of numbers in your migration data, which can be handy when working with migration rates or other quantitative measures.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="handling-migration-data-in-r.html#cb28-1" aria-hidden="true" tabindex="-1"></a>u1 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="at">x =</span> u0<span class="sc">/</span><span class="dv">1000</span>, <span class="at">digits =</span> <span class="dv">1</span>)</span>
+<span id="cb28-2"><a href="handling-migration-data-in-r.html#cb28-2" aria-hidden="true" tabindex="-1"></a>u1</span></code></pre></div>
+<pre><code>##       dest
+## orig     Cair   Alxn  Pr-S  Isml  Klyb   Ghrb   Menf   Giza   Assy   Sohg
+##   Cair 2079.4   31.0   5.3   9.8  23.8   10.0    7.0   88.5    5.0    2.6
+##   Alxn   47.2 1085.6   2.6   2.6   2.1    4.9    1.5    6.9    1.4    1.5
+##   Pr-S    9.5    2.6 168.0   6.5   0.5    0.8    0.3    1.5    0.3    0.5
+##   Isml    9.5    1.4   3.5 171.3   0.7    0.9    0.3    1.6    0.3    0.3
+##   Klyb   90.7    4.7   0.8   3.2 886.5    3.7    3.5   10.3    0.3    0.1
+##   Ghrb   99.2   40.0   1.7   3.3   7.9 1604.9    6.3   14.5    0.8    0.5
+##   Menf  216.8   46.8   1.6   3.3   2.9   29.6 1308.3   30.9    0.6    0.4
+##   Giza   64.6    4.9   0.5   2.0   2.9    1.5    2.2 1040.2    0.5    0.4
+##   Assy  100.3   25.5   1.7   2.5   0.1    2.2    0.6   13.2 1290.3    6.0
+##   Sohg  100.1   63.7  12.1   9.4   0.3    2.8    1.1   18.0   11.6 1540.0
+##   Allo  456.5  177.5  43.9  67.0  49.8   47.3   12.2   94.6   14.7   22.4
+##       dest
+## orig      Allo
+##   Cair    58.5
+##   Alxn    29.5
+##   Pr-S    11.2
+##   Isml    10.3
+##   Klyb    18.1
+##   Ghrb    64.1
+##   Menf    47.8
+##   Giza    13.5
+##   Assy    35.2
+##   Sohg    53.2
+##   Allo 11900.3</code></pre>
+<p>The <code>diag()</code> function allows users to manipulate the diagonal terms of a matrix, which often represent non-moving individuals or populations within a region which can be many orders of magnatude larger than the counts of persons migrating in the non-diagonal cells. The <code>diag()</code> function takes a matrix as input and returns a new matrix with the same values, except that the diagonal elements are modified according to the specified rule. In the context of migration data, setting the diagonal terms to zero effectively removes the non-moving populations from the matrix, making it easier to analyze the migration flows between regions of interest.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="handling-migration-data-in-r.html#cb30-1" aria-hidden="true" tabindex="-1"></a>u2 <span class="ot">&lt;-</span> u0</span>
+<span id="cb30-2"><a href="handling-migration-data-in-r.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(u2) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb30-3"><a href="handling-migration-data-in-r.html#cb30-3" aria-hidden="true" tabindex="-1"></a>u2</span></code></pre></div>
+<pre><code>##       dest
+## orig     Cair   Alxn  Pr-S  Isml  Klyb  Ghrb  Menf  Giza  Assy  Sohg  Allo
+##   Cair      0  31049  5293  9813 23837 10034  7038 88543  4951  2569 58476
+##   Alxn  47220      0  2641  2625  2135  4921  1505  6910  1355  1467 29534
+##   Pr-S   9464   2562     0  6461   496   817   323  1505   326   454 11184
+##   Isml   9518   1395  3490     0   718   910   306  1593   319   263 10269
+##   Klyb  90668   4730   758  3182     0  3727  3523 10279   340   128 18076
+##   Ghrb  99179  39953  1742  3347  7870     0  6313 14529   848   491 64140
+##   Menf 216764  46781  1640  3338  2918 29580     0 30915   567   401 47843
+##   Giza  64584   4899   513  2013  2887  1503  2161     0   540   433 13518
+##   Assy 100305  25497  1738  2522   122  2245   636 13153     0  5955 35157
+##   Sohg 100100  63712 12087  9436   295  2791  1095 17958 11608     0 53224
+##   Allo 456464 177476 43898 66973 49816 47315 12179 94577 14690 22375     0</code></pre>
+</div>
+<div id="summaries" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Summaries<a href="handling-migration-data-in-r.html#summaries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="bilateral-measures" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Bilateral measures<a href="handling-migration-data-in-r.html#bilateral-measures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>the <em>migest</em> package offers several useful functions for generating summaries of origin-destination migration data. One such function is <em>sum_bilat()</em>, which allows you to calculate the counter flow, net flow and interchange for all migration pairs. This function can accept either a <code>matrix</code>, <code>array</code> or a <code>data.frame</code> (or <code>tibble</code>) as input.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="handling-migration-data-in-r.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_bilat</span>(m0)</span></code></pre></div>
+<pre><code>## # A tibble: 12 × 8
+##    orig  dest  corridor pair   flow counter_flow net_flow interchange
+##    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;
+##  1 B     A     B -&gt; A   A - B    50          100      -50         150
+##  2 C     A     C -&gt; A   A - C    60           30       30          90
+##  3 D     A     D -&gt; A   A - D    20           70      -50          90
+##  4 A     B     A -&gt; B   A - B   100           50       50         150
+##  5 C     B     C -&gt; B   B - C    35           45      -10          80
+##  6 D     B     D -&gt; B   B - D    25            5       20          30
+##  7 A     C     A -&gt; C   A - C    30           60      -30          90
+##  8 B     C     B -&gt; C   B - C    45           35       10          80
+##  9 D     C     D -&gt; C   C - D    20           40      -20          60
+## 10 A     D     A -&gt; D   A - D    70           20       50          90
+## 11 B     D     B -&gt; D   B - D     5           25      -20          30
+## 12 C     D     C -&gt; D   C - D    40           20       20          60</code></pre>
+</div>
+<div id="total-measures" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Total Measures<a href="handling-migration-data-in-r.html#total-measures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Another useful function in the <em>migest</em> package is <code>sum_region()</code>, which allows you to generate comprehensive summaries of in-migration, out-migration, net migration, and turnover totals for each region in your migration data. Similar to the <code>sum_bilat()</code> function, <code>sum_region()</code> also accepts either a <code>matrix</code> or a <code>data.frame</code> (or <code>tibble</code>) as input, providing flexibility in working with different data formats.</p>
+<p>By using the <code>sum_region()</code> function, you can obtain valuable information about migration flows at the regional level. It calculates the total number of migrants moving into each region (in-migration), the total number of migrants moving out of each region (out-migration), the net migration balance (in-migration minus out-migration), and the turnover (sum of in-migration and out-migration) for each region. These summaries offer a comprehensive picture of migration levels for each region, allowing for further analysis and interpretation.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="handling-migration-data-in-r.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_region</span>(m0)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 5
+##   region out_mig in_mig  turn   net
+##   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 A          200    130   330   -70
+## 2 B          100    160   260    60
+## 3 C          135     95   230   -40
+## 4 D           65    115   180    50</code></pre>
+<p>Note, when the data provided to the <code>sum_region()</code> is a data frame, the origin and destination regions names are assumed to be in variables named <code>orig</code> and <code>dest</code>. In addition, the migration data re assumed by default to be in variable named <code>flow</code>. If the corresponding column names differ, the user can supply these to the <code>orig_col</code>, <code>dest_col</code> and <code>flow_col</code> argumenets in the <code>sum_region()</code> function.</p>
+<p>The <code>sum_country()</code> function provides the same calculations, but provides summary variables names corresponding to the equivalent terms used for international migration data. When the input data for either the <code>sum_region()</code> or <code>sum_country()</code> functions are over more than two dimensions, beyond the standard origin and destination dimensions, the <code>group_by</code> function from the <em>dplyr</em> package should be used to allow for specific calculations beyond the origin and destination dimensions. To demonstrate we will used the international flow estimates of <span class="citation">Abel and Cohen (<a href="#ref-Abel2019" role="doc-biblioref">2019</a>)</span> which can be downloaded and read directly into R from the online CSV file.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="handling-migration-data-in-r.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read data from web depository</span></span>
+<span id="cb36-2"><a href="handling-migration-data-in-r.html#cb36-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://ndownloader.figshare.com/files/26239945&quot;</span>)</span>
+<span id="cb36-3"><a href="handling-migration-data-in-r.html#cb36-3" aria-hidden="true" tabindex="-1"></a>f</span></code></pre></div>
+<pre><code>## # A tibble: 235,236 × 9
+##    year0 orig  dest  sd_drop_neg sd_rev_neg mig_rate da_min_open da_mi…¹ da_pb…²
+##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1  1990 BDI   BDI             0          0        0           0       0       0
+##  2  1990 COM   BDI             0          0        0           0       0       0
+##  3  1990 DJI   BDI             0          0        0           0       0       0
+##  4  1990 ERI   BDI             0          0        0           0       0      90
+##  5  1990 ETH   BDI             0          0        0           0       0       2
+##  6  1990 KEN   BDI            30         30       69          45      29      87
+##  7  1990 MDG   BDI             0          0        0           0       0       0
+##  8  1990 MWI   BDI             0          0        0           0       0     125
+##  9  1990 MUS   BDI             0          0        0           0       1       1
+## 10  1990 MYT   BDI             0          0        0           0       0       0
+## # … with 235,226 more rows, and abbreviated variable names ¹​da_min_closed,
+## #   ²​da_pb_closed</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="handling-migration-data-in-r.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># single period (1990-1995)</span></span>
+<span id="cb38-2"><a href="handling-migration-data-in-r.html#cb38-2" aria-hidden="true" tabindex="-1"></a>f <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="handling-migration-data-in-r.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year0 <span class="sc">==</span> <span class="dv">1990</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="handling-migration-data-in-r.html#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum_country</span>(<span class="at">flow_col =</span> <span class="st">&quot;da_pb_closed&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 197 × 5
+##    country    emi     imm    turn     net
+##    &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 ABW       1662   15874   17536   14212
+##  2 AFG     345255 3421712 3766967 3076457
+##  3 AGO      82775  225637  308412  142862
+##  4 ALB     464693   21479  486172 -443214
+##  5 ARE     272648  640784  913432  368136
+##  6 ARG     444239  339393  783632 -104846
+##  7 ARM     648202  151937  800139 -496265
+##  8 ATG       6153    8387   14540    2234
+##  9 AUS     691618 1042781 1734399  351163
+## 10 AUT     154853  382724  537577  227871
+## # … with 187 more rows</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="handling-migration-data-in-r.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all periods using group_by</span></span>
+<span id="cb40-2"><a href="handling-migration-data-in-r.html#cb40-2" aria-hidden="true" tabindex="-1"></a>f <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="handling-migration-data-in-r.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year0) <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="handling-migration-data-in-r.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum_country</span>(<span class="at">flow_col =</span> <span class="st">&quot;da_pb_closed&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-5"><a href="handling-migration-data-in-r.html#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(country)</span></code></pre></div>
+<pre><code>## # A tibble: 1,188 × 6
+## # Groups:   year0 [6]
+##    year0 country     emi     imm    turn      net
+##    &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+##  1  1990 ABW        1662   15874   17536    14212
+##  2  1995 ABW        4007   10945   14952     6938
+##  3  2000 ABW        3814   10064   13878     6250
+##  4  2005 ABW        7544    7124   14668     -420
+##  5  2010 ABW        8654    9910   18564     1256
+##  6  2015 ABW       16306   17316   33622     1010
+##  7  1990 AFG      345255 3421712 3766967  3076457
+##  8  1995 AFG     1286436  418906 1705342  -867530
+##  9  2000 AFG      434706 1178865 1613571   744159
+## 10  2005 AFG     1500149  457339 1957488 -1042810
+## # … with 1,178 more rows</code></pre>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Abel, Guy J., and Joel E. Cohen. 2019. <span>“<span class="nocase">Bilateral international migration flow estimates for 200 countries</span>.”</span> <em>Scientific Data</em> 6 (1): 82. <a href="https://doi.org/10.1038/s41597-019-0089-3">https://doi.org/10.1038/s41597-019-0089-3</a>.
+</div>
+<div class="csl-entry">
+Courgeau, Daniel. 1979. <span>“<span class="nocase">Migrants and migrations</span>.”</span> <em>Population (English Edition)</em> 3: 1—–35.
+</div>
+<div class="csl-entry">
+Lee, Everett S. 1966. <span>“<span class="nocase">A Theory of Migration</span>.”</span> <em>Demography</em> 3 (1): 47. <a href="https://doi.org/10.2307/2060063">https://doi.org/10.2307/2060063</a>.
+</div>
+<div class="csl-entry">
+Rogers, Andrei. 1990. <span>“<span class="nocase">Requiem for the Net Migrant</span>.”</span> <em>Geographical Analysis</em> 22 (4): 283–300. <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1538-4632.1990.tb00212.x/abstract">http://onlinelibrary.wiley.com/doi/10.1111/j.1538-4632.1990.tb00212.x/abstract</a>.
+</div>
+<div class="csl-entry">
+Rogerson, Peter A. 1990. <span>“<span class="nocase">Migration analysis using data with time intervals of differing widths</span>.”</span> <em>Papers of the Regional Science Association</em> 68 (1981): 97–106. <a href="https://link.springer.com/article/10.1007/BF01933910">https://link.springer.com/article/10.1007/BF01933910</a>.
+</div>
+<div class="csl-entry">
+United Nations Department of Economic and Social Affairs Population Division. 1970. <em><span class="nocase">Methods of measuring internal migration.</span></em> 15. New York, New York, USA: United Nations Publication. <a href="https://doi.org/10.2307/3002465">https://doi.org/10.2307/3002465</a>.
+</div>
+<div class="csl-entry">
+Wickham, Hadley. 2014. <span>“<span>Tiday Data</span>.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="http://www.jstatsoft.org/">http://www.jstatsoft.org/</a>.
+</div>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Abel2019" class="csl-entry">
+Abel, Guy J., and Joel E. Cohen. 2019. <span>“<span class="nocase">Bilateral international migration flow estimates for 200 countries</span>.”</span> <em>Scientific Data</em> 6 (1): 82. <a href="https://doi.org/10.1038/s41597-019-0089-3">https://doi.org/10.1038/s41597-019-0089-3</a>.
+</div>
+<div id="ref-UnitedNations1983" class="csl-entry">
+United Nations Department of Economic and Social Affairs Population Division. 1970. <em><span class="nocase">Methods of measuring internal migration.</span></em> 15. New York, New York, USA: United Nations Publication. <a href="https://doi.org/10.2307/3002465">https://doi.org/10.2307/3002465</a>.
+</div>
+<div id="ref-Wickham2014" class="csl-entry">
+Wickham, Hadley. 2014. <span>“<span>Tiday Data</span>.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="http://www.jstatsoft.org/">http://www.jstatsoft.org/</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="migration-concepts.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

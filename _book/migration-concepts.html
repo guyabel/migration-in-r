@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-
+<link rel="next" href="handling-migration-data-in-r.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -54,7 +54,93 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -69,7 +155,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Migration in R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -94,6 +180,18 @@
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="migration-concepts.html"><a href="migration-concepts.html#references"><i class="fa fa-check"></i><b>2.4</b> References</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html"><i class="fa fa-check"></i><b>3</b> Handling Migration Data in R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#contingency-table"><i class="fa fa-check"></i><b>3.1</b> Contingency Table</a></li>
+<li class="chapter" data-level="3.2" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#data-creation"><i class="fa fa-check"></i><b>3.2</b> Data Creation</a></li>
+<li class="chapter" data-level="3.3" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#data-manipulation"><i class="fa fa-check"></i><b>3.3</b> Data Manipulation</a></li>
+<li class="chapter" data-level="3.4" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#matrix-operations"><i class="fa fa-check"></i><b>3.4</b> Matrix Operations</a></li>
+<li class="chapter" data-level="3.5" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#summaries"><i class="fa fa-check"></i><b>3.5</b> Summaries</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#bilateral-measures"><i class="fa fa-check"></i><b>3.5.1</b> Bilateral measures</a></li>
+<li class="chapter" data-level="3.5.2" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#total-measures"><i class="fa fa-check"></i><b>3.5.2</b> Total Measures</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -116,7 +214,7 @@
             <section class="normal" id="section-">
 <div id="migration-concepts" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Migration Concepts<a href="migration-concepts.html#migration-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Migration is a complex phenomenon that involves a change in place of abode, or place of “usual” residence. As defined by the United Nations, migration refers to “the movement of a person or a group of persons, either across an international border or within a state” (<span class="citation">(<a href="#ref-UnitedNations1983" role="doc-biblioref"><strong>UnitedNations1983?</strong></a>)</span>). It can refer to various demographic units, such as a person, a family, or a household. However, the definition of migration typically excludes certain groups, such as nomads who do not have a fixed place of residence, or seasonal migrants who live in two or more places during the course of a year.</p>
+<p>Migration is a complex phenomenon that involves a change in place of abode, or place of “usual” residence. As defined by the United Nations, migration refers to “the movement of a person or a group of persons, either across an international border or within a state” (<span class="citation">United Nations Department of Economic and Social Affairs Population Division (<a href="#ref-UnitedNations1983" role="doc-biblioref">1970</a>)</span>). It can refer to various demographic units, such as a person, a family, or a household. However, the definition of migration typically excludes certain groups, such as nomads who do not have a fixed place of residence, or seasonal migrants who live in two or more places during the course of a year.</p>
 <p>Both a spatial (place) and temporal (change) dimension are required in the definition of migration. Spatially, migration involves moving from one place to another, whether it be across a border or within a state. Temporally, migration involves a change over time, such as taking up life in a new or different place. Unlike other demographic processes, migration is not a one-time event, but rather a process that can involve multiple moves over the course of a lifetime</p>
 <div id="spatial" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Spatial<a href="migration-concepts.html#spatial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -129,7 +227,7 @@
 <li><p>The place at which the person has lived continuously for at least the last 12 months, not including temporary absences for holidays or work assignments, or intends to live for at least 12 months.”</p></li>
 </ol>
 <p>The use of two alternative criteria leaves some area of ambiguity, where the subtle differences in each could have significant implications for the measurement of migration. Further, within either of these criteria they might be additional ambiguity. For example, persons on long work assignments might have intentions to stay for only a few months that might turn into many months.</p>
-<p>When defining migration, typically no restrictions are placed on the distance involved in a relocation <span class="citation">(<a href="#ref-Lee1966" role="doc-biblioref"><strong>Lee1966?</strong></a>)</span>, it could involve a move from one apartment to another in the same building or a move to another country. In the past, some researchers have distinguished between moves between local communities, such as cities or labor markets, and moves within local communities, often labeled as “migration” and “local mobility.” However, many have argued that this distinction is problematic and that no spatial constraints on the definition of migration should be used. This is because such a distinction could be arbitrary and context-dependent.</p>
+<p>When defining migration, typically no restrictions are placed on the distance involved in a relocation <span class="citation">Lee (<a href="#ref-Lee1966" role="doc-biblioref">1966</a>)</span>, it could involve a move from one apartment to another in the same building or a move to another country. In the past, some researchers have distinguished between moves between local communities, such as cities or labor markets, and moves within local communities, often labeled as “migration” and “local mobility.” However, many have argued that this distinction is problematic and that no spatial constraints on the definition of migration should be used. This is because such a distinction could be arbitrary and context-dependent.</p>
 <p>When analyzing migration patterns, it is useful to have information on the distance involved in a relocation. If address information on points of origin and destination is available, it is possible to tabulate moves by the distance covered. However, in many countries without population registers, this is not possible, and it may be time-consuming and of little policy relevance.</p>
 <p>Census or survey results are usually tabulated for the administrative or political units into which the country is divided. Therefore, migration is operationally defined as a change of residence from one civil division to another, and the volume of migration is then function of the size of areas chosen for compilation, where typically larger administrative units, such as a state or country, have a higher volume of migration compared to smaller units like cities or counties. Most countries typically have hierarchies in their administrative units and might provide migration data to reflect one or more of these geographies. Using larger geographic units can result in a loss of detail and accuracy in migration data. For instance, if a state is used as the unit of compilation, it may not capture migration patterns between different cities within the state, which could be important for local policy-making. On the other hand, using smaller geographic units such as census tracts may result in too much detail, making it difficult to draw broader conclusions about migration trends at the regional or national level.</p>
 </div>
@@ -146,7 +244,7 @@
 <div id="migation-event-data" class="section level3 hasAnchor" number="2.1.4">
 <h3><span class="header-section-number">2.1.4</span> Migation Event Data<a href="migration-concepts.html#migation-event-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Event data records every move made by an individual, including multiple and return migrations, newborn moves, and moves immediately before death. Population registers typically collect these data and provide a more complete record of migration over time. However, the geographical units for which data are available are generally coarser, and registers often fail to capture information on within-region moves. Additionally, less information about the characteristics of migrants is usually available, and some groups may be omitted altogether, such as prisoners and military personnel.</p>
-<p>There are important distinctions between the play (migration) and the actor (migrant). For a given migration interval, the number of migrants is rarely, if ever, as large as the number of migrations. Unless the interval is very short, such as a day or perhaps a week, some persons are certain to move more than once. The longer the migration interval, the more the count of migrants will understate the amount of migration. Conversely, the shorter the migration interval, the count of migrants will approach the number of migrations <span class="citation">(<a href="#ref-Courgeau1979" role="doc-biblioref"><strong>Courgeau1979?</strong></a>)</span>.</p>
+<p>There are important distinctions between the play (migration) and the actor (migrant). For a given migration interval, the number of migrants is rarely, if ever, as large as the number of migrations. Unless the interval is very short, such as a day or perhaps a week, some persons are certain to move more than once. The longer the migration interval, the more the count of migrants will understate the amount of migration. Conversely, the shorter the migration interval, the count of migrants will approach the number of migrations <span class="citation">Courgeau (<a href="#ref-Courgeau1979" role="doc-biblioref">1979</a>)</span>.</p>
 </div>
 </div>
 <div id="temporal" class="section level2 hasAnchor" number="2.2">
@@ -154,7 +252,7 @@
 <div id="migration-interval" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Migration Interval<a href="migration-concepts.html#migration-interval" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Migration is a continuous process that occurs over time, and to study its incidence, data must be compiled with reference to specific periods of time. These time periods can be either definite or indefinite. Definite interval data is typically collected over fixed-term periods such as one year, five years, ten years, or the intercensal period. Indefinate interval data such as lifetime migration measures or data based on place of last residence lack a definite time reference as age or time at the current residence varies by each individual migrant.</p>
-<p>The comparability of migration data with different definite time intervals can be prohibitively complicated. Commonly described as the one-year five-year problem, observed migration data consistently shows the number of migrants recorded over a five-year interval is far less than five times the number recorded over a one-year interval. In addition, the ratio of migrants between a five-year period and a one-year period is not constant, where variations occur depending on multiple factors such as the intensity and type of migration both over time and in each origin and destination. Consequently, there is no straightforward algebraic solution to comparing one-year and five-year migration probabilities <span class="citation">(<a href="#ref-Rogerson1990" role="doc-biblioref"><strong>Rogerson1990?</strong></a>)</span>.</p>
+<p>The comparability of migration data with different definite time intervals can be prohibitively complicated. Commonly described as the one-year five-year problem, observed migration data consistently shows the number of migrants recorded over a five-year interval is far less than five times the number recorded over a one-year interval. In addition, the ratio of migrants between a five-year period and a one-year period is not constant, where variations occur depending on multiple factors such as the intensity and type of migration both over time and in each origin and destination. Consequently, there is no straightforward algebraic solution to comparing one-year and five-year migration probabilities <span class="citation">Rogerson (<a href="#ref-Rogerson1990" role="doc-biblioref">1990</a>)</span>.</p>
 </div>
 </div>
 <div id="migration-measures" class="section level2 hasAnchor" number="2.3">
@@ -208,7 +306,7 @@
 </tr>
 </tbody>
 </table>
-<p>The sum of the in-migration and out-migration totals (<span class="math inline">\(m_{i+} + m_{+j}\)</span>) provides the <em>turnover</em> of each region. Net migration totals provides a balance of movements in opposing directions from the difference between in-migration and out-migration (<span class="math inline">\(m_{+j} - m_{i+}\)</span>). Net migration measures are more typically obtained via demographic accounting, as a residual from the differences in population change, births and deaths over a period in each region. As this calculation does not require expensive migration data collection systems, net migration measures are one of the most common forms of migration measures. However, net migration measures have a number of notable drawbacks, as highlighted by <span class="citation">(<a href="#ref-rogers1990rnm" role="doc-biblioref"><strong>rogers1990rnm?</strong></a>)</span>. In particular, net migration does not enumerate migrants themselves, but instead follows a residual of in-migrants and out-migrants. Consequently, the dynamics related to the observed migration patterns can be missed. For example, an net migration of -100 might involve a region receiving no in-migrants and sending 100 out-migrants or receiving 1,000,000 migrants and sending 1,000,100 out-migrants. Further migration dynamics are also missed when looking at net migration rates (discussed in the next section) and regularities in age profiles of migration (discussed in Chapter X) are often preculded when using age-specicifc net migration measures.</p>
+<p>The sum of the in-migration and out-migration totals (<span class="math inline">\(m_{i+} + m_{+j}\)</span>) provides the <em>turnover</em> of each region. Net migration totals provides a balance of movements in opposing directions from the difference between in-migration and out-migration (<span class="math inline">\(m_{+j} - m_{i+}\)</span>). Net migration measures are more typically obtained via demographic accounting, as a residual from the differences in population change, births and deaths over a period in each region. As this calculation does not require expensive migration data collection systems, net migration measures are one of the most common forms of migration measures. However, net migration measures have a number of notable drawbacks, as highlighted by <span class="citation">Rogers (<a href="#ref-rogers1990rnm" role="doc-biblioref">1990</a>)</span>. In particular, net migration does not enumerate migrants themselves, but instead follows a residual of in-migrants and out-migrants. Consequently, the dynamics related to the observed migration patterns can be missed. For example, an net migration of -100 might involve a region receiving no in-migrants and sending 100 out-migrants or receiving 1,000,000 migrants and sending 1,000,100 out-migrants. Further migration dynamics are also missed when looking at net migration rates (discussed in the next section) and regularities in age profiles of migration (discussed in Chapter X) are often preculded when using age-specicifc net migration measures.</p>
 </div>
 <div id="rate-measures" class="section level3 hasAnchor" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Rate measures<a href="migration-concepts.html#rate-measures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -232,13 +330,31 @@
 
 </div>
 </div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Courgeau1979" class="csl-entry">
+Courgeau, Daniel. 1979. <span>“<span class="nocase">Migrants and migrations</span>.”</span> <em>Population (English Edition)</em> 3: 1—–35.
+</div>
+<div id="ref-Lee1966" class="csl-entry">
+Lee, Everett S. 1966. <span>“<span class="nocase">A Theory of Migration</span>.”</span> <em>Demography</em> 3 (1): 47. <a href="https://doi.org/10.2307/2060063">https://doi.org/10.2307/2060063</a>.
+</div>
+<div id="ref-rogers1990rnm" class="csl-entry">
+Rogers, Andrei. 1990. <span>“<span class="nocase">Requiem for the Net Migrant</span>.”</span> <em>Geographical Analysis</em> 22 (4): 283–300. <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1538-4632.1990.tb00212.x/abstract">http://onlinelibrary.wiley.com/doi/10.1111/j.1538-4632.1990.tb00212.x/abstract</a>.
+</div>
+<div id="ref-Rogerson1990" class="csl-entry">
+Rogerson, Peter A. 1990. <span>“<span class="nocase">Migration analysis using data with time intervals of differing widths</span>.”</span> <em>Papers of the Regional Science Association</em> 68 (1981): 97–106. <a href="https://link.springer.com/article/10.1007/BF01933910">https://link.springer.com/article/10.1007/BF01933910</a>.
+</div>
+<div id="ref-UnitedNations1983" class="csl-entry">
+United Nations Department of Economic and Social Affairs Population Division. 1970. <em><span class="nocase">Methods of measuring internal migration.</span></em> 15. New York, New York, USA: United Nations Publication. <a href="https://doi.org/10.2307/3002465">https://doi.org/10.2307/3002465</a>.
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="handling-migration-data-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
