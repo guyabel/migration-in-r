@@ -1,9 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
-  word_document: default
----
 # Migration Concepts
 
 Migration is a process that involves a change in the place of residence. There are two key dimensions that distinguish migration from other types of human movements and these are time (duration) and space (between places). That is, the process of migration involves moving to a place for an amount of time that is considered long and across a distance that is considered far -- both aspects make the move significant and life changing. By life changing, we mean the person who has moved must alter they way they interact with the society they moved away from. In other words, migrations  are movements that change the social circumstances of the individual. It an event that is distinguishable from other types of moves that are short duration (such as tourism or family visits) or short distance (residential mobility). Of course, both the duration and spatial dimensions of migration may be culturally defined, meaning that the processes of migration may differ between countries at a given spatial / time scale.  

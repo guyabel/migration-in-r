@@ -1,6 +1,5 @@
 # Summary Migration Indices
 
-
 Migration analysis, particularly regarding cross national comparisons of migration, has received relatively far less attention compared to studies on other the other demographic components of population change. This disparity is partly due to the complexity involved in comparing migration data and patterns across nations, regions and over time. Several factors contribute to the intricacy of such comparisons:
 
 1. **Diverse Definitions of Migration**: Nations may employ different definitions of migration, which might alter over time, making it challenging to establish consistent criteria for measuring and comparing migration accurately.

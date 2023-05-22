@@ -1,44 +1,26 @@
----
-title: Describing and Estimating Migration Age Structures
-author: Guy J. Abel
-date: 
-fontsize: 10pt
-output:
-  beamer_presentation:
-    theme: "Frankfurt"
-    slide_level: 3
-    keep_tex: true
-    includes:
-      in_header: header.txt
-bibliography: C:\\Users\\Guy\\Documents\\library.bib      
----
+# Migration Age Schedules
 
-```{r setup, include=FALSE}
-library(knitr)
-knitr::opts_chunk$set(prompt= TRUE, collapse = TRUE, comment = NA)
-knitr::knit_hooks$set(purl = hook_purl)
-```
-
-# Rogers Castro
-
-## .
+Age plays a crucial role in shaping migration patterns and rates, and it is a significant source of heterogeneity in migration behavior. Migration rates can differ substantially across different age groups. Young adults often exhibit higher migration rates compared to other age cohorts. This is commonly observed due to factors such as educational pursuits and employment opportunities. Some older adults may migrate for retirement purposes, seeking locations with favorable climates, amenities, or healthcare facilities. Others may migrate to be closer to family members or to access specific social support networks. Furthermore, age can interact with other demographic characteristics, such as marital status or family composition, to influence migration decisions. For example, young adults who are married or have children may consider different factors when deciding to migrate compared to single individuals or couples without children.
 
 ### Rogers Castro migration age schedules
 
-- Populations tend to experience demographic events, such fertility, mortality and migration, with persistent regularities in the age-specific rates
-- Demographers have summarsied regularities in rates using mathematical expressions called model schedules.
-- @Rogers1981 first proposed a migration model schedules via an analysis of over 500 age profiles of migration
+As with other demographic events such as fertility and mortality, migration exhibit consistent patterns in their age-specific rates. Demographers have dedicated efforts to capturing and summarizing these regularities in rates using mathematical expressions known as model schedules. These model schedules aim to provide a concise representation of the age-specific migration rates based on empirical data.
 
+Model migration age schedules are used for several purposes in demographic analysis and population studies. They commonly provide a basis for projecting and forecasting future migration patterns in cohort component population projection models. This can be to smooth age-specific migration baseline data which might be unreliable. When no age-specific migration data is available, model migration age schedules can be used to derive age-specific migration patterns required for cohort component population projection models. Fitted parameters in model migration age schedules can also be used to analyze and compare the age-specific migration patterns in different populations, identifying similarities and differences.
 
-### Rogers Castro migration age schedules
+@Rogers1981 were the first to identify and mathematically summarise the consistency in migraiton age patterns after a comprehensive analysis of more than 500 age profiles of migration. Rogers-Castro migration age schedule are composed of intersecting mathematical curves representing migration patterns across different life stages. The curves in different parts of the schedule aims to capture the age-specific migration rates within specific segments of the population. The schedules are divided into five main components:
 
-Composed of curves based on migration of different life stages:
+1. Pre-labor force: This curve represents migration patterns among individuals who have not yet entered the labor force, such as children, students or young individuals who have not yet started working. Higher migration rates tend to found in very young adolescents who move with their parents. 
 
-1. Pre-labor force
-2. Labor force
-3. Post-labor force
-4. Post-retirement
-5. A constant term
+2. Labor force: This curve focuses on migration patterns among individuals who are actively engaged in the labor force. It captures migration behavior among working-age individuals, reflecting factors such as job opportunities, economic conditions, and career advancements which tend to peak in early adulthood and then gradually decline until retiremnet.
+
+3. Post-labor force: This curve accounts for migration patterns among individuals who have exited the labor force, such as retirees. Upon exiting the labour force, indivudals might migrate as they no longer need to be located near their working location. 
+
+4. Post-retirement: This component specifically addresses migration patterns among individuals who are towards the later stages of their life course and might migrate for better access to healthcare and proximity to family or social networks for later life care.
+
+5. Constant term: This term represents a constant or baseline level of migration that is independent of age. 
+
+Each of these componets can be represented mathematically using algebraic expression for cureves describing the changes in migration rates $m$ for each age group $x$ and combined as: 
 
 $$
 \begin{aligned}
@@ -50,88 +32,211 @@ m(x) =& a_1 \exp(-\alpha_1 x)  \\
 \end{aligned}
 $$
 
-### Rogers Castro migration age schedules
+By combining the components, the Rogers-Castro migration age schedules provide a framework for describing age-specific migration patterns across different life stages. In many locations and time periods, not all of the components of the full migration age schedule are relevant. 
 
-\centering
-\includegraphics[width=0.9\textwidth]{"./img/rc"}
+Almost all migration age patterns exhibit certain a downward slope during the pre-labor force years and a peak during the labor force period. To capture these patterns, only a 7-parameter model schedule, without the additional algebraic expressions for the post-labour and post-retirement components (based on the $a3, a4, \alpha_3, \mu_3, \lambda_3 and \lambda_4$$) are used.
 
-### Rogers Castro migration age schedules
+In specific areas, particularly in more elderly Western countries, migration age patterns may exhibit the additional retirement peak components, which leads to an 11-parameter model schedule that includes the pre-labor force and labor force components. In contrast, in some regions, instead of a retirement peak, age profiles exhibit an upward slope towards the end of life, which leads to a 9-parameter model schedule. In rare cases, there are instances where both a retirement peak and a post-retirement upward slope are observed in migration age patterns, captured by the full 13-parameter model schedule, proposed by @Rogers1987a. Further refinements to the migration model age schedules have since been proposed, including by @Wilson2010, who introduced a 17-parameter model that incorporates a student peak before the labor force peak. This addition acknowledges the migration patterns observed among students, who may migrate for educational purposes before entering the labor force.
 
-- Most migration age patterns have a pre-labor force downward slope and labor force peak (and a constant)
-    - 7-parameter model schedule
-- In specific areas (in Western countries) migration age patterns have an additional retirement peak component
-    - 11-parameter model schedule
-- In other areas, instead of a retirement peak, age profiles  have an upward slope at the end of life
-    - 9-parameter model schedule
-- In even fewer cases, some instances of both a retirement peak and a post-retirement upward slope @Rogers1987a
-    - 13-parameter model schedule
-- @Wilson2010 introduced a 17-parameter model to incorporate a student peak before the labour force peak. 
-    
-    
-### Rogers Castro migration age schedules
-
-- The `mig_calculate_rc()` function in either the *rcbayes* package by Monica Alexander et. al. provide a quick method to calculate migration age schedules for a given parameter set
-    - Also available in *DemoTools*.
-    - Same functions by same authors. *DemoTools* not on CRAN presently.
-
-```{r, eval=FALSE}
-
-```
-
-### Rogers Castro migration age schedules
+The `mig_calculate_rc()` function in the *rcbayes* package by @Alexander2021 provide a quick method to calculate migration age schedules for a given parameter set
 
 ```{r}
 library(rcbayes)
-# define 11 parameters
+# define 7 parameters
 p <- c(a1 = 0.1, alpha1 = 0.1, 
        a2 = 0.2, alpha2 = 0.1, mu2 = 20, lambda2 = 0.5, 
-       a3 = 0.05, alpha3 = 0.2, mu3 = 60, lambda3 = 0.1, 
        c = 0.01)
 
 # calculate model migration schedule with 11 parameters
 mx <- mig_calculate_rc(ages = 1:100, pars = p)
-mx
-```
-### Rogers Castro migration age schedules
+# first 10 mx
+mx[1:10]
 
-```{r, message=FALSE, warning=FALSE, fig.height=4}
-library(tidyverse)
+# plot the calculated  mx
 tibble(x = 1:100, 
        mx = mx) %>%
   ggplot(mapping = aes(x = x, y = mx)) +
   geom_line()
 ```
 
-# Model schedules
+## Model migration age schedules
 
-## .
+Model migration schedules play a crucial role in situations where age-specific migration data is unavailable but necessary. One such scenario is in cohort component projections, where age-specific migration rates are essential but might not be readily accessible due to the lack of statistical infrastructure to monitor detailed migration patterns.
 
-### Model migration age schedules
+To overcome this challenge, researchers can utilize model migration schedules as a practical solution. By leveraging an estimate or reported data on total migration and adopting a model age schedule it becomes possible to derive age-specific migration rates using a standardized form of the age schedule to dissagregate the totals. The selection process of the model age schedule involves the careful selection based on existing knowledge of migration age patterns for the specific population or flow under investigation.
 
-- The *migest* package contains two sets of parameters for model migration schedules.
-- The `rc_model_fund` are the set of fundamental parameters proposed by Rogers and Castro to represent a typical migration age pattern, based on their analysis of over 500 migration flows
+The *migest* package includes the `rc_model_fund` data frame with a set of fundamental parameters proposed by @Rogers1981, designed to represent a typical migration age pattern from their analysis. Containing only seven parameters,  they do not include additional curves for the post-labor force phase and post-retirement peak. We can use the `deframe()` function to convert the data frame `rc_model_fund` into an named vector for use in the `mig_calculate_rc()` to calculate the age specific migration rates for a given set of ages
+
 ```{r}
 library(migest)
 rc_model_fund
-```
 
-### Model migration age schedules
-
-- Plot of model age schedule based on fundamental parameters
-
-```{r, message=FALSE, warning=FALSE, fig.height=3}
 # convert data frame to named vector
 p <- deframe(rc_model_fund)
 p
 
-tibble(x = 1:100, 
+# calculate and plot age schedule based on fundamental parameters 
+tibble(x = 1:80, 
        mx = mig_calculate_rc(ages = x, pars = p)) %>%
   ggplot(mapping = aes(x = x, y = mx)) +
   geom_line()
 ```
 
-### Model migration age schedules
+The @UnitedNations1992 proposed a number of alternative sets of parameter values to seven-parameter model age schedules in settings outside of the Western-country populations used by @Rogers1981 when designing their fundamental parameter set. These parameters are provided in the `rc_model_un` data frame
+```{r}
+rc_model_un
+```
 
+To apply the parameters to the `mig_calculate_rc()` function we can use the `nest()` function to group together the parameters into separate tibbles by sex and population settings.
+    
+```{r}
+d <- rc_model_un %>%
+  select(-schedule_abb) %>%
+  nest(rc_param = c(param, value)) %>%
+  mutate(p = map(.x = rc_param, .f = ~deframe(.x)),
+         mx = map(.x = p, 
+                  .f = ~mig_calculate_rc(ages = 1:80, pars = .x)),
+         age = list(1:80))
+d
+```
+
+Once we have used the `map()` function to estimate the model migration age schedules for ages 1 to 80 using the `mig_calculate_rc()` function we create a data base varying by age for each model schedule and sex for plotting to get a better idea of how each migraiton schedule operates for each sex and population
+```{r, fig.height=4}
+d %>%
+  unnest(c(mx, age)) %>%
+  mutate(schedule = str_wrap(schedule, width = 20)) %>%
+  ggplot(mapping = aes(x = age, y = mx, colour = schedule)) +
+  geom_line() +
+  facet_wrap(facets = "sex", ncol = 1)
+```
+Notable from the plot is the later peak age of migration in the older labour force entry age schedules, compared to the Western Standard age schedule that has parameters very close to those proposed by @Rogers1981. For populations with younger labour force entry the peak age of migration shifts leftwards, whilst it increases for populations with low old age dependencies and decreases populations with high old age dependencies. 
+
+It is worth noting again, that the typical use of model age schedules might be when we do not know any age-specific migration rates but soley a migration total, where the migration total might be a projected or forecasted value. In such a case we might first select an appropriate model schedule from `rc_model_un`
+```{r}
+# example for males based on young labour force entry
+p <- rc_model_un %>%
+  filter(sex == "male", schedule_abb == "ylfe") %>%
+  select(param, value) %>%
+  deframe()
+p
+```
+We may then calculate the age-specific migration using the parameter values to generate a standardized model age schedule (where the calculated $m(x)$ values sum to one) using the `mig_calculate_rc()` function. The standardized values can the be multiplied by a total estimate to get the age-specific migration counts, which might be converted to rates given the appropoate denominantor. 
+
+```{r, fig.height=4}
+tibble(x = 1:90, 
+       mx = mig_calculate_rc(ages = x, pars = p),
+       # calculate number of migrants, given a total estimate of 10,000
+       Mx = 10000 * mx) %>%
+  ggplot(mapping = aes(x = x, y = Mx)) +
+  geom_line()
+```
+
+
+
+## Fitting Roger Castro migration age schedules
+
+When we have age-specific migration data, we may be interested in estimating the parameters of a Rogers Castro age schedule. Estimating these parameters serves several purposes:
+
+1. Smoothing the data: By fitting a Rogers Castro age schedule to age-specific migration data, we can obtain a smoothed representation of the migration pattern. This can help in reducing the noise in the data that might be generated from difficulties in collecting data on the number of migrants entering or leaving a region or country.
+
+2. Comparing parameter estimates: Estimating the parameters of a Rogers Castro age schedule allows us to compare migration patterns between different time periods or migration streams. By examining the differences in parameter estimates, we can gain insights into changes or variations in the age-specific migration patterns. We will further explore the interpretation of parameter estimates of the Rogers-Castro fitted age schedules in the next section. 
+
+3. Creating age schedules for projected migration: Once we have estimated the parameters of the age schedule, we can use these estimates to project future migration patterns based on past patterns of the age schedule parameters or using the smoothed values from the fitted model migration age schedule.
+
+Fitting Rogers Castro migration age schedules has long be a difficult challenge due to the relatively small amount of data (based on the number age groups) and the relatively complexity of the migration age schedules. Various code and software tools have been used including FORTAN code in @Rogers1994, the TableCurve 2D software @Rogers1999a, MATLAB code used by @Rogers2010, and VBA code for Excel @Wilson2010. 
+
+Fortunately, the *rcbayes* package provides a `mig_estimate_rc()` function that provides far better performance and flexibility than its predecessors. The `mig_estimate_rc()` function calls Stan, a Bayesian probabilistic programming language, via the *rstan* package, to estimate the parameters of a Rogers Castro age schedule. The estimation process is performed using a powerful Bayesian sampling techniques to estimate the  of parameter in a range of Rogers-Castro migration age schedules and their full posterior distributions to quantify the uncertainty of the estimates. 
+
+To use the `mig_estimate_rc()` function, two arguments are required:
+
+1. `ages`: A vector of migration ages, representing the age groups for which we have migration data.
+2. `mx`: A vector of standardized migration intensities corresponding to the ages in the `ages` vector.
+
+Additionally, the form of the age schedule can be specified using the `pre_working_age`, `working_age`, `retirement`, and `post_retirement` arguments, which can be set to `TRUE` or `FALSE` depending on the desired structure of the age schedule.
+
+To demonstrate we will use data for immigration age-specific immigration flows into Cyprus during 2011 published by Eurostat. These can be downloaded using the *eurostat* package:
+
+```{r}
+library(eurostat)
+# all age-sex specific immigration data
+imm <- get_eurostat(id = "migr_imm8")
+
+# filter to cyprus 2011
+imm_cy_2011 <- imm %>%
+  filter(geo == "CY",
+         age != "TOTAL",
+         age != "UNK",
+         sex == "T",
+         time == "2011-01-01")
+
+# format age column to numeric values
+imm_cy_2011 <- imm_cy_2011 %>%
+  mutate(
+    age = str_remove(string = age, pattern = "Y"),
+    age = case_when(
+      age == "_LT1" ~ "0",
+      age == "_GE100" ~ "101",
+      TRUE ~ age
+    ), 
+    age = as.numeric(age)
+  )
+imm_cy_2011 
+```
+
+We can see that the data do appear to not entirely smooth. This may be due to random variations in migration patterns of relatively small counts of migration. However, it would not be ideal to use the raw data as underlying assumption for the distribution of age-specific migration in a cohort component population projection model as there is clear justification for believing the underlying age migration patterns are non-smooth. For example, to observed migration for 41 year old persons is slightly higher that those that are 40 years old and counter to the declining trend of migration from 30 year old onwards.
+
+```{r}
+imm_cy_2011 %>%
+  ggplot(mapping = aes(x = age, y = values)) +
+  geom_line() +
+  geom_point()
+```
+
+The general shape of the observed values indicate that a seven parameter Rogers Castro migration age schedules is appropriate, where is no retirement peak or post-retirement slope are visable. 
+
+The `mx` values required in the `mig_estimate_rc()` function represent the standardized migration intensities corresponding to the ages in the `ages` vector, meaning that their sum should be equal to one. This ensures that the migration intensities are properly scaled and reflect the relative proportions of migration within each age group.
+
+When using the `mig_estimate_rc()` function, it is common to wait for a few minutes during the computation time. Additionally, the function may print out several messages from Stan, with information about the estimation process, including the progress of the MCMC sampling and any convergence diagnostics.
+
+It is recommended to carefully review the messages printed during the estimation process to ensure that the estimation has converged properly and that the results are reliable. The messages can provide insights into the estimation process and help identify any potential issues or concerns.
+
+```{r, cache=TRUE}
+# standardize migration counts
+m <- imm_cy_2011$values/sum(imm_cy_2011$values)
+m
+
+# fit severn-parameter rogers castro 
+f <- mig_estimate_rc(ages = imm_cy_2011$age, mx = m,
+                     pre_working_age = TRUE, working_age = TRUE,
+                     retirement = FALSE, post_retirement = FALSE)
+```
+
+The `mig_estimate_rc()` function returns a `list` object with three components.
+In the output of the `mig_estimate_rc()` function, there are three elements:
+
+1. `pars_df`: This is a data frame that contains the parameter estimates along with their 95% credible intervals. The parameter estimates represent the values obtained from the estimation process, while the credible intervals provide a measure of uncertainty around those estimates.
+
+2. `fit_df`: This is a data frame that shows the original data and the estimated migration rates at each age. 
+
+3. `check_converge`: This is a data frame that provides information about the convergence of the estimation process. It includes the R-hat values and effective sample sizes for each parameter. The R-hat values, also known as the Gelman-Rubin statistic, assess the convergence of the MCMC chains used in the estimation. A value close to 1 indicates good convergence. The effective sample sizes indicate the number of independent samples obtained for each parameter, and higher values indicate more reliable estimates.
+
+```{r}
+# parameter estimates
+f$pars_df
+
+# fitted schedule
+f$fit_df
+
+# plot of observed and fitted age schedule with 95% credible interval
+ggplot(data = f$fit_df, 
+       mapping = aes(x = age, y = data)) +
+  geom_ribbon(mapping = aes(ymin = lower, ymax = upper), fill = "lightblue") +
+  geom_line(mapping = aes(y = median), colour = "blue") +
+  geom_point() 
+```
+
+
+## Age Indices
 
 - Rogers and Castro describe the nice properties in the parameters and their relationships
 - Peaking: early versus late peaking ($\mu_2$)
@@ -153,164 +258,6 @@ rc_model_fund %>%
   index_age_rc()
 ```
 
-### Model migration age schedules
-
-- The `rc_model_un` are the set of fundamental parameters proposed in @UnitedNations1992 for estimating age-specific migration flows in different contexts
-```{r}
-rc_model_un
-```
-
-### Model migration age schedules
-
-- To calculate model schedules we can use 
-    - `nest()` to group together the parameters
-    - `map()` to apply the parameters to the `mig_calculate_rc()` function for each group
-    
-```{r}
-d <- rc_model_un %>%
-  select(-schedule_abb) %>%
-  nest(rc_param = c(param, value)) %>%
-  mutate(p = map(.x = rc_param, .f = ~deframe(.x)),
-         mx = map(.x = p, 
-                  .f = ~mig_calculate_rc(ages = 1:80, pars = .x)),
-         age = list(1:80))
-d
-```
-
-### Model migration age schedules
-
-```{r}
-# first row parameters
-d$p[[1]]
-
-# data unnested
-d %>%
-  select(-rc_param, -p) %>%
-  unnest(c(mx, age))
-```
-
-### Model migration age schedules
-
-- Use `unnest()` to create a data base varying by age for each model schedule and sex for plotting
-```{r, fig.height=4}
-d %>%
-  unnest(c(mx, age)) %>%
-  mutate(schedule = str_wrap(schedule, width = 20)) %>%
-  ggplot(mapping = aes(x = age, y = mx, colour = schedule)) +
-  geom_line() +
-  facet_wrap(facets = "sex", ncol = 1)
-```
-
-### Model migration age schedules
-
-- Model migration schedules are useful when we do not have any age information, but require an estimate of age specific migration
-    - For example, in cohort component projections age specific migration rates are required but might not be available in any data source
-- We may use an estimate or reported data on total migration to obtain age-specific migration
-    - Design or select appropriate model age schedule based on existing knowledge of migration age patterns for the given flow.
-
-```{r}
-# example for males based on young labour force entry
-p <- rc_model_un %>%
-  filter(sex == "male", schedule_abb == "ylfe") %>%
-  select(param, value) %>%
-  deframe()
-p
-```
-
-### Model migration age schedules
-
-
-```{r, fig.height=4}
-tibble(x = 1:90, 
-       mx = mig_calculate_rc(ages = x, pars = p),
-       # calculate number of migrants, given a total estimate of 10,000
-       Mx = 10000 * mx) %>%
-  ggplot(mapping = aes(x = x, y = Mx)) +
-  geom_line()
-```
-
-# Fitting schedules
-
-## .
-
-### Fitting Roger Castro migration age schedules
-
-- If we have age-specific migration data we might want to estimate the parameters of a Rogers Castro age schedule to
-    - Smooth the data
-    - Analyse the parameter estimates
-    - Create projected age schedules based on past patterns of the age schedule parameters
-- Fitting Rogers Castro migration age schedules can be difficult. 
-    - A number of different software has been used to fit age schedules including @Rogers1994, TableCurve 2D @Rogers1999a, MATLAB @Rogers2010, and Excel @Wilson2010. 
-- The `mig_estimate_rc()` function in rcbayes uses Stan, via the rstan package, a Bayesian probabilistic programming language
-    - Estimation is carried out using MCMC sampling.
-- Requires two arguments
-    - `ages` a vector of migration ages
-    - `mx` a vector of standardized migration intensities for the corresponding ages
-    - Specify form of age schedule using the `pre_working_age`, `working_age`, `retirement` and `post_retirement` arguments - set to `TRUE` or `FALSE`
-
-### Fitting Roger Castro migration age schedules
-
-- Demonstrate with five-year data from the `italy_area` data set in *migest*
-    - Calculate the out-migration for Islands (Sicily and Sardinia) in 1970
-```{r}
-# include a numeric age column for mig_estimate_rc()
-i <- italy_area %>%
-  filter(year == 1970) %>%
-  group_by(age_grp) %>%
-  sum_region() %>%
-  filter(region == "Islands") %>%
-  separate(col = age_grp, into = c("age_min", "age_max"), 
-           remove = FALSE, convert = TRUE)
-i
-```
-
-### Fitting Roger Castro migration age schedules
-
-- Requires a standardized age schedule (where values sum to one)
-- Will take a few minutes and print out lots of messages from Stan
-```{r, cache=TRUE}
-m <- i$out_mig/sum(i$out_mig)
-m
-
-f <- mig_estimate_rc(ages = i$age_min + 2.5, mx = m,
-                     # set model components 
-                     pre_working_age = TRUE, working_age = TRUE,
-                     retirement = FALSE, post_retirement = FALSE)
-```
-
-
-### Fitting Roger Castro migration age schedules
-
-The fitted object has two components
-```{r}
-# parameter estimates
-f[[1]]
-
-# fitted schedule
-f[[2]]
-```
-
-### Fitting Roger Castro migration age schedules
-
-```{r, fig.height=4}
-ggplot(data = f[[2]], 
-       mapping = aes(x = age, y = data)) +
-  geom_ribbon(mapping = aes(ymin = lower, ymax = upper), fill = "lightblue") +
-  geom_line(mapping = aes(y = median), colour = "blue") +
-  geom_point() 
-```
-
-### Fitting Roger Castro migration age schedules
-
-- The *migraR* package by Ruiz-Santacruz and Garcés also has functions to estimate parameters in Rogers Castro schedule
-    - Also not on CRAN
-    - Uses an optimization procedure (non-Bayesian)
-    - Functions to select best form schedule
-- Selecting the form of the schedule usually requires some form of visual inspection
-
-# Age Indices
-
-## . 
 
 ### Age Indices
 
