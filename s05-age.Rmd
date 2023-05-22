@@ -1,0 +1,619 @@
+---
+title: Describing and Estimating Migration Age Structures
+author: Guy J. Abel
+date: 
+fontsize: 10pt
+output:
+  beamer_presentation:
+    theme: "Frankfurt"
+    slide_level: 3
+    keep_tex: true
+    includes:
+      in_header: header.txt
+bibliography: C:\\Users\\Guy\\Documents\\library.bib      
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(prompt= TRUE, collapse = TRUE, comment = NA)
+knitr::knit_hooks$set(purl = hook_purl)
+```
+
+# Rogers Castro
+
+## .
+
+### Rogers Castro migration age schedules
+
+- Populations tend to experience demographic events, such fertility, mortality and migration, with persistent regularities in the age-specific rates
+- Demographers have summarsied regularities in rates using mathematical expressions called model schedules.
+- @Rogers1981 first proposed a migration model schedules via an analysis of over 500 age profiles of migration
+
+
+### Rogers Castro migration age schedules
+
+Composed of curves based on migration of different life stages:
+
+1. Pre-labor force
+2. Labor force
+3. Post-labor force
+4. Post-retirement
+5. A constant term
+
+$$
+\begin{aligned}
+m(x) =& a_1 \exp(-\alpha_1 x)  \\
+&+a_2 \exp(-\alpha_2(x - \mu_2) - \exp(\lambda_2(x - \mu_2)))  \\
+&+a_3 \exp(-\alpha_3(x - \mu_3) - \exp(\lambda_3(x - \mu_3)))  \\
+&+a_4 \exp(\lambda_4x)\\
+&+ c
+\end{aligned}
+$$
+
+### Rogers Castro migration age schedules
+
+\centering
+\includegraphics[width=0.9\textwidth]{"./img/rc"}
+
+### Rogers Castro migration age schedules
+
+- Most migration age patterns have a pre-labor force downward slope and labor force peak (and a constant)
+    - 7-parameter model schedule
+- In specific areas (in Western countries) migration age patterns have an additional retirement peak component
+    - 11-parameter model schedule
+- In other areas, instead of a retirement peak, age profiles  have an upward slope at the end of life
+    - 9-parameter model schedule
+- In even fewer cases, some instances of both a retirement peak and a post-retirement upward slope @Rogers1987a
+    - 13-parameter model schedule
+- @Wilson2010 introduced a 17-parameter model to incorporate a student peak before the labour force peak. 
+    
+    
+### Rogers Castro migration age schedules
+
+- The `mig_calculate_rc()` function in either the *rcbayes* package by Monica Alexander et. al. provide a quick method to calculate migration age schedules for a given parameter set
+    - Also available in *DemoTools*.
+    - Same functions by same authors. *DemoTools* not on CRAN presently.
+
+```{r, eval=FALSE}
+
+```
+
+### Rogers Castro migration age schedules
+
+```{r}
+library(rcbayes)
+# define 11 parameters
+p <- c(a1 = 0.1, alpha1 = 0.1, 
+       a2 = 0.2, alpha2 = 0.1, mu2 = 20, lambda2 = 0.5, 
+       a3 = 0.05, alpha3 = 0.2, mu3 = 60, lambda3 = 0.1, 
+       c = 0.01)
+
+# calculate model migration schedule with 11 parameters
+mx <- mig_calculate_rc(ages = 1:100, pars = p)
+mx
+```
+### Rogers Castro migration age schedules
+
+```{r, message=FALSE, warning=FALSE, fig.height=4}
+library(tidyverse)
+tibble(x = 1:100, 
+       mx = mx) %>%
+  ggplot(mapping = aes(x = x, y = mx)) +
+  geom_line()
+```
+
+# Model schedules
+
+## .
+
+### Model migration age schedules
+
+- The *migest* package contains two sets of parameters for model migration schedules.
+- The `rc_model_fund` are the set of fundamental parameters proposed by Rogers and Castro to represent a typical migration age pattern, based on their analysis of over 500 migration flows
+```{r}
+library(migest)
+rc_model_fund
+```
+
+### Model migration age schedules
+
+- Plot of model age schedule based on fundamental parameters
+
+```{r, message=FALSE, warning=FALSE, fig.height=3}
+# convert data frame to named vector
+p <- deframe(rc_model_fund)
+p
+
+tibble(x = 1:100, 
+       mx = mig_calculate_rc(ages = x, pars = p)) %>%
+  ggplot(mapping = aes(x = x, y = mx)) +
+  geom_line()
+```
+
+### Model migration age schedules
+
+
+- Rogers and Castro describe the nice properties in the parameters and their relationships
+- Peaking: early versus late peaking ($\mu_2$)
+    - $\mu_2 = 20$ in the fundamental parameters
+- Dominance: $\gamma_{12} = a_1/a_2$ as the index of child dependency, and $1/\gamma_{12}$ as index of labor dominance
+    - $\gamma_{12} = 1/3$ in fundamental parameters
+- Labor asymmetry: $\sigma_2 = \lambda_2/\alpha_2$ 
+    - $\sigma_{2} = 4$ in fundamental parameters
+- Regularity: $\beta_{12} = \alpha_1/\alpha_2$ how the migration rates of children match to the migration rates of parents
+    - $\beta_{12} = 1$ in fundamental parameters
+- Users can focus on these four measures (peaking, dominance, labor asymmetry and regularity) when describing or deriving their own model schedules
+
+### Model migration age schedules
+
+- The `index_age_rc()` function in the migest package returns these ratios given a named vector of the parameters
+```{r}
+rc_model_fund %>%
+  deframe() %>%
+  index_age_rc()
+```
+
+### Model migration age schedules
+
+- The `rc_model_un` are the set of fundamental parameters proposed in @UnitedNations1992 for estimating age-specific migration flows in different contexts
+```{r}
+rc_model_un
+```
+
+### Model migration age schedules
+
+- To calculate model schedules we can use 
+    - `nest()` to group together the parameters
+    - `map()` to apply the parameters to the `mig_calculate_rc()` function for each group
+    
+```{r}
+d <- rc_model_un %>%
+  select(-schedule_abb) %>%
+  nest(rc_param = c(param, value)) %>%
+  mutate(p = map(.x = rc_param, .f = ~deframe(.x)),
+         mx = map(.x = p, 
+                  .f = ~mig_calculate_rc(ages = 1:80, pars = .x)),
+         age = list(1:80))
+d
+```
+
+### Model migration age schedules
+
+```{r}
+# first row parameters
+d$p[[1]]
+
+# data unnested
+d %>%
+  select(-rc_param, -p) %>%
+  unnest(c(mx, age))
+```
+
+### Model migration age schedules
+
+- Use `unnest()` to create a data base varying by age for each model schedule and sex for plotting
+```{r, fig.height=4}
+d %>%
+  unnest(c(mx, age)) %>%
+  mutate(schedule = str_wrap(schedule, width = 20)) %>%
+  ggplot(mapping = aes(x = age, y = mx, colour = schedule)) +
+  geom_line() +
+  facet_wrap(facets = "sex", ncol = 1)
+```
+
+### Model migration age schedules
+
+- Model migration schedules are useful when we do not have any age information, but require an estimate of age specific migration
+    - For example, in cohort component projections age specific migration rates are required but might not be available in any data source
+- We may use an estimate or reported data on total migration to obtain age-specific migration
+    - Design or select appropriate model age schedule based on existing knowledge of migration age patterns for the given flow.
+
+```{r}
+# example for males based on young labour force entry
+p <- rc_model_un %>%
+  filter(sex == "male", schedule_abb == "ylfe") %>%
+  select(param, value) %>%
+  deframe()
+p
+```
+
+### Model migration age schedules
+
+
+```{r, fig.height=4}
+tibble(x = 1:90, 
+       mx = mig_calculate_rc(ages = x, pars = p),
+       # calculate number of migrants, given a total estimate of 10,000
+       Mx = 10000 * mx) %>%
+  ggplot(mapping = aes(x = x, y = Mx)) +
+  geom_line()
+```
+
+# Fitting schedules
+
+## .
+
+### Fitting Roger Castro migration age schedules
+
+- If we have age-specific migration data we might want to estimate the parameters of a Rogers Castro age schedule to
+    - Smooth the data
+    - Analyse the parameter estimates
+    - Create projected age schedules based on past patterns of the age schedule parameters
+- Fitting Rogers Castro migration age schedules can be difficult. 
+    - A number of different software has been used to fit age schedules including @Rogers1994, TableCurve 2D @Rogers1999a, MATLAB @Rogers2010, and Excel @Wilson2010. 
+- The `mig_estimate_rc()` function in rcbayes uses Stan, via the rstan package, a Bayesian probabilistic programming language
+    - Estimation is carried out using MCMC sampling.
+- Requires two arguments
+    - `ages` a vector of migration ages
+    - `mx` a vector of standardized migration intensities for the corresponding ages
+    - Specify form of age schedule using the `pre_working_age`, `working_age`, `retirement` and `post_retirement` arguments - set to `TRUE` or `FALSE`
+
+### Fitting Roger Castro migration age schedules
+
+- Demonstrate with five-year data from the `italy_area` data set in *migest*
+    - Calculate the out-migration for Islands (Sicily and Sardinia) in 1970
+```{r}
+# include a numeric age column for mig_estimate_rc()
+i <- italy_area %>%
+  filter(year == 1970) %>%
+  group_by(age_grp) %>%
+  sum_region() %>%
+  filter(region == "Islands") %>%
+  separate(col = age_grp, into = c("age_min", "age_max"), 
+           remove = FALSE, convert = TRUE)
+i
+```
+
+### Fitting Roger Castro migration age schedules
+
+- Requires a standardized age schedule (where values sum to one)
+- Will take a few minutes and print out lots of messages from Stan
+```{r, cache=TRUE}
+m <- i$out_mig/sum(i$out_mig)
+m
+
+f <- mig_estimate_rc(ages = i$age_min + 2.5, mx = m,
+                     # set model components 
+                     pre_working_age = TRUE, working_age = TRUE,
+                     retirement = FALSE, post_retirement = FALSE)
+```
+
+
+### Fitting Roger Castro migration age schedules
+
+The fitted object has two components
+```{r}
+# parameter estimates
+f[[1]]
+
+# fitted schedule
+f[[2]]
+```
+
+### Fitting Roger Castro migration age schedules
+
+```{r, fig.height=4}
+ggplot(data = f[[2]], 
+       mapping = aes(x = age, y = data)) +
+  geom_ribbon(mapping = aes(ymin = lower, ymax = upper), fill = "lightblue") +
+  geom_line(mapping = aes(y = median), colour = "blue") +
+  geom_point() 
+```
+
+### Fitting Roger Castro migration age schedules
+
+- The *migraR* package by Ruiz-Santacruz and Garcés also has functions to estimate parameters in Rogers Castro schedule
+    - Also not on CRAN
+    - Uses an optimization procedure (non-Bayesian)
+    - Functions to select best form schedule
+- Selecting the form of the schedule usually requires some form of visual inspection
+
+# Age Indices
+
+## . 
+
+### Age Indices
+
+- Number of criticisms of model age schedules for migration (@Bell2002, @Bernard2014)
+- Not always clear how many parameters should be included in model schedule
+    - Parameter estimates sensitive to the choice of model form, making comparisons difficult
+    - Use statistical accuracy measures to select best form, at the risk of over fitting
+- Parameter estimates sensitive to initial values
+    - Unlikely to be the case when using `mig_estimate_rc()`
+- Unstable parameter estimates
+    - Sensitive to measurement error in age-specific migration
+- Interpretation of parameter estimates
+    - The indexes in `index_age_rc()` have not been widely adopted, probably because of difficulty in fitting model schedules.
+  
+### Age Indices
+
+- A number of other measures of age specific migration have been proposed that do not require fitting model age schedules.
+- Most a dependent on the migration intensity $m_{as}$, the number of migrants in a age group and given time period as a percentage of the population at risk of moving.
+- @Rogers1975 proposed a Gross Migraproduction Rate (GMR) based on the sum of age-specific (and sex-specific) migration intensities
+$$
+GMR = \sum_{as} m_{as}
+$$
+- @Bell2002 introduced 
+    - Peak migration intensity, the largest age-specific migration intensity of any age-group
+    - Peak age, the corresponding age of the peak migration intensity
+
+### Age Indices
+
+- @Bell2009 proposed and additional measures
+    - Breadth of peak based on the sum of the peak migration intensity at the peak age and the five age-groups before and after the peak.
+    - Peak share based on the percentage of the normalized migration age schedule covered by the peak age and the five age-groups before and after the peak.
+
+- @Bernard2014 provide three additioanl measures
+    - The Maximum Upward Rate of Change  (MURC) for the largest gradient in the slope of the labour force peak before the peak age
+    - The Maximum Downward Rate of Change  (MDRC) for the largest gradient in the slope of the labour force peak after the peak age
+    - The asymmetry of the labour force peak based on the ratio of MURC and MDRC
+    
+- Each of these measures area calculated in the `age_index()` function in the *migest* package
+
+### Age Indices
+
+
+- To demonstrate we use the age schedule data of Brazil 2000 and France 2006 in the `ipumsi_age` data frame of the *migest* package
+    - Migration based on five-year transitions between any minor (and major) administrative units.
+
+```{r, fig.height=3}
+ipumsi_age %>%
+  mutate(mi = migrants/population) %>%
+  filter(age > 5) %>%
+  ggplot(mapping = aes(x = age, y = mi)) +
+  geom_line() +
+  facet_wrap(facets = "sample", scales = "free")
+```
+
+### Age Indices
+
+- @Bernard2014 recommends smoothing age schedules before calculating index values
+    - Get very similar results without smoothing - at least in these examples
+- `index_age()` by default ignores values above 65 (and below 5) when calculating peak index statistics\
+    - GMR still sensitive for outliers (e.g. oldest in Brazil)
+- Index values for Brazil 2000
+```{r}
+ipumsi_age %>%
+  filter(sample == "BRA2000") %>%
+  mutate(mi = migrants/population) %>%
+  index_age()
+```
+### Age Indices
+
+- Index values are most useful for comparing age-specific migration in different countries (or regions or time periods)
+```{r}
+ipumsi_age %>%
+  mutate(mi = migrants/population) %>%
+  group_nest(sample) %>%
+  rowwise() %>%
+  mutate(i = list(index_age(data))) %>%
+  unnest(i) %>%
+  select(-data) %>%
+  pivot_wider(names_from = sample, values_from = value)
+```
+
+
+
+# Smoothing
+
+## . 
+
+### General purpose smoothing functions
+
+- There are many non-parametric smoothing functions in R that can be used to smooth data.
+- The `stats` package, which is loaded when R opens, includes
+    - `ksmooth()` is a kernel regression smoother
+    - `loess.smooth()` is a Local Polynomial Regression Fitting method
+    - `smooth.spline` a cubic spline fit
+- The DemoTools package contains a `smooth_age_5()` that is particularly  useful for age-heaped data.
+
+
+### General purpose smoothing functions
+
+- Smoothing methods perform some form of weighting data points on separate subsections (windows or bandwidths of the data)
+- In a migration age schedule context, this involves some form of simple local regression or averaging of migration intensities at each age, given data from nearby ages.
+- Careful consideration is usually required in choosing the bandwidth. 
+    - The default values are not always sensible for migration age schedules
+- Might consider censoring the very oldest values where values can become volatile due to small numbers    
+
+
+### General purpose smoothing functions
+
+- Use Brazil 2000 IPUMS International sample data to demonstrate
+    - Particularly rough at older age groups
+    
+```{r, fig.height=3}
+b <- ipumsi_age %>%
+  filter(sample == "BRA2000",
+         age > 5) %>%
+  mutate(mi = migrants/population)  
+
+ggplot(data = b, mapping = aes(x = age, y = mi)) +
+  geom_point() 
+```
+
+
+### General purpose smoothing functions
+
+- Most smoothing function in R require two vectors (`x` and `y`)
+    - Optional arguments to control the smoothness of the fit( names differ for different smoothing functions)
+- Will return a list with two components (`x` and `y`), where the length of x may differ from the original vector provided
+    - Set a output length argument (names differ for different smoothing functions)
+    - The `x` component will match age values
+    - Can use within `mutate()`
+```{r}
+k1 <- ksmooth(x = b$age, y = b$mi)
+str(k1)
+
+k2 <- ksmooth(x = b$age, y = b$mi, n.points = nrow(b))
+str(k2)
+```
+
+### Kernal smoothing
+
+- The `ksmooth` function is unlikely to smooth a migration age schedule as the default bandwidth parameter is too small
+    - Increase for a more suitable fit
+
+```{r}
+b <- b %>% 
+  mutate(
+    k_default = ksmooth(x = age, y = mi, n.points = n())$y,
+    k_bw5 = ksmooth(x = age, y = mi, n.points = n(), bandwidth = 5)$y,
+    k_bw10 = ksmooth(x = age, y = mi, n.points = n(), bandwidth = 10)$y
+  )
+b
+```
+
+### Kernal smoothing
+
+```{r, fig.height=5}
+ggplot(data = b, mapping = aes(x = age, y = mi)) +
+  geom_point(alpha = 0.5) + 
+  geom_line(mapping = aes(y = k_default), col = "darkgrey") +
+  geom_line(mapping = aes(y = k_bw5), col = "orange") +
+  geom_line(mapping = aes(y = k_bw10), col = "red")
+```
+
+
+### Loess smoothing
+
+- The `loess.smooth` function is also unlikely to smooth a migration age schedule as the default span parameter is too small
+     - Adjust the smoothing parameter using `spar` (between 0 and 1), default is `2/3`
+    - Use `evaluation` to set the number of predicted values
+    
+```{r}
+b <- b %>%
+  mutate(
+    lo_default = loess.smooth(x = age, y = mi, evaluation = n())$y,
+    lo_sp2 = loess.smooth(x = age, y = mi, evaluation = n(), span = 0.2)$y,
+    lo_sp1 = loess.smooth(x = age, y = mi, evaluation = n(), span = 0.1)$y,
+  )
+```
+
+### Loess smoothing
+
+
+```{r, fig.height=5}
+ggplot(data = b, 
+       mapping = aes(x = age, y = mi)) +
+  geom_point(alpha = 0.5) + 
+  geom_line(mapping = aes(y = lo_default), col = "darkgrey") +
+  geom_line(mapping = aes(y = lo_sp2), col = "orange") +
+  geom_line(mapping = aes(y = lo_sp1), col = "red")
+```
+
+###  Cubic spline smoothing 
+
+- The `smooth.spline` function might have a nice smooth fit to migration age schedule
+    - Adjust the smoothing parameter using `spar` (between 0 and 1)
+    - Use `n` to set the number of predicted values
+    
+```{r}
+b <- b %>%
+  mutate(
+    s_default = smooth.spline(x = age, y = mi, n = n())$y,
+    s_sp6 = smooth.spline(x = age, y = mi, n = n(), spar = 0.6)$y,
+    s_sp8 = smooth.spline(x = age, y = mi, n = n(), spar = 0.8)$y)
+```
+
+###  Cubic spline smoothing 
+
+
+```{r, fig.height=5}
+ggplot(data = b, 
+       mapping = aes(x = age, y = mi)) +
+  geom_point(alpha = 0.5) + 
+  geom_line(mapping = aes(y = s_default), col = "darkgrey") +
+  geom_line(mapping = aes(y = s_sp6), col = "orange") + 
+  geom_line(mapping = aes(y = s_sp8), col = "red")
+
+```
+
+
+
+# Graduating
+
+## .
+
+### Graduating
+
+- If you require single year migration age data, but only have data by age groups, then graduating methods can be used to estimate migration for each age that sum to the reported age group totals. 
+- There a multiple graduating methods available in the `graduate()` function in the DemoTools package
+    - Built for interpolating population totals, but also suitable for migration flows
+    - See the [guide](https://timriffe.github.io/DemoTools/articles/graduation_with_demotools.html) for more detail on different methods
+- Requires users to provide `Value` and minimum `Age`. 
+- Can also specify the maximum value of final open age group, if exists, for certain methods such as `pclm`.
+
+### Graduating
+
+- DemoTools is not on CRAN. Difficult to install. 
+
+```{r, eval=FALSE}
+# install devtools from CRAN 
+# install.packages("devtools")
+library(devtools)
+
+install_github("timriffe/DemoTools")
+```
+
+
+### Graduating
+
+- Using the out-migration to Italian islands area in 1970
+```{r, fig.height=4, message=FALSE}
+library(DemoTools)
+head(i)
+
+mx <- graduate(Value = i$out_mig, Age = i$age_min, 
+               method = "pclm", OAG =  TRUE, OAnew = 100)
+mx
+```
+
+### Graduating
+
+```{r, fig.height=4}
+# check for close match between graduate values and out_mig 
+# 0-4
+sum(mx[1:5])
+# 5-9
+sum(mx[6:10])
+
+select(i, age_grp, out_mig)
+```
+
+### Graduating
+
+```{r, eval=FALSE}
+# different scales in y-axis
+ggplot(data = i, 
+       mapping = aes(x = age_min + 2.5, y = out_mig)) +
+  geom_point()
+
+tibble(age = 0:100, mx = mx) %>%
+  ggplot(mapping = aes(x = age, y = mx)) +
+  geom_line()
+```
+
+```{r, echo=FALSE, fig.height=4}
+g1 <- ggplot(data = i, 
+       mapping = aes(x = age_min + 2.5, y = out_mig)) +
+  geom_point()
+
+g2 <- tibble(age = 0:100, mx = mx) %>%
+  ggplot(mapping = aes(x = age, y = mx)) +
+  geom_line()
+library(patchwork)
+g1 + g2
+```
+
+
+### Exercise 5 (ex5.R)
+
+
+```{r eval = FALSE, prompt=FALSE,  code = readLines('../exercise/ex5.R') }
+```
+
+
+### References  {.allowframebreaks} 
+
+\scriptsize

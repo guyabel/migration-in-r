@@ -1,10 +1,15 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
 # Handling Migration Data in R
 
 The R statistical language provides many powerful tools to carry out data analysis. In this chapter we highlight some useful R functions to manipulate migration data into specific formats that might be required for more advanced functions to analysis or visualization. 
 
 ## Contingency Table
 
-Bilateral migration data is often organized and represented in square tables, commonly referred to as migration matrices. These tables or matrices are form of contingency tables, otherwise know as cross-tabulations or frequency tables, often used in data analysis and statistics. Migration tables provide a structured way to organize and summarize origin-destination migration data, often with table rows containing the region of origin and the table columns based on the regions of destinations. The cells in the table typically capture the counts of migration from one region of origin to another region of destination, where each non-diagonal cell in the table represents the number of migrants moving between a specific pair of regions. The inspection of migration tables themselves often provides valuable first insights into the magnitude and direction of migration flows between different areas.
+Bilateral migration data are often organized and represented in square tables, commonly referred to as migration matrices or migration flow tables. These tables are contingency tables, otherwise know as cross-tabulations or frequency tables, used in data analysis and statistics. Migration flow tables provide a structured way to organize and summarize origin-destination migration data, with rows representing the regions of origin and columns representing the regions of destinations. The cells in the table capture the number of persons migrating from one region to another. The inspection of migration tables themselves provide valuable insights into the magnitudes and directions of migration between different regions.
  
 
 
@@ -63,14 +68,15 @@ Bilateral migration data is often organized and represented in square tables, co
     </tr>
 </table>
 
-The diagonal cells in migration tables, when provided, typically represent populations that either do not migrate or move within the same region. These values are often not presented or are assigned a specific value to indicate a non-moving or within-region population for allow for a clearer comparisons of the migration patterns in the non-diagonal cells. 
+
+The diagonal cells in migration flow tables represent populations that either do not migrate (remain) or make moves within the same region. These values are useful to provide a relative sense of migration in relation to local mobility or to the population not migrating. Alternatively, one can place zeros in the diagonal elements (or nothing as in the table above) so that the table only consists of those migrating between regions.  
 
 
 ## Data Creation
 
-In R, we may create migration tables directly using the `matrix()` or `array()` functions. Both functions output create `array` type objects, are sometimes a pre-requisite for more complicated functions used for describing, estimating or visualising bilateral migration data.
+In R, migration flow tables can be created directly using the `matrix()` or `array()` functions. Both functions create `array` type objects. They are sometimes a pre-requisite for more complicated functions used for describing, estimating or visualising bilateral migration data.
 
-The `matrix()` function allows users to specify the dimensions of the matrix and populate it with desired values. It can be used to create matrices of any size, and supports various options for filling the matrix, such as using a sequence of numbers, replicating values, or using external data sources. Data is provided via a vector passed to the `data` argument. By default the data populates the matrix from the first column on, which can be altered by setting `byrow = FALSE`. 
+The `matrix()` function allows users to specify the dimensions of the matrix and populate it with desired values. It can be used to create matrices of any size, and supports various options for filling in the matrix, such as using a sequence of numbers, replicating values, or using auxiliary data sources. Data is provided via a vector passed to the `data` argument. By default the data populates the matrix from the first column on, which can be altered by setting `byrow = FALSE`. 
 
 ```{r}
 m0 <- matrix(data = c(0, 100, 30, 70, 50, 0, 45, 5, 60, 35, 0, 40, 20, 25, 20, 0),
@@ -78,7 +84,7 @@ m0 <- matrix(data = c(0, 100, 30, 70, 50, 0, 45, 5, 60, 35, 0, 40, 20, 25, 20, 0
 m0
 ```
 
-It is often valuable to supply a vector of character strings for the origin and destination names to the `matrix` data object. These can be provided to an existing `matrix` object using the `dimnames()` via the `dimnames` argument or can be set via the `dimnames` argument within the `matrix()`. The corresponding `rownames()` and  `colnames()` functions can be used to assign or display individual dimension names.
+It is often valuable to supply a vector of character strings for the origin and destination names to the `matrix` data object. These can be linked to an existing `matrix` object using the `dimnames()` via the `dimnames` argument. The corresponding `rownames()` and  `colnames()` functions can be used to assign or display individual dimension names.
 
 ```{r}
 # create region labels
@@ -99,10 +105,10 @@ m0
 ```
 
 
-In R, the `array()` function is used to create multidimensional arrays, which can have more than two dimensions. While the `matrix()` function creates two-dimensional structures, the `array()` function extends this capability to higher dimensions. 
+In R, the `array()` function is used to create multidimensional arrays, which can have more than two dimensions. While the `matrix()` function creates two-dimensional structures. 
 
 Similar to the `matrix()` function, the `array()` function allows users to define the dimensions of the array and populate it with desired values. However, in the `array()` function, the dimensions are specified as a vector to the `dim` argument, indicating the size of each dimension. 
-The `array()` function can be seen as a generalization of the `matrix()` function, as matrices are a specific type of two-dimensional arrays. By using the `array()` function, users can work with data that requires more complex organization and analysis, such as migration data cross classified by origin, destination and additional variables such as sex, age or education.
+The `array()` function can be seen as a generalization of the `matrix()` function, as matrices are a specific type of two-dimensional arrays. By using the `array()` function, users can work with data that requires more complex organization and analysis, such as migration flows cross classified by origin, destination and additional variables such as sex, age or education.
 
 ```{r}
 m1 <- array(data = sample(x = 1:100, size = 32),
@@ -115,7 +121,7 @@ m1
 
 Statistical offices, government agencies, and international organizations collect and disseminate migration data in different formats to accommodate the needs of users and researchers. The format of the data may not necessarily be in square matrices that can be read directly into R and converted into a `matrix` object. However, there are useful functions in R that can be employed to convert data into appropriate formats for migration analysis.
 
-The `xtabs()` function is particularly helpful as it enables the conversion of data frames in a tidy format @Wickham2014 into matrices or arrays. It requires a `formula` argument that specifies the column names in the data frame that will be used to construct and populate the `matrix` or `array`. The formula consists of the left-hand side representing the column name with the data to fill, the `~` symbol to separate the left and right-hand sides, and the right-hand side representing the columns used for cross-classifying the left-hand variable (separated by `+`). The `data` argument specifies the data object where the  data in a tidy format with the variables to be used in the formula.
+The `xtabs()` function is particularly helpful as it enables the conversion of data frames in a tidy format @Wickham2014 into matrices or arrays. It requires a `formula` argument that specifies the column names in the data frame that will be used to construct and populate the `matrix` or `array`. The formula consists of the left-hand side representing the column name with the data to fill, the `~` symbol to separate the left and right-hand sides, and the right-hand side representing the columns used for cross-classifying the left-hand variable (separated by `+`). The `data` argument specifies the object where the  data presented in a tidy format with variables included in the formula.
 
 ```{r, message=FALSE, echo=FALSE}
 library(tidyverse)
@@ -158,7 +164,7 @@ When working with `matrix` objects based on migration data in R there are additi
 addmargins(A = m0)
 ```
 
-When working with migration matrices in R, it can sometimes be challenging to effectively view and analyze the data due to various factors such as lengthy dimension names and large unit sizes. Additionally, the inclusion of diagonal terms, which are often not of interest in migration analysis, can further complicate the interpretation of the matrix. However, R provides several helpful functions that can assist in adapting migration matrix objects for easier viewing and analysis. To illustrate their application, we will use the `uar_1960` object from the **migest** package, which represents a lifetime migration matrix for the Governorates of the United Arab Republic in 1960 as documented in the United Nations manual by @UnitedNations1983. Notice how by default the object is difficult to completely view due to the forementioned issues: 
+When working with migration matrices in R, it can sometimes be challenging to effectively view and analyze the data due to various factors such as lengthy dimension names and large unit sizes. Additionally, the inclusion of diagonal terms, which are often not of interest in migration analysis, can further complicate the interpretation of the matrix. R provides several helpful functions that can assist in adapting migration matrix objects for easier viewing and analysis. To illustrate, we use the `uar_1960` object from the **migest** package, which represents a lifetime migration matrix for the Governorates of the United Arab Republic in 1960 as documented in the United Nations manual by @UnitedNations1983. Notice how the object is difficult to view due to issues described above: 
 
 ```{r}
 library(migest)
@@ -186,14 +192,14 @@ dimnames(u0) <- r
 u0
 ```
 
-Basic arithmetic operators can be employed to scale the data to an appropriate level, such as dividing the values by a common factor or multiplying them to achieve a desired magnitude. This can be useful when working with migration matrices to adjust the values and make them more interpretable or comparable. The `round()` function which allows users to specify the precision of numbers in your migration data, which can be handy when working with migration rates or other quantitative measures.
+Basic arithmetic operators can be employed to scale the data to an appropriate level, such as dividing the values by a common factor or multiplying them to achieve a desired magnitude. This can be useful when working with migration matrices to adjust the values and make them more interpretable or comparable. The `round()` function which allows users to specify the precision of numbers in your migration data, which can be handy when working with migration rates or proportions. 
 
 ```{r}
 u1 <- round(x = u0/1000, digits = 1)
 u1
 ```
 
-The `diag()` function allows users to manipulate the diagonal terms of a matrix, which often represent non-moving individuals or populations within a region which can be many orders of magnatude larger than the counts of persons migrating in the non-diagonal cells. The `diag()` function takes a matrix as input and returns a new matrix with the same values, except that the diagonal elements are modified according to the specified rule. In the context of migration data, setting the diagonal terms to zero effectively removes the non-moving populations from the matrix, making it easier to analyze the migration flows between regions of interest.
+The `diag()` function allows users to manipulate the diagonal terms of a matrix, which can be much larger than the number of persons migrating in the non-diagonal cells. The `diag()` function takes a matrix as input and returns a new matrix with the same values, except that the diagonal elements are modified according to the specified rule. In the context of migration data, setting the diagonal terms to zero effectively removes the non-moving populations from the matrix, making it easier to analyze the migration flows.
 
 ```{r}
 u2 <- u0
@@ -216,15 +222,15 @@ sum_bilat(m0)
 
 Another useful function in the *migest* package is `sum_region()`, which allows you to generate comprehensive summaries of in-migration, out-migration, net migration, and turnover totals for each region in your migration data. Similar to the `sum_bilat()` function, `sum_region()` also accepts either a `matrix` or a `data.frame` (or `tibble`) as input, providing flexibility in working with different data formats.
 
-By using the `sum_region()` function, you can obtain valuable information about migration flows at the regional level. It calculates the total number of migrants moving into each region (in-migration), the total number of migrants moving out of each region (out-migration), the net migration balance (in-migration minus out-migration), and the turnover (sum of in-migration and out-migration) for each region. These summaries offer a comprehensive picture of migration levels for each region, allowing for further analysis and interpretation.
+By using the `sum_region()` function, you can obtain valuable information about migration flows at the regional level. It calculates the total number of migrants moving into each region (in-migration), the total number of migrants moving out of each region (out-migration), the net migration balance (in-migration minus out-migration), and the turnover (sum of in-migration and out-migration) for each region. These summaries are useful for further analyses and interpretations.
 
 ```{r}
 sum_region(m0)
 ```
 
-Note, when the data provided to the `sum_region()` is a data frame, the origin and destination regions names are assumed to be in variables named `orig` and `dest`. In addition, the migration data re assumed by default to be in variable named `flow`. If the corresponding column names differ, the user can supply these to the `orig_col`, `dest_col` and `flow_col` argumenets in the `sum_region()` function.
+Note, when the data provided to the `sum_region()` is a data frame, the origin and destination regions names are assumed to be in variables named `orig` and `dest`. In addition, the migration data are assumed to be in variable named `flow`. If the corresponding column names differ, the user can supply these to the `orig_col`, `dest_col` and `flow_col` argumenets in the `sum_region()` function.
 
-The `sum_country()` function provides the same calculations, but provides summary variables names corresponding to the equivalent terms used for international migration data. When the input data for either the `sum_region()` or `sum_country()` functions are over more than two dimensions, beyond the standard origin and destination dimensions, the `group_by` function from the *dplyr* package should be used to allow for specific calculations beyond the origin and destination dimensions. To demonstrate we will used the international flow estimates of @Abel2019 which can be downloaded and read directly into R from the online CSV file. 
+The `sum_country()` function provides the same calculations, along with summary variables names. When the input data for either the `sum_region()` or `sum_country()` functions represent more than two dimensions, the `group_by` function from the *dplyr* package should be used. To demonstrate, we use the international flow estimates of @Abel2019 which can be downloaded and read directly into R from the online CSV file. 
 
 ```{r, cache = TRUE, message=FALSE, warning=FALSE}
 # read data from web depository

@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Summary Migration Indices | Handling, Measuring, Estimating and Visualizing Migration Data in R</title>
-  <meta name="description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta name="description" content="In many countries and regions, migration is becoming or already is the largest component of population change and important mechansim for both social and economic change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration flows have been developed by demographers and other researchers to help address shortfalls and provide a platform to better understand patterns, trends and consequences. This manaul explores methods for measuring, estimating and visualising migration flow data, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize complex migration patterns. While plenty of code samples and exercises are provided throughout the manual to build up the readers experience, some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Summary Migration Indices | Handling, Measuring, Estimating and Visualizing Migration Data in R" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta property="og:description" content="In many countries and regions, migration is becoming or already is the largest component of population change and important mechansim for both social and economic change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration flows have been developed by demographers and other researchers to help address shortfalls and provide a platform to better understand patterns, trends and consequences. This manaul explores methods for measuring, estimating and visualising migration flow data, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize complex migration patterns. While plenty of code samples and exercises are provided throughout the manual to build up the readers experience, some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 4 Summary Migration Indices | Handling, Measuring, Estimating and Visualizing Migration Data in R" />
   
-  <meta name="twitter:description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta name="twitter:description" content="In many countries and regions, migration is becoming or already is the largest component of population change and important mechansim for both social and economic change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration flows have been developed by demographers and other researchers to help address shortfalls and provide a platform to better understand patterns, trends and consequences. This manaul explores methods for measuring, estimating and visualising migration flow data, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize complex migration patterns. While plenty of code samples and exercises are provided throughout the manual to build up the readers experience, some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
   
 
 <meta name="author" content="Guy J. Abel, James Raymer, Ellen Kraly" />
 
 
-<meta name="date" content="2023-05-21" />
+<meta name="date" content="2023-05-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -119,28 +119,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -249,8 +227,8 @@ div.csl-indent {
 <li><p><strong>Diverse Approaches to Distance Measurement</strong>: Different regions or countries may adopt varying methods to measure distances between locations. These differences can impact migration analyses that rely on distance-based measures, such as gravity model analyses.</p></li>
 <li><p><strong>Fluctuations in Population Sizes and Structures</strong>: The underlying population sizes and demographic structures of regions or countries can change over time. These changes can influence migration patterns and introduce additional complexities when comparing migration data across different time periods or geographic areas.</p></li>
 </ol>
-<p>Given these factors, it is important to consider the contextual nuances and data issues when conducting cross-national or temporal comparisons of migration. In recent decades a growing number of summary migration measures and indices have been proposed to attempt to address one or more of the factors above. <span class="citation">Bell et al. (<a href="#ref-Bell2002" role="doc-biblioref">2002</a>)</span> brought together many of these measure and extended others to help facilitate the improved comparisons of internal migration across nations. These measures were incorporated into the IMAGE software, to build comparisons of internal migration patterns in multiple countries <span class="citation">Bell, Charles-Edwards, Ueffing, et al. (<a href="#ref-Bell2015" role="doc-biblioref">2015</a>)</span>, <span class="citation">Bell, Charles-Edwards, Kupiszewska, et al. (<a href="#ref-Bell2015a" role="doc-biblioref">2015</a>)</span>, <span class="citation">Stillwell et al. (<a href="#ref-Stillwell2016" role="doc-biblioref">2016</a>)</span>, <span class="citation">Rees et al. (<a href="#ref-Rees2016" role="doc-biblioref">2016</a>)</span>, and <span class="citation">Bernard, Bell, and Charles-Edwards (<a href="#ref-Bernard2014" role="doc-biblioref">2014</a>)</span>.</p>
-<p>In the work of <span class="citation">Bell et al. (<a href="#ref-Bell2002" role="doc-biblioref">2002</a>)</span>, four main groups of migration indices were identified, providing a comprehensive framework for understanding and analyzing migration patterns. These groups include intensity of migration, distance of migration, migration connectivity, and the effect of migration on the redistribution of populations. In the remainder of this chapter we concentrate on available functions in R that can be used to calculate a range of summary migration indices in these four groups, and show how they can be applied to study changes in migration patterns over time or between countries.</p>
+<p>Given these factors, it is important to consider the contextual nuances and data issues when conducting cross-national or temporal comparisons of migration. In recent decades a growing number of summary migration measures and indices have been proposed to attempt to address one or more of the factors above. <span class="citation">(<a href="#ref-Bell2002" role="doc-biblioref"><strong>Bell2002?</strong></a>)</span> brought together many of these measure and extended others to help facilitate the improved comparisons of internal migration across nations. These measures were incorporated into the IMAGE software, to build comparisons of internal migration patterns in multiple countries <span class="citation">(<a href="#ref-Bell2015" role="doc-biblioref"><strong>Bell2015?</strong></a>)</span>, <span class="citation">(<a href="#ref-Bell2015a" role="doc-biblioref"><strong>Bell2015a?</strong></a>)</span>, <span class="citation">(<a href="#ref-Stillwell2016" role="doc-biblioref"><strong>Stillwell2016?</strong></a>)</span>, <span class="citation">(<a href="#ref-Rees2016" role="doc-biblioref"><strong>Rees2016?</strong></a>)</span>, and <span class="citation">(<a href="#ref-Bernard2014" role="doc-biblioref"><strong>Bernard2014?</strong></a>)</span>.</p>
+<p>In the work of <span class="citation">(<a href="#ref-Bell2002" role="doc-biblioref"><strong>Bell2002?</strong></a>)</span>, four main groups of migration indices were identified, providing a comprehensive framework for understanding and analyzing migration patterns. These groups include intensity of migration, distance of migration, migration connectivity, and the effect of migration on the redistribution of populations. In the remainder of this chapter we concentrate on available functions in R that can be used to calculate a range of summary migration indices in these four groups, and show how they can be applied to study changes in migration patterns over time or between countries.</p>
 <div id="migration-intensity" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Migration intensity<a href="summary-migration-indices.html#migration-intensity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Migration intensity measures focus on capturing the overall level or incidence of mobility within a population. These measures aim to provide a single indicator that allows for comparisons of migration intensities over different time periods or geographical areas. They help researchers understand the relative magnitude of migration flows and sets of regions or periods with higher or lower levels of migration activity.</p>
@@ -266,8 +244,8 @@ The CMP is calculated by dividing the total number of migrants (<span class="mat
 \]</span>
 The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does not have an intrinsic meaning by itself. However, it serves as a scaling factor that allows for comparisons of migration intensity across zonal systems or administrative divisions used to collect migration data. A higher value of <span class="math inline">\(k\)</span> indicates a greater intensity of migration within a set of regions.</p>
 <p>The <em>migest</em> package offers the <code>index_intensity()</code> function, which facilitates the calculation of migration intensity measures. This function takes a migration and population totals as inputs, alongside a value for the number of regions <code>n</code>, and calculates both intensity measures discussed above.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="summary-migration-indices.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(migest)</span>
-<span id="cb1-2"><a href="summary-migration-indices.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">index_intensity</span>(<span class="at">mig_total =</span> <span class="dv">25</span>, <span class="at">pop_total =</span> <span class="dv">52</span>, <span class="at">n =</span> <span class="dv">17</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="summary-migration-indices.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(migest)</span>
+<span id="cb42-2"><a href="summary-migration-indices.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">index_intensity</span>(<span class="at">mig_total =</span> <span class="dv">25</span>, <span class="at">pop_total =</span> <span class="dv">52</span>, <span class="at">n =</span> <span class="dv">17</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
 ##   measure    value
 ##   &lt;chr&gt;      &lt;dbl&gt;
@@ -283,19 +261,19 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 <h3><span class="header-section-number">4.2.1</span> Creating distance matrices in R<a href="summary-migration-indices.html#creating-distance-matrices-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In R, there are various functions available to calculate distance matrices, which are can then be used when analyzing migration patterns. These functions typically require a set of longitude and latitude coordinates to compute the distances between locations accurately. While some national statistics offices may provide these centroids, in many cases such data is not readily available. In such situations, researchers can turn to alternative sources for population-weighted centroid estimates based on gridded population estimates.</p>
 <p>The <a href="https://www.popgrid.org/">POPGRID</a> Data Collaborative brings together multiple research groups that publish estimates of past and future population gridded datasets. These estimates can be used to derive population-weighted centroids and facilitate the calculation of distance matrices for migration analysis.</p>
-<p>Below we demonstrate how to download the population centroids from the WorldPop, one of the research groups covered by POPGRID. They handily provide CSV files for population centriods for all first-level subregions based on the global population gridded estimates in five-year intervals between 2000 and 2020 (<span class="citation">Edwards et al. (<a href="#ref-Edwards2021" role="doc-biblioref">2021</a>)</span>). We can read in the data in the 2020 CSV file (the fifth file in the zip folder) using the <code>archive_read</code> function in R to download the zip folder from the WorldPop website and temporarily unzip the file for reading into R.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="summary-migration-indices.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-2"><a href="summary-migration-indices.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(archive)</span>
-<span id="cb3-3"><a href="summary-migration-indices.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="summary-migration-indices.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
-<span id="cb3-5"><a href="summary-migration-indices.html#cb3-5" aria-hidden="true" tabindex="-1"></a>pw <span class="ot">&lt;-</span> <span class="fu">archive_read</span>(</span>
-<span id="cb3-6"><a href="summary-migration-indices.html#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">archive =</span> <span class="st">&quot;https://data.worldpop.org/GIS/Population_Weighted_Density/Unconstrained_Subnational/100m/PWD_100m_sub_national_CSV.zip&quot;</span>,</span>
-<span id="cb3-7"><a href="summary-migration-indices.html#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> <span class="dv">5</span></span>
-<span id="cb3-8"><a href="summary-migration-indices.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-9"><a href="summary-migration-indices.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>()</span>
-<span id="cb3-10"><a href="summary-migration-indices.html#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="summary-migration-indices.html#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># view</span></span>
-<span id="cb3-12"><a href="summary-migration-indices.html#cb3-12" aria-hidden="true" tabindex="-1"></a>pw</span></code></pre></div>
+<p>Below we demonstrate how to download the population centroids from the WorldPop, one of the research groups covered by POPGRID. They handily provide CSV files for population centriods for all first-level subregions based on the global population gridded estimates in five-year intervals between 2000 and 2020 (<span class="citation">(<a href="#ref-Edwards2021" role="doc-biblioref"><strong>Edwards2021?</strong></a>)</span>). We can read in the data in the 2020 CSV file (the fifth file in the zip folder) using the <code>archive_read</code> function in R to download the zip folder from the WorldPop website and temporarily unzip the file for reading into R.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="summary-migration-indices.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb44-2"><a href="summary-migration-indices.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(archive)</span>
+<span id="cb44-3"><a href="summary-migration-indices.html#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="summary-migration-indices.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
+<span id="cb44-5"><a href="summary-migration-indices.html#cb44-5" aria-hidden="true" tabindex="-1"></a>pw <span class="ot">&lt;-</span> <span class="fu">archive_read</span>(</span>
+<span id="cb44-6"><a href="summary-migration-indices.html#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">archive =</span> <span class="st">&quot;https://data.worldpop.org/GIS/Population_Weighted_Density/Unconstrained_Subnational/100m/PWD_100m_sub_national_CSV.zip&quot;</span>,</span>
+<span id="cb44-7"><a href="summary-migration-indices.html#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> <span class="dv">5</span></span>
+<span id="cb44-8"><a href="summary-migration-indices.html#cb44-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-9"><a href="summary-migration-indices.html#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>()</span>
+<span id="cb44-10"><a href="summary-migration-indices.html#cb44-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-11"><a href="summary-migration-indices.html#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="co"># view</span></span>
+<span id="cb44-12"><a href="summary-migration-indices.html#cb44-12" aria-hidden="true" tabindex="-1"></a>pw</span></code></pre></div>
 <pre><code>## # A tibble: 3,521 × 25
 ##     year ISO   ISO_No Country_N Adm_N GID_1 HASC  PWC_Lat PWC_Lon    Pop Density
 ##    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
@@ -314,11 +292,11 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 ## #   PWD_D4 &lt;dbl&gt;, PWD_D5 &lt;dbl&gt;, PWD_D6 &lt;dbl&gt;, PWD_D7 &lt;dbl&gt;, PWD_D8 &lt;dbl&gt;,
 ## #   PWD_D9 &lt;dbl&gt;, PWD_D10 &lt;dbl&gt;</code></pre>
 <p>We will use South Korea to demonstrate how calcaulte a populated weighted distance matrix for regions in a particular country</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="summary-migration-indices.html#cb5-1" aria-hidden="true" tabindex="-1"></a>kor_pw <span class="ot">&lt;-</span> pw <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="summary-migration-indices.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ISO <span class="sc">==</span> <span class="st">&quot;KOR&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="summary-migration-indices.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Adm_N, PWC_Lat, PWC_Lon, Pop)</span>
-<span id="cb5-4"><a href="summary-migration-indices.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="summary-migration-indices.html#cb5-5" aria-hidden="true" tabindex="-1"></a>kor_pw</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="summary-migration-indices.html#cb46-1" aria-hidden="true" tabindex="-1"></a>kor_pw <span class="ot">&lt;-</span> pw <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="summary-migration-indices.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ISO <span class="sc">==</span> <span class="st">&quot;KOR&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="summary-migration-indices.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Adm_N, PWC_Lat, PWC_Lon, Pop)</span>
+<span id="cb46-4"><a href="summary-migration-indices.html#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="summary-migration-indices.html#cb46-5" aria-hidden="true" tabindex="-1"></a>kor_pw</span></code></pre></div>
 <pre><code>## # A tibble: 17 × 4
 ##    Adm_N             PWC_Lat PWC_Lon      Pop
 ##    &lt;chr&gt;               &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
@@ -340,14 +318,14 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 ## 16 Seoul                37.5    127.  8889778
 ## 17 Ulsan                35.5    129.  1038185</code></pre>
 <p>The calculation of distances between centroids can calcualted using the <code>distm()</code> function from the <em>geosphere</em> package. By providing the longitude and latitude coordinates of the centroids, the function can estimate the great circle distance between them in meters.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="summary-migration-indices.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geosphere)</span>
-<span id="cb7-2"><a href="summary-migration-indices.html#cb7-2" aria-hidden="true" tabindex="-1"></a>kor_dist_pw <span class="ot">&lt;-</span> kor_pw <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="summary-migration-indices.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PWC_Lon, PWC_Lat) <span class="sc">%&gt;%</span></span>
-<span id="cb7-4"><a href="summary-migration-indices.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distm</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="summary-migration-indices.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geosphere)</span>
+<span id="cb48-2"><a href="summary-migration-indices.html#cb48-2" aria-hidden="true" tabindex="-1"></a>kor_dist_pw <span class="ot">&lt;-</span> kor_pw <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="summary-migration-indices.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PWC_Lon, PWC_Lat) <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="summary-migration-indices.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distm</span>()</span></code></pre></div>
 <p>To enhance the usability of the distance matrix, you can add the names of the origin and destination regions to the rows and columns of the matrix using the <code>dimnames()</code> function. Additionally, the distances can be divided by 1000 to convert them from meters to kilometers. These manipulations allow you to easily combine the distance matrix with migration data or perform further analyses and interpolate the results.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="summary-migration-indices.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(kor_dist_pw) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">orig =</span> kor_pw<span class="sc">$</span>Adm_N, <span class="at">dest =</span> kor_pw<span class="sc">$</span>Adm_N)</span>
-<span id="cb8-2"><a href="summary-migration-indices.html#cb8-2" aria-hidden="true" tabindex="-1"></a>kor_dist_pw <span class="ot">&lt;-</span> <span class="fu">round</span>(kor_dist_pw<span class="sc">/</span><span class="dv">1000</span>)</span>
-<span id="cb8-3"><a href="summary-migration-indices.html#cb8-3" aria-hidden="true" tabindex="-1"></a>kor_dist_pw</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="summary-migration-indices.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(kor_dist_pw) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">orig =</span> kor_pw<span class="sc">$</span>Adm_N, <span class="at">dest =</span> kor_pw<span class="sc">$</span>Adm_N)</span>
+<span id="cb49-2"><a href="summary-migration-indices.html#cb49-2" aria-hidden="true" tabindex="-1"></a>kor_dist_pw <span class="ot">&lt;-</span> <span class="fu">round</span>(kor_dist_pw<span class="sc">/</span><span class="dv">1000</span>)</span>
+<span id="cb49-3"><a href="summary-migration-indices.html#cb49-3" aria-hidden="true" tabindex="-1"></a>kor_dist_pw</span></code></pre></div>
 <pre><code>##                    dest
 ## orig                Busan Chungcheongbuk-do Chungcheongnam-do Daegu Daejeon
 ##   Busan                 0               216               255    88     201
@@ -428,7 +406,7 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 <div id="migration-distance-measures" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Migration Distance Measures<a href="summary-migration-indices.html#migration-distance-measures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To capture the average migration distance and account for the skewed distribution of distances, various methods can be employed. One approach is to calculate the weighted average of migration counts, where the distances between regions serve as the weights. This provides a summary measure of the average migration distance, taking into account the varying distances between origin and destination pairs.</p>
-<p><span class="citation">Bell et al. (<a href="#ref-Bell2002" role="doc-biblioref">2002</a>)</span> suggests that the median average distance is preferable to the mean average distance due to the negatively skewed distribution of distances. This skewness reflects the distance decay effect, which consistently influences migration patterns. Comparing the median and mean average distances can provide insights into the degree of skewness in the distribution.</p>
+<p><span class="citation">(<a href="#ref-Bell2002" role="doc-biblioref"><strong>Bell2002?</strong></a>)</span> suggests that the median average distance is preferable to the mean average distance due to the negatively skewed distribution of distances. This skewness reflects the distance decay effect, which consistently influences migration patterns. Comparing the median and mean average distances can provide insights into the degree of skewness in the distribution.</p>
 <p>To address the skewness and model the relationship between migration counts and distances, a more comprehensive method involves fitting a predictive model. Different models can be utilized, often incorporating a log-transformed distance term and categorical control variables for the origin and destination regions. For example, a Poisson log-linear model can be employed, where the logarithm of the migration count (<span class="math inline">\(m_{ij}\)</span>) is related to the origin, destination, and log-distance as follows:</p>
 <p><span class="math display">\[
 \log(m_{ij}) = \beta_0 + \beta_{1i} \texttt{origin} + \beta_{2j} \texttt{destination} + \beta_{3} \log(\texttt{distance})
@@ -442,14 +420,14 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 <p>Similarly, the distance values can be provided as a matrix or a data frame. The column names in the distance data are assumed to be <code>orig</code>, <code>dest</code>, and <code>dist</code>. Just like with migration flows, you can customize the column names using the appropriate arguments.</p>
 <p>It is important to note that the origin and destination names in both the migration data and the distance data must match for accurate calculations. In cases where within-region migration moves are present in the data, the <code>index_distance()</code> function will automatically exclude them from the distance calculations.</p>
 <p>To demonstrate we will use migration data on internal migration between first-level administrative districts in South Korea provide in the <code>korea_reg</code> data frame in the <em>migest</em>. The data covers migration flows between 2012 and 2020 and was published by the Korean Statistical Information Service (KOSIS) at <a href="https://kosis.kr/eng" class="uri">https://kosis.kr/eng</a>.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="summary-migration-indices.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2020 migration data</span></span>
-<span id="cb10-2"><a href="summary-migration-indices.html#cb10-2" aria-hidden="true" tabindex="-1"></a>kor_mig_2020 <span class="ot">&lt;-</span> korea_reg <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="summary-migration-indices.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span>
-<span id="cb10-4"><a href="summary-migration-indices.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="summary-migration-indices.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check no differences in names used in migration and distance data sets</span></span>
-<span id="cb10-6"><a href="summary-migration-indices.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">symdiff</span>(<span class="at">x =</span> <span class="fu">unique</span>(kor_mig_2020<span class="sc">$</span>orig), <span class="at">y =</span> kor_pw<span class="sc">$</span>Adm_N)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="summary-migration-indices.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2020 migration data</span></span>
+<span id="cb51-2"><a href="summary-migration-indices.html#cb51-2" aria-hidden="true" tabindex="-1"></a>kor_mig_2020 <span class="ot">&lt;-</span> korea_reg <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="summary-migration-indices.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span>
+<span id="cb51-4"><a href="summary-migration-indices.html#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="summary-migration-indices.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check no differences in names used in migration and distance data sets</span></span>
+<span id="cb51-6"><a href="summary-migration-indices.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">symdiff</span>(<span class="at">x =</span> <span class="fu">unique</span>(kor_mig_2020<span class="sc">$</span>orig), <span class="at">y =</span> kor_pw<span class="sc">$</span>Adm_N)</span></code></pre></div>
 <pre><code>## character(0)</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="summary-migration-indices.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index_distance</span>(<span class="at">m =</span> kor_mig_2020, <span class="at">d =</span> kor_dist_pw)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="summary-migration-indices.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index_distance</span>(<span class="at">m =</span> kor_mig_2020, <span class="at">d =</span> kor_dist_pw)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   measure   value
 ##   &lt;chr&gt;     &lt;dbl&gt;
@@ -461,7 +439,7 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 <div id="migration-connectivity" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Migration connectivity<a href="summary-migration-indices.html#migration-connectivity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The size of migration flows between different migration corridors is influenced by various factors beyond population sizes and distances. These flows also reflect the strength of historical, cultural, social, and economic ties between regions. For example, regions with stronger connections may experience higher migration flows due to shared history, language, or economic opportunities.</p>
-<p><span class="citation">Bell et al. (<a href="#ref-Bell2002" role="doc-biblioref">2002</a>)</span> note a fragmentation in the literature on the measurement of connections within a migration system, leading to the use of different terms such as <em>spatial connectivity</em>, <em>spatial concentration</em>, <em>spatial inequality</em>, and <em>spatial focusing</em>, among others. These terms highlight the diverse aspects of migration connections and the different perspectives from which they have be studied.</p>
+<p><span class="citation">(<a href="#ref-Bell2002" role="doc-biblioref"><strong>Bell2002?</strong></a>)</span> note a fragmentation in the literature on the measurement of connections within a migration system, leading to the use of different terms such as <em>spatial connectivity</em>, <em>spatial concentration</em>, <em>spatial inequality</em>, and <em>spatial focusing</em>, among others. These terms highlight the diverse aspects of migration connections and the different perspectives from which they have be studied.</p>
 <p>To explore and analyze migration connectivity, there are numerous indices available. The <em>migration.indices</em> package, for instance, provides a range of indices that capture different dimensions of migration connectivity.</p>
 <p>The various connectivity measures can be broadly categorized into five groups: connectivity, inequity, Gini coefficients, spatial focusing, and coefficient of variation. These measures capture different aspects of the overall concentration of migration flows in a system, whilst two of the measures also offer extended perspectives on the concentration in-migration and out-migration flow totals.</p>
 <ol style="list-style-type: decimal">
@@ -472,7 +450,7 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 <li><p>Coefficient of variation measures the variability or diversity of migration flows across regions, providing insights into the heterogeneity of migration patterns.</p></li>
 </ol>
 <p>The <code>index_connectivity()</code> function in the <em>migest</em> package offers 11 different measures that capture various aspects of migration connectivity from these five groups. To calculate the measures, a user can provide a matrix or data frame containing the migration flows as input to the function. If using a data frame, the function assumes that the flows are specified in a column with the name “flow.” However, if your data frame uses a different column name for the flows, you can specify it using the “flow_col” argument.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="summary-migration-indices.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index_connectivity</span>(<span class="at">m =</span> kor_mig_2020)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="summary-migration-indices.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index_connectivity</span>(<span class="at">m =</span> kor_mig_2020)</span></code></pre></div>
 <pre><code>## # A tibble: 11 × 2
 ##    measure                  value
 ##    &lt;chr&gt;                    &lt;dbl&gt;
@@ -508,13 +486,13 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 </div>
 <div id="spatial-focusing" class="section level3 hasAnchor" number="4.3.4">
 <h3><span class="header-section-number">4.3.4</span> Spatial Focusing<a href="summary-migration-indices.html#spatial-focusing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The migration weighted Gini indexes specifically <code>mwg_orig</code> and <code>mwg_dest</code>, offer measures of focusing for the total in-migration and out-migration, respectively. , Also proposed by <span class="citation">Bell et al. (<a href="#ref-Bell2002" role="doc-biblioref">2002</a>)</span>, these indexes assess the degree to which migration flows are concentrated in specific origins or destinations. A value of zero indicates no spatial focusing, while a value of 1 suggests that all migration flows pass through a single origin or destination.</p>
+<p>The migration weighted Gini indexes specifically <code>mwg_orig</code> and <code>mwg_dest</code>, offer measures of focusing for the total in-migration and out-migration, respectively. , Also proposed by <span class="citation">(<a href="#ref-Bell2002" role="doc-biblioref"><strong>Bell2002?</strong></a>)</span>, these indexes assess the degree to which migration flows are concentrated in specific origins or destinations. A value of zero indicates no spatial focusing, while a value of 1 suggests that all migration flows pass through a single origin or destination.</p>
 <p>Additionally, the <code>mwg_mean</code> measure provides a system-wide measure of focusing for all migration totals. It is calculated as a simple average of <code>mwg_orig</code> and <code>mwg_dest</code>. Similar to the other Gini measures, the <code>mwg_mean</code> value ranges between zero and 1, with zero indicating no spatial focusing and 1 indicating a high concentration of migration in a single origin or destination.</p>
 </div>
 <div id="coefficient-of-variation" class="section level3 hasAnchor" number="4.3.5">
 <h3><span class="header-section-number">4.3.5</span> Coefficient of Variation<a href="summary-migration-indices.html#coefficient-of-variation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The coefficient of variation (<code>cv</code> in the output from the <code>index_connectivity()</code> function above), as proposed by <span class="citation">Rogers and Raymer (<a href="#ref-Rogers1998" role="doc-biblioref">1998</a>)</span>, is a measure provided by the function that compares the mean of migration flows to the standard deviation of those flows. Unlike some of the previous measures, the coefficient of variation is not limited to a range of 0 to 1. It provides a quantitative measure of the variability in migration flows, where a higher coefficient of variation indicates greater dispersion or inequality in the flows.</p>
-<p>In addition to the coefficient of variation, the aggregated system-wide coefficient of variation <span class="citation">Rogers and Raymer (<a href="#ref-Rogers1998" role="doc-biblioref">1998</a>)</span> calculates a similar measure of variation but based on the aggregate coefficient of variations of in-migration and out-migration totals. It takes into account the means and standard deviations of the total in-migration and out-migration flows. Similar to the <code>cv</code> measure, the <code>acv</code> (in the output from the <code>index_connectivity()</code> function above) is not restricted to a range of 0 to 1. It is particularly useful for making comparisons across different time periods or countries, as a rising coefficient of variation would indicate increasing inequality in migration flows or flow totals.</p>
+<p>The coefficient of variation (<code>cv</code> in the output from the <code>index_connectivity()</code> function above), as proposed by <span class="citation">(<a href="#ref-Rogers1998" role="doc-biblioref"><strong>Rogers1998?</strong></a>)</span>, is a measure provided by the function that compares the mean of migration flows to the standard deviation of those flows. Unlike some of the previous measures, the coefficient of variation is not limited to a range of 0 to 1. It provides a quantitative measure of the variability in migration flows, where a higher coefficient of variation indicates greater dispersion or inequality in the flows.</p>
+<p>In addition to the coefficient of variation, the aggregated system-wide coefficient of variation <span class="citation">(<a href="#ref-Rogers1998" role="doc-biblioref"><strong>Rogers1998?</strong></a>)</span> calculates a similar measure of variation but based on the aggregate coefficient of variations of in-migration and out-migration totals. It takes into account the means and standard deviations of the total in-migration and out-migration flows. Similar to the <code>cv</code> measure, the <code>acv</code> (in the output from the <code>index_connectivity()</code> function above) is not restricted to a range of 0 to 1. It is particularly useful for making comparisons across different time periods or countries, as a rising coefficient of variation would indicate increasing inequality in migration flows or flow totals.</p>
 </div>
 </div>
 <div id="migration-impact" class="section level2 hasAnchor" number="4.4">
@@ -523,7 +501,7 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 <p>Additional measures exist to provide a more comprehensive summary of the overall effect of migration in redistributing populations across the entire system of regions. These measures take into account not only the net migration figures but also the gross migration flows between regions. By considering the complete migration picture, these measures offer insights into the broader impact of migration on population redistribution.</p>
 <div id="migration-effectiveness-index" class="section level3 hasAnchor" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> Migration effectiveness index<a href="summary-migration-indices.html#migration-effectiveness-index" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The migration effectiveness index (MEI), introduced by <span class="citation">Shryock and Siegel (<a href="#ref-Shryock1976" role="doc-biblioref">1976</a>)</span>, evaluates the asymmetry or equilibrium in a migration network by comparing the sum of net migration to the migration turnover. The MEI is calculated by taking the absolute sum of net migration and dividing it by the sum of migration turnover, multiplied by 100.</p>
+<p>The migration effectiveness index (MEI), introduced by <span class="citation">(<a href="#ref-Shryock1976" role="doc-biblioref"><strong>Shryock1976?</strong></a>)</span>, evaluates the asymmetry or equilibrium in a migration network by comparing the sum of net migration to the migration turnover. The MEI is calculated by taking the absolute sum of net migration and dividing it by the sum of migration turnover, multiplied by 100.</p>
 <p><span class="math display">\[
 \texttt{MEI} = 100 \frac{\sum_{i} | \texttt{net} |}{\sum_{i} \texttt{turnover}_i} = 100 \frac{\sum_{i} | m_{+i} - m_{i+}|}{\sum_{i} m_{+i} + m_{i+}}
 \]</span></p>
@@ -532,7 +510,7 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 </div>
 <div id="aggregate-net-migration-rate" class="section level3 hasAnchor" number="4.4.2">
 <h3><span class="header-section-number">4.4.2</span> Aggregate net migration rate<a href="summary-migration-indices.html#aggregate-net-migration-rate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The aggregate net migration rate (ANMR), proposed by <span class="citation">Bell et al. (<a href="#ref-Bell2002" role="doc-biblioref">2002</a>)</span>, captures the overall effect of migration on population settlement patterns. It is derived from the migration net totals and the populations of regions within a country. The ANMR replaces the denominator of the MEI formula with the population of each region, denoted as <span class="math inline">\(P_i\)</span>.</p>
+<p>The aggregate net migration rate (ANMR), proposed by <span class="citation">(<a href="#ref-Bell2002" role="doc-biblioref"><strong>Bell2002?</strong></a>)</span>, captures the overall effect of migration on population settlement patterns. It is derived from the migration net totals and the populations of regions within a country. The ANMR replaces the denominator of the MEI formula with the population of each region, denoted as <span class="math inline">\(P_i\)</span>.</p>
 <p><span class="math display">\[
 \texttt{ANMR} = 100 \frac{1}{2} \frac{\sum_{i} |\texttt{net}_i|}{\sum_{i} P_i} = 100 \frac{1}{2} \frac{\sum_{i} | m_{+i} - m_{i+} |}{\sum_{i} P_i}
 \]</span></p>
@@ -542,7 +520,7 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 </div>
 <div id="preference-and-velocity" class="section level3 hasAnchor" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> Preference and velocity<a href="summary-migration-indices.html#preference-and-velocity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The manual by the <span class="citation">United Nations Department of Economic and Social Affairs Population Division (<a href="#ref-UnitedNations1983" role="doc-biblioref">1970</a>)</span> introduces two other impact measures for migration, although these measures have become less commonly used in recent years.</p>
+<p>The manual by the <span class="citation">(<a href="#ref-UnitedNations1983" role="doc-biblioref"><strong>UnitedNations1983?</strong></a>)</span> introduces two other impact measures for migration, although these measures have become less commonly used in recent years.</p>
 <p>The preference index is derived from an expected model of migration interactions based on population shares and the overall level of migration. It compares the observed migration flows (<span class="math inline">\(m_{ij}\)</span>) to an expected model where migration rates in all populations are the same.</p>
 <p><span class="math display">\[
 \texttt{preference} = \sum_{ij}{\frac{m_{ij}}{m_{++} \frac{p_{i}}{p_+}\frac{p_{j}}{p_+}}}
@@ -559,7 +537,7 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 <h3><span class="header-section-number">4.4.4</span> Migration Impact Measures in R<a href="summary-migration-indices.html#migration-impact-measures-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>index_impact()</code> function in the <em>migest</em> package allows for the calculation of all four impact measures: preference index, velocity index, migration effectiveness index (MEI), and aggregate net migration rate (ANMR). This function requires a set of migration flows and population sizes in each region.</p>
 <p>As with the previous index functions in the <em>migest</em> package, the migration flows can be provided as a matrix or a data frame. The function assumes that the column names for the regions and population values provided to the <code>p</code> argument are <code>region</code> and <code>pop</code>, respectively, in a data frame. If your data frame has different column names, you can specify them using the <code>reg_col</code> and <code>pop_col</code> parameters. In the code below we use the population estimates from the WorldPop group provided in the <code>Pop</code> column of the <code>kor_pw</code> ojbect created earlier.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="summary-migration-indices.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index_impact</span>(<span class="at">m =</span> kor_mig_2020, <span class="at">p =</span> kor_pw, <span class="at">pop_col =</span> <span class="st">&quot;Pop&quot;</span>, <span class="at">reg_col =</span> <span class="st">&quot;Adm_N&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="summary-migration-indices.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index_impact</span>(<span class="at">m =</span> kor_mig_2020, <span class="at">p =</span> kor_pw, <span class="at">pop_col =</span> <span class="st">&quot;Pop&quot;</span>, <span class="at">reg_col =</span> <span class="st">&quot;Adm_N&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 2
 ##   measure        value
 ##   &lt;chr&gt;          &lt;dbl&gt;
@@ -574,11 +552,11 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 <p>Some of the summary measures discussed above are meaningless on their own, as they have no relative scale and have been calculated in isolation. However, the index functions can be applied to compare migration systems across different areas or time periods relatively easily using R, enabling comparative analyses.</p>
 <p>To apply the index functions multiple times, you can loop over the countries or time periods of interest and apply the functions within the loop. Alternatively, you can use vectorized operations or apply functions from the <em>dplyr</em> or <em>purrr</em> packages to handle multiple countries or time periods efficiently.</p>
 <p>To demonstrate the application of the index functions in the <em>migest</em> package, we can use the <code>korea_reg</code> data of internal migration flows between 2012 and 2020 in South Korea. First we use the <code>group_nest()</code> function from the <em>dplyr</em> package which transforms the data frame into a grouped data frame based on the <code>year</code> column, which is a necessary step for applying the index functions. Once the data is grouped, we can then apply the <code>index_connectivity()</code> function to each row using the <code>map()</code> function from the <em>purrr</em> package. This will calculate the connectivity measures for each year in the <code>korea_reg</code> data set. We may set <code>long = FALSE</code> within the <code>index_connectivity()</code> function to allow for separate columns for each measure. These can be viewed over time using the <code>unnest()</code> function in the <em>tidyr</em> package</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="summary-migration-indices.html#cb18-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> korea_reg <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="summary-migration-indices.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(orig <span class="sc">!=</span> dest) <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="summary-migration-indices.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_nest</span>(year, <span class="at">.key =</span> <span class="st">&quot;mig_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="summary-migration-indices.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">connectivity =</span> <span class="fu">map</span>(<span class="at">.x =</span> mig_data, <span class="at">.f =</span> <span class="sc">~</span><span class="fu">index_connectivity</span>(.x, <span class="at">long =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb18-5"><a href="summary-migration-indices.html#cb18-5" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="summary-migration-indices.html#cb59-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> korea_reg <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="summary-migration-indices.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(orig <span class="sc">!=</span> dest) <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="summary-migration-indices.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_nest</span>(year, <span class="at">.key =</span> <span class="st">&quot;mig_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb59-4"><a href="summary-migration-indices.html#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">connectivity =</span> <span class="fu">map</span>(<span class="at">.x =</span> mig_data, <span class="at">.f =</span> <span class="sc">~</span><span class="fu">index_connectivity</span>(.x, <span class="at">long =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb59-5"><a href="summary-migration-indices.html#cb59-5" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 3
 ##    year           mig_data connectivity     
 ##   &lt;int&gt; &lt;list&lt;tibble[,3]&gt;&gt; &lt;list&gt;           
@@ -591,8 +569,8 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 ## 7  2018          [272 × 3] &lt;tibble [1 × 11]&gt;
 ## 8  2019          [272 × 3] &lt;tibble [1 × 11]&gt;
 ## 9  2020          [272 × 3] &lt;tibble [1 × 11]&gt;</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="summary-migration-indices.html#cb20-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="summary-migration-indices.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(connectivity)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="summary-migration-indices.html#cb61-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
+<span id="cb61-2"><a href="summary-migration-indices.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(connectivity)</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 13
 ##    year         mig_data conne…¹ inequ…² inequ…³ gini_…⁴ gini_…⁵ gini_…⁶ mwg_o…⁷
 ##   &lt;int&gt; &lt;list&lt;tibble[,3&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -611,12 +589,12 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 ## #   ⁶​gini_dest_standardized, ⁷​mwg_orig</code></pre>
 <p>This approach allows for easy comparison and analysis of migration systems between different areas or time periods. For example, we can see that connectivity measures such as the <code>inequality_equal</code> and <code>gini_total</code> showed a decreases after initial higher values during 2012 and 2013 in the proceeding seven years from 2014 to 2020.</p>
 <p>We can use similar code to calculate the distance indices</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="summary-migration-indices.html#cb22-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="summary-migration-indices.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">distance =</span> <span class="fu">map</span>(<span class="at">.x =</span> mig_data, <span class="at">.f =</span> <span class="sc">~</span><span class="fu">index_distance</span>(<span class="at">m =</span> .x, <span class="at">d =</span> kor_dist_pw, <span class="at">long =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb22-3"><a href="summary-migration-indices.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="summary-migration-indices.html#cb22-4" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
-<span id="cb22-5"><a href="summary-migration-indices.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, distance) <span class="sc">%&gt;%</span></span>
-<span id="cb22-6"><a href="summary-migration-indices.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(distance)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="summary-migration-indices.html#cb63-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb63-2"><a href="summary-migration-indices.html#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">distance =</span> <span class="fu">map</span>(<span class="at">.x =</span> mig_data, <span class="at">.f =</span> <span class="sc">~</span><span class="fu">index_distance</span>(<span class="at">m =</span> .x, <span class="at">d =</span> kor_dist_pw, <span class="at">long =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb63-3"><a href="summary-migration-indices.html#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="summary-migration-indices.html#cb63-4" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
+<span id="cb63-5"><a href="summary-migration-indices.html#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, distance) <span class="sc">%&gt;%</span></span>
+<span id="cb63-6"><a href="summary-migration-indices.html#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(distance)</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 4
 ##    year  mean median  decay
 ##   &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -631,11 +609,11 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 ## 9  2020  105.   68.7 -0.852</code></pre>
 <p>The measures illustrate a decline in the mean and median distances over the nine years, whilst the distance decay parameter increases - again implying declining shorter migration distances.</p>
 <p>The impact and intensity measures require additional data on populatino sizes, which are provided in the <code>korea_pop</code> data frame in the <em>migest</em> package. These can be added to the data frame of the index calcaulations once nested</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="summary-migration-indices.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add population data</span></span>
-<span id="cb24-2"><a href="summary-migration-indices.html#cb24-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> korea_pop <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="summary-migration-indices.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_nest</span>(year, <span class="at">.key =</span> <span class="st">&quot;pop_data&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="summary-migration-indices.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(d, <span class="at">by =</span> <span class="st">&quot;year&quot;</span>)</span>
-<span id="cb24-5"><a href="summary-migration-indices.html#cb24-5" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="summary-migration-indices.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add population data</span></span>
+<span id="cb65-2"><a href="summary-migration-indices.html#cb65-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> korea_pop <span class="sc">%&gt;%</span></span>
+<span id="cb65-3"><a href="summary-migration-indices.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_nest</span>(year, <span class="at">.key =</span> <span class="st">&quot;pop_data&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-4"><a href="summary-migration-indices.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(d, <span class="at">by =</span> <span class="st">&quot;year&quot;</span>)</span>
+<span id="cb65-5"><a href="summary-migration-indices.html#cb65-5" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 5
 ##    year           pop_data           mig_data connectivity      distance        
 ##   &lt;int&gt; &lt;list&lt;tibble[,2]&gt;&gt; &lt;list&lt;tibble[,3]&gt;&gt; &lt;list&gt;            &lt;list&gt;          
@@ -649,20 +627,20 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 ## 8  2019           [17 × 2]          [272 × 3] &lt;tibble [1 × 11]&gt; &lt;tibble [1 × 3]&gt;
 ## 9  2020           [17 × 2]          [272 × 3] &lt;tibble [1 × 11]&gt; &lt;tibble [1 × 3]&gt;</code></pre>
 <p>Two data sets in each year can be passed to the <code>index_impact()</code> function using the <code>map2()</code> function in the <em>purrr</em> package</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="summary-migration-indices.html#cb26-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="summary-migration-indices.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">impact =</span> <span class="fu">map2</span>(<span class="at">.x =</span> mig_data, <span class="at">.y =</span> pop_data, </span>
-<span id="cb26-3"><a href="summary-migration-indices.html#cb26-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.f =</span> <span class="sc">~</span><span class="fu">index_impact</span>(<span class="at">m =</span> .x, <span class="at">p =</span> .y, <span class="at">pop_col =</span> <span class="st">&quot;population&quot;</span>, <span class="at">long =</span> <span class="cn">FALSE</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="summary-migration-indices.html#cb67-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb67-2"><a href="summary-migration-indices.html#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">impact =</span> <span class="fu">map2</span>(<span class="at">.x =</span> mig_data, <span class="at">.y =</span> pop_data, </span>
+<span id="cb67-3"><a href="summary-migration-indices.html#cb67-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.f =</span> <span class="sc">~</span><span class="fu">index_impact</span>(<span class="at">m =</span> .x, <span class="at">p =</span> .y, <span class="at">pop_col =</span> <span class="st">&quot;population&quot;</span>, <span class="at">long =</span> <span class="cn">FALSE</span>)))</span></code></pre></div>
 <p>The intensity measures require only the migration and population totals in each year. These can be calculated by summing the appropriate columns in each data frame and passing the totals to the <code>index_intensity()</code> function</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="summary-migration-indices.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate migration and population totals for intensity measure</span></span>
-<span id="cb27-2"><a href="summary-migration-indices.html#cb27-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="summary-migration-indices.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mig_total =</span> <span class="fu">map_dbl</span>(<span class="at">.x =</span> mig_data, <span class="at">.f =</span> <span class="sc">~</span><span class="fu">sum</span>(.x<span class="sc">$</span>flow)),</span>
-<span id="cb27-4"><a href="summary-migration-indices.html#cb27-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">pop_total =</span> <span class="fu">map_dbl</span>(<span class="at">.x =</span> pop_data, <span class="at">.f =</span> <span class="sc">~</span><span class="fu">sum</span>(.x<span class="sc">$</span>population)),</span>
-<span id="cb27-5"><a href="summary-migration-indices.html#cb27-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">intensity =</span> <span class="fu">map2</span>(<span class="at">.x =</span> mig_total, <span class="at">.y =</span> pop_total, </span>
-<span id="cb27-6"><a href="summary-migration-indices.html#cb27-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">.f =</span> <span class="sc">~</span><span class="fu">index_intensity</span>(<span class="at">mig_total =</span> .x, <span class="at">pop_total =</span> .y, <span class="at">n =</span> <span class="dv">17</span>, <span class="at">long =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb27-7"><a href="summary-migration-indices.html#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="summary-migration-indices.html#cb27-8" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
-<span id="cb27-9"><a href="summary-migration-indices.html#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, <span class="fu">contains</span>(<span class="st">&quot;total&quot;</span>), intensity) <span class="sc">%&gt;%</span></span>
-<span id="cb27-10"><a href="summary-migration-indices.html#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(intensity)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="summary-migration-indices.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate migration and population totals for intensity measure</span></span>
+<span id="cb68-2"><a href="summary-migration-indices.html#cb68-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb68-3"><a href="summary-migration-indices.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mig_total =</span> <span class="fu">map_dbl</span>(<span class="at">.x =</span> mig_data, <span class="at">.f =</span> <span class="sc">~</span><span class="fu">sum</span>(.x<span class="sc">$</span>flow)),</span>
+<span id="cb68-4"><a href="summary-migration-indices.html#cb68-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">pop_total =</span> <span class="fu">map_dbl</span>(<span class="at">.x =</span> pop_data, <span class="at">.f =</span> <span class="sc">~</span><span class="fu">sum</span>(.x<span class="sc">$</span>population)),</span>
+<span id="cb68-5"><a href="summary-migration-indices.html#cb68-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">intensity =</span> <span class="fu">map2</span>(<span class="at">.x =</span> mig_total, <span class="at">.y =</span> pop_total, </span>
+<span id="cb68-6"><a href="summary-migration-indices.html#cb68-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">.f =</span> <span class="sc">~</span><span class="fu">index_intensity</span>(<span class="at">mig_total =</span> .x, <span class="at">pop_total =</span> .y, <span class="at">n =</span> <span class="dv">17</span>, <span class="at">long =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb68-7"><a href="summary-migration-indices.html#cb68-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-8"><a href="summary-migration-indices.html#cb68-8" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
+<span id="cb68-9"><a href="summary-migration-indices.html#cb68-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, <span class="fu">contains</span>(<span class="st">&quot;total&quot;</span>), intensity) <span class="sc">%&gt;%</span></span>
+<span id="cb68-10"><a href="summary-migration-indices.html#cb68-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(intensity)</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 5
 ##    year mig_total pop_total   cmp courgeau_k
 ##   &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
@@ -677,71 +655,6 @@ The value of <span class="math inline">\(k\)</span> in Courgeau’s formula does
 ## 9  2020   2534114  51829023  4.89      0.863</code></pre>
 <p>In the case of South Korea, there does not appear to be a general trend for either intensity measure over the nine year period.</p>
 
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div class="csl-entry">
-Bell, Martin, Marcus Blake, Paul Boyle, O. Duke-Williams, Philip H. Rees, John Stillwell, and Graeme John Hugo. 2002. <span>“<span class="nocase">Cross-national comparison of internal migration: issues and measures</span>.”</span> <em>Journal of the Royal Statistical Society: Series A (Statistics in Society)</em> 165 (3): 435–64. <a href="https://doi.org/10.1111/1467-985X.00247">https://doi.org/10.1111/1467-985X.00247</a>.
-</div>
-<div class="csl-entry">
-Bell, Martin, Elin Charles-Edwards, Dorota Kupiszewska, Marek Kupiszewski, John Stillwell, and Yu Zhu. 2015. <span>“<span class="nocase">Internal Migration Data Around the World: Assessing Contemporary Practice</span>.”</span> <em>Population, Space and Place</em> 21 (1): 1–17. <a href="https://doi.org/10.1002/psp.1848">https://doi.org/10.1002/psp.1848</a>.
-</div>
-<div class="csl-entry">
-Bell, Martin, Elin Charles-Edwards, Philipp Ueffing, John Stillwell, Marek Kupiszewski, and Dorota Kupiszewska. 2015. <span>“<span class="nocase">Internal Migration and Development: Comparing Migration Intensities Around the World</span>.”</span> <em>Population and Development Review</em> 41 (1): 33–58. <a href="https://doi.org/10.1111/j.1728-4457.2015.00025.x">https://doi.org/10.1111/j.1728-4457.2015.00025.x</a>.
-</div>
-<div class="csl-entry">
-Bernard, Aude, Martin Bell, and Elin Charles-Edwards. 2014. <span>“<span class="nocase">Improved measures for the cross-national comparison of age profiles of internal migration</span>.”</span> <em>Population Studies</em> 68 (2): 179–95. <a href="https://doi.org/10.1080/00324728.2014.890243">https://doi.org/10.1080/00324728.2014.890243</a>.
-</div>
-<div class="csl-entry">
-Edwards, Robin, Maksym Bondarenko, Alessandro Sorichetta, and Andrew J. Tatem. 2021. <span>“<span class="nocase">Unconstrained subnational Population Weighted Density in 2000, 2005, 2010, 2015 and 2020 ( 100m resolution )</span>.”</span> Southampton, UK: WorldPop, University of Southampton, UK. <a href="https://doi.org/10.5258/SOTON/WP00703">https://doi.org/10.5258/SOTON/WP00703</a>.
-</div>
-<div class="csl-entry">
-Rees, Philip H., Martin Bell, Marek Kupiszewski, Dorota Kupiszewska, Philipp Ueffing, Aude Bernard, Elin Charles-Edwards, and John Stillwell. 2016. <span>“<span class="nocase">The Impact of Internal Migration on Population Redistribution: an International Comparison</span>.”</span> <em>Population, Space and Place</em>, no. April. <a href="https://doi.org/10.1002/psp.2036">https://doi.org/10.1002/psp.2036</a>.
-</div>
-<div class="csl-entry">
-Rogers, Andrei, and James Raymer. 1998. <span>“<span class="nocase">The Spatial Focus of US Interstate Migration Flows</span>.”</span> <em>International Journal of Population Geography</em> 4 (1): 63–80. <a href="https://doi.org/10.1002/(SICI)1099-1220(199803)4%3A1&lt;63%3A%3AAID-IJPG87&gt;3.0.CO%3B2-U">https://doi.org/10.1002/(SICI)1099-1220(199803)4%3A1&lt;63%3A%3AAID-IJPG87&gt;3.0.CO%3B2-U</a>.
-</div>
-<div class="csl-entry">
-Shryock, Henry S., and Jacob S. Siegel. 1976. <em><span class="nocase">The Methods and Materials of Demography.</span></em> Edited by Edward G. Stockwell. Condensed. San Diego, California: Academic Press.
-</div>
-<div class="csl-entry">
-Stillwell, John, Martin Bell, Philipp Ueffing, K. Daras, Elin Charles-Edwards, Marek Kupiszewski, and Dorota Kupiszewska. 2016. <span>“<span class="nocase">Internal migration around the world: comparing distance travelled and its frictional effect</span>.”</span> <em>Environment and Planning A</em> 48 (8): 1657–75. <a href="https://doi.org/10.1177/0308518X16643963">https://doi.org/10.1177/0308518X16643963</a>.
-</div>
-<div class="csl-entry">
-United Nations Department of Economic and Social Affairs Population Division. 1970. <em><span class="nocase">Methods of measuring internal migration.</span></em> 15. New York, New York, USA: United Nations Publication. <a href="https://doi.org/10.2307/3002465">https://doi.org/10.2307/3002465</a>.
-</div>
-</div>
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Bell2002" class="csl-entry">
-Bell, Martin, Marcus Blake, Paul Boyle, O. Duke-Williams, Philip H. Rees, John Stillwell, and Graeme John Hugo. 2002. <span>“<span class="nocase">Cross-national comparison of internal migration: issues and measures</span>.”</span> <em>Journal of the Royal Statistical Society: Series A (Statistics in Society)</em> 165 (3): 435–64. <a href="https://doi.org/10.1111/1467-985X.00247">https://doi.org/10.1111/1467-985X.00247</a>.
-</div>
-<div id="ref-Bell2015a" class="csl-entry">
-Bell, Martin, Elin Charles-Edwards, Dorota Kupiszewska, Marek Kupiszewski, John Stillwell, and Yu Zhu. 2015. <span>“<span class="nocase">Internal Migration Data Around the World: Assessing Contemporary Practice</span>.”</span> <em>Population, Space and Place</em> 21 (1): 1–17. <a href="https://doi.org/10.1002/psp.1848">https://doi.org/10.1002/psp.1848</a>.
-</div>
-<div id="ref-Bell2015" class="csl-entry">
-Bell, Martin, Elin Charles-Edwards, Philipp Ueffing, John Stillwell, Marek Kupiszewski, and Dorota Kupiszewska. 2015. <span>“<span class="nocase">Internal Migration and Development: Comparing Migration Intensities Around the World</span>.”</span> <em>Population and Development Review</em> 41 (1): 33–58. <a href="https://doi.org/10.1111/j.1728-4457.2015.00025.x">https://doi.org/10.1111/j.1728-4457.2015.00025.x</a>.
-</div>
-<div id="ref-Bernard2014" class="csl-entry">
-Bernard, Aude, Martin Bell, and Elin Charles-Edwards. 2014. <span>“<span class="nocase">Improved measures for the cross-national comparison of age profiles of internal migration</span>.”</span> <em>Population Studies</em> 68 (2): 179–95. <a href="https://doi.org/10.1080/00324728.2014.890243">https://doi.org/10.1080/00324728.2014.890243</a>.
-</div>
-<div id="ref-Edwards2021" class="csl-entry">
-Edwards, Robin, Maksym Bondarenko, Alessandro Sorichetta, and Andrew J. Tatem. 2021. <span>“<span class="nocase">Unconstrained subnational Population Weighted Density in 2000, 2005, 2010, 2015 and 2020 ( 100m resolution )</span>.”</span> Southampton, UK: WorldPop, University of Southampton, UK. <a href="https://doi.org/10.5258/SOTON/WP00703">https://doi.org/10.5258/SOTON/WP00703</a>.
-</div>
-<div id="ref-Rees2016" class="csl-entry">
-Rees, Philip H., Martin Bell, Marek Kupiszewski, Dorota Kupiszewska, Philipp Ueffing, Aude Bernard, Elin Charles-Edwards, and John Stillwell. 2016. <span>“<span class="nocase">The Impact of Internal Migration on Population Redistribution: an International Comparison</span>.”</span> <em>Population, Space and Place</em>, no. April. <a href="https://doi.org/10.1002/psp.2036">https://doi.org/10.1002/psp.2036</a>.
-</div>
-<div id="ref-Rogers1998" class="csl-entry">
-Rogers, Andrei, and James Raymer. 1998. <span>“<span class="nocase">The Spatial Focus of US Interstate Migration Flows</span>.”</span> <em>International Journal of Population Geography</em> 4 (1): 63–80. <a href="https://doi.org/10.1002/(SICI)1099-1220(199803)4%3A1&lt;63%3A%3AAID-IJPG87&gt;3.0.CO%3B2-U">https://doi.org/10.1002/(SICI)1099-1220(199803)4%3A1&lt;63%3A%3AAID-IJPG87&gt;3.0.CO%3B2-U</a>.
-</div>
-<div id="ref-Shryock1976" class="csl-entry">
-Shryock, Henry S., and Jacob S. Siegel. 1976. <em><span class="nocase">The Methods and Materials of Demography.</span></em> Edited by Edward G. Stockwell. Condensed. San Diego, California: Academic Press.
-</div>
-<div id="ref-Stillwell2016" class="csl-entry">
-Stillwell, John, Martin Bell, Philipp Ueffing, K. Daras, Elin Charles-Edwards, Marek Kupiszewski, and Dorota Kupiszewska. 2016. <span>“<span class="nocase">Internal migration around the world: comparing distance travelled and its frictional effect</span>.”</span> <em>Environment and Planning A</em> 48 (8): 1657–75. <a href="https://doi.org/10.1177/0308518X16643963">https://doi.org/10.1177/0308518X16643963</a>.
-</div>
-<div id="ref-UnitedNations1983" class="csl-entry">
-United Nations Department of Economic and Social Affairs Population Division. 1970. <em><span class="nocase">Methods of measuring internal migration.</span></em> 15. New York, New York, USA: United Nations Publication. <a href="https://doi.org/10.2307/3002465">https://doi.org/10.2307/3002465</a>.
 </div>
 </div>
             </section>

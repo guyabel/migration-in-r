@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Handling, Measuring, Estimating and Visualizing Migration Data in R</title>
-  <meta name="description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta name="description" content="In many countries and regions, migration is becoming or already is the largest component of population change and important mechansim for both social and economic change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration flows have been developed by demographers and other researchers to help address shortfalls and provide a platform to better understand patterns, trends and consequences. This manaul explores methods for measuring, estimating and visualising migration flow data, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize complex migration patterns. While plenty of code samples and exercises are provided throughout the manual to build up the readers experience, some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Handling, Measuring, Estimating and Visualizing Migration Data in R" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta property="og:description" content="In many countries and regions, migration is becoming or already is the largest component of population change and important mechansim for both social and economic change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration flows have been developed by demographers and other researchers to help address shortfalls and provide a platform to better understand patterns, trends and consequences. This manaul explores methods for measuring, estimating and visualising migration flow data, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize complex migration patterns. While plenty of code samples and exercises are provided throughout the manual to build up the readers experience, some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Handling, Measuring, Estimating and Visualizing Migration Data in R" />
   
-  <meta name="twitter:description" content="In many countries and regions, migration is becoming or already is the largest component of population change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration have been developed by demographers and alike to help address shortfalls and provide a platform to better understand migration patterns and trends. This manaul explores methods for measuring, estimating and visualising migration, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize migration patterns. Code samples and exercises are provided throughout the manual to build up the readers experience. Some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta name="twitter:description" content="In many countries and regions, migration is becoming or already is the largest component of population change and important mechansim for both social and economic change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration flows have been developed by demographers and other researchers to help address shortfalls and provide a platform to better understand patterns, trends and consequences. This manaul explores methods for measuring, estimating and visualising migration flow data, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize complex migration patterns. While plenty of code samples and exercises are provided throughout the manual to build up the readers experience, some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
   
 
 <meta name="author" content="Guy J. Abel, James Raymer, Ellen Kraly" />
 
 
-<meta name="date" content="2023-05-19" />
+<meta name="date" content="2023-05-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -119,28 +119,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -164,7 +142,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="migration-concepts.html"><a href="migration-concepts.html#spatial"><i class="fa fa-check"></i><b>2.1</b> Spatial</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="migration-concepts.html"><a href="migration-concepts.html#usual-residence"><i class="fa fa-check"></i><b>2.1.1</b> Usual Residence</a></li>
-<li class="chapter" data-level="2.1.2" data-path="migration-concepts.html"><a href="migration-concepts.html#origin"><i class="fa fa-check"></i><b>2.1.2</b> Origin</a></li>
+<li class="chapter" data-level="2.1.2" data-path="migration-concepts.html"><a href="migration-concepts.html#migration-data-types"><i class="fa fa-check"></i><b>2.1.2</b> Migration Data Types</a></li>
 <li class="chapter" data-level="2.1.3" data-path="migration-concepts.html"><a href="migration-concepts.html#migrant-transition-data"><i class="fa fa-check"></i><b>2.1.3</b> Migrant Transition Data</a></li>
 <li class="chapter" data-level="2.1.4" data-path="migration-concepts.html"><a href="migration-concepts.html#migation-event-data"><i class="fa fa-check"></i><b>2.1.4</b> Migation Event Data</a></li>
 </ul></li>
@@ -192,6 +170,32 @@ div.csl-indent {
 <li class="chapter" data-level="3.5.2" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#total-measures"><i class="fa fa-check"></i><b>3.5.2</b> Total Measures</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html"><i class="fa fa-check"></i><b>4</b> Summary Migration Indices</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-intensity"><i class="fa fa-check"></i><b>4.1</b> Migration intensity</a></li>
+<li class="chapter" data-level="4.2" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-distance"><i class="fa fa-check"></i><b>4.2</b> Migration distance</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#creating-distance-matrices-in-r"><i class="fa fa-check"></i><b>4.2.1</b> Creating distance matrices in R</a></li>
+<li class="chapter" data-level="4.2.2" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-distance-measures"><i class="fa fa-check"></i><b>4.2.2</b> Migration Distance Measures</a></li>
+<li class="chapter" data-level="4.2.3" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-distance-measures-in-r"><i class="fa fa-check"></i><b>4.2.3</b> Migration Distance Measures in R</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-connectivity"><i class="fa fa-check"></i><b>4.3</b> Migration connectivity</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#connectivity"><i class="fa fa-check"></i><b>4.3.1</b> Connectivity</a></li>
+<li class="chapter" data-level="4.3.2" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#inequality"><i class="fa fa-check"></i><b>4.3.2</b> Inequality</a></li>
+<li class="chapter" data-level="4.3.3" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#gini-measures"><i class="fa fa-check"></i><b>4.3.3</b> Gini measures</a></li>
+<li class="chapter" data-level="4.3.4" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#spatial-focusing"><i class="fa fa-check"></i><b>4.3.4</b> Spatial Focusing</a></li>
+<li class="chapter" data-level="4.3.5" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#coefficient-of-variation"><i class="fa fa-check"></i><b>4.3.5</b> Coefficient of Variation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-impact"><i class="fa fa-check"></i><b>4.4</b> Migration impact</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-effectiveness-index"><i class="fa fa-check"></i><b>4.4.1</b> Migration effectiveness index</a></li>
+<li class="chapter" data-level="4.4.2" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#aggregate-net-migration-rate"><i class="fa fa-check"></i><b>4.4.2</b> Aggregate net migration rate</a></li>
+<li class="chapter" data-level="4.4.3" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#preference-and-velocity"><i class="fa fa-check"></i><b>4.4.3</b> Preference and velocity</a></li>
+<li class="chapter" data-level="4.4.4" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-impact-measures-in-r"><i class="fa fa-check"></i><b>4.4.4</b> Migration Impact Measures in R</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#applying-index-functions-multiple-times"><i class="fa fa-check"></i><b>4.5</b> Applying index functions multiple times</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -215,12 +219,13 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Handling, Measuring, Estimating and Visualizing Migration Data in R</h1>
 <p class="author"><em>Guy J. Abel, James Raymer, Ellen Kraly</em></p>
-<p class="date"><em>2023-05-19</em></p>
+<p class="date"><em>2023-05-22</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This manual covers a range of methods for handling, measuring, estimating, and visualizing migration data in R. These methods are based on several authoritative sources, including the UN DESA manuals on <a href="https://www.un.org/en/development/desa/population/publications/manual/migration/measuring-migration.asp"><em>Methods of measuring internal migration</em></a> and <a href="https://www.un.org/en/development/desa/population/publications/manual/migration/subnational-migration.asp"><em>Preparing migration data for subnational population projections</em></a>, as well as the migration chapters of the IUSSP <a href="http://demographicestimation.iussp.org/content/migration"><em>Tools for Demographic Estimation</em></a>. Additionally, we will cover many more recent developments in the field. By the end of this manual, you will have a comprehensive understanding of the various methods available for working with migration data in R, and how to apply them to your own research.</p>
-<p>To make the most of this manual, we assume that you have some knowledge of using R, especially the <em>tidyverse</em> set of packages. If you’re not familiar with R or need a refresher, we recommend working your way through an online course before diving into this manual. Some good resources for learning R and the tidyverse include:</p>
+<p>In many countries and regions throughout the world, human migration represents a major force of demographic, social and economic change. However, the underlying processes of migration are complex and data on the movements are often considered to be poor quality or limited in detail. Ideed, in many situations, migration data are completely missing or unusable for examining the patterns and consequences of interest. This is especially true for international migration. As a result, methods to estimate migration flows have been developed by demographers and other researchers to address shortfalls in data provision so that one can study the patterns, trends and consequences.</p>
+<p>This manual covers a range of methods for handling, measuring, estimating, and visualizing migration data in R. These methods are based on several authoritative sources, including the UN DESA manuals on <a href="https://www.un.org/en/development/desa/population/publications/manual/migration/measuring-migration.asp"><em>Methods of measuring internal migration</em></a> and <a href="https://www.un.org/en/development/desa/population/publications/manual/migration/subnational-migration.asp"><em>Preparing migration data for subnational population projections</em></a>, as well as the migration chapters of the IUSSP <a href="http://demographicestimation.iussp.org/content/migration"><em>Tools for Demographic Estimation</em></a>. Additionally, recent developments in the field are included. By the end, you will have a comprehensive understanding of the various methods available for working with migration data in R, and how to apply them to your own research.</p>
+<p>To make the most of this manual, we assume that you have basic knowledge of using R, especially the <em>tidyverse</em> set of packages. If you are not familiar with R or need a refresher, we recommend working your way through an online course before diving into this manual. Some good resources for learning R and the tidyverse include:</p>
 <ul>
 <li><a href="https://r4ds.had.co.nz/"><em>R for Data Science</em></a>, a comprehensive guide to data science in R, covering data import and cleaning, data visualization, and statistical modeling.</li>
 <li><a href="https://www.datacamp.com/"><em>DataCamp</em></a>, an online learning platform that offers interactive courses on R programming and data science topics.</li>
@@ -228,8 +233,9 @@ div.csl-indent {
 <li><a href="https://www.tidyverse.org/learn/"><em>Tidyverse.org</em></a>, a website dedicated to the tidyverse packages with tutorials, articles, and other resources for learning and using them.</li>
 <li><a href="https://swirlstats.com/"><em>Swirl</em></a>, an interactive learning platform within R that teaches you how to use R in a hands-on manner.</li>
 </ul>
-<p>These resources provide a comprehensive introduction to R programming and the tidyverse, which will be useful throughout this manual and in your future data analysis work.</p>
-<p>The manual is organized into nine chapters, each covering a different aspect of handling, measuring, estimating, and visualizing migration data in R. Chapter 1 provides an introduction to migration data and concepts, while Chapter 2 focuses on handling migration data in R. Chapter 3 covers summary migration indices, while Chapter 4 is dedicated to estimating net migration. Chapter 5 focuses on describing and estimating migration age structure, and Chapter 6 covers describing bilateral migration data. Chapter 7 is dedicated to estimating bilateral migration, while Chapters 8 and 9 cover different methods for visualizing bilateral migration, including chord diagrams and Sankey plots. In each chapter, we provide code and data that will allow you to replicate the outputs we present, as well as exercises that allow you to practice the concepts covered in that chapter on your own. We also provide solutions to these exercises, so you can check your work and ensure that you have a firm grasp of the material before moving on to the next chapter. By following the examples and completing the exercises in this manual, you will gain a deep understanding of how to handle, measure, estimate, and visualize migration data in R.</p>
+<p>The above resources provide a comprehensive introduction to R programming and the tidyverse, which will be useful throughout this manual and in your future data analysis work.</p>
+<p>The manual is organized into nine chapters, each covering a different aspect of handling, measuring, estimating, and visualizing migration data in R. Chapter 1 provides an introduction to migration data and concepts. Chapter 2 focuses on handling migration data in R. Chapter 3 covers summary migration indices. Chapter 4 is dedicated to estimating net migration. Chapter 5 focuses on describing and estimating migration age structures. Chapter 6 covers methods for describing bilateral migration data. Chapter 7 covers methods for estimating bilateral migration. Finally, Chapters 8 and 9 cover methods for visualizing bilateral migration, including chord diagrams and Sankey plots.</p>
+<p>In each chapter, we provide code and data that will allow you to replicate the outputs we present, as well as exercises that allow you to practice the concepts and methods on your own. Solutions to these exercises are provided so you can check your work and ensure that you have a firm grasp of the material before moving on to the next chapter. By following the examples and completing the exercises in this manual, you will gain a deep understanding of how to handle, measure, estimate, and visualize migration data in R.</p>
 
 </div>
             </section>

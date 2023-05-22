@@ -2,36 +2,41 @@
 title: "Handling, Measuring, Estimating and Visualizing Migration Data in R"
 author: "Guy J. Abel, James Raymer, Ellen Kraly"
 date: "`r Sys.Date()`"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
 documentclass: book
 github-repo: rstudio/bookdown-demo
 link-citations: yes
 description: In many countries and regions, migration is becoming or already is the
-  largest component of population change. However, migration data is often of poor
-  quality, missing or provided without disaggregation. Methods to estimate migration
-  have been developed by demographers and alike to help address shortfalls and provide
-  a platform to better understand migration patterns and trends. This manaul explores
-  methods for measuring, estimating and visualising migration, and their implementation
+  largest component of population change and important mechansim for both social and
+  economic change. However, migration data is often of poor quality, missing or provided
+  without disaggregation. Methods to estimate migration flows have been developed
+  by demographers and other researchers to help address shortfalls and provide a platform
+  to better understand patterns, trends and consequences. This manaul explores methods
+  for measuring, estimating and visualising migration flow data, and their implementation
   in R. Readers will become familiar with useful R functions for handling migration
   data, a range of measures to summarise and compare migration systems, common estimation
   methods to overcome inadequate or missing migration data and recently developed
-  methods to visualize migration patterns. Code samples and exercises are provided
-  throughout the manual to build up the readers experience. Some prior knowledge is
-  required on how to handle and plot data using the tidyverse set of R packages.
+  methods to visualize complex migration patterns. While plenty of code samples and
+  exercises are provided throughout the manual to build up the readers experience,
+  some prior knowledge is required on how to handle and plot data using the tidyverse
+  set of R packages.
 site: bookdown::bookdown_site
 bibliography:
 - book.bib
 - packages.bib
-- C:\\Users\\Guy\\Documents\\library.bib
-- library.bib
 url: https://bookdown.org/guyabel/migration-in-r/
 ---
 
 # Introduction
 
-This manual covers a range of methods for handling, measuring, estimating, and visualizing migration data in R. These methods are based on several authoritative sources, including the UN DESA manuals on [*Methods of measuring internal migration*](https://www.un.org/en/development/desa/population/publications/manual/migration/measuring-migration.asp) and [*Preparing migration data for subnational population projections*](https://www.un.org/en/development/desa/population/publications/manual/migration/subnational-migration.asp), as well as the migration chapters of the IUSSP [*Tools for Demographic Estimation*](http://demographicestimation.iussp.org/content/migration). Additionally, we will cover many more recent developments in the field. By the end of this manual, you will have a comprehensive understanding of the various methods available for working with migration data in R, and how to apply them to your own research.
+In many countries and regions throughout the world, human migration represents a major force of demographic, social and economic change. However, the underlying processes of migration are complex and data on the movements are often considered to be poor quality or limited in detail. Ideed, in many situations, migration data are completely missing or unusable for examining the patterns and consequences of interest. This is especially true for international migration. As a result, methods to estimate migration flows have been developed by demographers and other researchers to address shortfalls in data provision so that one can study the patterns, trends and consequences. 
 
-To make the most of this manual, we assume that you have some knowledge of using R, especially the *tidyverse* set of packages. If you're not familiar with R or need a refresher, we recommend working your way through an online course before diving into this manual. Some good resources for learning R and the tidyverse include: 
+This manual covers a range of methods for handling, measuring, estimating, and visualizing migration data in R. These methods are based on several authoritative sources, including the UN DESA manuals on [*Methods of measuring internal migration*](https://www.un.org/en/development/desa/population/publications/manual/migration/measuring-migration.asp) and [*Preparing migration data for subnational population projections*](https://www.un.org/en/development/desa/population/publications/manual/migration/subnational-migration.asp), as well as the migration chapters of the IUSSP [*Tools for Demographic Estimation*](http://demographicestimation.iussp.org/content/migration). Additionally, recent developments in the field are included. By the end, you will have a comprehensive understanding of the various methods available for working with migration data in R, and how to apply them to your own research.
+
+To make the most of this manual, we assume that you have basic knowledge of using R, especially the *tidyverse* set of packages. If you are not familiar with R or need a refresher, we recommend working your way through an online course before diving into this manual. Some good resources for learning R and the tidyverse include: 
 
 - [*R for Data Science*](https://r4ds.had.co.nz/), a comprehensive guide to data science in R, covering data import and cleaning, data visualization, and statistical modeling.
 - [*DataCamp*](https://www.datacamp.com/), an online learning platform that offers interactive courses on R programming and data science topics.
@@ -39,7 +44,9 @@ To make the most of this manual, we assume that you have some knowledge of using
 - [*Tidyverse.org*](https://www.tidyverse.org/learn/), a website dedicated to the tidyverse packages with tutorials, articles, and other resources for learning and using them.
 - [*Swirl*](https://swirlstats.com/), an interactive learning platform within R that teaches you how to use R in a hands-on manner.
 
-These resources provide a comprehensive introduction to R programming and the tidyverse, which will be useful throughout this manual and in your future data analysis work.
+The above resources provide a comprehensive introduction to R programming and the tidyverse, which will be useful throughout this manual and in your future data analysis work.
 
-The manual is organized into nine chapters, each covering a different aspect of handling, measuring, estimating, and visualizing migration data in R. Chapter 1 provides an introduction to migration data and concepts, while Chapter 2 focuses on handling migration data in R. Chapter 3 covers summary migration indices, while Chapter 4 is dedicated to estimating net migration. Chapter 5 focuses on describing and estimating migration age structure, and Chapter 6 covers describing bilateral migration data. Chapter 7 is dedicated to estimating bilateral migration, while Chapters 8 and 9 cover different methods for visualizing bilateral migration, including chord diagrams and Sankey plots. In each chapter, we provide code and data that will allow you to replicate the outputs we present, as well as exercises that allow you to practice the concepts covered in that chapter on your own. We also provide solutions to these exercises, so you can check your work and ensure that you have a firm grasp of the material before moving on to the next chapter. By following the examples and completing the exercises in this manual, you will gain a deep understanding of how to handle, measure, estimate, and visualize migration data in R.
+The manual is organized into nine chapters, each covering a different aspect of handling, measuring, estimating, and visualizing migration data in R. Chapter 1 provides an introduction to migration data and concepts. Chapter 2 focuses on handling migration data in R. Chapter 3 covers summary migration indices. Chapter 4 is dedicated to estimating net migration. Chapter 5 focuses on describing and estimating migration age structures. Chapter 6 covers methods for describing bilateral migration data. Chapter 7 covers methods for estimating bilateral migration. Finally, Chapters 8 and 9 cover methods for visualizing bilateral migration, including chord diagrams and Sankey plots. 
+
+In each chapter, we provide code and data that will allow you to replicate the outputs we present, as well as exercises that allow you to practice the concepts and methods on your own. Solutions to these exercises are provided so you can check your work and ensure that you have a firm grasp of the material before moving on to the next chapter. By following the examples and completing the exercises in this manual, you will gain a deep understanding of how to handle, measure, estimate, and visualize migration data in R.
 

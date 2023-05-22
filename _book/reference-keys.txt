@@ -2,7 +2,7 @@ introduction
 migration-concepts
 spatial
 usual-residence
-origin
+migration-data-types
 migrant-transition-data
 migation-event-data
 temporal
@@ -20,7 +20,6 @@ matrix-operations
 summaries
 bilateral-measures
 total-measures
-migration-data-types
 summary-migration-indices
 migration-intensity
 migration-distance
