@@ -1,3 +1,106 @@
+--- 
+title: "Handling, Measuring, Estimating and Visualizing Migration Data in R"
+author: "Guy J. Abel, James Raymer, Ellen Kraly"
+date: "2023-05-23"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+documentclass: book
+github-repo: rstudio/bookdown-demo
+link-citations: yes
+description: In many countries and regions, migration is becoming or already is the
+  largest component of population change and important mechansim for both social and
+  economic change. However, migration data is often of poor quality, missing or provided
+  without disaggregation. Methods to estimate migration flows have been developed
+  by demographers and other researchers to help address shortfalls and provide a platform
+  to better understand patterns, trends and consequences. This manaul explores methods
+  for measuring, estimating and visualising migration flow data, and their implementation
+  in R. Readers will become familiar with useful R functions for handling migration
+  data, a range of measures to summarise and compare migration systems, common estimation
+  methods to overcome inadequate or missing migration data and recently developed
+  methods to visualize complex migration patterns. While plenty of code samples and
+  exercises are provided throughout the manual to build up the readers experience,
+  some prior knowledge is required on how to handle and plot data using the tidyverse
+  set of R packages.
+site: bookdown::bookdown_site
+bibliography:
+- book.bib
+- packages.bib
+url: https://bookdown.org/guyabel/migration-in-r/
+---
+
+# Introduction
+
+Placeholder
+
+
+
+<!--chapter:end:index.Rmd-->
+
+
+# Migration Concepts
+
+Placeholder
+
+
+## Spatial
+### Usual Residence
+### Migration Data Types
+### Migrant Transition Data
+### Migation Event Data
+## Temporal
+### Migration Interval
+## Migration Measures
+### Region-to-region
+### Region Totals
+### Rate measures
+## References
+
+<!--chapter:end:01-concepts.Rmd-->
+
+
+# Handling Migration Data in R
+
+Placeholder
+
+
+## Contingency Table
+## Data Creation
+## Data Manipulation
+## Matrix Operations
+## Summaries
+### Bilateral measures
+### Total Measures
+
+<!--chapter:end:02-data.Rmd-->
+
+
+# Summary Migration Indices
+
+Placeholder
+
+
+## Migration intensity
+## Migration distance 
+### Creating distance matrices in R
+### Migration Distance Measures 
+### Migration Distance Measures in R
+## Migration connectivity
+### Connectivity
+### Inequality
+### Gini measures
+### Spatial Focusing
+###  Coefficient of Variation
+## Migration impact
+### Migration effectiveness index
+### Aggregate net migration rate
+### Preference and velocity
+### Migration Impact Measures in R
+## Applying index functions multiple times
+
+<!--chapter:end:03-indices.Rmd-->
+
 # Migration Age Schedules
 
 Age plays a crucial role in shaping migration patterns and rates, and it is a significant source of heterogeneity in migration behavior. Migration rates can differ substantially across different age groups. Young adults often exhibit higher migration rates compared to other age cohorts. This is commonly observed due to factors such as educational pursuits and employment opportunities. Some older adults may migrate for retirement purposes, seeking locations with favorable climates, amenities, or healthcare facilities. Others may migrate to be closer to family members or to access specific social support networks. Furthermore, age can interact with other demographic characteristics, such as marital status or family composition, to influence migration decisions. For example, young adults who are married or have children may consider different factors when deciding to migrate compared to single individuals or couples without children.
@@ -40,7 +143,8 @@ In specific areas, particularly in more elderly Western countries, migration age
 
 The `mig_calculate_rc()` function in the *rcbayes* package by @Alexander2021 provide a quick method to calculate migration age schedules for a given parameter set
 
-```{r, message=FALSE, warning=FALSE}
+
+```r
 library(tidyverse)
 library(rcbayes)
 # define 7 parameters
@@ -52,13 +156,22 @@ p <- c(a1 = 0.1, alpha1 = 0.1,
 mx <- mig_calculate_rc(ages = 1:100, pars = p)
 # first 10 mx
 mx[1:10]
+```
 
+```
+##  [1] 0.10048374 0.09187308 0.08408182 0.07703200 0.07065307 0.06488116
+##  [7] 0.05965853 0.05493290 0.05065697 0.04678794
+```
+
+```r
 # plot the calculated  mx
 tibble(x = 1:100, 
        mx = mx) %>%
   ggplot(mapping = aes(x = x, y = mx)) +
   geom_line()
 ```
+
+<img src="_main_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
 ## Model migration age schedules
 
@@ -68,14 +181,37 @@ To overcome this challenge, researchers can utilize model migration schedules as
 
 The *migest* package includes the `rc_model_fund` data frame with a set of fundamental parameters proposed by @Rogers1981, designed to represent a typical migration age pattern from their analysis. Containing only seven parameters,  they do not include additional curves for the post-labor force phase and post-retirement peak. We can use the `deframe()` function to convert the data frame `rc_model_fund` into an named vector for use in the `mig_calculate_rc()` to calculate the age specific migration rates for a given set of ages
 
-```{r}
+
+```r
 library(migest)
 rc_model_fund
+```
 
+```
+## # A tibble: 7 × 2
+##   param    value
+##   <chr>    <dbl>
+## 1 a1       0.02 
+## 2 alpha1   0.1  
+## 3 a2       0.06 
+## 4 alpha2   0.1  
+## 5 mu2     20    
+## 6 lambda2  0.4  
+## 7 c        0.003
+```
+
+```r
 # convert data frame to named vector
 p <- deframe(rc_model_fund)
 p
+```
 
+```
+##      a1  alpha1      a2  alpha2     mu2 lambda2       c 
+##   2e-02   1e-01   6e-02   1e-01   2e+01   4e-01   3e-03
+```
+
+```r
 # calculate and plot age schedule based on fundamental parameters 
 tibble(x = 1:80, 
        mx = mig_calculate_rc(ages = x, pars = p)) %>%
@@ -83,14 +219,35 @@ tibble(x = 1:80,
   geom_line()
 ```
 
+<img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+
 The @UnitedNations1992 proposed a number of alternative sets of parameter values to seven-parameter model age schedules in settings outside of the Western-country populations used by @Rogers1981 when designing their fundamental parameter set. These parameters are provided in the `rc_model_un` data frame
-```{r}
+
+```r
 rc_model_un
+```
+
+```
+## # A tibble: 84 × 5
+##    schedule         schedule_abb sex   param     value
+##    <chr>            <chr>        <chr> <chr>     <dbl>
+##  1 Western standard ws           male  a1       0.0215
+##  2 Western standard ws           male  alpha1   0.105 
+##  3 Western standard ws           male  a2       0.0694
+##  4 Western standard ws           male  alpha2   0.112 
+##  5 Western standard ws           male  mu2     20.0   
+##  6 Western standard ws           male  lambda2  0.391 
+##  7 Western standard ws           male  c        0.0028
+##  8 Low dependency   ld           male  a1       0.0128
+##  9 Low dependency   ld           male  alpha1   0.105 
+## 10 Low dependency   ld           male  a2       0.0804
+## # … with 74 more rows
 ```
 
 To apply the parameters to the `mig_calculate_rc()` function we can use the `nest()` function to group together the parameters into separate tibbles by sex and population settings.
     
-```{r}
+
+```r
 d <- rc_model_un %>%
   select(-schedule_abb) %>%
   nest(rc_param = c(param, value)) %>%
@@ -101,8 +258,27 @@ d <- rc_model_un %>%
 d
 ```
 
+```
+## # A tibble: 12 × 6
+##    schedule                              sex    rc_param p         mx     age   
+##    <chr>                                 <chr>  <list>   <list>    <list> <list>
+##  1 Western standard                      male   <tibble> <dbl [7]> <dbl>  <int> 
+##  2 Low dependency                        male   <tibble> <dbl [7]> <dbl>  <int> 
+##  3 High dependency                       male   <tibble> <dbl [7]> <dbl>  <int> 
+##  4 Young labour force entry              male   <tibble> <dbl [7]> <dbl>  <int> 
+##  5 Old labour force entry                male   <tibble> <dbl [7]> <dbl>  <int> 
+##  6 Low dependency low labour force entry male   <tibble> <dbl [7]> <dbl>  <int> 
+##  7 Western standard                      female <tibble> <dbl [7]> <dbl>  <int> 
+##  8 Low dependency                        female <tibble> <dbl [7]> <dbl>  <int> 
+##  9 High dependency                       female <tibble> <dbl [7]> <dbl>  <int> 
+## 10 Young labour force entry              female <tibble> <dbl [7]> <dbl>  <int> 
+## 11 Old labour force entry                female <tibble> <dbl [7]> <dbl>  <int> 
+## 12 Low dependency low labour force entry female <tibble> <dbl [7]> <dbl>  <int>
+```
+
 Once we have used the `map()` function to estimate the model migration age schedules for ages 1 to 80 using the `mig_calculate_rc()` function we create a data base varying by age for each model schedule and sex for plotting to get a better idea of how each migraiton schedule operates for each sex and population
-```{r, fig.height=4}
+
+```r
 d %>%
   unnest(c(mx, age)) %>%
   mutate(schedule = str_wrap(schedule, width = 20)) %>%
@@ -110,10 +286,13 @@ d %>%
   geom_line() +
   facet_wrap(facets = "sex", ncol = 1)
 ```
+
+<img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 Notable from the plot is the later peak age of migration in the older labour force entry age schedules, compared to the Western Standard age schedule that has parameters very close to those proposed by @Rogers1981. For populations with younger labour force entry the peak age of migration shifts leftwards, whilst it increases for populations with low old age dependencies and decreases populations with high old age dependencies. 
 
 It is worth noting again, that the typical use of model age schedules might be when we do not know any age-specific migration rates but soley a migration total, where the migration total might be a projected or forecasted value. In such a case we might first select an appropriate model schedule from `rc_model_un`
-```{r}
+
+```r
 # example for males based on young labour force entry
 p <- rc_model_un %>%
   filter(sex == "male", schedule_abb == "ylfe") %>%
@@ -121,9 +300,15 @@ p <- rc_model_un %>%
   deframe()
 p
 ```
+
+```
+##      a1  alpha1      a2  alpha2     mu2 lambda2       c 
+##  0.0215  0.1050  0.0691  0.1120 16.0900  0.3910  0.0028
+```
 We may then calculate the age-specific migration using the parameter values to generate a standardized model age schedule (where the calculated $m(x)$ values sum to one) using the `mig_calculate_rc()` function. The standardized values can the be multiplied by a total estimate to get the age-specific migration counts, which might be converted to rates given the appropriate denominator. 
 
-```{r, fig.height=4}
+
+```r
 tibble(x = 1:90, 
        mx = mig_calculate_rc(ages = x, pars = p),
        # calculate number of migrants, given a total estimate of 10,000
@@ -131,6 +316,8 @@ tibble(x = 1:90,
   ggplot(mapping = aes(x = x, y = Mx)) +
   geom_line()
 ```
+
+<img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 
 
@@ -159,7 +346,8 @@ Additionally, the form of the age schedule can be specified using the `pre_worki
 
 To demonstrate we will use data for immigration age-specific immigration flows into Cyprus during 2011 published by Eurostat. These can be downloaded using the *eurostat* package:
 
-```{r}
+
+```r
 library(eurostat)
 # all age-sex specific immigration data
 imm <- get_eurostat(id = "migr_imm8")
@@ -186,14 +374,34 @@ imm_cy_2011 <- imm_cy_2011 %>%
 imm_cy_2011 
 ```
 
+```
+## # A tibble: 162 × 7
+##    agedef   age unit  sex   geo   time       values
+##    <chr>  <dbl> <chr> <chr> <chr> <date>      <dbl>
+##  1 REACH      1 NR    F     CY    2011-01-01    130
+##  2 REACH      1 NR    M     CY    2011-01-01    136
+##  3 REACH     10 NR    F     CY    2011-01-01     88
+##  4 REACH     10 NR    M     CY    2011-01-01    102
+##  5 REACH     11 NR    F     CY    2011-01-01     97
+##  6 REACH     11 NR    M     CY    2011-01-01     89
+##  7 REACH     12 NR    F     CY    2011-01-01     89
+##  8 REACH     12 NR    M     CY    2011-01-01     79
+##  9 REACH     13 NR    F     CY    2011-01-01     65
+## 10 REACH     13 NR    M     CY    2011-01-01     73
+## # … with 152 more rows
+```
+
 We can see that the data do appear to not entirely smooth. This may be due to random variations in migration patterns of relatively small counts of migration. However, it would not be ideal to use the raw data as underlying assumption for the distribution of age-specific migration in a cohort component population projection model as there is clear justification for believing the underlying age migration patterns are non-smooth. For example, to observed migration for 41 year old persons is slightly higher that those that are 40 years old and counter to the declining trend of migration from 30 year old onwards.
 
-```{r}
+
+```r
 imm_cy_2011 %>%
   ggplot(mapping = aes(x = age, y = values, colour = sex)) +
   geom_line() +
   geom_point()
 ```
+
+<img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 The general shape of the observed values indicate that a seven parameter Rogers Castro migration age schedules is appropriate, where is no retirement peak or post-retirement slope are visable. 
 
@@ -203,13 +411,34 @@ When using the `mig_estimate_rc()` function, it is common to wait for a few minu
 
 It is recommended to carefully review the messages printed during the estimation process to ensure that the estimation has converged properly and that the results are reliable. The messages can provide insights into the estimation process and help identify any potential issues or concerns.
 
-```{r, cache=TRUE}
+
+```r
 # standardize migration intensity
 imm_cy_2011 <- imm_cy_2011 %>%
   group_by(sex) %>%
   mutate(mx = values/sum(values)) 
 imm_cy_2011
+```
 
+```
+## # A tibble: 162 × 8
+## # Groups:   sex [2]
+##    agedef   age unit  sex   geo   time       values      mx
+##    <chr>  <dbl> <chr> <chr> <chr> <date>      <dbl>   <dbl>
+##  1 REACH      1 NR    F     CY    2011-01-01    130 0.0102 
+##  2 REACH      1 NR    M     CY    2011-01-01    136 0.0132 
+##  3 REACH     10 NR    F     CY    2011-01-01     88 0.00693
+##  4 REACH     10 NR    M     CY    2011-01-01    102 0.00987
+##  5 REACH     11 NR    F     CY    2011-01-01     97 0.00763
+##  6 REACH     11 NR    M     CY    2011-01-01     89 0.00862
+##  7 REACH     12 NR    F     CY    2011-01-01     89 0.00700
+##  8 REACH     12 NR    M     CY    2011-01-01     79 0.00765
+##  9 REACH     13 NR    F     CY    2011-01-01     65 0.00512
+## 10 REACH     13 NR    M     CY    2011-01-01     73 0.00707
+## # … with 152 more rows
+```
+
+```r
 # fit seven-parameter rogers castro 
 f_cy_male <- mig_estimate_rc(ages = imm_cy_2011 %>%
                        filter(sex == "M") %>%
@@ -221,6 +450,113 @@ f_cy_male <- mig_estimate_rc(ages = imm_cy_2011 %>%
                      retirement = FALSE, post_retirement = FALSE)
 ```
 
+```
+## mig_estimate_rc is running normal model, Using arguments ages and mx
+```
+
+```
+## 
+## SAMPLING FOR MODEL 'rcmodel_normal' NOW (CHAIN 1).
+## Chain 1: 
+## Chain 1: Gradient evaluation took 0 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 1: Adjust your expectations accordingly!
+## Chain 1: 
+## Chain 1: 
+## Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 1: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 1: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 1: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 1: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 1: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 1: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 1: 
+## Chain 1:  Elapsed Time: 1.208 seconds (Warm-up)
+## Chain 1:                0.942 seconds (Sampling)
+## Chain 1:                2.15 seconds (Total)
+## Chain 1: 
+## 
+## SAMPLING FOR MODEL 'rcmodel_normal' NOW (CHAIN 2).
+## Chain 2: 
+## Chain 2: Gradient evaluation took 0 seconds
+## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 2: Adjust your expectations accordingly!
+## Chain 2: 
+## Chain 2: 
+## Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 2: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 2: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 2: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 2: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 2: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 2: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 2: 
+## Chain 2:  Elapsed Time: 1.181 seconds (Warm-up)
+## Chain 2:                1.057 seconds (Sampling)
+## Chain 2:                2.238 seconds (Total)
+## Chain 2: 
+## 
+## SAMPLING FOR MODEL 'rcmodel_normal' NOW (CHAIN 3).
+## Chain 3: 
+## Chain 3: Gradient evaluation took 0 seconds
+## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 3: Adjust your expectations accordingly!
+## Chain 3: 
+## Chain 3: 
+## Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 3: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 3: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 3: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 3: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 3: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 3: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 3: 
+## Chain 3:  Elapsed Time: 1.199 seconds (Warm-up)
+## Chain 3:                1.009 seconds (Sampling)
+## Chain 3:                2.208 seconds (Total)
+## Chain 3: 
+## 
+## SAMPLING FOR MODEL 'rcmodel_normal' NOW (CHAIN 4).
+## Chain 4: 
+## Chain 4: Gradient evaluation took 0 seconds
+## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 4: Adjust your expectations accordingly!
+## Chain 4: 
+## Chain 4: 
+## Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 4: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 4: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 4: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 4: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 4: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 4: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 4: 
+## Chain 4:  Elapsed Time: 1.22 seconds (Warm-up)
+## Chain 4:                1.09 seconds (Sampling)
+## Chain 4:                2.31 seconds (Total)
+## Chain 4:
+```
+
 The `mig_estimate_rc()` function returns a `list` object with three components.
 In the output of the `mig_estimate_rc()` function, there are three elements:
 
@@ -230,13 +566,48 @@ In the output of the `mig_estimate_rc()` function, there are three elements:
 
 3. `check_converge`: This is a data frame that provides information about the convergence of the estimation process. It includes the R-hat values and effective sample sizes for each parameter. The R-hat values, also known as the Gelman-Rubin statistic, assess the convergence of the MCMC chains used in the estimation. A value close to 1 indicates good convergence. The effective sample sizes indicate the number of independent samples obtained for each parameter, and higher values indicate more reliable estimates.
 
-```{r}
+
+```r
 # parameter estimates
 f_cy_male$pars_df
+```
 
+```
+## # A tibble: 7 × 4
+##   variable    median      lower    upper
+##   <chr>        <dbl>      <dbl>    <dbl>
+## 1 a1        0.0119    0.0102     0.0136 
+## 2 a2        0.0589    0.0536     0.0667 
+## 3 alpha1    0.0445    0.0290     0.0675 
+## 4 alpha2    0.0773    0.0683     0.0912 
+## 5 c         0.000574  0.0000302  0.00175
+## 6 lambda2   0.297     0.240      0.355  
+## 7 mu2      21.0      20.5       22.0
+```
+
+```r
 # fitted schedule
 f_cy_male$fit_df
+```
 
+```
+## # A tibble: 81 × 6
+##      age    data  median   lower   upper       diff_sq
+##    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>         <dbl>
+##  1     1 0.0132  0.0120  0.0107  0.0134  0.00000134   
+##  2    10 0.00987 0.00826 0.00731 0.00908 0.00000262   
+##  3    11 0.00862 0.00792 0.00692 0.00878 0.000000481  
+##  4    12 0.00765 0.00761 0.00657 0.00850 0.00000000137
+##  5    13 0.00707 0.00732 0.00624 0.00825 0.0000000630 
+##  6    14 0.00687 0.00707 0.00598 0.00802 0.0000000400 
+##  7    15 0.00552 0.00702 0.00596 0.00799 0.00000226   
+##  8    16 0.00823 0.00752 0.00641 0.00876 0.000000499  
+##  9    17 0.00629 0.00915 0.00777 0.0108  0.00000818   
+## 10    18 0.0149  0.0123  0.0106  0.0141  0.00000677   
+## # … with 71 more rows
+```
+
+```r
 # plot of observed and fitted age schedule with 95% credible interval
 ggplot(data = f_cy_male$fit_df, 
        mapping = aes(x = age, y = data)) +
@@ -244,6 +615,8 @@ ggplot(data = f_cy_male$fit_df,
   geom_line(mapping = aes(y = median), colour = "blue") +
   geom_point() 
 ```
+
+<img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 
 ## Smoothing
@@ -257,7 +630,8 @@ Choosing an appropriate bandwidth or window size is crucial in smoothing age-spe
 In some cases, it may be necessary to censor or exclude the very oldest age groups from the smoothing process. This is because migration intensities for these age groups can become volatile and unreliable due to small numbers of migrants. By removing these extreme values, the smoothing methods can provide more stable and meaningful estimates of migration patterns across the age range.
 
 An example of the unevenness in observed age-specific migration data can be found in the `ipumsi_age` data frame of the *migest* package. The data in the object are based on census samples from Brazil 2000 and France 2006 published in the IPUMS International repository (@ipums2015). The data frame contains a variable `migrants` on the population weighted counts of persons who migrated between any minor (and major) administrative units determined from responses to questions on place of residence five-years prior to the census. The migration intensities are particularly uneven at the elderly age groups in the sample from the Brazil 2000 census. 
-```{r}
+
+```r
 ipumsi_age %>%
   mutate(mi = migrants/population) %>%
   filter(age > 5) %>%
@@ -267,6 +641,8 @@ ipumsi_age %>%
   facet_wrap(facets = "sample", scales = "free")
 ```
 
+<img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+
 Most smoothing functions in R typically require two vectors: `x` and `y`. The `x` vector represents the independent variable, such as age, and the `y` vector represents the dependent variable, such as migration intensity. These functions often have optional arguments that allow you to control the smoothness of the fit, although the names of these arguments may vary depending on the specific smoothing function.
 
 When applying a smoothing function, it will return a list with two components: `x` and `y`. It's important to note that the length of the `x` vector may differ from the original vector provided. To control the output length, some smoothing functions offer arguments (with different names depending on the function) that allow you to specify the desired length of the output. The `x` component of the output will match the age values, while the `y` component will represent the smoothed values of the dependent variable.
@@ -275,7 +651,8 @@ When applying a smoothing function, it will return a list with two components: `
 
 The `ksmooth()` function in the `stats` package performs kernel regression smoothing. It estimates a smooth curve by applying a kernel weighting to nearby data points, allowing for flexible and localized smoothing. To demonstrate we will use the migration intensities calculated from the Brazil 2000 IPUMS International sample provided in the `ipums_age` data frame. Note, there are no intensities for ages below five as the question on previous place of residence five-years prior to the census was not applicable for the sub population. 
 
-```{r}
+
+```r
 bra_2000 <- ipumsi_age %>%
   filter(sample == "BRA2000",
          age > 5) %>%
@@ -283,21 +660,54 @@ bra_2000 <- ipumsi_age %>%
 bra_2000
 ```
 
+```
+## # A tibble: 95 × 5
+##    sample    age migrants population     mi
+##    <chr>   <dbl>    <dbl>      <dbl>  <dbl>
+##  1 BRA2000     6  355723.   3311728. 0.107 
+##  2 BRA2000     7  343852.   3307567. 0.104 
+##  3 BRA2000     8  327166.   3258046. 0.100 
+##  4 BRA2000     9  314905.   3272305. 0.0962
+##  5 BRA2000    10  324066.   3345583. 0.0969
+##  6 BRA2000    11  329525.   3451739. 0.0955
+##  7 BRA2000    12  327113.   3518160. 0.0930
+##  8 BRA2000    13  323180.   3473133. 0.0931
+##  9 BRA2000    14  334783.   3566239. 0.0939
+## 10 BRA2000    15  337297.   3528845. 0.0956
+## # … with 85 more rows
+```
+
 We can use the `n.points` argument in the `ksmooth()` function to fix the length of the smoothed points returned by the object. 
 
-```{r}
+
+```r
 # default returns 100 values. corresponding ages in x no longer integers
 k1 <- ksmooth(x = bra_2000$age, y = bra_2000$mi)
 str(k1)
+```
 
+```
+## List of 2
+##  $ x: num [1:100] 6 6.95 7.9 8.85 9.8 ...
+##  $ y: num [1:100] 0.1074 0.104 0.1004 0.0962 0.0969 ...
+```
+
+```r
 # return only 95 values to match the number of age groups in the data
 k2 <- ksmooth(x = bra_2000$age, y = bra_2000$mi, n.points = nrow(bra_2000))
 str(k2)
 ```
 
+```
+## List of 2
+##  $ x: num [1:95] 6 7 8 9 10 11 12 13 14 15 ...
+##  $ y: num [1:95] 0.1074 0.104 0.1004 0.0962 0.0969 ...
+```
+
 The `ksmooth()` function is unlikely to smooth a migration age schedule as the default bandwidth parameter is too small for one hundred odd age groups. The `bandwidth` parameter can be increased to provide a more suitable fit
 
-```{r}
+
+```r
 bra_2000 <- bra_2000 %>% 
   mutate(
     k_default = ksmooth(x = age, y = mi, n.points = n())$y,
@@ -305,7 +715,26 @@ bra_2000 <- bra_2000 %>%
     k_10 = ksmooth(x = age, y = mi, n.points = n(), bandwidth = 10)$y
   )
 bra_2000
+```
 
+```
+## # A tibble: 95 × 8
+##    sample    age migrants population     mi k_default    k_5   k_10
+##    <chr>   <dbl>    <dbl>      <dbl>  <dbl>     <dbl>  <dbl>  <dbl>
+##  1 BRA2000     6  355723.   3311728. 0.107     0.107  0.104  0.100 
+##  2 BRA2000     7  343852.   3307567. 0.104     0.104  0.102  0.0990
+##  3 BRA2000     8  327166.   3258046. 0.100     0.100  0.101  0.0983
+##  4 BRA2000     9  314905.   3272305. 0.0962    0.0962 0.0986 0.0978
+##  5 BRA2000    10  324066.   3345583. 0.0969    0.0969 0.0964 0.0976
+##  6 BRA2000    11  329525.   3451739. 0.0955    0.0955 0.0949 0.0978
+##  7 BRA2000    12  327113.   3518160. 0.0930    0.0930 0.0944 0.0975
+##  8 BRA2000    13  323180.   3473133. 0.0931    0.0931 0.0942 0.0982
+##  9 BRA2000    14  334783.   3566239. 0.0939    0.0939 0.0950 0.100 
+## 10 BRA2000    15  337297.   3528845. 0.0956    0.0956 0.0973 0.103 
+## # … with 85 more rows
+```
+
+```r
 bra_2000 %>%
   pivot_longer(cols = contains("k_"), names_to = "bandwidth", names_prefix = "k_") %>%
   ggplot(mapping = aes(x = age, y = value, colour = bandwidth)) +
@@ -314,11 +743,14 @@ bra_2000 %>%
   scale_colour_brewer(palette = "Set1")
 ```
 
+<img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+
 ### Loess Smoothing
 
 The `stats` package also contains another smoothing function; `loess.smooth()`, which carries out local polynomial regression fitting. It fits a smooth curve to the data using a weighted least squares approach, with the degree of smoothing controlled by a `span` tuning parameter. The `loess.smooth()` function, similar to the `ksmooth()` function, may not be suitable for smoothing a migration age schedule using the default parameters. The default value of the `span` parameter, which controls the smoothness of the fit, is often too large for applying to migration age schedules. Additionally, the  `evaluation` parameter specifies the number of predicted values by default as 50.
 
-```{r}
+
+```r
 bra_2000 <- bra_2000 %>%
   mutate(
     lo_default = loess.smooth(x = age, y = mi, evaluation = n())$y,
@@ -334,11 +766,14 @@ bra_2000 %>%
   scale_colour_brewer(palette = "Set1")
 ```
 
+<img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+
 ### Cubic Spline smoothing
 
 Cubic spline smoothing is another popular method for smoothing data, including migration age schedules. It provides a flexible and smooth curve by connecting cubic polynomials between data points. In R, the `smooth.spline()` function in the *stats* package can be used to perform cubic spline smoothing. The function allows you to control the smoothness of the fit using the `spar` parameter (between 0 and 1), which determines the amount of smoothing applied. A smaller `spar` value results in a smoother fit, while a larger value allows for more flexibility and potential for capturing local variations in the data. The number of predicted smoothed
 
-```{r}
+
+```r
 bra_2000 <- bra_2000 %>%
   mutate(
     s_default = smooth.spline(x = age, y = mi, n = n())$y,
@@ -354,6 +789,8 @@ bra_2000 %>%
   scale_colour_brewer(palette = "Set1")
 ```
 
+<img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+
 As with each of the earlier smoothing methods, it's important to experiment with smoothing parameter (`spar`, `span` in `loess.smooth()` and `bandwidth` in `ksmooth()`) to evaluate the resulting smoothed migration age schedule visually to determine the optimal level of smoothing for your requirements.
 
 
@@ -367,7 +804,8 @@ To utilize the `graduate()` function, you need to provide the reported values (`
 
 To demonstrate we will use internal migration data in Italy contained in the `italy_area` data set in the *migest* package. In particular we will use the age-specific out migration counts from the Islands regions, which can be derived from using the `sum_region()` function 
 
-```{r, eval=FALSE}
+
+```r
 ita_reg <- italy_area %>%
   group_by(year, age_grp) %>%
   sum_region() %>%
@@ -381,130 +819,17 @@ isl_1970 <- ita_reg %>%
 
 When we apply the `pclm` method we tell the `graduate()` function that the last age group is open and set a new maximum value of 100.
 
-```{r}
-# # install devtools from CRAN
-# install.packages("devtools")
-# # install DemoTools from github
-# devtools::install_github("timriffe/DemoTools")
-library(DemoTools)
-g <- graduate(Value = isl_1970$out_mig, Age = isl_1970$age_min,
-              method = "pclm", OAG =  TRUE, OAnew = 100)
-g
-```
 
-When we plot the observed age schedule besides the graduated age schedule we see the drop in the relative scales of the single-year data, which are constrained to match the observed five-year out-migraiton totals.
 
-```{r}
-library(patchwork)
-p1 <- ggplot(data = isl_1970,
-       mapping = aes(x = age_min + 2.5, y = out_mig)) +
-  geom_point()
 
-p2 <- tibble(age = 0:100, mx = g) %>%
-  ggplot(mapping = aes(x = age, y = mx)) +
-  geom_line()
 
-p1 + p2
-```
 
-The graduation of the five-year migration counts to single-year counts can be seen by inspecting the sum of the first five estimated values in the `g` object and the obeseverd data for the out migration of the 0-4 year olds.
-```{r, eval=FALSE}
-# 0-4
-sum(g[1:5])
-# 5-9
-sum(g[6:10])
 
-isl_1970
-```
 
-## Migraiton Age Indices
 
-Index measures for age-specific migration schedules can be used to summarizing and comparing migration age profiles. They provide a concise representation of age-specific migration rates, enabling researchers to identify distinctive features and variations in the age dynamics of migration patterns across populations or over time.
 
-There are two main families of index measures for migration age schedules. The first uses relationships between fitted parameters of a Rogers-Castro migration age schedules. The second uses empirical measures based on either the observed or smoothed age-specific migration data. 
 
-### Rogers and Castro Parameter Relationships
 
-@Rogers1981 highlighted the significance of the relationships between certain parameters in the model age schedules. These relationships can provide insights into important characteristics of migration patterns and can guide the derivation of customized model schedules. Four key measures, namely peaking, dominance, labor asymmetry, and regularity, were highlighted.
 
-Peaking refers to the timing of the peak migration age, indicating whether migration rates peak at an earlier or later age. In the fundamental parameters proposed by Rogers and Castro, the parameter $\mu_2$ is set to 20, representing a age where with the highest migration rates.
-
-Dominance, is captured by the relationship $\gamma_{12} = a_1/a_2$, which represents the ratio of migration rates between two specific age groups. It serves as an index of child dependency in the migration age patterns, with the inverse $1/\gamma_{12}$ reflecting the index of labor dominance. In the fundamental parameters, $\gamma_{12} = 1/3$.
-
-Labor asymmetry is measured by the relationship $\sigma_2 = \lambda_2/\alpha_2$, representing the ratio of two parameters used for the upward and downward parts of the labour force curve in the age schedule. In the fundamental parameters, $\sigma_2 = 4$ indicating a faster (by four times) rise in the curve before the peak than the decline after the peak. 
-
-Finally, regularity is assessed through the relationship $\beta_{12} =  \alpha_1/\alpha_2$, which compares the migration rates of parents and children. A value of $\beta_{12} = 1$, as in the fundamental parameters, indicates a regular pattern where the migration rates of children closely match those of their parents.
-
-The `index_age_rc()` function in the *migest* package returns these ratios given a named vector of the parameters. For example, we can see the disussed values in the fundamental parameters:
-```{r}
-rc_model_fund %>%
-  deframe() %>%
-  index_age_rc()
-```
-More practically, we can also compare migration age schedules using the relationships between the parameter estimates. To demonstrate we fit a Rogers-Castro migration age schedule for female immigrants to Cyprus during 2011:
-```{r, message=FALSE}
-f_cy_female <- mig_estimate_rc(ages = imm_cy_2011 %>%
-                       filter(sex == "F") %>%
-                       pull(age), 
-                     mx = imm_cy_2011 %>%
-                       filter(sex == "F") %>%
-                       pull(mx),
-                     pre_working_age = TRUE, working_age = TRUE,
-                     retirement = FALSE, post_retirement = FALSE)
-```
-
-We can then combine the parameter estimates for the male and female fitted Rogers-Castro migration age schedules and apply the `index_age_rc()` function:
-```{r}
-tibble(
-  sex = c("male", "female"),
-  p = list(f_cy_male$pars_df %>%
-             select(variable, median) %>%
-             deframe(),
-           f_cy_female$pars_df %>%
-             select(variable, median) %>%
-             deframe())
-) %>%
-  mutate(rc_index = map(.x = p, .f = ~index_age_rc(pars = .x, long = FALSE))) %>%
-  unnest(cols = rc_index)
-```
-The calcaultions indicate a later peak age  and lower levels of asymmetry in the female immigration flows compared to the male counterparts. 
-
-### Emprical Age Indices
-
-Model age schedules for migration have faced several criticisms, see for example @Bell2002 or @Bernard2014. One significant challenge is the lack of consensus on the appropriate number of parameters to include in a model schedule. Different model forms can yield varying parameter estimates, making comparisons across studies or time periods challenging. To address this issue, statistical accuracy measures are sometimes used to select the best model form, although this can risk overfitting the data.
-
-Another concern is the sensitivity of parameter estimates to the choice of initial values. However, when using the `mig_estimate_rc()` function, this issue is mitigated as the estimation process relies on MCMC sampling which discards the first few thousand iterations in the estimation procedure. Unstable parameter estimates in Roger-Castro migration age schedules can arise due to measurement error in age-specific migration data. This instability can affect the reliability and robustness of the estimated parameters, making it challenging to draw firm conclusions from the results. Furthermore, the interpretation of parameter estimates, particularly the indexes in `index_age_rc()`, has not been widely adopted. This is likely due to the difficulty in fitting model schedules accurately, resulting in skepticism regarding the practical usefulness of these indexes.
-
-Several alternative measures of age-specific migration have been proposed that do not involve fitting model age schedules. These measures often rely on the migration intensity, which is the number of migrants in a specific age group and time period as a percentage of the population at risk of moving.
-
-One such measure is the Gross Migraproduction Rate (GMR) proposed by @Rogers1975. The GMR is calculated as the sum of age-specific migration intensities, $m(x)$, taking into. It provides a measure of the overall migration intensity in a given population by aggregating the migration rates across different age groups.
-
-$$
-\texttt{GMR} = \sum_{x} m(x)
-$$
-
-@Bell2002 introduced two additional measures. The first is the peak migration intensity, which identifies the age group with the highest migration intensity. The second measure is the peak age, which corresponds to the age at which the peak migration intensity occurs (in the data rather than a fitted age scheule as used in the previous section). 
-
-@Bell2009 proposed additional measures to further analyze age-specific migration patterns. The first measure is the breadth of the peak, which considers the sum of the peak migration intensity at the peak age and the five age-groups before and after the peak. This measure provides insights into the width or spread of the migration peak, indicating the range of ages where migration is concentrated.
-
-The second measure introduced by @Bell2009 is the peak share, which calculates the percentage of the normalized migration age schedule covered by the peak age and the five age-groups before and after the peak. This measure provides an indication of the relative importance and concentration of migration in the peak age range compared to the entire age distribution.
-
-@Bernard2014 proposed three additional measures that focus on the labor force peak. The first measure is the Maximum Upward Rate of Change (MURC), which identifies the largest gradient in the slope of the labor force peak before the peak age. This measure captures the steepest increase in migration intensity leading up to the labor force peak.
-
-The second measure is the Maximum Downward Rate of Change (MDRC), which identifies the largest gradient in the slope of the labor force peak after the peak age. This measure captures the steepest decrease in migration intensity following the labor force peak.
-
-The third measure introduced by Bernard @Bernard2014 is the asymmetry of the labor force peak, which is determined by the ratio of MURC and MDRC. This measure quantifies the asymmetry or imbalance in the migration intensity before and after the peak age.
-
-All of these measures, including the breadth of the peak, peak share, MURC, MDRC, and asymmetry, are calculated in the `age_index()` function in the *migest* package. @Bernard2014 recommends smoothing age schedules before calculating the index values. However, if the data is not extremely rough then very similar calculated values will be obtained as the `index_age()` function ignores by default values above 65 (and below 5) when calculating peak index statistics. The one exception to the sensitivity to the smoothness in the data is the `GMR` which is based on all ages, where, as seen earlier in some of the eldest age groups, the observed values might be very small (oldest in Brazil). 
-
-```{r}
-ipumsi_age %>%
-  filter(age > 5) %>%
-  mutate(mi = migrants/population) %>%
-  nest(.by = sample) %>%
-  mutate(index_age = map(.x = data, .f = ~index_age(d = .x, long = FALSE))) %>%
-  unnest(index_age)
-```
-Notice the older peak migration intensity and ages in France 2006, where the breadth of the peak is wider a lower upward and downward rate of change.
 
 

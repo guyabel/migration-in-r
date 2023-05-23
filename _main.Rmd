@@ -32,761 +32,98 @@ url: https://bookdown.org/guyabel/migration-in-r/
 
 # Introduction
 
-In many countries and regions throughout the world, human migration represents a major force of demographic, social and economic change. However, the underlying processes of migration are complex and data on the movements are often considered to be poor quality or limited in detail. Ideed, in many situations, migration data are completely missing or unusable for examining the patterns and consequences of interest. This is especially true for international migration. As a result, methods to estimate migration flows have been developed by demographers and other researchers to address shortfalls in data provision so that one can study the patterns, trends and consequences. 
+Placeholder
 
-This manual covers a range of methods for handling, measuring, estimating, and visualizing migration data in R. These methods are based on several authoritative sources, including the UN DESA manuals on [*Methods of measuring internal migration*](https://www.un.org/en/development/desa/population/publications/manual/migration/measuring-migration.asp) and [*Preparing migration data for subnational population projections*](https://www.un.org/en/development/desa/population/publications/manual/migration/subnational-migration.asp), as well as the migration chapters of the IUSSP [*Tools for Demographic Estimation*](http://demographicestimation.iussp.org/content/migration). Additionally, recent developments in the field are included. By the end, you will have a comprehensive understanding of the various methods available for working with migration data in R, and how to apply them to your own research.
-
-To make the most of this manual, we assume that you have basic knowledge of using R, especially the *tidyverse* set of packages. If you are not familiar with R or need a refresher, we recommend working your way through an online course before diving into this manual. Some good resources for learning R and the tidyverse include: 
-
-- [*R for Data Science*](https://r4ds.had.co.nz/), a comprehensive guide to data science in R, covering data import and cleaning, data visualization, and statistical modeling.
-- [*DataCamp*](https://www.datacamp.com/), an online learning platform that offers interactive courses on R programming and data science topics.
-- [*R Bootcamp*](https://r-bootcamp.netlify.app/), a free online course that covers the basics of R programming and the tidyverse.
-- [*Tidyverse.org*](https://www.tidyverse.org/learn/), a website dedicated to the tidyverse packages with tutorials, articles, and other resources for learning and using them.
-- [*Swirl*](https://swirlstats.com/), an interactive learning platform within R that teaches you how to use R in a hands-on manner.
-
-The above resources provide a comprehensive introduction to R programming and the tidyverse, which will be useful throughout this manual and in your future data analysis work.
-
-The manual is organized into nine chapters, each covering a different aspect of handling, measuring, estimating, and visualizing migration data in R. Chapter 1 provides an introduction to migration data and concepts. Chapter 2 focuses on handling migration data in R. Chapter 3 covers summary migration indices. Chapter 4 is dedicated to estimating net migration. Chapter 5 focuses on describing and estimating migration age structures. Chapter 6 covers methods for describing bilateral migration data. Chapter 7 covers methods for estimating bilateral migration. Finally, Chapters 8 and 9 cover methods for visualizing bilateral migration, including chord diagrams and Sankey plots. 
-
-In each chapter, we provide code and data that will allow you to replicate the outputs we present, as well as exercises that allow you to practice the concepts and methods on your own. Solutions to these exercises are provided so you can check your work and ensure that you have a firm grasp of the material before moving on to the next chapter. By following the examples and completing the exercises in this manual, you will gain a deep understanding of how to handle, measure, estimate, and visualize migration data in R.
 
 
 <!--chapter:end:index.Rmd-->
 
+
 # Migration Concepts
 
-Migration is a process that involves a change in the place of residence. There are two key dimensions that distinguish migration from other types of human movements and these are time (duration) and space (between places). That is, the process of migration involves moving to a place for an amount of time that is considered long and across a distance that is considered far -- both aspects make the move significant and life changing. By life changing, we mean the person who has moved must alter they way they interact with the society they moved away from. In other words, migrations  are movements that change the social circumstances of the individual. It an event that is distinguishable from other types of moves that are short duration (such as tourism or family visits) or short distance (residential mobility). Of course, both the duration and spatial dimensions of migration may be culturally defined, meaning that the processes of migration may differ between countries at a given spatial / time scale.  
+Placeholder
 
-In terms of practical measurement, the United Nations recommends that migration be linked to population change, where the place where one lives is defined as a place where the person 'usually resides' withing a given year. the measurement often excludes some groups, such as nomads, who do not have a fixed place of residence, or seasonal migrants, who live in two or more places during the course of a year. Further, migration is often measured as the crossing of a boundary (as opposed to a threshold of distance), whether it be an internal administrative bountry or an international border (@UnitedNations1983). Moreover, migration can be measured at various levels, including individuals and households, and domestic migration may be measured at different geographic scales depending on the types of administrative units that are available. Different individual / household groupings and spatial scales can have large invluences on the patterns we see. 
-
-Thus, both spatial and temporal dimensions are required in the definition of migration. Moreover, unlike other demographic processes, migration is not a one-time event, but rather a process that can involve multiple moves over the course of a lifetime. 
 
 ## Spatial
-
 ### Usual Residence
-
-Central to the spatial dimension of defining a migration event is the concept of place of residence, used to determine the migrants origin and destination locations. The *Principles and Recommendations for Population and Housing Censuses* (UN Statistics Division 2008: 102, para. 1.463) defines usual residence as follows:
-
-1. The place at which the person has lived continuously for most of the last 12 months (that is, for at least six months and one day), not including temporary absences for holidays or work assignments, or intends to live for at least six months
-    
-2. The place at which the person has lived continuously for at least the last 12 months, not including temporary absences for holidays or work assignments, or intends to live for at least 12 months."
-
-The use of two alternative criteria leaves some area of ambiguity, where the subtle differences in each could have significant implications for the measurement of migration. Further, within either of these criteria they might be additional ambiguity. For example, persons on long work assignments might have intentions to stay for only a few months that might turn into many months.
-
-
-When defining migration, restrictions on distance are often included (@Lee1966). In this situation, any move could be a migration including, for example, a move from one apartment to another in the same building or a move to another country. We advocate distinguishing between short disance / local moves, such as within cities or labor markets, and those that are considered longer distance (between cities or labor markets). We recognise that this distinction can be problematic given data availability and different contexts. However, we believe there are important distinctions to be made between local mobility and migration that make their separation worthwhile.Local mobility is primarily driven by household factors while migration is driven by economic and social network factors. Note, the methods covered in this manual can be used to analyse and estimate both types of movements.  
-
-When analyzing migration patterns, it is useful to have information on the distance involved in a relocation. If address information on points of origin and destination is available, it is possible to tabulate moves by the distance covered. However, in many countries without population registers, this is not possible, and it may be time-consuming and of little policy relevance. Instead, administrative or political units into which the country is divided are often used. Therefore, migration is operationally defined as a change of residence from one civil division to another, and the volume of migration is then function of the size of areas chosen for compilation, where typically larger administrative units, such as a state or country, have a higher volume of migration compared to smaller units like cities or counties. Most countries typically have hierarchies in their administrative units and provide some internal migration data to reflect one or more of these geographies. Using larger geographic units can result in a loss of detail and accuracy in migration data. For instance, if a state is used as the unit of compilation, it may not capture migration patterns between different cities within the state, which could be important for local policy-making. On the other hand, using smaller geographic units such as census tracts may result in too much detail, making it difficult to draw broader conclusions about migration trends at the regional or national level. 
-
 ### Migration Data Types
-
-There are two main sources of migration flow data and they, to a large extent, determine the type of migration that are analysed and used in demographic estimation and projections. The two main sources are administrative registers and census / survey questionnaires. Administrative registers measure migration events. They record when a person relocates in continuous time, much like administrative registers of births or deaths. Thus, the number of persons who have migrated within a year can be calculated as the sum of all recorded moves that occured in that year. Often there are no duration qualifications so potentially persons can have multiple or return moves within a given year. Censuses and surveys, on the other hand, typically have questions on place of usual residence that can be cross tabulated with questions on place(s) of residence at a previous time, usually one or five years prior to the census / survey. Cross tabulations between place of residence one or five years ago with place of current residence represent migrant transitions. With these data, we do not know the exact date of the move, only that a move has occurred between two points in time. We do not know whether the move occurred 10 months ago or one week ago. Other types of migration data are occasionally collected that do not involve the origin location of a migration, including the duration at residence, number of moves over a given interval, and country of citizenship.
-
-Lifetime migration data is another common type of migration data. Similar to migrant transition data described above, lifetime migration data is cross tabulation between current place of usual residence and place of birth. However, these data are not considered a type of flow data. Instead, they are considered migrant population stock data. With these data, we do not know a time or period when the person migrated, only that they have migrated at least once since birth. The migration data literature often distinguishes between stock and flow data. For international migration, stock data have been gathered and tabulated from most countries in the world by the United Nations and World Bank and are widely used to study the cumulative effects of international migration. 
-
 ### Migrant Transition Data
-
-Migrant transition data are typically collected in national censuses, which identify migrants by comparing their place of usual residence at the time of enumeration ($t$) with that at a specified earlier date ($t-n$). This type of data provides information on the movements of migrants over a given time period, which is usually either 1 year (e.g. UK) or 5 years (e.g. USA). In terms of limitations, migrant transition data fail to identify multiple and return moves, which can lead to an underestimation of the true level of migration. Additionally, migrants who are born or who die during the measurement period are not counted. For example, a baby born three years ago would not have a place of usual residence five years ago. Surveys may also be used to gather migration data but the sample size must be sufficent to capture what is usually a small proportion of the population making a residential transition. In any given year, the vast majority of the population do not migrate domestically, let alone internationally.  
-
-In migrant transition data, a migrant is a person who has experienced one or more migrations during a period measured retrospectively. It is important to note that persons who moved during the measurement interval and subsequently died before its end should technically be counted as migrants and their moves as migrations. However, in practice, such cases are usually unknown or excluded, as the information is usually obtained at the end of the time interval and with reference to persons who are alive at that time. Similarly, with international migration, censuses can be used to measure immigrant transitions but not emigrant transitions. The reason is that the current place of residence is in country not gathering the census data. Censuses have been used to ask questions about family members who have emigrated but if the whole family migrated, then again, censuses would not capture them. 
-
 ### Migation Event Data
-
-Migration event data record all moves made by individual in an administrative system. These include multiple and return moves, newborn moves, and moves immediately before death. Ideally, moves come from a centralised population register, however, other registers that do not necessarily cover the whole population may be used. For instance, some countries require persons to register with local health clinics when moves are made, others may use tax file reports with updated address information as sources of moves. Other administrative registers include those are used for education or voting registrations. Outside population registers, it is important that the migration event data are linked to the usual residence population before analysis of patterns or use in demographic estimation models. 
-
-While registers tend to provide a more complete record of migration over time, they may not include the whole population or there may be instances where people do not register or de-register. For example, a common problem with health registration data is young adults (especially males) only register when they see a doctor (which may be several years after the move) or they do not register and continue to visit the health clinic linked to their previous residential location if, say, their parents still live in that location or it is not too far away.  Another issue is that geographical units used in administrative registers are generally coarser, and registers often fail to capture within-region moves. Additionally, administrative registers often do not include information about the characteristics of migrants outside age and sex. Some groups may be omitted altogether, such as prisoners and military personnel.
-
 ## Temporal
-
 ### Migration Interval
-
-Migration is a continuous process that occurs over time. To study the propensity or rate of migration, data must be compiled with reference to specific periods of time. These time periods can be either definite or indefinite. Definite interval data is typically collected over fixed-term periods such as one year, five years, ten years, or intercensal periods. Indefinate interval data such as lifetime migration measures or data based on place of last residence lack a definite time reference as age or time at the current residence varies by each individual migrant. 
-The comparability of migration data with different definite time intervals can be prohibitively complicated. Commonly described as the one-year / five-year problem, observed migration data consistently shows the number of migrants recorded over a five-year interval is far less than five times the number recorded over a one-year interval. In addition, the ratio of migrants between a five-year period and a one-year period is not constant, where variations occur depending on multiple factors such as the intensity and type of migration both over time and in each origin and destination. Consequently, there is no straightforward algebraic solution to comparing one-year and five-year migration probabilities @Rogerson1990.
-
-With international migration, each country measures migration differently and for their own purposes. Often, the rules of the administrative register determine the measure of migration. While the United Nations recommends measures that are aligned with changes in the country of usual residence, the reality is that countries may differ greatly, ranging from, say, no defined time period, three months, six months, or 12 months. Some countries with strong border control statistics are able to track all entries and exits. In Australia, an immigrant is someone who was previously living abroad and stays in the country for 12/16 months. Similarly, an emigrant is someone who has been outside Australia for 12/16 months. Some countries, especially in Eastern Europe, have population registers that rely on the notion of a 'permanent' residence, implying that persons leaving (entering) will never return (leave). Countries who use types of systems grossly undercount the true levels of migration. (Cite MIMOSA / IMEM papers) 
-
 ## Migration Measures
-
-Migration measures are used to quantify the magnitude and direction of population movements between places or regions. These measures can provide important insights into the demographic and social dynamics of populations. There are several different types of migration measures that are commonly used in research and policy analysis, each with its own strengths and limitations.
-
-One of the most common migration measures is the migration rate or intensity, which is defined as the number of migrants observed during a period of time divided by the mid-year population (or average population 'at risk' of migration). The migration rate can be calculated for different migration types discussed above, such as one year or five years, and can be used to compare migration across different places or regions. Note, a probability of migration is different from a rate in how the 'at risk' population is defined. In a rate, the population at risk is the mid-year (average) population, whereas in  probability, the population at the beginning of the time interval is used as the population at risk.  
-
-Other migration measures include the count of the number of migrants and the migrant proportion. The migrant proportion is share of the population population that migrated. These measures can be useful for identifying patterns in migration behavior, such as the prevalence of long-distance migration or the likelihood of migration among certain demographic groups. In demography, some analysts would argue that there is no such thing as a in-migration or immigration rate since the the population at risk is outside the population of interest. Rather they are simply ratios that compare the number of migrants to the size of the receiving population. This problem does occur for out-migration rates or emigration rates since both have clear populations at risk of migration. 
-
-All migration measures can be affected by data quality, such as underreporting of migrants or errors in place of residence information. These problems tend to increase as the data become more detailed. Additionally, different measures may be more appropriate for different research questions or policy applications. For example, the migration rate may be more useful for understanding the overall magnitude of migration in the population, while the count of migrants can provide a basic understanding of the scale of migration patterns over time and between different spatial units. 
-
-Migration measures can be defined at different levels of detail, ranging from region-to-region measures, to region totals, to system totals or index measures. Region-to-region measures capture the flow of migrants between two specific regions, while region totals capture the total number of migrants coming in or going out of a specific region. System totals, or index measures, provide an overall picture of migration within a given system or country, which we will discuss in more detail in the next chapter.
-
 ### Region-to-region
-
-Region-to-region migration measures also known as *bilateral* migration, migration *streams* or *origin-destination* migration, refer to a migration measure that  cross-classified by region of origin and region of destination, forming a matrix of $n \times (n-1)$ streams along each origin-destination combination, where $n$ represents the number of regions. The set of region-to-region migration measures can be represented by $m_{ij}$, where the sub-scripts $i$ and $j$ represent the same set of regions for each origin-destination combination. The set of bilateral migration flows provide a basis to asses the compartive volumnes and directions of migration between a set of regions.
-
-The *gross interchange* represents the total number of migrants moving between a particular pair of regions, i.e. $m_{ij} + m_{ji}$. The *net migration steam* or *bilateral net migration* represents the difference in migration between a pair of region i.e. $m_{ij} - m_{ji}$. For a pair of streams that are of unequal size, where the net migration stream is not close to zero, there exists a *dominant stream* which is far large than the *reverse* or *counter* stream in the opposite direction.
-
 ### Region Totals
-
-Every migration event can be considered an out-migration in relation to the region of origin and an in-migration in relation to the region of destination. When migration events involve changes of countries, migration events are typically described as emigration and immigration, rather than out-migration and in-migration. Totals on in- or out-migration for each region are typically used to evaluate the volume of migration to or from a particular set of regions. In some countries, data is collected or aggregated without reference to the place of origin for in-migration totals or destination for out-migration totals. Consequently the migration totals provide the most detailed measure of regional migration but with little information on the direction of the migration flows between each region. A summary of the common terms for migration totals are shown in Table 1. The in-migration (or immigration) totals can be represented by replacing the origin $i$ index with a $+$; $m_{+j}$. Similarly, the out-migration (or emigration) totals can be represented by replacing the destination $j$ index with $+$; $m_{+j}$. 
-
-| Scale  | Area | Event Term | Migrant Term|
-|--------|--------|-------|------|
-| Internal | Origin | out-migration | out-migrant |
-|          | Destination | in-migration | in-migrant |
-| International | Origin | emigration | emigrant |
-|          | Destination | immigration | immigrant |
-
-
-The sum of the in-migration and out-migration totals ($m_{i+} + m_{+j}$) provides the *turnover* of each region. Net migration totals provides a balance of movements in opposing directions from the difference between in-migration and out-migration ($m_{+j} - m_{i+}$). Net migration measures are more typically obtained via demographic accounting, as a residual from the differences in population change, births and deaths over a period in each region. As this calculation does not require expensive migration data collection systems, net migration measures are one of the most common forms of migration measures. However, net migration measures have a number of notable drawbacks, as highlighted by @rogers1990rnm. In particular, net migration does not enumerate migrants themselves, but instead follows a residual of in-migrants and out-migrants. Consequently, the dynamics related to the observed migration patterns can be missed. For example, an net migration of -100 might involve a region receiving no in-migrants and sending 100 out-migrants or receiving 1,000,000 migrants and sending 1,000,100 out-migrants. Further migration dynamics are also missed when looking at net migration rates (discussed in the next section) and regularities in age profiles of migration (discussed in Chapter X) are often preculded when using age-specicifc net migration measures. 
-
 ### Rate measures
-
-Migration rates are important indicators for understanding the dynamics of population movement. Out-migration or emigration rates are calculated by dividing the number of out-migrants or emigrants during a specific period by the population exposed to the likelihood of migration. This is represented by the formula:
-
-\[ e^{[t, t+1]} = \frac{E^{[t, t+1]}}{P}k \]
-
-Here, \( e^{[t, t+1]} \) represents the out or emigration rate, \( E \) is the number of out-migrants or emigrants during the period, \( P \) is the population exposed to the likelihood of migration, and \( k \) is a constant, often set as 1000. The exposure population can be the population at the mid-interval, assuming migration is evenly distributed, or the population at the start or end of the interval if migration has a negligible effect on population change. Additionally, out-migration rates can be further decomposed by subsets of the population, such as age or sex:
-
-\[ e^{[t, t+1]}_i = \frac{E^{[t, t+1]}_i}{P_i}k \]
-
-On the other hand, in-migration or immigration ratios are calculated by dividing the number of in-migrants or immigrants by the population not exposed to the risk of migrating into the region. The formula for in-migration ratio is:
-
-\[ i^{[t, t+1]} = \frac{I^{[t, t+1]}}{P}k \]
-
-Similarly, net migration ratios are calculated by dividing the net migration (difference between in-migration and out-migration) by the population not exposed to migration risk:
-
-\[ m^{[t, t+1]} = \frac{M^{[t, t+1]}}{P}k \]
-
-As mentioned previously, in-migration and net migration ratios are different from demographic rates because they use the resident population in the denominator. This approach satisfies the needs of the demographic balancing equation, as rates of gain and loss are measured relative to the same population. The demographic balancing equation is expressed as:
-
-\[ P^{t+1} = P^t \left(1 + b^{[t, t+1]} - d^{[t, t+1]} + i^{[t, t+1]} - e^{[t, t+1]} \right) \]
-
-where \( P^{t+1} \) is the population at the next time point, \( b^{[t, t+1]} \) and \( d^{[t, t+1]} \) represent births and deaths during the period, and \( i^{[t, t+1]} \) and \( e^{[t, t+1]} \) denote in-migration and out-migration rates. Net migration (\( M^{[t, t+1]} \)) can be substituted with the difference between in-migration and out-migration (\( I^{[t, t+1]} - O^{[t, t+1]} \)). The equation can be simplified as:
-
-\[ P^{t+1} = P^t \left(1 + b^{[t, t+1]} - d^{[t, t+1]} + i^{[t, t+1]} - o^{[t, t+1]} \right) \]
-
-This formulation allows for the analysis of population change considering the effects of births, deaths, in-migration, and out-migration.
-
-
 ## References
-
 
 <!--chapter:end:01-concepts.Rmd-->
 
+
 # Handling Migration Data in R
 
-The R statistical language provides many powerful tools to carry out data analysis. In this chapter we highlight some useful R functions to manipulate migration data into specific formats that might be required for more advanced functions to analysis or visualization. 
+Placeholder
+
 
 ## Contingency Table
-
-Bilateral migration data are often organized and represented in square tables, commonly referred to as migration matrices or migration flow tables. These tables are contingency tables, otherwise know as cross-tabulations or frequency tables, used in data analysis and statistics. Migration flow tables provide a structured way to organize and summarize origin-destination migration data, with rows representing the regions of origin and columns representing the regions of destinations. The cells in the table capture the number of persons migrating from one region to another. The inspection of migration tables themselves provide valuable insights into the magnitudes and directions of migration between different regions.
- 
-
-
-<table>
-    <tr>
-        <td colspan=1>*Origin*</td>
-        <td colspan=5 style="text-align:center">*Destination*</td>
-    </tr>
-    <tr style="border-bottom:2px solid black">
-        <td></td>
-        <td>A</td>
-        <td>B</td>
-        <td>C</td>
-        <td>D</td>
-        <td>Sum</td>
-    </tr>
-    <tr>
-        <td>A</td>
-        <td></td>
-        <td>100</td>
-        <td>30</td>
-        <td>70</td>
-        <td>200</td>
-    </tr>
-    <tr>
-        <td>B</td>
-        <td>50</td>
-        <td></td>
-        <td>45</td>
-        <td>5</td>
-        <td>100</td>
-    </tr>
-    <tr>
-        <td>C</td>
-        <td>60</td>
-        <td>35</td>
-        <td></td>
-        <td>40</td>
-        <td>135</td>
-    </tr>
-    <tr>
-        <td>D</td>
-        <td>20</td>
-        <td>25</td>
-        <td>20</td>
-        <td></td>
-        <td>65</td>
-    </tr>
-    <tr>
-        <td>Sum</td>
-        <td>130</td>
-        <td>160</td>
-        <td>95</td>
-        <td>115</td>
-        <td>500</td>
-    </tr>
-</table>
-
-
-The diagonal cells in migration flow tables represent populations that either do not migrate (remain) or make moves within the same region. These values are useful to provide a relative sense of migration in relation to local mobility or to the population not migrating. Alternatively, one can place zeros in the diagonal elements (or nothing as in the table above) so that the table only consists of those migrating between regions.  
-
-
 ## Data Creation
-
-In R, migration flow tables can be created directly using the `matrix()` or `array()` functions. Both functions create `array` type objects. They are sometimes a pre-requisite for more complicated functions used for describing, estimating or visualising bilateral migration data.
-
-The `matrix()` function allows users to specify the dimensions of the matrix and populate it with desired values. It can be used to create matrices of any size, and supports various options for filling in the matrix, such as using a sequence of numbers, replicating values, or using auxiliary data sources. Data is provided via a vector passed to the `data` argument. By default the data populates the matrix from the first column on, which can be altered by setting `byrow = FALSE`. 
-
-```{r}
-m0 <- matrix(data = c(0, 100, 30, 70, 50, 0, 45, 5, 60, 35, 0, 40, 20, 25, 20, 0),
-             nrow = 4, ncol = 4, byrow = TRUE)
-m0
-```
-
-It is often valuable to supply a vector of character strings for the origin and destination names to the `matrix` data object. These can be linked to an existing `matrix` object using the `dimnames()` via the `dimnames` argument. The corresponding `rownames()` and  `colnames()` functions can be used to assign or display individual dimension names.
-
-```{r}
-# create region labels
-r <- LETTERS[1:4]
-r
-
-# check dimension names
-dimnames(m0)
-
-# add dimension names
-dimnames(m0) <- list(orig = r, dest = r)
-m0
-
-# create matrix with dimension names directly
-# m0 <- matrix(data = c(0, 100, 30, 70, 50, 0, 45, 5, 60, 35, 0, 40, 20, 25, 20, 0),
-#              nrow = 4, ncol = 4, byrow = TRUE,
-#              dimnames = list(orig = r, dest = r))
-```
-
-
-In R, the `array()` function is used to create multidimensional arrays, which can have more than two dimensions. While the `matrix()` function creates two-dimensional structures. 
-
-Similar to the `matrix()` function, the `array()` function allows users to define the dimensions of the array and populate it with desired values. However, in the `array()` function, the dimensions are specified as a vector to the `dim` argument, indicating the size of each dimension. 
-The `array()` function can be seen as a generalization of the `matrix()` function, as matrices are a specific type of two-dimensional arrays. By using the `array()` function, users can work with data that requires more complex organization and analysis, such as migration flows cross classified by origin, destination and additional variables such as sex, age or education.
-
-```{r}
-m1 <- array(data = sample(x = 1:100, size = 32),
-            dim = c(4, 4, 2),
-            dimnames = list(orig = r, dest = r, sex = c("female", "male")))
-m1
-```
-
 ## Data Manipulation
-
-Statistical offices, government agencies, and international organizations collect and disseminate migration data in different formats to accommodate the needs of users and researchers. The format of the data may not necessarily be in square matrices that can be read directly into R and converted into a `matrix` object. However, there are useful functions in R that can be employed to convert data into appropriate formats for migration analysis.
-
-The `xtabs()` function is particularly helpful as it enables the conversion of data frames in a tidy format @Wickham2014 into matrices or arrays. It requires a `formula` argument that specifies the column names in the data frame that will be used to construct and populate the `matrix` or `array`. The formula consists of the left-hand side representing the column name with the data to fill, the `~` symbol to separate the left and right-hand sides, and the right-hand side representing the columns used for cross-classifying the left-hand variable (separated by `+`). The `data` argument specifies the object where the  data presented in a tidy format with variables included in the formula.
-
-```{r, message=FALSE, echo=FALSE}
-library(tidyverse)
-d0 <- expand_grid(orig = r, dest = r) %>%
-  mutate(flow = 1:16)
-
-# tidy migration data
-d0
-
-# convert to matrix
-m2 <- xtabs(formula = flow ~ orig + dest, data = d0)
-m2
-```
-
-The `as.data.frame.table()` function provides an inverse of the data manipulation of the `xtabs()` function, whereby it takes a `matrix` or `array` and converts it into a data frame based on the array dimension names. The `responseName` argument can be used to set the column name of the values in the cells of the `matrix` or `array`.
-
-```{r}
-# convert previous matrix back to tibble
-m2 %>%
-  as.data.frame.table(responseName = "migration") %>%
-  as_tibble()
-```
-
-Note, above we use `as_tibble()` to convert the `data.frame` object returned from `as.data.frame.table()` to the more user friendly `tibble` object type (insert citation) and use the pipe line function `%>%` to combine together a sequence of R functions. 
-
-```{r}
-# convert array to tibble
-d1 <- m1 %>%
-  as.data.frame.table(responseName = "flow") %>%
-  as_tibble()
-d1
-```
-
-
 ## Matrix Operations
-
-When working with `matrix` objects based on migration data in R there are additional functions that are useful for further formatting and data exploration. The `addmargins()` function is a useful tool for adding row and column margin totals to a `matrix` or `array` object.
-
-```{r}
-addmargins(A = m0)
-```
-
-When working with migration matrices in R, it can sometimes be challenging to effectively view and analyze the data due to various factors such as lengthy dimension names and large unit sizes. Additionally, the inclusion of diagonal terms, which are often not of interest in migration analysis, can further complicate the interpretation of the matrix. R provides several helpful functions that can assist in adapting migration matrix objects for easier viewing and analysis. To illustrate, we use the `uar_1960` object from the **migest** package, which represents a lifetime migration matrix for the Governorates of the United Arab Republic in 1960 as documented in the United Nations manual by @UnitedNations1983. Notice how the object is difficult to view due to issues described above: 
-
-```{r}
-library(migest)
-uar_1960
-```
-
-When working with names or labels that are lengthy or contain unnecessary details, the `abbreviate()` function can be helpful. The function applies an algorithm to shorten the names while still retaining their essential information.
-
-```{r}
-dimnames(uar_1960)
-# make a copy
-u0 <- uar_1960
-# new abbreviated region names
-r <- list(orig = uar_1960 %>%
-            rownames() %>%
-            abbreviate(),
-          dest = uar_1960 %>%
-            colnames() %>%
-            abbreviate())
-r
-
-# apply the abbreviated region names
-dimnames(u0) <- r
-
-u0
-```
-
-Basic arithmetic operators can be employed to scale the data to an appropriate level, such as dividing the values by a common factor or multiplying them to achieve a desired magnitude. This can be useful when working with migration matrices to adjust the values and make them more interpretable or comparable. The `round()` function which allows users to specify the precision of numbers in your migration data, which can be handy when working with migration rates or proportions. 
-
-```{r}
-u1 <- round(x = u0/1000, digits = 1)
-u1
-```
-
-The `diag()` function allows users to manipulate the diagonal terms of a matrix, which can be much larger than the number of persons migrating in the non-diagonal cells. The `diag()` function takes a matrix as input and returns a new matrix with the same values, except that the diagonal elements are modified according to the specified rule. In the context of migration data, setting the diagonal terms to zero effectively removes the non-moving populations from the matrix, making it easier to analyze the migration flows.
-
-```{r}
-u2 <- u0
-diag(u2) <- 0
-u2
-```
-
-
 ## Summaries
-
 ### Bilateral measures
-
-the *migest* package offers several useful functions for generating summaries of origin-destination migration data. One such function is *sum_bilat()*, which allows you to calculate the counter flow, net flow and interchange for all migration pairs. This function can accept either a `matrix`, `array` or a `data.frame` (or `tibble`) as input.
-
-```{r}
-sum_bilat(m0)
-```
-
 ### Total Measures
-
-Another useful function in the *migest* package is `sum_region()`, which allows you to generate comprehensive summaries of in-migration, out-migration, net migration, and turnover totals for each region in your migration data. Similar to the `sum_bilat()` function, `sum_region()` also accepts either a `matrix` or a `data.frame` (or `tibble`) as input, providing flexibility in working with different data formats.
-
-By using the `sum_region()` function, you can obtain valuable information about migration flows at the regional level. It calculates the total number of migrants moving into each region (in-migration), the total number of migrants moving out of each region (out-migration), the net migration balance (in-migration minus out-migration), and the turnover (sum of in-migration and out-migration) for each region. These summaries are useful for further analyses and interpretations.
-
-```{r}
-sum_region(m0)
-```
-
-Note, when the data provided to the `sum_region()` is a data frame, the origin and destination regions names are assumed to be in variables named `orig` and `dest`. In addition, the migration data are assumed to be in variable named `flow`. If the corresponding column names differ, the user can supply these to the `orig_col`, `dest_col` and `flow_col` argumenets in the `sum_region()` function.
-
-The `sum_country()` function provides the same calculations, along with summary variables names. When the input data for either the `sum_region()` or `sum_country()` functions represent more than two dimensions, the `group_by` function from the *dplyr* package should be used. To demonstrate, we use the international flow estimates of @Abel2019 which can be downloaded and read directly into R from the online CSV file. 
-
-```{r, cache = TRUE, message=FALSE, warning=FALSE}
-# read data from web depository
-f <- read_csv("https://ndownloader.figshare.com/files/26239945")
-f
-
-# single period (1990-1995)
-f %>%
-  filter(year0 == 1990) %>%
-  sum_country(flow_col = "da_pb_closed")
-
-# all periods using group_by
-f %>%
-  group_by(year0) %>%
-  sum_country(flow_col = "da_pb_closed") %>%
-  arrange(country)
-
-```
 
 <!--chapter:end:02-data.Rmd-->
 
+
 # Summary Migration Indices
 
-Migration analysis, particularly regarding cross national comparisons of migration, has received relatively far less attention compared to studies on other the other demographic components of population change. This disparity is partly due to the complexity involved in comparing migration data and patterns across nations, regions and over time. Several factors contribute to the intricacy of such comparisons:
+Placeholder
 
-1. **Diverse Definitions of Migration**: Nations may employ different definitions of migration, which might alter over time, making it challenging to establish consistent criteria for measuring and comparing migration accurately.
-
-2. **Variations in Data Collection Systems**: The methods and systems used for collecting migration data can differ among countries, further complicating comparisons. Discrepancies in data collection practices can affect the quality, coverage, and reliability of migration statistics.
-
-3. **Heterogeneous Regional Sizes**: Spatial units, such as regions or administrative divisions, vary in size across countries. This variation in regional scales can influence the interpretation and analysis of migration patterns, as migration rates may be influenced by the size of the areas being studied.
-
-4. **Changing Number of Regions**: The number of regions within a country may change over time due to administrative or political reforms. Such changes can disrupt the continuity and consistency of migration data, making it challenging to track migration trends accurately.
-
-5. **Diverse Approaches to Distance Measurement**: Different regions or countries may adopt varying methods to measure distances between locations. These differences can impact migration analyses that rely on distance-based measures, such as gravity model analyses.
-
-6. **Fluctuations in Population Sizes and Structures**: The underlying population sizes and demographic structures of regions or countries can change over time. These changes can influence migration patterns and introduce additional complexities when comparing migration data across different time periods or geographic areas.
-
-Given these factors, it is important to consider the contextual nuances and data issues when conducting cross-national or temporal comparisons of migration. In recent decades a growing number of summary migration measures and indices have been proposed to attempt to address one or more of the factors above. @Bell2002 brought together many of these measure and extended others to help facilitate the improved comparisons of internal migration across nations. These measures were incorporated into the IMAGE software, to build comparisons of internal migration patterns in multiple countries @Bell2015, @Bell2015a, @Stillwell2016, @Rees2016, and @Bernard2014. 
-
-
-In the work of @Bell2002, four main groups of migration indices were identified, providing a comprehensive framework for understanding and analyzing migration patterns. These groups include intensity of migration, distance of migration, migration connectivity, and the effect of migration on the redistribution of populations. In the remainder of this chapter we concentrate on available functions in R that can be used to calculate a range of summary migration indices in these four groups, and show how they can be applied to study changes in migration patterns over time or between countries. 
 
 ## Migration intensity
-
-Migration intensity measures focus on capturing the overall level or incidence of mobility within a population. These measures aim to provide a single indicator that allows for comparisons of migration intensities over different time periods or geographical areas. They help researchers understand the relative magnitude of migration flows and sets of regions or periods with higher or lower levels of migration activity.
-
-There are a number of age-specific migration intensity measures, that summarise how migration varies across different age groups. We will leave our discussion on these age-specific migration measures to the subsequent chapter on age schedules, where we introduce related migration age schedules that are used in the calculation of some summary indicies. 
-    
-Crude migration intensity is a straightforward measure that provides an indication of the overall propensity to migrate within a population, similar to how crude birth or death rates reflect the overall incidence of births or deaths. When migration transition data is available, the crude migration probability (CMP) can be calculated to estimate the likelihood of migration over the total population;
-$$
-\texttt{CMP} = 100 M/P
-$$
-The CMP is calculated by dividing the total number of migrants ($M$) in a specific time period by the population at risk ($P$) during that same period. The result is then multiplied by 100 to express it as a percentage. 
-
-In the study by Courgeau (1973), the relationship between the intensity of migration and the number of regions in a country was examined. It was proposed that the crude migration probability (CMP) can be expressed as a function of the number of regions, denoted as 'n', and a constant 'k'. 
-$$
-\texttt{CMP} = k \log (n^2)
-$$
-The value of $k$ in Courgeau's formula does not have an intrinsic meaning by itself. However, it serves as a scaling factor that allows for comparisons of migration intensity across zonal systems or administrative divisions used to collect migration data. A higher value of $k$ indicates a greater intensity of migration within a set of regions.
-
-The *migest* package offers the `index_intensity()` function, which facilitates the calculation of migration intensity measures. This function takes a migration and population totals as inputs, alongside a value for the number of regions `n`, and calculates both intensity measures discussed above. 
-
-```{r}
-library(migest)
-index_intensity(mig_total = 25, pop_total = 52, n = 17)
-```
-
-
 ## Migration distance 
-
-When comparing migration patterns across different regions, it is important to consider the variations in the intensity of movement across space. Migration is a spatial activity that involves movements between specific locations, and different regions may exhibit varying levels of migration intensity. To capture the effects of distance within a migration system, several measures have been developed.
-
-Measuring the distance between regions is not a straightforward task. Ideally, we would want to measure the typical distance that migrants travel. One commonly used approximation is the straight-line distance between the population-weighted centroids of each region. This approach provides a reasonable estimate of average distances moved along a migration corridor, taking into account the spatial distribution of population within each region.
-
-The costs faced by migrants may not be accurately represented by the inter-centroid distance alone. There are several factors that can complicate distance measurements. For example, regions located near borders may have centroids that exaggerate the actual distance between them. Regions can vary significantly in shape and size, making it challenging to capture the true distance between them. Additionally, features such as indented coastlines can create cultural and travel cost differences, impacting migration patterns.
-
 ### Creating distance matrices in R
-
-In R, there are various functions available to calculate distance matrices, which are can then be used when analyzing migration patterns. These functions typically require a set of longitude and latitude coordinates to compute the distances between locations accurately. While some national statistics offices may provide these centroids, in many cases such data is not readily available. In such situations, researchers can turn to alternative sources for population-weighted centroid estimates based on gridded population estimates.
-
-The [POPGRID](https://www.popgrid.org/) Data Collaborative brings together multiple research groups that publish estimates of past and future population gridded datasets. These estimates can be used to derive population-weighted centroids and facilitate the calculation of distance matrices for migration analysis.
-
-Below we demonstrate how to download the population centroids from the WorldPop, one of the research groups covered by POPGRID. They handily provide CSV files for population centriods for all first-level subregions based on the global population gridded estimates in five-year intervals between 2000 and 2020 (@Edwards2021). We can read in the data in the 2020 CSV file (the fifth file in the zip folder) using the `archive_read` function in R to download the zip folder from the WorldPop website and temporarily unzip the file for reading into R. 
-
-```{r, warning=FALSE, message=FALSE}
-library(tidyverse)
-library(archive)
-
-# read in data
-pw <- archive_read(
-    archive = "https://data.worldpop.org/GIS/Population_Weighted_Density/Unconstrained_Subnational/100m/PWD_100m_sub_national_CSV.zip",
-    file = 5
-  ) %>%
-  read_csv()
-
-# view
-pw
-```
-We will use South Korea to demonstrate how calcaulte a populated weighted distance matrix for regions in a particular country
-```{r}
-kor_pw <- pw %>%
-  filter(ISO == "KOR") %>%
-  select(Adm_N, PWC_Lat, PWC_Lon, Pop)
-
-kor_pw
-```
-The calculation of distances between centroids can calcualted using the `distm()` function from the *geosphere* package. By providing the longitude and latitude coordinates of the centroids, the function can estimate the great circle distance between them in meters.
-
-```{r}
-library(geosphere)
-kor_dist_pw <- kor_pw %>%
-  select(PWC_Lon, PWC_Lat) %>%
-  distm()
-```
-
-To enhance the usability of the distance matrix, you can add the names of the origin and destination regions to the rows and columns of the matrix using the `dimnames()` function. Additionally, the distances can be divided by 1000 to convert them from meters to kilometers. These manipulations allow you to easily combine the distance matrix with migration data or perform further analyses and interpolate the results. 
-
-```{r}
-dimnames(kor_dist_pw) <- list(orig = kor_pw$Adm_N, dest = kor_pw$Adm_N)
-kor_dist_pw <- round(kor_dist_pw/1000)
-kor_dist_pw
-```
-
-
 ### Migration Distance Measures 
-
-To capture the average migration distance and account for the skewed distribution of distances, various methods can be employed. One approach is to calculate the weighted average of migration counts, where the distances between regions serve as the weights. This provides a summary measure of the average migration distance, taking into account the varying distances between origin and destination pairs.
-
-@Bell2002 suggests that the median average distance is preferable to the mean average distance due to the negatively skewed distribution of distances. This skewness reflects the distance decay effect, which consistently influences migration patterns. Comparing the median and mean average distances can provide insights into the degree of skewness in the distribution.
-
-To address the skewness and model the relationship between migration counts and distances, a more comprehensive method involves fitting a predictive model. Different models can be utilized, often incorporating a log-transformed distance term and categorical control variables for the origin and destination regions. For example, a Poisson log-linear model can be employed, where the logarithm of the migration count ($m_{ij}$) is related to the origin, destination, and log-distance as follows:
-
-$$
-\log(m_{ij}) = \beta_0 + \beta_{1i} \texttt{origin} + \beta_{2j} \texttt{destination} + \beta_{3} \log(\texttt{distance})
-$$
-
-The parameter of interest in this equation is the distance decay parameter ($\beta_3$), which indicates the impact of distance on migration. The distance decay parameter is typically negative, implying that an increase in distance leads to a decrease in predicted migration. The set of parameters $\beta_{1i}$ and $\beta_{2j}$ represent the push and pull factors specific to each region, capturing the factors influencing migration behavior.
-
 ### Migration Distance Measures in R
-
-The *migest* package in R provides the `index_distance()` function, which allows you to calculate three summary distance measures based on a set of migration flows and corresponding distance values between each origin and destination.
-
-To use the function, you can provide the origin-destination migration flows as either a matrix or a data frame. If using a data frame, the column names are expected to be `orig`, `dest`, and `flow`. However, you have the flexibility to specify different column names using the `orig_col`, `dest_col`, and `flow_col` arguments.
-
-Similarly, the distance values can be provided as a matrix or a data frame. The column names in the distance data are assumed to be `orig`, `dest`, and `dist`. Just like with migration flows, you can customize the column names using the appropriate arguments.
-
-It is important to note that the origin and destination names in both the migration data and the distance data must match for accurate calculations. In cases where within-region migration moves are present in the data, the `index_distance()` function will automatically exclude them from the distance calculations.
-
-To demonstrate we will use migration data on internal migration between first-level administrative districts in South Korea provide in the `korea_reg` data frame in the *migest*. The data covers migration flows between 2012 and 2020 and was published by the Korean Statistical Information Service (KOSIS) at https://kosis.kr/eng. 
-```{r}
-# 2020 migration data
-kor_mig_2020 <- korea_reg %>%
-  filter(year == 2020)
-
-# check no differences in names used in migration and distance data sets
-symdiff(x = unique(kor_mig_2020$orig), y = kor_pw$Adm_N)
-
-index_distance(m = kor_mig_2020, d = kor_dist_pw)
-```
-
-
 ## Migration connectivity
-
-The size of migration flows between different migration corridors is influenced by various factors beyond population sizes and distances. These flows also reflect the strength of historical, cultural, social, and economic ties between regions. For example, regions with stronger connections may experience higher migration flows due to shared history, language, or economic opportunities.
-
-@Bell2002 note a fragmentation in the literature on the measurement of connections within a migration system, leading to the use of different terms such as *spatial connectivity*, *spatial concentration*, *spatial inequality*, and *spatial focusing*, among others. These terms highlight the diverse aspects of migration connections and the different perspectives from which they have be studied.
-
-To explore and analyze migration connectivity, there are numerous indices available. The *migration.indices* package, for instance, provides a range of indices that capture different dimensions of migration connectivity.
-
-The various connectivity measures can be broadly categorized into five groups: connectivity, inequity, Gini coefficients, spatial focusing, and coefficient of variation. These measures capture different aspects of the overall concentration of migration flows in a system, whilst two of the measures also offer extended perspectives on the concentration in-migration and out-migration flow totals.
-
-1. Connectivity measures assess the number of connections between regions.
-
-2. Inequity measures examine the distribution of migration flows across regions, in comparisons to expected migration flows under different assumptions.
-
-3. Gini coefficients, commonly used in economic inequality analysis, can also be applied to migration data to measure the concentration or dispersion of migration flows among regions.
-
-4. Spatial focusing measures identify the extent to which migration is concentrated or dispersed, indicating the level of spatial clustering or scattering of migrants across regions.
-
-5. Coefficient of variation measures the variability or diversity of migration flows across regions, providing insights into the heterogeneity of migration patterns.
-
-
-The `index_connectivity()` function in the *migest* package offers 11 different measures that capture various aspects of migration connectivity from these five groups. To calculate the measures, a user can provide a matrix or data frame containing the migration flows as input to the function. If using a data frame, the function assumes that the flows are specified in a column with the name "flow." However, if your data frame uses a different column name for the flows, you can specify it using the "flow_col" argument.
-
-```{r}
-index_connectivity(m = kor_mig_2020)
-```
-
-In the following subsection we discuss in more detail each of these measures in more detail
-
 ### Connectivity
-
-The simplest connectivity (`connectivity` in the output above) evaluates the proportion of non-zero migration flows, excluding within-region flows. This measure is particularly useful when dealing with regions where populations are relatively smaller, which is more common when there are many administrative units. For the South Korea data used above, all migration corridors had non-zero migration flows during 2020
-
 ### Inequality
-
-The inequality measures discussed by Bell (2002) are based on the distribution of observed flows compared to the expected distribution. The `inequality_equal` measure quantifies the distance between the observed flows and an expected distribution where all flows are equal. The `inequality_sim` measure quantifies the distance between the observed flows and an expected distribution derived from a spatial interaction model, such as a Poisson regression model for an independence fit.
-
-$$
-\widehat{\log(m_{ij})} = \beta_0 + \beta_{1i} \texttt{origin} + \beta_{2j} \texttt{destination}
-$$
-
-Both inequality measures range from 0 to 1, where a value of 0 indicates that the observed flows match the expected values, suggesting some form of equality, while a value of 1 represents the maximum distance between the observed flows and the expected flows, indicating maximum inequality in the distribution of migration flows.
-
-
 ### Gini measures
-
-The Gini migration measures provide insights into the spatial focusing of a migration system, assessing the extent to which migration flows are concentrated in specific corridors compared to others. They are calculated by comparing each flow in the migration matrix with every other flow to determine the degree of spatial focusing.
-
-The `gini_total` measure quantifies the overall spatial focusing in the migration flows. A value of zero indicates an equal distribution of flows across all corridors, indicating no spatial focusing. On the other hand, a value of 1 indicates maximum spatial focusing, where migration is concentrated in a single corridor.
-
-In addition to the `gini_total` measure, the `gini_orig_standardized` and `gini_dest_standardized` values provide insights into the spatial focusing from the perspectives of origin and destination regions, respectively. These measures compare the outflows from each origin region or the inflows to each destination region, respectively, to assess the spatial concentration of the migration patterns. The standardized values ensure that the range of these measures is between 0 and 1, with zero indicating no spatial focusing.
-
 ### Spatial Focusing
-
-The migration weighted Gini indexes specifically `mwg_orig` and `mwg_dest`, offer measures of focusing for the total in-migration and out-migration, respectively. , Also proposed by @Bell2002, these indexes assess the degree to which migration flows are concentrated in specific origins or destinations. A value of zero indicates no spatial focusing, while a value of 1 suggests that all migration flows pass through a single origin or destination.
-
-Additionally, the `mwg_mean` measure provides a system-wide measure of focusing for all migration totals. It is calculated as a simple average of `mwg_orig` and `mwg_dest`. Similar to the other Gini measures, the `mwg_mean` value ranges between zero and 1, with zero indicating no spatial focusing and 1 indicating a high concentration of migration in a single origin or destination.
-
 ###  Coefficient of Variation
-
-The coefficient of variation (`cv` in the output from the `index_connectivity()` function above), as proposed by @Rogers1998, is a measure provided by the  function that compares the mean of migration flows to the standard deviation of those flows. Unlike some of the previous measures, the coefficient of variation is not limited to a range of 0 to 1. It provides a quantitative measure of the variability in migration flows, where a higher coefficient of variation indicates greater dispersion or inequality in the flows.
-
-In addition to the coefficient of variation, the aggregated system-wide coefficient of variation @Rogers1998 calculates a similar measure of variation but based on the aggregate coefficient of variations of in-migration and out-migration totals. It takes into account the means and standard deviations of the total in-migration and out-migration flows. Similar to the `cv` measure, the `acv` (in the output from the `index_connectivity()` function above) is not restricted to a range of 0 to 1. It is particularly useful for making comparisons across different time periods or countries, as a rising coefficient of variation would indicate increasing inequality in migration flows or flow totals.
-
 ## Migration impact
-
-Measures fro the impact of migration assesses the degree to which migration contributes to the transformation of human settlement patterns. In many regions around the world, migration has become or is becoming the predominant mechanism driving population redistribution. Descriptive studies often concentrate on examining net migration counts at the regional level, which reveal the direction and magnitude of population changes. However, as noted before, changes in migration volumes and may not always be revealed in net migration counts.  
-
-Additional measures exist to provide a more comprehensive summary of the overall effect of migration in redistributing populations across the entire system of regions. These measures take into account not only the net migration figures but also the gross migration flows between regions. By considering the complete migration picture, these measures offer insights into the broader impact of migration on population redistribution.
-
 ### Migration effectiveness index
-
-The migration effectiveness index (MEI), introduced by @Shryock1976, evaluates the asymmetry or equilibrium in a migration network by comparing the sum of net migration to the migration turnover. The MEI is calculated by taking the absolute sum of net migration and dividing it by the sum of migration turnover, multiplied by 100.
-
-$$
-\texttt{MEI} = 100 \frac{\sum_{i} | \texttt{net} |}{\sum_{i} \texttt{turnover}_i} = 100 \frac{\sum_{i} | m_{+i} - m_{i+}|}{\sum_{i} m_{+i} + m_{i+}}
-$$
-
-The MEI ranges between 0 and 100. Higher values of the MEI indicate that migration is an efficient mechanism for population redistribution, as reflected by large net migration totals relative to the overall turnover. In other words, a higher MEI suggests that migration plays a significant role in reshaping the population distribution within the network.
-
-Conversely, values closer to zero are generated from more balanced migration systems with less pronounced population redistribution. A lower MEI indicates a relatively equitable distribution of migration flows, where the net migration values are smaller in relation to the turnover.
-
 ### Aggregate net migration rate
-
-The aggregate net migration rate (ANMR), proposed by  @Bell2002, captures the overall effect of migration on population settlement patterns. It is derived from the migration net totals and the populations of regions within a country. The ANMR replaces the denominator of the MEI formula with the population of each region, denoted as $P_i$.
-
-$$
-\texttt{ANMR} = 100 \frac{1}{2} \frac{\sum_{i} |\texttt{net}_i|}{\sum_{i} P_i} = 100 \frac{1}{2} \frac{\sum_{i} | m_{+i} - m_{i+} |}{\sum_{i} P_i}
-$$
-
-The ANMR represents the net shift of population between regions per 100 residents in the country. Unlike the MEI, which uses migration turnover in the denominator, the ANMR utilizes the population of each region. This allows for a measurement of the net migration effect relative to the size of the population in each region.
-
-The ANMR has no upper limit, as it depends on the net migration values and the population sizes of the regions. A higher ANMR indicates a larger net shift of population between regions, relative to the overall population size in the country. It reflects the magnitude of population redistribution resulting from migration.
-
-Additionally, the ANMR can be seen as the product of the migration connectivity index (CMI) and the migration effectiveness index (MEI). It combines the measures of connectivity and effectiveness to provide an overall assessment of the impact of migration on population settlement patterns.
-
-
 ### Preference and velocity
-
-The manual by the  @UnitedNations1983 introduces two other impact measures for migration, although these measures have become less commonly used in recent years.
-
-The preference index is derived from an expected model of migration interactions based on population shares and the overall level of migration. It compares the observed migration flows ($m_{ij}$) to an expected model where migration rates in all populations are the same. 
-
-$$
-\texttt{preference} = \sum_{ij}{\frac{m_{ij}}{m_{++} \frac{p_{i}}{p_+}\frac{p_{j}}{p_+}}}
-$$
-
-where $m_{++}$ is the total migration flow, $p_{+}$ is the sum of populations in each region, and $p_i$ and $p_j$ are the population sizes of the origin and destination regions, respectively. The preference index measures the extent to which the observed flows deviate from the expected flows based on population shares and overall migration levels. There is no upper limit to the preference index.
-
-The velocity index, on the other hand, is based on a migration velocity measure ($\frac{m_{ij}}{p_{i} p_{j}}$) multiplied by the total population and summed over all migration flows. It compares the observed flows to an expected model where flow sizes are determined solely by the population sizes of the origin and destination regions.
-
-$$
-\texttt{velocity}  = \sum_{ij}{\frac{m_{ij}}{p_{i} p_{j}}{p_+}}
-$$
-
-Similar to the preference index, the velocity index has no upper limit.
-
-Both the preference index and the velocity index provide measures of the deviation of observed migration flows from the expected patterns based on population sizes and overall migration levels. They offer alternative perspectives on the impact of migration on population redistribution, focusing on the relative significance of observed flows compared to expectations based on population factors alone. 
-
 ### Migration Impact Measures in R
-
-The `index_impact()` function in the *migest* package allows for the calculation of all four impact measures: preference index, velocity index, migration effectiveness index (MEI), and aggregate net migration rate (ANMR). This function requires a set of migration flows and population sizes in each region.
-
-As with the previous index functions in the *migest* package, the migration flows can be provided as a matrix or a data frame. The function assumes that the column names for the regions and population values provided to the `p` argument are `region` and `pop`, respectively, in a data frame. If your data frame has different column names, you can specify them using the `reg_col` and `pop_col` parameters. In the code below we use the population estimates from the WorldPop group provided in the `Pop` column of the `kor_pw` ojbect created earlier.
-
-```{r}
-index_impact(m = kor_mig_2020, p = kor_pw, pop_col = "Pop", reg_col = "Adm_N")
-```
-
-
 ## Applying index functions multiple times
-
-Some of the summary measures discussed above are meaningless on their own, as they have no relative scale and have been calculated in isolation. However, the index functions can be applied to compare migration systems across different areas or time periods relatively easily using R, enabling comparative analyses.
-
-To apply the index functions multiple times, you can loop over the countries or time periods of interest and apply the functions within the loop. Alternatively, you can use vectorized operations or apply functions from the *dplyr* or *purrr* packages to handle multiple countries or time periods efficiently.
-
-To demonstrate the application of the index functions in the *migest* package, we can use the `korea_reg` data of internal migration flows between 2012 and 2020 in South Korea. First we use the `group_nest()` function from the *dplyr* package which transforms the data frame into a grouped data frame based on the `year` column, which is a necessary step for applying the index functions. Once the data is grouped, we can then apply the `index_connectivity()` function to each row using the `map()` function from the *purrr* package. This will calculate the connectivity measures for each year in the `korea_reg` data set. We may set `long = FALSE` within the `index_connectivity()` function to allow for separate columns for each measure. These can be viewed over time using the `unnest()` function in the *tidyr* package 
-
-```{r}
-d <- korea_reg %>%
-  filter(orig != dest) %>%
-  group_nest(year, .key = "mig_data") %>%
-  mutate(connectivity = map(.x = mig_data, .f = ~index_connectivity(.x, long = FALSE)))
-d
-
-d %>%
-  unnest(connectivity)
-```
-This approach allows for easy comparison and analysis of migration systems between different areas or time periods. For example, we can see that connectivity measures such as the `inequality_equal` and `gini_total` showed a decreases after initial higher values during 2012 and 2013 in the proceeding seven years from 2014 to 2020. 
-
-We can use similar code to calculate the distance indices
-```{r}
-d <- d %>%
-  mutate(distance = map(.x = mig_data, .f = ~index_distance(m = .x, d = kor_dist_pw, long = FALSE)))
-
-d %>%
-  select(year, distance) %>%
-  unnest(distance)
-```
-The measures illustrate a decline in the mean and median distances over the nine years, whilst the distance decay parameter increases - again implying declining shorter migration distances. 
-
-The impact and intensity measures require additional data on populatino sizes, which are provided in the `korea_pop` data frame in the *migest* package. These can be added to the data frame of the index calcaulations once nested
-
-```{r}
-# add population data
-d <- korea_pop %>%
-  group_nest(year, .key = "pop_data") %>%
-  right_join(d, by = "year")
-d
-```
-
-Two data sets in each year can be passed to the `index_impact()` function using the `map2()` function in the *purrr* package
-
-```{r}
-d <- d %>%
-  mutate(impact = map2(.x = mig_data, .y = pop_data, 
-                       .f = ~index_impact(m = .x, p = .y, pop_col = "population", long = FALSE)))
-```
-
-The intensity measures require only the migration and population totals in each year. These can be calculated by summing the appropriate columns in each data frame and passing the totals to the `index_intensity()` function
-
-```{r}
-# calculate migration and population totals for intensity measure
-d <- d %>%
-  mutate(mig_total = map_dbl(.x = mig_data, .f = ~sum(.x$flow)),
-         pop_total = map_dbl(.x = pop_data, .f = ~sum(.x$population)),
-         intensity = map2(.x = mig_total, .y = pop_total, 
-                          .f = ~index_intensity(mig_total = .x, pop_total = .y, n = 17, long = FALSE)))
-
-d %>%
-  select(year, contains("total"), intensity) %>%
-  unnest(intensity)
-```
-
-In the case of South Korea, there does not appear to be a general trend for either intensity measure over the nine year period. 
-
 
 <!--chapter:end:03-indices.Rmd-->
 
 # Migration Age Schedules
 
-Migration age schedules refer to the patterns and characteristics of migration based on age groups or age cohorts. They provide valuable insights into the dynamics and determinants of migration across different age groups within a population. Understanding migration age schedules is crucial for studying the demographic, social, and economic implications of migration.
+Age plays a crucial role in shaping migration patterns and rates, and it is a significant source of heterogeneity in migration behavior. Migration rates can differ substantially across different age groups. Young adults often exhibit higher migration rates compared to other age cohorts. This is commonly observed due to factors such as educational pursuits and employment opportunities. Some older adults may migrate for retirement purposes, seeking locations with favorable climates, amenities, or healthcare facilities. Others may migrate to be closer to family members or to access specific social support networks. Furthermore, age can interact with other demographic characteristics, such as marital status or family composition, to influence migration decisions. For example, young adults who are married or have children may consider different factors when deciding to migrate compared to single individuals or couples without children.
 
-Migration age schedules depict the distribution of migrants across various age groups, often presented as age-specific migration rates or proportions. These schedules highlight the age patterns of migration, including the peak ages of migration and variations in migration intensity among different age cohorts.
+## Rogers Castro migration age schedules
 
-Analyzing migration age schedules can reveal important patterns and trends. For example, it can help identify whether migration is predominantly driven by young adults seeking educational or employment opportunities, or if there is significant migration among older age groups for retirement or family-related reasons. Additionally, migration age schedules can shed light on the impact of migration on population aging, labor market dynamics, and social welfare systems.
+As with other demographic events such as fertility and mortality, migration exhibit consistent patterns in their age-specific rates. Demographers have dedicated efforts to capturing and summarizing these regularities in rates using mathematical expressions known as model schedules. These model schedules aim to provide a concise representation of the age-specific migration rates based on empirical data.
 
-Migration age schedules are typically constructed using data from census surveys, population registers, or migration surveys. These data sources provide information on the age structure of migrants, allowing researchers to examine how migration varies across different age groups and over time.
+Model migration age schedules are used for several purposes in demographic analysis and population studies. They commonly provide a basis for projecting and forecasting future migration patterns in cohort component population projection models. This can be to smooth age-specific migration baseline data which might be unreliable. When no age-specific migration data is available, model migration age schedules can be used to derive age-specific migration patterns required for cohort component population projection models. Fitted parameters in model migration age schedules can also be used to analyze and compare the age-specific migration patterns in different populations, identifying similarities and differences.
 
-By studying migration age schedules, policymakers, researchers, and demographers can gain a deeper understanding of the demographic processes associated with migration. This knowledge can inform the development of effective migration policies, social programs, and resource allocation strategies to address the needs and challenges posed by different age groups of migrants.
+@Rogers1981 were the first to identify and mathematically summarise the consistency in migraiton age patterns after a comprehensive analysis of more than 500 age profiles of migration. Rogers-Castro migration age schedule are composed of intersecting mathematical curves representing migration patterns across different life stages. The curves in different parts of the schedule aims to capture the age-specific migration rates within specific segments of the population. The schedules are divided into five main components:
 
-### Rogers Castro migration age schedules
+1. Pre-labor force: This curve represents migration patterns among individuals who have not yet entered the labor force, such as children, students or young individuals who have not yet started working. Higher migration rates tend to found in very young adolescents who move with their parents. 
 
-- Populations tend to experience demographic events, such fertility, mortality and migration, with persistent regularities in the age-specific rates
-- Demographers have summarsied regularities in rates using mathematical expressions called model schedules.
-- @Rogers1981 first proposed a migration model schedules via an analysis of over 500 age profiles of migration
+2. Labor force: This curve focuses on migration patterns among individuals who are actively engaged in the labor force. It captures migration behavior among working-age individuals, reflecting factors such as job opportunities, economic conditions, and career advancements which tend to peak in early adulthood and then gradually decline until retiremnet.
 
+3. Post-labor force: This curve accounts for migration patterns among individuals who have exited the labor force, such as retirees. Upon exiting the labour force, indivudals might migrate as they no longer need to be located near their working location. 
 
-### Rogers Castro migration age schedules
+4. Post-retirement: This component specifically addresses migration patterns among individuals who are towards the later stages of their life course and might migrate for better access to healthcare and proximity to family or social networks for later life care.
 
-Composed of curves based on migration of different life stages:
+5. Constant term: This term represents a constant or baseline level of migration that is independent of age. 
 
-1. Pre-labor force
-2. Labor force
-3. Post-labor force
-4. Post-retirement
-5. A constant term
+Each of these componets can be represented mathematically using algebraic expression for cureves describing the changes in migration rates $m$ for each age group $x$ and combined as: 
 
 $$
 \begin{aligned}
@@ -798,121 +135,63 @@ m(x) =& a_1 \exp(-\alpha_1 x)  \\
 \end{aligned}
 $$
 
-### Rogers Castro migration age schedules
+By combining the components, the Rogers-Castro migration age schedules provide a framework for describing age-specific migration patterns across different life stages. In many locations and time periods, not all of the components of the full migration age schedule are relevant. 
 
-\centering
-\includegraphics[width=0.9\textwidth]{"./img/rc"}
+Almost all migration age patterns exhibit certain a downward slope during the pre-labor force years and a peak during the labor force period. To capture these patterns, only a 7-parameter model schedule, without the additional algebraic expressions for the post-labour and post-retirement components (based on the $a3, a4, \alpha_3, \mu_3, \lambda_3 and \lambda_4$$) are used.
 
-### Rogers Castro migration age schedules
+In specific areas, particularly in more elderly Western countries, migration age patterns may exhibit the additional retirement peak components, which leads to an 11-parameter model schedule that includes the pre-labor force and labor force components. In contrast, in some regions, instead of a retirement peak, age profiles exhibit an upward slope towards the end of life, which leads to a 9-parameter model schedule. In rare cases, there are instances where both a retirement peak and a post-retirement upward slope are observed in migration age patterns, captured by the full 13-parameter model schedule, proposed by @Rogers1987a. Further refinements to the migration model age schedules have since been proposed, including by @Wilson2010, who introduced a 17-parameter model that incorporates a student peak before the labor force peak. This addition acknowledges the migration patterns observed among students, who may migrate for educational purposes before entering the labor force.
 
-- Most migration age patterns have a pre-labor force downward slope and labor force peak (and a constant)
-    - 7-parameter model schedule
-- In specific areas (in Western countries) migration age patterns have an additional retirement peak component
-    - 11-parameter model schedule
-- In other areas, instead of a retirement peak, age profiles  have an upward slope at the end of life
-    - 9-parameter model schedule
-- In even fewer cases, some instances of both a retirement peak and a post-retirement upward slope @Rogers1987a
-    - 13-parameter model schedule
-- @Wilson2010 introduced a 17-parameter model to incorporate a student peak before the labour force peak. 
-    
-    
-### Rogers Castro migration age schedules
+The `mig_calculate_rc()` function in the *rcbayes* package by @Alexander2021 provide a quick method to calculate migration age schedules for a given parameter set
 
-- The `mig_calculate_rc()` function in either the *rcbayes* package by Monica Alexander et. al. provide a quick method to calculate migration age schedules for a given parameter set
-    - Also available in *DemoTools*.
-    - Same functions by same authors. *DemoTools* not on CRAN presently.
-
-```{r, eval=FALSE}
-
-```
-
-### Rogers Castro migration age schedules
-
-```{r}
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
 library(rcbayes)
-# define 11 parameters
+# define 7 parameters
 p <- c(a1 = 0.1, alpha1 = 0.1, 
        a2 = 0.2, alpha2 = 0.1, mu2 = 20, lambda2 = 0.5, 
-       a3 = 0.05, alpha3 = 0.2, mu3 = 60, lambda3 = 0.1, 
        c = 0.01)
 
 # calculate model migration schedule with 11 parameters
 mx <- mig_calculate_rc(ages = 1:100, pars = p)
-mx
-```
-### Rogers Castro migration age schedules
+# first 10 mx
+mx[1:10]
 
-```{r, message=FALSE, warning=FALSE, fig.height=4}
-library(tidyverse)
+# plot the calculated  mx
 tibble(x = 1:100, 
        mx = mx) %>%
   ggplot(mapping = aes(x = x, y = mx)) +
   geom_line()
 ```
 
-# Model schedules
+## Model migration age schedules
 
-## .
+Model migration schedules play a crucial role in situations where age-specific migration data is unavailable but necessary. One such scenario is in cohort component projections, where age-specific migration rates are essential but might not be readily accessible due to the lack of statistical infrastructure to monitor detailed migration patterns.
 
-### Model migration age schedules
+To overcome this challenge, researchers can utilize model migration schedules as a practical solution. By leveraging an estimate or reported data on total migration and adopting a model age schedule it becomes possible to derive age-specific migration rates using a standardized form of the age schedule to dissagregate the totals. The selection process of the model age schedule involves the careful selection based on existing knowledge of migration age patterns for the specific population or flow under investigation.
 
-- The *migest* package contains two sets of parameters for model migration schedules.
-- The `rc_model_fund` are the set of fundamental parameters proposed by Rogers and Castro to represent a typical migration age pattern, based on their analysis of over 500 migration flows
+The *migest* package includes the `rc_model_fund` data frame with a set of fundamental parameters proposed by @Rogers1981, designed to represent a typical migration age pattern from their analysis. Containing only seven parameters,  they do not include additional curves for the post-labor force phase and post-retirement peak. We can use the `deframe()` function to convert the data frame `rc_model_fund` into an named vector for use in the `mig_calculate_rc()` to calculate the age specific migration rates for a given set of ages
+
 ```{r}
 library(migest)
 rc_model_fund
-```
 
-### Model migration age schedules
-
-- Plot of model age schedule based on fundamental parameters
-
-```{r, message=FALSE, warning=FALSE, fig.height=3}
 # convert data frame to named vector
 p <- deframe(rc_model_fund)
 p
 
-tibble(x = 1:100, 
+# calculate and plot age schedule based on fundamental parameters 
+tibble(x = 1:80, 
        mx = mig_calculate_rc(ages = x, pars = p)) %>%
   ggplot(mapping = aes(x = x, y = mx)) +
   geom_line()
 ```
 
-### Model migration age schedules
-
-
-- Rogers and Castro describe the nice properties in the parameters and their relationships
-- Peaking: early versus late peaking ($\mu_2$)
-    - $\mu_2 = 20$ in the fundamental parameters
-- Dominance: $\gamma_{12} = a_1/a_2$ as the index of child dependency, and $1/\gamma_{12}$ as index of labor dominance
-    - $\gamma_{12} = 1/3$ in fundamental parameters
-- Labor asymmetry: $\sigma_2 = \lambda_2/\alpha_2$ 
-    - $\sigma_{2} = 4$ in fundamental parameters
-- Regularity: $\beta_{12} = \alpha_1/\alpha_2$ how the migration rates of children match to the migration rates of parents
-    - $\beta_{12} = 1$ in fundamental parameters
-- Users can focus on these four measures (peaking, dominance, labor asymmetry and regularity) when describing or deriving their own model schedules
-
-### Model migration age schedules
-
-- The `index_age_rc()` function in the migest package returns these ratios given a named vector of the parameters
-```{r}
-rc_model_fund %>%
-  deframe() %>%
-  index_age_rc()
-```
-
-### Model migration age schedules
-
-- The `rc_model_un` are the set of fundamental parameters proposed in @UnitedNations1992 for estimating age-specific migration flows in different contexts
+The @UnitedNations1992 proposed a number of alternative sets of parameter values to seven-parameter model age schedules in settings outside of the Western-country populations used by @Rogers1981 when designing their fundamental parameter set. These parameters are provided in the `rc_model_un` data frame
 ```{r}
 rc_model_un
 ```
 
-### Model migration age schedules
-
-- To calculate model schedules we can use 
-    - `nest()` to group together the parameters
-    - `map()` to apply the parameters to the `mig_calculate_rc()` function for each group
+To apply the parameters to the `mig_calculate_rc()` function we can use the `nest()` function to group together the parameters into separate tibbles by sex and population settings.
     
 ```{r}
 d <- rc_model_un %>%
@@ -925,21 +204,7 @@ d <- rc_model_un %>%
 d
 ```
 
-### Model migration age schedules
-
-```{r}
-# first row parameters
-d$p[[1]]
-
-# data unnested
-d %>%
-  select(-rc_param, -p) %>%
-  unnest(c(mx, age))
-```
-
-### Model migration age schedules
-
-- Use `unnest()` to create a data base varying by age for each model schedule and sex for plotting
+Once we have used the `map()` function to estimate the model migration age schedules for ages 1 to 80 using the `mig_calculate_rc()` function we create a data base varying by age for each model schedule and sex for plotting to get a better idea of how each migraiton schedule operates for each sex and population
 ```{r, fig.height=4}
 d %>%
   unnest(c(mx, age)) %>%
@@ -948,14 +213,9 @@ d %>%
   geom_line() +
   facet_wrap(facets = "sex", ncol = 1)
 ```
+Notable from the plot is the later peak age of migration in the older labour force entry age schedules, compared to the Western Standard age schedule that has parameters very close to those proposed by @Rogers1981. For populations with younger labour force entry the peak age of migration shifts leftwards, whilst it increases for populations with low old age dependencies and decreases populations with high old age dependencies. 
 
-### Model migration age schedules
-
-- Model migration schedules are useful when we do not have any age information, but require an estimate of age specific migration
-    - For example, in cohort component projections age specific migration rates are required but might not be available in any data source
-- We may use an estimate or reported data on total migration to obtain age-specific migration
-    - Design or select appropriate model age schedule based on existing knowledge of migration age patterns for the given flow.
-
+It is worth noting again, that the typical use of model age schedules might be when we do not know any age-specific migration rates but soley a migration total, where the migration total might be a projected or forecasted value. In such a case we might first select an appropriate model schedule from `rc_model_un`
 ```{r}
 # example for males based on young labour force entry
 p <- rc_model_un %>%
@@ -964,9 +224,7 @@ p <- rc_model_un %>%
   deframe()
 p
 ```
-
-### Model migration age schedules
-
+We may then calculate the age-specific migration using the parameter values to generate a standardized model age schedule (where the calculated $m(x)$ values sum to one) using the `mig_calculate_rc()` function. The standardized values can the be multiplied by a total estimate to get the age-specific migration counts, which might be converted to rates given the appropriate denominator. 
 
 ```{r, fig.height=4}
 tibble(x = 1:90, 
@@ -977,394 +235,382 @@ tibble(x = 1:90,
   geom_line()
 ```
 
-# Fitting schedules
 
-## .
 
-### Fitting Roger Castro migration age schedules
+## Fitting Roger Castro migration age schedules
 
-- If we have age-specific migration data we might want to estimate the parameters of a Rogers Castro age schedule to
-    - Smooth the data
-    - Analyse the parameter estimates
-    - Create projected age schedules based on past patterns of the age schedule parameters
-- Fitting Rogers Castro migration age schedules can be difficult. 
-    - A number of different software has been used to fit age schedules including @Rogers1994, TableCurve 2D @Rogers1999a, MATLAB @Rogers2010, and Excel @Wilson2010. 
-- The `mig_estimate_rc()` function in rcbayes uses Stan, via the rstan package, a Bayesian probabilistic programming language
-    - Estimation is carried out using MCMC sampling.
-- Requires two arguments
-    - `ages` a vector of migration ages
-    - `mx` a vector of standardized migration intensities for the corresponding ages
-    - Specify form of age schedule using the `pre_working_age`, `working_age`, `retirement` and `post_retirement` arguments - set to `TRUE` or `FALSE`
+When we have age-specific migration data, we may be interested in estimating the parameters of a Rogers Castro age schedule. Estimating these parameters serves several purposes:
 
-### Fitting Roger Castro migration age schedules
+1. Smoothing the data: By fitting a Rogers Castro age schedule to age-specific migration data, we can obtain a smoothed representation of the migration pattern. This can help in reducing the noise in the data that might be generated from difficulties in collecting data on the number of migrants entering or leaving a region or country.
 
-- Demonstrate with five-year data from the `italy_area` data set in *migest*
-    - Calculate the out-migration for Islands (Sicily and Sardinia) in 1970
+2. Comparing parameter estimates: Estimating the parameters of a Rogers Castro age schedule allows us to compare migration patterns between different time periods or migration streams. By examining the differences in parameter estimates, we can gain insights into changes or variations in the age-specific migration patterns. We will further explore the interpretation of parameter estimates of the Rogers-Castro fitted age schedules in the next section. 
+
+3. Creating age schedules for projected migration: Once we have estimated the parameters of the age schedule, we can use these estimates to project future migration patterns based on past patterns of the age schedule parameters or using the smoothed values from the fitted model migration age schedule.
+
+Fitting Rogers Castro migration age schedules has long be a difficult challenge due to the relatively small amount of data (based on the number age groups) and the relatively complexity of the migration age schedules. Various code and software tools have been used including FORTAN code in @Rogers1994, the TableCurve 2D software @Rogers1999a, MATLAB code used by @Rogers2010, and VBA code for Excel @Wilson2010. Three alternative linear parameter estimation methods were provided by @Rogers2005
+
+Fortunately, the *rcbayes* package provides a `mig_estimate_rc()` function that provides far better performance and flexibility than its predecessors. The `mig_estimate_rc()` function calls Stan, a Bayesian probabilistic programming language, via the *rstan* package, to estimate the parameters of a Rogers Castro age schedule. The estimation process is performed using a powerful Bayesian sampling techniques to estimate the  of parameter in a range of Rogers-Castro migration age schedules and their full posterior distributions to quantify the uncertainty of the estimates. 
+
+To use the `mig_estimate_rc()` function, two arguments are required:
+
+1. `ages`: A vector of migration ages, representing the age groups for which we have migration data.
+2. `mx`: A vector of standardized migration intensities corresponding to the ages in the `ages` vector.
+or 
+2. `migrants` and `pop`: Two vectors of migrant and population counts to calculate the age specific migration rates. 
+
+Additionally, the form of the age schedule can be specified using the `pre_working_age`, `working_age`, `retirement`, and `post_retirement` arguments, which can be set to `TRUE` or `FALSE` depending on the desired structure of the age schedule.
+
+To demonstrate we will use data for immigration age-specific immigration flows into Cyprus during 2011 published by Eurostat. These can be downloaded using the *eurostat* package:
+
 ```{r}
-# include a numeric age column for mig_estimate_rc()
-i <- italy_area %>%
-  filter(year == 1970) %>%
-  group_by(age_grp) %>%
-  sum_region() %>%
-  filter(region == "Islands") %>%
-  separate(col = age_grp, into = c("age_min", "age_max"), 
-           remove = FALSE, convert = TRUE)
-i
+library(eurostat)
+# all age-sex specific immigration data
+imm <- get_eurostat(id = "migr_imm8")
+
+# filter to cyprus 2011
+imm_cy_2011 <- imm %>%
+  filter(geo == "CY",
+         age != "TOTAL",
+         age != "UNK",
+         sex != "T",
+         time == "2011-01-01")
+
+# format age column to numeric values
+imm_cy_2011 <- imm_cy_2011 %>%
+  mutate(
+    age = str_remove(string = age, pattern = "Y"),
+    age = case_when(
+      age == "_LT1" ~ "0",
+      age == "_GE100" ~ "101",
+      TRUE ~ age
+    ), 
+    age = as.numeric(age)
+  )
+imm_cy_2011 
 ```
 
-### Fitting Roger Castro migration age schedules
+We can see that the data do appear to not entirely smooth. This may be due to random variations in migration patterns of relatively small counts of migration. However, it would not be ideal to use the raw data as underlying assumption for the distribution of age-specific migration in a cohort component population projection model as there is clear justification for believing the underlying age migration patterns are non-smooth. For example, to observed migration for 41 year old persons is slightly higher that those that are 40 years old and counter to the declining trend of migration from 30 year old onwards.
 
-- Requires a standardized age schedule (where values sum to one)
-- Will take a few minutes and print out lots of messages from Stan
+```{r}
+imm_cy_2011 %>%
+  ggplot(mapping = aes(x = age, y = values, colour = sex)) +
+  geom_line() +
+  geom_point()
+```
+
+The general shape of the observed values indicate that a seven parameter Rogers Castro migration age schedules is appropriate, where is no retirement peak or post-retirement slope are visable. 
+
+The `mx` values required in the `mig_estimate_rc()` function represent the standardized migration intensities corresponding to the ages in the `ages` vector, meaning that their sum should be equal to one. This ensures that the migration intensities are properly scaled and reflect the relative proportions of migration within each age group.
+
+When using the `mig_estimate_rc()` function, it is common to wait for a few minutes during the computation time. Additionally, the function may print out several messages from Stan, with information about the estimation process, including the progress of the MCMC sampling and any convergence diagnostics.
+
+It is recommended to carefully review the messages printed during the estimation process to ensure that the estimation has converged properly and that the results are reliable. The messages can provide insights into the estimation process and help identify any potential issues or concerns.
+
 ```{r, cache=TRUE}
-m <- i$out_mig/sum(i$out_mig)
-m
+# standardize migration intensity
+imm_cy_2011 <- imm_cy_2011 %>%
+  group_by(sex) %>%
+  mutate(mx = values/sum(values)) 
+imm_cy_2011
 
-f <- mig_estimate_rc(ages = i$age_min + 2.5, mx = m,
-                     # set model components 
+# fit seven-parameter rogers castro 
+f_cy_male <- mig_estimate_rc(ages = imm_cy_2011 %>%
+                       filter(sex == "M") %>%
+                       pull(age), 
+                     mx = imm_cy_2011 %>%
+                       filter(sex == "M") %>%
+                       pull(mx),
                      pre_working_age = TRUE, working_age = TRUE,
                      retirement = FALSE, post_retirement = FALSE)
 ```
 
+The `mig_estimate_rc()` function returns a `list` object with three components.
+In the output of the `mig_estimate_rc()` function, there are three elements:
 
-### Fitting Roger Castro migration age schedules
+1. `pars_df`: This is a data frame that contains the parameter estimates along with their 95% credible intervals. The parameter estimates represent the values obtained from the estimation process, while the credible intervals provide a measure of uncertainty around those estimates.
 
-The fitted object has two components
+2. `fit_df`: This is a data frame that shows the original data and the estimated migration rates at each age. 
+
+3. `check_converge`: This is a data frame that provides information about the convergence of the estimation process. It includes the R-hat values and effective sample sizes for each parameter. The R-hat values, also known as the Gelman-Rubin statistic, assess the convergence of the MCMC chains used in the estimation. A value close to 1 indicates good convergence. The effective sample sizes indicate the number of independent samples obtained for each parameter, and higher values indicate more reliable estimates.
+
 ```{r}
 # parameter estimates
-f[[1]]
+f_cy_male$pars_df
 
 # fitted schedule
-f[[2]]
-```
+f_cy_male$fit_df
 
-### Fitting Roger Castro migration age schedules
-
-```{r, fig.height=4}
-ggplot(data = f[[2]], 
+# plot of observed and fitted age schedule with 95% credible interval
+ggplot(data = f_cy_male$fit_df, 
        mapping = aes(x = age, y = data)) +
   geom_ribbon(mapping = aes(ymin = lower, ymax = upper), fill = "lightblue") +
   geom_line(mapping = aes(y = median), colour = "blue") +
   geom_point() 
 ```
 
-### Fitting Roger Castro migration age schedules
 
-- The *migraR* package by Ruiz-Santacruz and Garcés also has functions to estimate parameters in Rogers Castro schedule
-    - Also not on CRAN
-    - Uses an optimization procedure (non-Bayesian)
-    - Functions to select best form schedule
-- Selecting the form of the schedule usually requires some form of visual inspection
+## Smoothing
 
-# Age Indices
+There are many non-parametric smoothing functions that can applied to age-specific migration data to help capturing the underlying patterns by reducing noise and variability in the data. Some commonly used smoothing functions in R are available in the `stats` package, which is loaded by default when R opens. They can fitted very quickly in comparison to Rogers-Castro model age schedules and do not require any specification on the phases. 
 
-## . 
+Smoothing methods involve weighting data points within specific subsections or windows of the data. These methods typically employ local regression or averaging techniques to estimate migration intensities at each age based on the data from neighboring ages.
 
-### Age Indices
+Choosing an appropriate bandwidth or window size is crucial in smoothing age-specific migration data. The bandwidth determines the range of nearby ages considered for each estimation and influences the level of smoothing applied. The default bandwidth values for the smoothing functions in R might not always be suitable for migration age schedules, as the underlying patterns and variability can vary across different contexts and the smoothing functions are more typically applied to much larger data sets (as opposed to 100 or so age groups in the age-specific migration data).
 
-- Number of criticisms of model age schedules for migration (@Bell2002, @Bernard2014)
-- Not always clear how many parameters should be included in model schedule
-    - Parameter estimates sensitive to the choice of model form, making comparisons difficult
-    - Use statistical accuracy measures to select best form, at the risk of over fitting
-- Parameter estimates sensitive to initial values
-    - Unlikely to be the case when using `mig_estimate_rc()`
-- Unstable parameter estimates
-    - Sensitive to measurement error in age-specific migration
-- Interpretation of parameter estimates
-    - The indexes in `index_age_rc()` have not been widely adopted, probably because of difficulty in fitting model schedules.
-  
-### Age Indices
+In some cases, it may be necessary to censor or exclude the very oldest age groups from the smoothing process. This is because migration intensities for these age groups can become volatile and unreliable due to small numbers of migrants. By removing these extreme values, the smoothing methods can provide more stable and meaningful estimates of migration patterns across the age range.
 
-- A number of other measures of age specific migration have been proposed that do not require fitting model age schedules.
-- Most a dependent on the migration intensity $m_{as}$, the number of migrants in a age group and given time period as a percentage of the population at risk of moving.
-- @Rogers1975 proposed a Gross Migraproduction Rate (GMR) based on the sum of age-specific (and sex-specific) migration intensities
-$$
-GMR = \sum_{as} m_{as}
-$$
-- @Bell2002 introduced 
-    - Peak migration intensity, the largest age-specific migration intensity of any age-group
-    - Peak age, the corresponding age of the peak migration intensity
-
-### Age Indices
-
-- @Bell2009 proposed and additional measures
-    - Breadth of peak based on the sum of the peak migration intensity at the peak age and the five age-groups before and after the peak.
-    - Peak share based on the percentage of the normalized migration age schedule covered by the peak age and the five age-groups before and after the peak.
-
-- @Bernard2014 provide three additioanl measures
-    - The Maximum Upward Rate of Change  (MURC) for the largest gradient in the slope of the labour force peak before the peak age
-    - The Maximum Downward Rate of Change  (MDRC) for the largest gradient in the slope of the labour force peak after the peak age
-    - The asymmetry of the labour force peak based on the ratio of MURC and MDRC
-    
-- Each of these measures area calculated in the `age_index()` function in the *migest* package
-
-### Age Indices
-
-
-- To demonstrate we use the age schedule data of Brazil 2000 and France 2006 in the `ipumsi_age` data frame of the *migest* package
-    - Migration based on five-year transitions between any minor (and major) administrative units.
-
-```{r, fig.height=3}
+An example of the unevenness in observed age-specific migration data can be found in the `ipumsi_age` data frame of the *migest* package. The data in the object are based on census samples from Brazil 2000 and France 2006 published in the IPUMS International repository (@ipums2015). The data frame contains a variable `migrants` on the population weighted counts of persons who migrated between any minor (and major) administrative units determined from responses to questions on place of residence five-years prior to the census. The migration intensities are particularly uneven at the elderly age groups in the sample from the Brazil 2000 census. 
+```{r}
 ipumsi_age %>%
   mutate(mi = migrants/population) %>%
   filter(age > 5) %>%
   ggplot(mapping = aes(x = age, y = mi)) +
+  geom_point() +
   geom_line() +
   facet_wrap(facets = "sample", scales = "free")
 ```
 
-### Age Indices
+Most smoothing functions in R typically require two vectors: `x` and `y`. The `x` vector represents the independent variable, such as age, and the `y` vector represents the dependent variable, such as migration intensity. These functions often have optional arguments that allow you to control the smoothness of the fit, although the names of these arguments may vary depending on the specific smoothing function.
 
-- @Bernard2014 recommends smoothing age schedules before calculating index values
-    - Get very similar results without smoothing - at least in these examples
-- `index_age()` by default ignores values above 65 (and below 5) when calculating peak index statistics\
-    - GMR still sensitive for outliers (e.g. oldest in Brazil)
-- Index values for Brazil 2000
+When applying a smoothing function, it will return a list with two components: `x` and `y`. It's important to note that the length of the `x` vector may differ from the original vector provided. To control the output length, some smoothing functions offer arguments (with different names depending on the function) that allow you to specify the desired length of the output. The `x` component of the output will match the age values, while the `y` component will represent the smoothed values of the dependent variable.
+
+### Kernal Smoothing
+
+The `ksmooth()` function in the `stats` package performs kernel regression smoothing. It estimates a smooth curve by applying a kernel weighting to nearby data points, allowing for flexible and localized smoothing. To demonstrate we will use the migration intensities calculated from the Brazil 2000 IPUMS International sample provided in the `ipums_age` data frame. Note, there are no intensities for ages below five as the question on previous place of residence five-years prior to the census was not applicable for the sub population. 
+
 ```{r}
-ipumsi_age %>%
-  filter(sample == "BRA2000") %>%
-  mutate(mi = migrants/population) %>%
-  index_age()
-```
-### Age Indices
-
-- Index values are most useful for comparing age-specific migration in different countries (or regions or time periods)
-```{r}
-ipumsi_age %>%
-  mutate(mi = migrants/population) %>%
-  group_nest(sample) %>%
-  rowwise() %>%
-  mutate(i = list(index_age(data))) %>%
-  unnest(i) %>%
-  select(-data) %>%
-  pivot_wider(names_from = sample, values_from = value)
-```
-
-
-
-# Smoothing
-
-## . 
-
-### General purpose smoothing functions
-
-- There are many non-parametric smoothing functions in R that can be used to smooth data.
-- The `stats` package, which is loaded when R opens, includes
-    - `ksmooth()` is a kernel regression smoother
-    - `loess.smooth()` is a Local Polynomial Regression Fitting method
-    - `smooth.spline` a cubic spline fit
-- The DemoTools package contains a `smooth_age_5()` that is particularly  useful for age-heaped data.
-
-
-### General purpose smoothing functions
-
-- Smoothing methods perform some form of weighting data points on separate subsections (windows or bandwidths of the data)
-- In a migration age schedule context, this involves some form of simple local regression or averaging of migration intensities at each age, given data from nearby ages.
-- Careful consideration is usually required in choosing the bandwidth. 
-    - The default values are not always sensible for migration age schedules
-- Might consider censoring the very oldest values where values can become volatile due to small numbers    
-
-
-### General purpose smoothing functions
-
-- Use Brazil 2000 IPUMS International sample data to demonstrate
-    - Particularly rough at older age groups
-    
-```{r, fig.height=3}
-b <- ipumsi_age %>%
+bra_2000 <- ipumsi_age %>%
   filter(sample == "BRA2000",
          age > 5) %>%
-  mutate(mi = migrants/population)  
-
-ggplot(data = b, mapping = aes(x = age, y = mi)) +
-  geom_point() 
+  mutate(mi = migrants/population)
+bra_2000
 ```
 
+We can use the `n.points` argument in the `ksmooth()` function to fix the length of the smoothed points returned by the object. 
 
-### General purpose smoothing functions
-
-- Most smoothing function in R require two vectors (`x` and `y`)
-    - Optional arguments to control the smoothness of the fit( names differ for different smoothing functions)
-- Will return a list with two components (`x` and `y`), where the length of x may differ from the original vector provided
-    - Set a output length argument (names differ for different smoothing functions)
-    - The `x` component will match age values
-    - Can use within `mutate()`
 ```{r}
-k1 <- ksmooth(x = b$age, y = b$mi)
+# default returns 100 values. corresponding ages in x no longer integers
+k1 <- ksmooth(x = bra_2000$age, y = bra_2000$mi)
 str(k1)
 
-k2 <- ksmooth(x = b$age, y = b$mi, n.points = nrow(b))
+# return only 95 values to match the number of age groups in the data
+k2 <- ksmooth(x = bra_2000$age, y = bra_2000$mi, n.points = nrow(bra_2000))
 str(k2)
 ```
 
-### Kernal smoothing
-
-- The `ksmooth` function is unlikely to smooth a migration age schedule as the default bandwidth parameter is too small
-    - Increase for a more suitable fit
+The `ksmooth()` function is unlikely to smooth a migration age schedule as the default bandwidth parameter is too small for one hundred odd age groups. The `bandwidth` parameter can be increased to provide a more suitable fit
 
 ```{r}
-b <- b %>% 
+bra_2000 <- bra_2000 %>% 
   mutate(
     k_default = ksmooth(x = age, y = mi, n.points = n())$y,
-    k_bw5 = ksmooth(x = age, y = mi, n.points = n(), bandwidth = 5)$y,
-    k_bw10 = ksmooth(x = age, y = mi, n.points = n(), bandwidth = 10)$y
+    k_5 = ksmooth(x = age, y = mi, n.points = n(), bandwidth = 5)$y,
+    k_10 = ksmooth(x = age, y = mi, n.points = n(), bandwidth = 10)$y
   )
-b
+bra_2000
+
+bra_2000 %>%
+  pivot_longer(cols = contains("k_"), names_to = "bandwidth", names_prefix = "k_") %>%
+  ggplot(mapping = aes(x = age, y = value, colour = bandwidth)) +
+  geom_point(mapping = aes(y = mi), alpha = 0.5) +
+  geom_line() +
+  scale_colour_brewer(palette = "Set1")
 ```
 
-### Kernal smoothing
+### Loess Smoothing
 
-```{r, fig.height=5}
-ggplot(data = b, mapping = aes(x = age, y = mi)) +
-  geom_point(alpha = 0.5) + 
-  geom_line(mapping = aes(y = k_default), col = "darkgrey") +
-  geom_line(mapping = aes(y = k_bw5), col = "orange") +
-  geom_line(mapping = aes(y = k_bw10), col = "red")
-```
+The `stats` package also contains another smoothing function; `loess.smooth()`, which carries out local polynomial regression fitting. It fits a smooth curve to the data using a weighted least squares approach, with the degree of smoothing controlled by a `span` tuning parameter. The `loess.smooth()` function, similar to the `ksmooth()` function, may not be suitable for smoothing a migration age schedule using the default parameters. The default value of the `span` parameter, which controls the smoothness of the fit, is often too large for applying to migration age schedules. Additionally, the  `evaluation` parameter specifies the number of predicted values by default as 50.
 
-
-### Loess smoothing
-
-- The `loess.smooth` function is also unlikely to smooth a migration age schedule as the default span parameter is too small
-     - Adjust the smoothing parameter using `spar` (between 0 and 1), default is `2/3`
-    - Use `evaluation` to set the number of predicted values
-    
 ```{r}
-b <- b %>%
+bra_2000 <- bra_2000 %>%
   mutate(
     lo_default = loess.smooth(x = age, y = mi, evaluation = n())$y,
-    lo_sp2 = loess.smooth(x = age, y = mi, evaluation = n(), span = 0.2)$y,
-    lo_sp1 = loess.smooth(x = age, y = mi, evaluation = n(), span = 0.1)$y,
+    lo_2 = loess.smooth(x = age, y = mi, evaluation = n(), span = 0.2)$y,
+    lo_1 = loess.smooth(x = age, y = mi, evaluation = n(), span = 0.1)$y,
   )
+
+bra_2000 %>%
+  pivot_longer(cols = contains("lo_"), names_to = "span", names_prefix = "lo_") %>%
+  ggplot(mapping = aes(x = age, y = value, colour = span)) +
+  geom_point(mapping = aes(y = mi), alpha = 0.5) +
+  geom_line() +
+  scale_colour_brewer(palette = "Set1")
 ```
 
-### Loess smoothing
+### Cubic Spline smoothing
 
+Cubic spline smoothing is another popular method for smoothing data, including migration age schedules. It provides a flexible and smooth curve by connecting cubic polynomials between data points. In R, the `smooth.spline()` function in the *stats* package can be used to perform cubic spline smoothing. The function allows you to control the smoothness of the fit using the `spar` parameter (between 0 and 1), which determines the amount of smoothing applied. A smaller `spar` value results in a smoother fit, while a larger value allows for more flexibility and potential for capturing local variations in the data. The number of predicted smoothed
 
-```{r, fig.height=5}
-ggplot(data = b, 
-       mapping = aes(x = age, y = mi)) +
-  geom_point(alpha = 0.5) + 
-  geom_line(mapping = aes(y = lo_default), col = "darkgrey") +
-  geom_line(mapping = aes(y = lo_sp2), col = "orange") +
-  geom_line(mapping = aes(y = lo_sp1), col = "red")
-```
-
-###  Cubic spline smoothing 
-
-- The `smooth.spline` function might have a nice smooth fit to migration age schedule
-    - Adjust the smoothing parameter using `spar` (between 0 and 1)
-    - Use `n` to set the number of predicted values
-    
 ```{r}
-b <- b %>%
+bra_2000 <- bra_2000 %>%
   mutate(
     s_default = smooth.spline(x = age, y = mi, n = n())$y,
-    s_sp6 = smooth.spline(x = age, y = mi, n = n(), spar = 0.6)$y,
-    s_sp8 = smooth.spline(x = age, y = mi, n = n(), spar = 0.8)$y)
+    s_6 = smooth.spline(x = age, y = mi, n = n(), spar = 0.6)$y,
+    s_8 = smooth.spline(x = age, y = mi, n = n(), spar = 0.8)$y
+  )
+
+bra_2000 %>%
+  pivot_longer(cols = contains("s_"), names_to = "spar", names_prefix = "s_") %>%
+  ggplot(mapping = aes(x = age, y = value, colour = spar)) +
+  geom_point(mapping = aes(y = mi), alpha = 0.5) +
+  geom_line() +
+  scale_colour_brewer(palette = "Set1")
 ```
 
-###  Cubic spline smoothing 
+As with each of the earlier smoothing methods, it's important to experiment with smoothing parameter (`spar`, `span` in `loess.smooth()` and `bandwidth` in `ksmooth()`) to evaluate the resulting smoothed migration age schedule visually to determine the optimal level of smoothing for your requirements.
 
 
-```{r, fig.height=5}
-ggplot(data = b, 
-       mapping = aes(x = age, y = mi)) +
-  geom_point(alpha = 0.5) + 
-  geom_line(mapping = aes(y = s_default), col = "darkgrey") +
-  geom_line(mapping = aes(y = s_sp6), col = "orange") + 
-  geom_line(mapping = aes(y = s_sp8), col = "red")
+## Graduating
 
-```
+When faced with migration data reported in age groups instead of single-year data, graduating methods can be employed to estimate migration for each individual age. These methods aim to distribute the reported age group totals across the corresponding ages in a way that maintains consistency and ensures that the graduated values sum up to the reported totals.
 
+One useful tool for performing the graduation process is the `graduate()` function in the DemoTools package. While originally designed for interpolating population totals, it is also suitable for estimating migration flows. The function offers several graduating methods, each with its own approach and assumptions. For a comprehensive understanding of these methods, you can refer to the guide provided [here](https://timriffe.github.io/DemoTools/articles/graduation_with_demotools.html).
 
+To utilize the `graduate()` function, you need to provide the reported values (`Value`) and specify the minimum age (`Age`) for which the data is available. Additionally, for certain methods like `pclm`, you can specify the maximum value for the final open age group if it exists. By applying the appropriate graduating method, you can obtain estimates of migration for each individual year based on the available age group data.
 
-# Graduating
-
-## .
-
-### Graduating
-
-- If you require single year migration age data, but only have data by age groups, then graduating methods can be used to estimate migration for each age that sum to the reported age group totals. 
-- There a multiple graduating methods available in the `graduate()` function in the DemoTools package
-    - Built for interpolating population totals, but also suitable for migration flows
-    - See the [guide](https://timriffe.github.io/DemoTools/articles/graduation_with_demotools.html) for more detail on different methods
-- Requires users to provide `Value` and minimum `Age`. 
-- Can also specify the maximum value of final open age group, if exists, for certain methods such as `pclm`.
-
-### Graduating
-
-- DemoTools is not on CRAN. Difficult to install. 
+To demonstrate we will use internal migration data in Italy contained in the `italy_area` data set in the *migest* package. In particular we will use the age-specific out migration counts from the Islands regions, which can be derived from using the `sum_region()` function 
 
 ```{r, eval=FALSE}
-# install devtools from CRAN 
+ita_reg <- italy_area %>%
+  group_by(year, age_grp) %>%
+  sum_region() %>%
+  separate(col = "age_grp", into = c("age_min", "age_max"), convert = TRUE)
+ita_reg
+
+isl_1970 <- ita_reg %>%
+  filter(year == 1970,
+         region == "Islands")
+```
+
+When we apply the `pclm` method we tell the `graduate()` function that the last age group is open and set a new maximum value of 100.
+
+```{r}
+# # install devtools from CRAN
 # install.packages("devtools")
-library(devtools)
-
-install_github("timriffe/DemoTools")
-```
-
-
-### Graduating
-
-- Using the out-migration to Italian islands area in 1970
-```{r, fig.height=4, message=FALSE}
+# # install DemoTools from github
+# devtools::install_github("timriffe/DemoTools")
 library(DemoTools)
-head(i)
-
-mx <- graduate(Value = i$out_mig, Age = i$age_min, 
-               method = "pclm", OAG =  TRUE, OAnew = 100)
-mx
+g <- graduate(Value = isl_1970$out_mig, Age = isl_1970$age_min,
+              method = "pclm", OAG =  TRUE, OAnew = 100)
+g
 ```
 
-### Graduating
+When we plot the observed age schedule besides the graduated age schedule we see the drop in the relative scales of the single-year data, which are constrained to match the observed five-year out-migraiton totals.
 
-```{r, fig.height=4}
-# check for close match between graduate values and out_mig 
-# 0-4
-sum(mx[1:5])
-# 5-9
-sum(mx[6:10])
-
-select(i, age_grp, out_mig)
-```
-
-### Graduating
-
-```{r, eval=FALSE}
-# different scales in y-axis
-ggplot(data = i, 
-       mapping = aes(x = age_min + 2.5, y = out_mig)) +
-  geom_point()
-
-tibble(age = 0:100, mx = mx) %>%
-  ggplot(mapping = aes(x = age, y = mx)) +
-  geom_line()
-```
-
-```{r, echo=FALSE, fig.height=4}
-g1 <- ggplot(data = i, 
-       mapping = aes(x = age_min + 2.5, y = out_mig)) +
-  geom_point()
-
-g2 <- tibble(age = 0:100, mx = mx) %>%
-  ggplot(mapping = aes(x = age, y = mx)) +
-  geom_line()
+```{r}
 library(patchwork)
-g1 + g2
+p1 <- ggplot(data = isl_1970,
+       mapping = aes(x = age_min + 2.5, y = out_mig)) +
+  geom_point()
+
+p2 <- tibble(age = 0:100, mx = g) %>%
+  ggplot(mapping = aes(x = age, y = mx)) +
+  geom_line()
+
+p1 + p2
 ```
 
+The graduation of the five-year migration counts to single-year counts can be seen by inspecting the sum of the first five estimated values in the `g` object and the obeseverd data for the out migration of the 0-4 year olds.
+```{r, eval=FALSE}
+# 0-4
+sum(g[1:5])
+# 5-9
+sum(g[6:10])
 
-### Exercise 5 (ex5.R)
-
-
-```{r eval = FALSE, prompt=FALSE,  code = readLines('../exercise/ex5.R') }
+isl_1970
 ```
 
+## Migraiton Age Indices
 
-### References  {.allowframebreaks} 
+Index measures for age-specific migration schedules can be used to summarizing and comparing migration age profiles. They provide a concise representation of age-specific migration rates, enabling researchers to identify distinctive features and variations in the age dynamics of migration patterns across populations or over time.
 
-\scriptsize
+There are two main families of index measures for migration age schedules. The first uses relationships between fitted parameters of a Rogers-Castro migration age schedules. The second uses empirical measures based on either the observed or smoothed age-specific migration data. 
+
+### Rogers and Castro Parameter Relationships
+
+@Rogers1981 highlighted the significance of the relationships between certain parameters in the model age schedules. These relationships can provide insights into important characteristics of migration patterns and can guide the derivation of customized model schedules. Four key measures, namely peaking, dominance, labor asymmetry, and regularity, were highlighted.
+
+Peaking refers to the timing of the peak migration age, indicating whether migration rates peak at an earlier or later age. In the fundamental parameters proposed by Rogers and Castro, the parameter $\mu_2$ is set to 20, representing a age where with the highest migration rates.
+
+Dominance, is captured by the relationship $\gamma_{12} = a_1/a_2$, which represents the ratio of migration rates between two specific age groups. It serves as an index of child dependency in the migration age patterns, with the inverse $1/\gamma_{12}$ reflecting the index of labor dominance. In the fundamental parameters, $\gamma_{12} = 1/3$.
+
+Labor asymmetry is measured by the relationship $\sigma_2 = \lambda_2/\alpha_2$, representing the ratio of two parameters used for the upward and downward parts of the labour force curve in the age schedule. In the fundamental parameters, $\sigma_2 = 4$ indicating a faster (by four times) rise in the curve before the peak than the decline after the peak. 
+
+Finally, regularity is assessed through the relationship $\beta_{12} =  \alpha_1/\alpha_2$, which compares the migration rates of parents and children. A value of $\beta_{12} = 1$, as in the fundamental parameters, indicates a regular pattern where the migration rates of children closely match those of their parents.
+
+The `index_age_rc()` function in the *migest* package returns these ratios given a named vector of the parameters. For example, we can see the disussed values in the fundamental parameters:
+```{r}
+rc_model_fund %>%
+  deframe() %>%
+  index_age_rc()
+```
+More practically, we can also compare migration age schedules using the relationships between the parameter estimates. To demonstrate we fit a Rogers-Castro migration age schedule for female immigrants to Cyprus during 2011:
+```{r, message=FALSE}
+f_cy_female <- mig_estimate_rc(ages = imm_cy_2011 %>%
+                       filter(sex == "F") %>%
+                       pull(age), 
+                     mx = imm_cy_2011 %>%
+                       filter(sex == "F") %>%
+                       pull(mx),
+                     pre_working_age = TRUE, working_age = TRUE,
+                     retirement = FALSE, post_retirement = FALSE)
+```
+
+We can then combine the parameter estimates for the male and female fitted Rogers-Castro migration age schedules and apply the `index_age_rc()` function:
+```{r}
+tibble(
+  sex = c("male", "female"),
+  p = list(f_cy_male$pars_df %>%
+             select(variable, median) %>%
+             deframe(),
+           f_cy_female$pars_df %>%
+             select(variable, median) %>%
+             deframe())
+) %>%
+  mutate(rc_index = map(.x = p, .f = ~index_age_rc(pars = .x, long = FALSE))) %>%
+  unnest(cols = rc_index)
+```
+The calcaultions indicate a later peak age  and lower levels of asymmetry in the female immigration flows compared to the male counterparts. 
+
+### Emprical Age Indices
+
+Model age schedules for migration have faced several criticisms, see for example @Bell2002 or @Bernard2014. One significant challenge is the lack of consensus on the appropriate number of parameters to include in a model schedule. Different model forms can yield varying parameter estimates, making comparisons across studies or time periods challenging. To address this issue, statistical accuracy measures are sometimes used to select the best model form, although this can risk overfitting the data.
+
+Another concern is the sensitivity of parameter estimates to the choice of initial values. However, when using the `mig_estimate_rc()` function, this issue is mitigated as the estimation process relies on MCMC sampling which discards the first few thousand iterations in the estimation procedure. Unstable parameter estimates in Roger-Castro migration age schedules can arise due to measurement error in age-specific migration data. This instability can affect the reliability and robustness of the estimated parameters, making it challenging to draw firm conclusions from the results. Furthermore, the interpretation of parameter estimates, particularly the indexes in `index_age_rc()`, has not been widely adopted. This is likely due to the difficulty in fitting model schedules accurately, resulting in skepticism regarding the practical usefulness of these indexes.
+
+Several alternative measures of age-specific migration have been proposed that do not involve fitting model age schedules. These measures often rely on the migration intensity, which is the number of migrants in a specific age group and time period as a percentage of the population at risk of moving.
+
+One such measure is the Gross Migraproduction Rate (GMR) proposed by @Rogers1975. The GMR is calculated as the sum of age-specific migration intensities, $m(x)$, taking into. It provides a measure of the overall migration intensity in a given population by aggregating the migration rates across different age groups.
+
+$$
+\texttt{GMR} = \sum_{x} m(x)
+$$
+
+@Bell2002 introduced two additional measures. The first is the peak migration intensity, which identifies the age group with the highest migration intensity. The second measure is the peak age, which corresponds to the age at which the peak migration intensity occurs (in the data rather than a fitted age scheule as used in the previous section). 
+
+@Bell2009 proposed additional measures to further analyze age-specific migration patterns. The first measure is the breadth of the peak, which considers the sum of the peak migration intensity at the peak age and the five age-groups before and after the peak. This measure provides insights into the width or spread of the migration peak, indicating the range of ages where migration is concentrated.
+
+The second measure introduced by @Bell2009 is the peak share, which calculates the percentage of the normalized migration age schedule covered by the peak age and the five age-groups before and after the peak. This measure provides an indication of the relative importance and concentration of migration in the peak age range compared to the entire age distribution.
+
+@Bernard2014 proposed three additional measures that focus on the labor force peak. The first measure is the Maximum Upward Rate of Change (MURC), which identifies the largest gradient in the slope of the labor force peak before the peak age. This measure captures the steepest increase in migration intensity leading up to the labor force peak.
+
+The second measure is the Maximum Downward Rate of Change (MDRC), which identifies the largest gradient in the slope of the labor force peak after the peak age. This measure captures the steepest decrease in migration intensity following the labor force peak.
+
+The third measure introduced by Bernard @Bernard2014 is the asymmetry of the labor force peak, which is determined by the ratio of MURC and MDRC. This measure quantifies the asymmetry or imbalance in the migration intensity before and after the peak age.
+
+All of these measures, including the breadth of the peak, peak share, MURC, MDRC, and asymmetry, are calculated in the `age_index()` function in the *migest* package. @Bernard2014 recommends smoothing age schedules before calculating the index values. However, if the data is not extremely rough then very similar calculated values will be obtained as the `index_age()` function ignores by default values above 65 (and below 5) when calculating peak index statistics. The one exception to the sensitivity to the smoothness in the data is the `GMR` which is based on all ages, where, as seen earlier in some of the eldest age groups, the observed values might be very small (oldest in Brazil). 
+
+```{r}
+ipumsi_age %>%
+  filter(age > 5) %>%
+  mutate(mi = migrants/population) %>%
+  nest(.by = sample) %>%
+  mutate(index_age = map(.x = data, .f = ~index_age(d = .x, long = FALSE))) %>%
+  unnest(index_age)
+```
+Notice the older peak migration intensity and ages in France 2006, where the breadth of the peak is wider a lower upward and downward rate of change.
+
+
 
 <!--chapter:end:s05-age.Rmd-->
 

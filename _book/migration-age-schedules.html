@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Migration Age Schedules | Handling, Measuring, Estimating and Visualizing Migration Data in R</title>
+  <meta name="description" content="In many countries and regions, migration is becoming or already is the largest component of population change and important mechansim for both social and economic change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration flows have been developed by demographers and other researchers to help address shortfalls and provide a platform to better understand patterns, trends and consequences. This manaul explores methods for measuring, estimating and visualising migration flow data, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize complex migration patterns. While plenty of code samples and exercises are provided throughout the manual to build up the readers experience, some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Migration Age Schedules | Handling, Measuring, Estimating and Visualizing Migration Data in R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="In many countries and regions, migration is becoming or already is the largest component of population change and important mechansim for both social and economic change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration flows have been developed by demographers and other researchers to help address shortfalls and provide a platform to better understand patterns, trends and consequences. This manaul explores methods for measuring, estimating and visualising migration flow data, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize complex migration patterns. While plenty of code samples and exercises are provided throughout the manual to build up the readers experience, some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Migration Age Schedules | Handling, Measuring, Estimating and Visualizing Migration Data in R" />
+  
+  <meta name="twitter:description" content="In many countries and regions, migration is becoming or already is the largest component of population change and important mechansim for both social and economic change. However, migration data is often of poor quality, missing or provided without disaggregation. Methods to estimate migration flows have been developed by demographers and other researchers to help address shortfalls and provide a platform to better understand patterns, trends and consequences. This manaul explores methods for measuring, estimating and visualising migration flow data, and their implementation in R. Readers will become familiar with useful R functions for handling migration data, a range of measures to summarise and compare migration systems, common estimation methods to overcome inadequate or missing migration data and recently developed methods to visualize complex migration patterns. While plenty of code samples and exercises are provided throughout the manual to build up the readers experience, some prior knowledge is required on how to handle and plot data using the tidyverse set of R packages." />
+  
+
+<meta name="author" content="Guy J. Abel, James Raymer, Ellen Kraly" />
+
+
+<meta name="date" content="2023-05-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="summary-migration-indices.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Migration in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="migration-concepts.html"><a href="migration-concepts.html"><i class="fa fa-check"></i><b>2</b> Migration Concepts</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="migration-concepts.html"><a href="migration-concepts.html#spatial"><i class="fa fa-check"></i><b>2.1</b> Spatial</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="migration-concepts.html"><a href="migration-concepts.html#usual-residence"><i class="fa fa-check"></i><b>2.1.1</b> Usual Residence</a></li>
+<li class="chapter" data-level="2.1.2" data-path="migration-concepts.html"><a href="migration-concepts.html#migration-data-types"><i class="fa fa-check"></i><b>2.1.2</b> Migration Data Types</a></li>
+<li class="chapter" data-level="2.1.3" data-path="migration-concepts.html"><a href="migration-concepts.html#migrant-transition-data"><i class="fa fa-check"></i><b>2.1.3</b> Migrant Transition Data</a></li>
+<li class="chapter" data-level="2.1.4" data-path="migration-concepts.html"><a href="migration-concepts.html#migation-event-data"><i class="fa fa-check"></i><b>2.1.4</b> Migation Event Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="migration-concepts.html"><a href="migration-concepts.html#temporal"><i class="fa fa-check"></i><b>2.2</b> Temporal</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="migration-concepts.html"><a href="migration-concepts.html#migration-interval"><i class="fa fa-check"></i><b>2.2.1</b> Migration Interval</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="migration-concepts.html"><a href="migration-concepts.html#migration-measures"><i class="fa fa-check"></i><b>2.3</b> Migration Measures</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="migration-concepts.html"><a href="migration-concepts.html#region-to-region"><i class="fa fa-check"></i><b>2.3.1</b> Region-to-region</a></li>
+<li class="chapter" data-level="2.3.2" data-path="migration-concepts.html"><a href="migration-concepts.html#region-totals"><i class="fa fa-check"></i><b>2.3.2</b> Region Totals</a></li>
+<li class="chapter" data-level="2.3.3" data-path="migration-concepts.html"><a href="migration-concepts.html#rate-measures"><i class="fa fa-check"></i><b>2.3.3</b> Rate measures</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="migration-concepts.html"><a href="migration-concepts.html#references"><i class="fa fa-check"></i><b>2.4</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html"><i class="fa fa-check"></i><b>3</b> Handling Migration Data in R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#contingency-table"><i class="fa fa-check"></i><b>3.1</b> Contingency Table</a></li>
+<li class="chapter" data-level="3.2" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#data-creation"><i class="fa fa-check"></i><b>3.2</b> Data Creation</a></li>
+<li class="chapter" data-level="3.3" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#data-manipulation"><i class="fa fa-check"></i><b>3.3</b> Data Manipulation</a></li>
+<li class="chapter" data-level="3.4" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#matrix-operations"><i class="fa fa-check"></i><b>3.4</b> Matrix Operations</a></li>
+<li class="chapter" data-level="3.5" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#summaries"><i class="fa fa-check"></i><b>3.5</b> Summaries</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#bilateral-measures"><i class="fa fa-check"></i><b>3.5.1</b> Bilateral measures</a></li>
+<li class="chapter" data-level="3.5.2" data-path="handling-migration-data-in-r.html"><a href="handling-migration-data-in-r.html#total-measures"><i class="fa fa-check"></i><b>3.5.2</b> Total Measures</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html"><i class="fa fa-check"></i><b>4</b> Summary Migration Indices</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-intensity"><i class="fa fa-check"></i><b>4.1</b> Migration intensity</a></li>
+<li class="chapter" data-level="4.2" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-distance"><i class="fa fa-check"></i><b>4.2</b> Migration distance</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#creating-distance-matrices-in-r"><i class="fa fa-check"></i><b>4.2.1</b> Creating distance matrices in R</a></li>
+<li class="chapter" data-level="4.2.2" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-distance-measures"><i class="fa fa-check"></i><b>4.2.2</b> Migration Distance Measures</a></li>
+<li class="chapter" data-level="4.2.3" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-distance-measures-in-r"><i class="fa fa-check"></i><b>4.2.3</b> Migration Distance Measures in R</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-connectivity"><i class="fa fa-check"></i><b>4.3</b> Migration connectivity</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#connectivity"><i class="fa fa-check"></i><b>4.3.1</b> Connectivity</a></li>
+<li class="chapter" data-level="4.3.2" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#inequality"><i class="fa fa-check"></i><b>4.3.2</b> Inequality</a></li>
+<li class="chapter" data-level="4.3.3" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#gini-measures"><i class="fa fa-check"></i><b>4.3.3</b> Gini measures</a></li>
+<li class="chapter" data-level="4.3.4" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#spatial-focusing"><i class="fa fa-check"></i><b>4.3.4</b> Spatial Focusing</a></li>
+<li class="chapter" data-level="4.3.5" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#coefficient-of-variation"><i class="fa fa-check"></i><b>4.3.5</b> Coefficient of Variation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-impact"><i class="fa fa-check"></i><b>4.4</b> Migration impact</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-effectiveness-index"><i class="fa fa-check"></i><b>4.4.1</b> Migration effectiveness index</a></li>
+<li class="chapter" data-level="4.4.2" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#aggregate-net-migration-rate"><i class="fa fa-check"></i><b>4.4.2</b> Aggregate net migration rate</a></li>
+<li class="chapter" data-level="4.4.3" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#preference-and-velocity"><i class="fa fa-check"></i><b>4.4.3</b> Preference and velocity</a></li>
+<li class="chapter" data-level="4.4.4" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#migration-impact-measures-in-r"><i class="fa fa-check"></i><b>4.4.4</b> Migration Impact Measures in R</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="summary-migration-indices.html"><a href="summary-migration-indices.html#applying-index-functions-multiple-times"><i class="fa fa-check"></i><b>4.5</b> Applying index functions multiple times</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html"><i class="fa fa-check"></i><b>5</b> Migration Age Schedules</a>
+<ul>
+<li class="chapter" data-level="5.0.1" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html#rogers-castro-migration-age-schedules"><i class="fa fa-check"></i><b>5.0.1</b> Rogers Castro migration age schedules</a></li>
+<li class="chapter" data-level="5.1" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html#model-migration-age-schedules"><i class="fa fa-check"></i><b>5.1</b> Model migration age schedules</a></li>
+<li class="chapter" data-level="5.2" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html#fitting-roger-castro-migration-age-schedules"><i class="fa fa-check"></i><b>5.2</b> Fitting Roger Castro migration age schedules</a></li>
+<li class="chapter" data-level="5.3" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html#smoothing"><i class="fa fa-check"></i><b>5.3</b> Smoothing</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html#kernal-smoothing"><i class="fa fa-check"></i><b>5.3.1</b> Kernal Smoothing</a></li>
+<li class="chapter" data-level="5.3.2" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html#loess-smoothing"><i class="fa fa-check"></i><b>5.3.2</b> Loess Smoothing</a></li>
+<li class="chapter" data-level="5.3.3" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html#cubic-spline-smoothing"><i class="fa fa-check"></i><b>5.3.3</b> Cubic Spline smoothing</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html#graduating"><i class="fa fa-check"></i><b>5.4</b> Graduating</a></li>
+<li class="chapter" data-level="5.5" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html#migraiton-age-indices"><i class="fa fa-check"></i><b>5.5</b> Migraiton Age Indices</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html#rogers-and-castro-parameter-relationships"><i class="fa fa-check"></i><b>5.5.1</b> Rogers and Castro Parameter Relationships</a></li>
+<li class="chapter" data-level="5.5.2" data-path="migration-age-schedules.html"><a href="migration-age-schedules.html#emprical-age-indices"><i class="fa fa-check"></i><b>5.5.2</b> Emprical Age Indices</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Handling, Measuring, Estimating and Visualizing Migration Data in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="migration-age-schedules" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Migration Age Schedules<a href="migration-age-schedules.html#migration-age-schedules" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Age plays a crucial role in shaping migration patterns and rates, and it is a significant source of heterogeneity in migration behavior. Migration rates can differ substantially across different age groups. Young adults often exhibit higher migration rates compared to other age cohorts. This is commonly observed due to factors such as educational pursuits and employment opportunities. Some older adults may migrate for retirement purposes, seeking locations with favorable climates, amenities, or healthcare facilities. Others may migrate to be closer to family members or to access specific social support networks. Furthermore, age can interact with other demographic characteristics, such as marital status or family composition, to influence migration decisions. For example, young adults who are married or have children may consider different factors when deciding to migrate compared to single individuals or couples without children.</p>
+<div id="rogers-castro-migration-age-schedules" class="section level3 hasAnchor" number="5.0.1">
+<h3><span class="header-section-number">5.0.1</span> Rogers Castro migration age schedules<a href="migration-age-schedules.html#rogers-castro-migration-age-schedules" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As with other demographic events such as fertility and mortality, migration exhibit consistent patterns in their age-specific rates. Demographers have dedicated efforts to capturing and summarizing these regularities in rates using mathematical expressions known as model schedules. These model schedules aim to provide a concise representation of the age-specific migration rates based on empirical data.</p>
+<p>Model migration age schedules are used for several purposes in demographic analysis and population studies. They commonly provide a basis for projecting and forecasting future migration patterns in cohort component population projection models. This can be to smooth age-specific migration baseline data which might be unreliable. When no age-specific migration data is available, model migration age schedules can be used to derive age-specific migration patterns required for cohort component population projection models. Fitted parameters in model migration age schedules can also be used to analyze and compare the age-specific migration patterns in different populations, identifying similarities and differences.</p>
+<p><span class="citation">(<a href="#ref-Rogers1981" role="doc-biblioref"><strong>Rogers1981?</strong></a>)</span> were the first to identify and mathematically summarise the consistency in migraiton age patterns after a comprehensive analysis of more than 500 age profiles of migration. Rogers-Castro migration age schedule are composed of intersecting mathematical curves representing migration patterns across different life stages. The curves in different parts of the schedule aims to capture the age-specific migration rates within specific segments of the population. The schedules are divided into five main components:</p>
+<ol style="list-style-type: decimal">
+<li><p>Pre-labor force: This curve represents migration patterns among individuals who have not yet entered the labor force, such as children, students or young individuals who have not yet started working. Higher migration rates tend to found in very young adolescents who move with their parents.</p></li>
+<li><p>Labor force: This curve focuses on migration patterns among individuals who are actively engaged in the labor force. It captures migration behavior among working-age individuals, reflecting factors such as job opportunities, economic conditions, and career advancements which tend to peak in early adulthood and then gradually decline until retiremnet.</p></li>
+<li><p>Post-labor force: This curve accounts for migration patterns among individuals who have exited the labor force, such as retirees. Upon exiting the labour force, indivudals might migrate as they no longer need to be located near their working location.</p></li>
+<li><p>Post-retirement: This component specifically addresses migration patterns among individuals who are towards the later stages of their life course and might migrate for better access to healthcare and proximity to family or social networks for later life care.</p></li>
+<li><p>Constant term: This term represents a constant or baseline level of migration that is independent of age.</p></li>
+</ol>
+<p>Each of these componets can be represented mathematically using algebraic expression for cureves describing the changes in migration rates <span class="math inline">\(m\)</span> for each age group <span class="math inline">\(x\)</span> and combined as:</p>
+<p><span class="math display">\[
+\begin{aligned}
+m(x) =&amp; a_1 \exp(-\alpha_1 x)  \\
+&amp;+a_2 \exp(-\alpha_2(x - \mu_2) - \exp(\lambda_2(x - \mu_2)))  \\
+&amp;+a_3 \exp(-\alpha_3(x - \mu_3) - \exp(\lambda_3(x - \mu_3)))  \\
+&amp;+a_4 \exp(\lambda_4x)\\
+&amp;+ c
+\end{aligned}
+\]</span></p>
+<p>By combining the components, the Rogers-Castro migration age schedules provide a framework for describing age-specific migration patterns across different life stages. In many locations and time periods, not all of the components of the full migration age schedule are relevant.</p>
+<p>Almost all migration age patterns exhibit certain a downward slope during the pre-labor force years and a peak during the labor force period. To capture these patterns, only a 7-parameter model schedule, without the additional algebraic expressions for the post-labour and post-retirement components (based on the <span class="math inline">\(a3, a4, \alpha_3, \mu_3, \lambda_3 and \lambda_4\)</span>$) are used.</p>
+<p>In specific areas, particularly in more elderly Western countries, migration age patterns may exhibit the additional retirement peak components, which leads to an 11-parameter model schedule that includes the pre-labor force and labor force components. In contrast, in some regions, instead of a retirement peak, age profiles exhibit an upward slope towards the end of life, which leads to a 9-parameter model schedule. In rare cases, there are instances where both a retirement peak and a post-retirement upward slope are observed in migration age patterns, captured by the full 13-parameter model schedule, proposed by <span class="citation">(<a href="#ref-Rogers1987a" role="doc-biblioref"><strong>Rogers1987a?</strong></a>)</span>. Further refinements to the migration model age schedules have since been proposed, including by <span class="citation">(<a href="#ref-Wilson2010" role="doc-biblioref"><strong>Wilson2010?</strong></a>)</span>, who introduced a 17-parameter model that incorporates a student peak before the labor force peak. This addition acknowledges the migration patterns observed among students, who may migrate for educational purposes before entering the labor force.</p>
+<p>The <code>mig_calculate_rc()</code> function in the <em>rcbayes</em> package by <span class="citation">(<a href="#ref-Alexander2021" role="doc-biblioref"><strong>Alexander2021?</strong></a>)</span> provide a quick method to calculate migration age schedules for a given parameter set</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="migration-age-schedules.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.0     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+## ✔ ggplot2   3.4.1     ✔ tibble    3.2.0
+## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.1     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="migration-age-schedules.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rcbayes)</span>
+<span id="cb3-2"><a href="migration-age-schedules.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># define 7 parameters</span></span>
+<span id="cb3-3"><a href="migration-age-schedules.html#cb3-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">a1 =</span> <span class="fl">0.1</span>, <span class="at">alpha1 =</span> <span class="fl">0.1</span>, </span>
+<span id="cb3-4"><a href="migration-age-schedules.html#cb3-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">a2 =</span> <span class="fl">0.2</span>, <span class="at">alpha2 =</span> <span class="fl">0.1</span>, <span class="at">mu2 =</span> <span class="dv">20</span>, <span class="at">lambda2 =</span> <span class="fl">0.5</span>, </span>
+<span id="cb3-5"><a href="migration-age-schedules.html#cb3-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">c =</span> <span class="fl">0.01</span>)</span>
+<span id="cb3-6"><a href="migration-age-schedules.html#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="migration-age-schedules.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate model migration schedule with 11 parameters</span></span>
+<span id="cb3-8"><a href="migration-age-schedules.html#cb3-8" aria-hidden="true" tabindex="-1"></a>mx <span class="ot">&lt;-</span> <span class="fu">mig_calculate_rc</span>(<span class="at">ages =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">pars =</span> p)</span>
+<span id="cb3-9"><a href="migration-age-schedules.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># first 10 mx</span></span>
+<span id="cb3-10"><a href="migration-age-schedules.html#cb3-10" aria-hidden="true" tabindex="-1"></a>mx[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<pre><code>##  [1] 0.10048374 0.09187308 0.08408182 0.07703200 0.07065307 0.06488116
+##  [7] 0.05965853 0.05493290 0.05065697 0.04678794</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="migration-age-schedules.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the calculated  mx</span></span>
+<span id="cb5-2"><a href="migration-age-schedules.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, </span>
+<span id="cb5-3"><a href="migration-age-schedules.html#cb5-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mx =</span> mx) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="migration-age-schedules.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> mx)) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="migration-age-schedules.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+<div id="model-migration-age-schedules" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Model migration age schedules<a href="migration-age-schedules.html#model-migration-age-schedules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Model migration schedules play a crucial role in situations where age-specific migration data is unavailable but necessary. One such scenario is in cohort component projections, where age-specific migration rates are essential but might not be readily accessible due to the lack of statistical infrastructure to monitor detailed migration patterns.</p>
+<p>To overcome this challenge, researchers can utilize model migration schedules as a practical solution. By leveraging an estimate or reported data on total migration and adopting a model age schedule it becomes possible to derive age-specific migration rates using a standardized form of the age schedule to dissagregate the totals. The selection process of the model age schedule involves the careful selection based on existing knowledge of migration age patterns for the specific population or flow under investigation.</p>
+<p>The <em>migest</em> package includes the <code>rc_model_fund</code> data frame with a set of fundamental parameters proposed by <span class="citation">(<a href="#ref-Rogers1981" role="doc-biblioref"><strong>Rogers1981?</strong></a>)</span>, designed to represent a typical migration age pattern from their analysis. Containing only seven parameters, they do not include additional curves for the post-labor force phase and post-retirement peak. We can use the <code>deframe()</code> function to convert the data frame <code>rc_model_fund</code> into an named vector for use in the <code>mig_calculate_rc()</code> to calculate the age specific migration rates for a given set of ages</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="migration-age-schedules.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(migest)</span>
+<span id="cb6-2"><a href="migration-age-schedules.html#cb6-2" aria-hidden="true" tabindex="-1"></a>rc_model_fund</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 2
+##   param    value
+##   &lt;chr&gt;    &lt;dbl&gt;
+## 1 a1       0.02 
+## 2 alpha1   0.1  
+## 3 a2       0.06 
+## 4 alpha2   0.1  
+## 5 mu2     20    
+## 6 lambda2  0.4  
+## 7 c        0.003</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="migration-age-schedules.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert data frame to named vector</span></span>
+<span id="cb8-2"><a href="migration-age-schedules.html#cb8-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">deframe</span>(rc_model_fund)</span>
+<span id="cb8-3"><a href="migration-age-schedules.html#cb8-3" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<pre><code>##      a1  alpha1      a2  alpha2     mu2 lambda2       c 
+##   2e-02   1e-01   6e-02   1e-01   2e+01   4e-01   3e-03</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="migration-age-schedules.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate and plot age schedule based on fundamental parameters </span></span>
+<span id="cb10-2"><a href="migration-age-schedules.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">80</span>, </span>
+<span id="cb10-3"><a href="migration-age-schedules.html#cb10-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mx =</span> <span class="fu">mig_calculate_rc</span>(<span class="at">ages =</span> x, <span class="at">pars =</span> p)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="migration-age-schedules.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> mx)) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="migration-age-schedules.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The <span class="citation">(<a href="#ref-UnitedNations1992" role="doc-biblioref"><strong>UnitedNations1992?</strong></a>)</span> proposed a number of alternative sets of parameter values to seven-parameter model age schedules in settings outside of the Western-country populations used by <span class="citation">(<a href="#ref-Rogers1981" role="doc-biblioref"><strong>Rogers1981?</strong></a>)</span> when designing their fundamental parameter set. These parameters are provided in the <code>rc_model_un</code> data frame</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="migration-age-schedules.html#cb11-1" aria-hidden="true" tabindex="-1"></a>rc_model_un</span></code></pre></div>
+<pre><code>## # A tibble: 84 × 5
+##    schedule         schedule_abb sex   param     value
+##    &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;
+##  1 Western standard ws           male  a1       0.0215
+##  2 Western standard ws           male  alpha1   0.105 
+##  3 Western standard ws           male  a2       0.0694
+##  4 Western standard ws           male  alpha2   0.112 
+##  5 Western standard ws           male  mu2     20.0   
+##  6 Western standard ws           male  lambda2  0.391 
+##  7 Western standard ws           male  c        0.0028
+##  8 Low dependency   ld           male  a1       0.0128
+##  9 Low dependency   ld           male  alpha1   0.105 
+## 10 Low dependency   ld           male  a2       0.0804
+## # … with 74 more rows</code></pre>
+<p>To apply the parameters to the <code>mig_calculate_rc()</code> function we can use the <code>nest()</code> function to group together the parameters into separate tibbles by sex and population settings.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="migration-age-schedules.html#cb13-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> rc_model_un <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="migration-age-schedules.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>schedule_abb) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="migration-age-schedules.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">rc_param =</span> <span class="fu">c</span>(param, value)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="migration-age-schedules.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> <span class="fu">map</span>(<span class="at">.x =</span> rc_param, <span class="at">.f =</span> <span class="sc">~</span><span class="fu">deframe</span>(.x)),</span>
+<span id="cb13-5"><a href="migration-age-schedules.html#cb13-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">mx =</span> <span class="fu">map</span>(<span class="at">.x =</span> p, </span>
+<span id="cb13-6"><a href="migration-age-schedules.html#cb13-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">.f =</span> <span class="sc">~</span><span class="fu">mig_calculate_rc</span>(<span class="at">ages =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">80</span>, <span class="at">pars =</span> .x)),</span>
+<span id="cb13-7"><a href="migration-age-schedules.html#cb13-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">age =</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">80</span>))</span>
+<span id="cb13-8"><a href="migration-age-schedules.html#cb13-8" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<pre><code>## # A tibble: 12 × 6
+##    schedule                              sex    rc_param p         mx     age   
+##    &lt;chr&gt;                                 &lt;chr&gt;  &lt;list&gt;   &lt;list&gt;    &lt;list&gt; &lt;list&gt;
+##  1 Western standard                      male   &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt; 
+##  2 Low dependency                        male   &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt; 
+##  3 High dependency                       male   &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt; 
+##  4 Young labour force entry              male   &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt; 
+##  5 Old labour force entry                male   &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt; 
+##  6 Low dependency low labour force entry male   &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt; 
+##  7 Western standard                      female &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt; 
+##  8 Low dependency                        female &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt; 
+##  9 High dependency                       female &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt; 
+## 10 Young labour force entry              female &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt; 
+## 11 Old labour force entry                female &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt; 
+## 12 Low dependency low labour force entry female &lt;tibble&gt; &lt;dbl [7]&gt; &lt;dbl&gt;  &lt;int&gt;</code></pre>
+<p>Once we have used the <code>map()</code> function to estimate the model migration age schedules for ages 1 to 80 using the <code>mig_calculate_rc()</code> function we create a data base varying by age for each model schedule and sex for plotting to get a better idea of how each migraiton schedule operates for each sex and population</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="migration-age-schedules.html#cb15-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="migration-age-schedules.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="fu">c</span>(mx, age)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="migration-age-schedules.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">schedule =</span> <span class="fu">str_wrap</span>(schedule, <span class="at">width =</span> <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="migration-age-schedules.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> mx, <span class="at">colour =</span> schedule)) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="migration-age-schedules.html#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb15-6"><a href="migration-age-schedules.html#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="at">facets =</span> <span class="st">&quot;sex&quot;</span>, <span class="at">ncol =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+Notable from the plot is the later peak age of migration in the older labour force entry age schedules, compared to the Western Standard age schedule that has parameters very close to those proposed by <span class="citation">(<a href="#ref-Rogers1981" role="doc-biblioref"><strong>Rogers1981?</strong></a>)</span>. For populations with younger labour force entry the peak age of migration shifts leftwards, whilst it increases for populations with low old age dependencies and decreases populations with high old age dependencies.</p>
+<p>It is worth noting again, that the typical use of model age schedules might be when we do not know any age-specific migration rates but soley a migration total, where the migration total might be a projected or forecasted value. In such a case we might first select an appropriate model schedule from <code>rc_model_un</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="migration-age-schedules.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example for males based on young labour force entry</span></span>
+<span id="cb16-2"><a href="migration-age-schedules.html#cb16-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> rc_model_un <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="migration-age-schedules.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span>, schedule_abb <span class="sc">==</span> <span class="st">&quot;ylfe&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="migration-age-schedules.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(param, value) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="migration-age-schedules.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">deframe</span>()</span>
+<span id="cb16-6"><a href="migration-age-schedules.html#cb16-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<pre><code>##      a1  alpha1      a2  alpha2     mu2 lambda2       c 
+##  0.0215  0.1050  0.0691  0.1120 16.0900  0.3910  0.0028</code></pre>
+<p>We may then calculate the age-specific migration using the parameter values to generate a standardized model age schedule (where the calculated <span class="math inline">\(m(x)\)</span> values sum to one) using the <code>mig_calculate_rc()</code> function. The standardized values can the be multiplied by a total estimate to get the age-specific migration counts, which might be converted to rates given the appropriate denominator.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="migration-age-schedules.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">90</span>, </span>
+<span id="cb18-2"><a href="migration-age-schedules.html#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mx =</span> <span class="fu">mig_calculate_rc</span>(<span class="at">ages =</span> x, <span class="at">pars =</span> p),</span>
+<span id="cb18-3"><a href="migration-age-schedules.html#cb18-3" aria-hidden="true" tabindex="-1"></a>       <span class="co"># calculate number of migrants, given a total estimate of 10,000</span></span>
+<span id="cb18-4"><a href="migration-age-schedules.html#cb18-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">Mx =</span> <span class="dv">10000</span> <span class="sc">*</span> mx) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a href="migration-age-schedules.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Mx)) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="migration-age-schedules.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="fitting-roger-castro-migration-age-schedules" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Fitting Roger Castro migration age schedules<a href="migration-age-schedules.html#fitting-roger-castro-migration-age-schedules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When we have age-specific migration data, we may be interested in estimating the parameters of a Rogers Castro age schedule. Estimating these parameters serves several purposes:</p>
+<ol style="list-style-type: decimal">
+<li><p>Smoothing the data: By fitting a Rogers Castro age schedule to age-specific migration data, we can obtain a smoothed representation of the migration pattern. This can help in reducing the noise in the data that might be generated from difficulties in collecting data on the number of migrants entering or leaving a region or country.</p></li>
+<li><p>Comparing parameter estimates: Estimating the parameters of a Rogers Castro age schedule allows us to compare migration patterns between different time periods or migration streams. By examining the differences in parameter estimates, we can gain insights into changes or variations in the age-specific migration patterns. We will further explore the interpretation of parameter estimates of the Rogers-Castro fitted age schedules in the next section.</p></li>
+<li><p>Creating age schedules for projected migration: Once we have estimated the parameters of the age schedule, we can use these estimates to project future migration patterns based on past patterns of the age schedule parameters or using the smoothed values from the fitted model migration age schedule.</p></li>
+</ol>
+<p>Fitting Rogers Castro migration age schedules has long be a difficult challenge due to the relatively small amount of data (based on the number age groups) and the relatively complexity of the migration age schedules. Various code and software tools have been used including FORTAN code in <span class="citation">(<a href="#ref-Rogers1994" role="doc-biblioref"><strong>Rogers1994?</strong></a>)</span>, the TableCurve 2D software <span class="citation">(<a href="#ref-Rogers1999a" role="doc-biblioref"><strong>Rogers1999a?</strong></a>)</span>, MATLAB code used by <span class="citation">(<a href="#ref-Rogers2010" role="doc-biblioref"><strong>Rogers2010?</strong></a>)</span>, and VBA code for Excel <span class="citation">(<a href="#ref-Wilson2010" role="doc-biblioref"><strong>Wilson2010?</strong></a>)</span>. Three alternative linear parameter estimation methods were provided by <span class="citation">(<a href="#ref-Rogers2005" role="doc-biblioref"><strong>Rogers2005?</strong></a>)</span></p>
+<p>Fortunately, the <em>rcbayes</em> package provides a <code>mig_estimate_rc()</code> function that provides far better performance and flexibility than its predecessors. The <code>mig_estimate_rc()</code> function calls Stan, a Bayesian probabilistic programming language, via the <em>rstan</em> package, to estimate the parameters of a Rogers Castro age schedule. The estimation process is performed using a powerful Bayesian sampling techniques to estimate the of parameter in a range of Rogers-Castro migration age schedules and their full posterior distributions to quantify the uncertainty of the estimates.</p>
+<p>To use the <code>mig_estimate_rc()</code> function, two arguments are required:</p>
+<ol style="list-style-type: decimal">
+<li><code>ages</code>: A vector of migration ages, representing the age groups for which we have migration data.</li>
+<li><code>mx</code>: A vector of standardized migration intensities corresponding to the ages in the <code>ages</code> vector.
+or</li>
+<li><code>migrants</code> and <code>pop</code>: Two vectors of migrant and population counts to calculate the age specific migration rates.</li>
+</ol>
+<p>Additionally, the form of the age schedule can be specified using the <code>pre_working_age</code>, <code>working_age</code>, <code>retirement</code>, and <code>post_retirement</code> arguments, which can be set to <code>TRUE</code> or <code>FALSE</code> depending on the desired structure of the age schedule.</p>
+<p>To demonstrate we will use data for immigration age-specific immigration flows into Cyprus during 2011 published by Eurostat. These can be downloaded using the <em>eurostat</em> package:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="migration-age-schedules.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eurostat)</span>
+<span id="cb19-2"><a href="migration-age-schedules.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># all age-sex specific immigration data</span></span>
+<span id="cb19-3"><a href="migration-age-schedules.html#cb19-3" aria-hidden="true" tabindex="-1"></a>imm <span class="ot">&lt;-</span> <span class="fu">get_eurostat</span>(<span class="at">id =</span> <span class="st">&quot;migr_imm8&quot;</span>)</span>
+<span id="cb19-4"><a href="migration-age-schedules.html#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="migration-age-schedules.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># filter to cyprus 2011</span></span>
+<span id="cb19-6"><a href="migration-age-schedules.html#cb19-6" aria-hidden="true" tabindex="-1"></a>imm_cy_2011 <span class="ot">&lt;-</span> imm <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="migration-age-schedules.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(geo <span class="sc">==</span> <span class="st">&quot;CY&quot;</span>,</span>
+<span id="cb19-8"><a href="migration-age-schedules.html#cb19-8" aria-hidden="true" tabindex="-1"></a>         age <span class="sc">!=</span> <span class="st">&quot;TOTAL&quot;</span>,</span>
+<span id="cb19-9"><a href="migration-age-schedules.html#cb19-9" aria-hidden="true" tabindex="-1"></a>         age <span class="sc">!=</span> <span class="st">&quot;UNK&quot;</span>,</span>
+<span id="cb19-10"><a href="migration-age-schedules.html#cb19-10" aria-hidden="true" tabindex="-1"></a>         sex <span class="sc">!=</span> <span class="st">&quot;T&quot;</span>,</span>
+<span id="cb19-11"><a href="migration-age-schedules.html#cb19-11" aria-hidden="true" tabindex="-1"></a>         time <span class="sc">==</span> <span class="st">&quot;2011-01-01&quot;</span>)</span>
+<span id="cb19-12"><a href="migration-age-schedules.html#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="migration-age-schedules.html#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># format age column to numeric values</span></span>
+<span id="cb19-14"><a href="migration-age-schedules.html#cb19-14" aria-hidden="true" tabindex="-1"></a>imm_cy_2011 <span class="ot">&lt;-</span> imm_cy_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb19-15"><a href="migration-age-schedules.html#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-16"><a href="migration-age-schedules.html#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">str_remove</span>(<span class="at">string =</span> age, <span class="at">pattern =</span> <span class="st">&quot;Y&quot;</span>),</span>
+<span id="cb19-17"><a href="migration-age-schedules.html#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">case_when</span>(</span>
+<span id="cb19-18"><a href="migration-age-schedules.html#cb19-18" aria-hidden="true" tabindex="-1"></a>      age <span class="sc">==</span> <span class="st">&quot;_LT1&quot;</span> <span class="sc">~</span> <span class="st">&quot;0&quot;</span>,</span>
+<span id="cb19-19"><a href="migration-age-schedules.html#cb19-19" aria-hidden="true" tabindex="-1"></a>      age <span class="sc">==</span> <span class="st">&quot;_GE100&quot;</span> <span class="sc">~</span> <span class="st">&quot;101&quot;</span>,</span>
+<span id="cb19-20"><a href="migration-age-schedules.html#cb19-20" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> age</span>
+<span id="cb19-21"><a href="migration-age-schedules.html#cb19-21" aria-hidden="true" tabindex="-1"></a>    ), </span>
+<span id="cb19-22"><a href="migration-age-schedules.html#cb19-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">as.numeric</span>(age)</span>
+<span id="cb19-23"><a href="migration-age-schedules.html#cb19-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-24"><a href="migration-age-schedules.html#cb19-24" aria-hidden="true" tabindex="-1"></a>imm_cy_2011 </span></code></pre></div>
+<pre><code>## # A tibble: 162 × 7
+##    agedef   age unit  sex   geo   time       values
+##    &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;date&gt;      &lt;dbl&gt;
+##  1 REACH      1 NR    F     CY    2011-01-01    130
+##  2 REACH      1 NR    M     CY    2011-01-01    136
+##  3 REACH     10 NR    F     CY    2011-01-01     88
+##  4 REACH     10 NR    M     CY    2011-01-01    102
+##  5 REACH     11 NR    F     CY    2011-01-01     97
+##  6 REACH     11 NR    M     CY    2011-01-01     89
+##  7 REACH     12 NR    F     CY    2011-01-01     89
+##  8 REACH     12 NR    M     CY    2011-01-01     79
+##  9 REACH     13 NR    F     CY    2011-01-01     65
+## 10 REACH     13 NR    M     CY    2011-01-01     73
+## # … with 152 more rows</code></pre>
+<p>We can see that the data do appear to not entirely smooth. This may be due to random variations in migration patterns of relatively small counts of migration. However, it would not be ideal to use the raw data as underlying assumption for the distribution of age-specific migration in a cohort component population projection model as there is clear justification for believing the underlying age migration patterns are non-smooth. For example, to observed migration for 41 year old persons is slightly higher that those that are 40 years old and counter to the declining trend of migration from 30 year old onwards.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="migration-age-schedules.html#cb21-1" aria-hidden="true" tabindex="-1"></a>imm_cy_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="migration-age-schedules.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> values, <span class="at">colour =</span> sex)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="migration-age-schedules.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb21-4"><a href="migration-age-schedules.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>The general shape of the observed values indicate that a seven parameter Rogers Castro migration age schedules is appropriate, where is no retirement peak or post-retirement slope are visable.</p>
+<p>The <code>mx</code> values required in the <code>mig_estimate_rc()</code> function represent the standardized migration intensities corresponding to the ages in the <code>ages</code> vector, meaning that their sum should be equal to one. This ensures that the migration intensities are properly scaled and reflect the relative proportions of migration within each age group.</p>
+<p>When using the <code>mig_estimate_rc()</code> function, it is common to wait for a few minutes during the computation time. Additionally, the function may print out several messages from Stan, with information about the estimation process, including the progress of the MCMC sampling and any convergence diagnostics.</p>
+<p>It is recommended to carefully review the messages printed during the estimation process to ensure that the estimation has converged properly and that the results are reliable. The messages can provide insights into the estimation process and help identify any potential issues or concerns.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="migration-age-schedules.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># standardize migration intensity</span></span>
+<span id="cb22-2"><a href="migration-age-schedules.html#cb22-2" aria-hidden="true" tabindex="-1"></a>imm_cy_2011 <span class="ot">&lt;-</span> imm_cy_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="migration-age-schedules.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="migration-age-schedules.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mx =</span> values<span class="sc">/</span><span class="fu">sum</span>(values)) </span>
+<span id="cb22-5"><a href="migration-age-schedules.html#cb22-5" aria-hidden="true" tabindex="-1"></a>imm_cy_2011</span></code></pre></div>
+<pre><code>## # A tibble: 162 × 8
+## # Groups:   sex [2]
+##    agedef   age unit  sex   geo   time       values      mx
+##    &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;date&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+##  1 REACH      1 NR    F     CY    2011-01-01    130 0.0102 
+##  2 REACH      1 NR    M     CY    2011-01-01    136 0.0132 
+##  3 REACH     10 NR    F     CY    2011-01-01     88 0.00693
+##  4 REACH     10 NR    M     CY    2011-01-01    102 0.00987
+##  5 REACH     11 NR    F     CY    2011-01-01     97 0.00763
+##  6 REACH     11 NR    M     CY    2011-01-01     89 0.00862
+##  7 REACH     12 NR    F     CY    2011-01-01     89 0.00700
+##  8 REACH     12 NR    M     CY    2011-01-01     79 0.00765
+##  9 REACH     13 NR    F     CY    2011-01-01     65 0.00512
+## 10 REACH     13 NR    M     CY    2011-01-01     73 0.00707
+## # … with 152 more rows</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="migration-age-schedules.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit seven-parameter rogers castro </span></span>
+<span id="cb24-2"><a href="migration-age-schedules.html#cb24-2" aria-hidden="true" tabindex="-1"></a>f_cy_male <span class="ot">&lt;-</span> <span class="fu">mig_estimate_rc</span>(<span class="at">ages =</span> imm_cy_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="migration-age-schedules.html#cb24-3" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="migration-age-schedules.html#cb24-4" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">pull</span>(age), </span>
+<span id="cb24-5"><a href="migration-age-schedules.html#cb24-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">mx =</span> imm_cy_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb24-6"><a href="migration-age-schedules.html#cb24-6" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-7"><a href="migration-age-schedules.html#cb24-7" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">pull</span>(mx),</span>
+<span id="cb24-8"><a href="migration-age-schedules.html#cb24-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pre_working_age =</span> <span class="cn">TRUE</span>, <span class="at">working_age =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb24-9"><a href="migration-age-schedules.html#cb24-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">retirement =</span> <span class="cn">FALSE</span>, <span class="at">post_retirement =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## mig_estimate_rc is running normal model, Using arguments ages and mx</code></pre>
+<pre><code>## 
+## SAMPLING FOR MODEL &#39;rcmodel_normal&#39; NOW (CHAIN 1).
+## Chain 1: 
+## Chain 1: Gradient evaluation took 0 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 1: Adjust your expectations accordingly!
+## Chain 1: 
+## Chain 1: 
+## Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 1: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 1: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 1: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 1: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 1: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 1: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 1: 
+## Chain 1:  Elapsed Time: 1.208 seconds (Warm-up)
+## Chain 1:                0.942 seconds (Sampling)
+## Chain 1:                2.15 seconds (Total)
+## Chain 1: 
+## 
+## SAMPLING FOR MODEL &#39;rcmodel_normal&#39; NOW (CHAIN 2).
+## Chain 2: 
+## Chain 2: Gradient evaluation took 0 seconds
+## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 2: Adjust your expectations accordingly!
+## Chain 2: 
+## Chain 2: 
+## Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 2: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 2: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 2: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 2: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 2: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 2: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 2: 
+## Chain 2:  Elapsed Time: 1.181 seconds (Warm-up)
+## Chain 2:                1.057 seconds (Sampling)
+## Chain 2:                2.238 seconds (Total)
+## Chain 2: 
+## 
+## SAMPLING FOR MODEL &#39;rcmodel_normal&#39; NOW (CHAIN 3).
+## Chain 3: 
+## Chain 3: Gradient evaluation took 0 seconds
+## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 3: Adjust your expectations accordingly!
+## Chain 3: 
+## Chain 3: 
+## Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 3: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 3: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 3: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 3: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 3: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 3: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 3: 
+## Chain 3:  Elapsed Time: 1.199 seconds (Warm-up)
+## Chain 3:                1.009 seconds (Sampling)
+## Chain 3:                2.208 seconds (Total)
+## Chain 3: 
+## 
+## SAMPLING FOR MODEL &#39;rcmodel_normal&#39; NOW (CHAIN 4).
+## Chain 4: 
+## Chain 4: Gradient evaluation took 0 seconds
+## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 4: Adjust your expectations accordingly!
+## Chain 4: 
+## Chain 4: 
+## Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 4: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 4: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 4: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 4: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 4: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 4: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 4: 
+## Chain 4:  Elapsed Time: 1.22 seconds (Warm-up)
+## Chain 4:                1.09 seconds (Sampling)
+## Chain 4:                2.31 seconds (Total)
+## Chain 4:</code></pre>
+<p>The <code>mig_estimate_rc()</code> function returns a <code>list</code> object with three components.
+In the output of the <code>mig_estimate_rc()</code> function, there are three elements:</p>
+<ol style="list-style-type: decimal">
+<li><p><code>pars_df</code>: This is a data frame that contains the parameter estimates along with their 95% credible intervals. The parameter estimates represent the values obtained from the estimation process, while the credible intervals provide a measure of uncertainty around those estimates.</p></li>
+<li><p><code>fit_df</code>: This is a data frame that shows the original data and the estimated migration rates at each age.</p></li>
+<li><p><code>check_converge</code>: This is a data frame that provides information about the convergence of the estimation process. It includes the R-hat values and effective sample sizes for each parameter. The R-hat values, also known as the Gelman-Rubin statistic, assess the convergence of the MCMC chains used in the estimation. A value close to 1 indicates good convergence. The effective sample sizes indicate the number of independent samples obtained for each parameter, and higher values indicate more reliable estimates.</p></li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="migration-age-schedules.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parameter estimates</span></span>
+<span id="cb27-2"><a href="migration-age-schedules.html#cb27-2" aria-hidden="true" tabindex="-1"></a>f_cy_male<span class="sc">$</span>pars_df</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 4
+##   variable    median      lower    upper
+##   &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+## 1 a1        0.0119    0.0102     0.0136 
+## 2 a2        0.0589    0.0536     0.0667 
+## 3 alpha1    0.0445    0.0290     0.0675 
+## 4 alpha2    0.0773    0.0683     0.0912 
+## 5 c         0.000574  0.0000302  0.00175
+## 6 lambda2   0.297     0.240      0.355  
+## 7 mu2      21.0      20.5       22.0</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="migration-age-schedules.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fitted schedule</span></span>
+<span id="cb29-2"><a href="migration-age-schedules.html#cb29-2" aria-hidden="true" tabindex="-1"></a>f_cy_male<span class="sc">$</span>fit_df</span></code></pre></div>
+<pre><code>## # A tibble: 81 × 6
+##      age    data  median   lower   upper       diff_sq
+##    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;         &lt;dbl&gt;
+##  1     1 0.0132  0.0120  0.0107  0.0134  0.00000134   
+##  2    10 0.00987 0.00826 0.00731 0.00908 0.00000262   
+##  3    11 0.00862 0.00792 0.00692 0.00878 0.000000481  
+##  4    12 0.00765 0.00761 0.00657 0.00850 0.00000000137
+##  5    13 0.00707 0.00732 0.00624 0.00825 0.0000000630 
+##  6    14 0.00687 0.00707 0.00598 0.00802 0.0000000400 
+##  7    15 0.00552 0.00702 0.00596 0.00799 0.00000226   
+##  8    16 0.00823 0.00752 0.00641 0.00876 0.000000499  
+##  9    17 0.00629 0.00915 0.00777 0.0108  0.00000818   
+## 10    18 0.0149  0.0123  0.0106  0.0141  0.00000677   
+## # … with 71 more rows</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="migration-age-schedules.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of observed and fitted age schedule with 95% credible interval</span></span>
+<span id="cb31-2"><a href="migration-age-schedules.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> f_cy_male<span class="sc">$</span>fit_df, </span>
+<span id="cb31-3"><a href="migration-age-schedules.html#cb31-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> data)) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="migration-age-schedules.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">ymin =</span> lower, <span class="at">ymax =</span> upper), <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb31-5"><a href="migration-age-schedules.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> median), <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="migration-age-schedules.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="smoothing" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Smoothing<a href="migration-age-schedules.html#smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are many non-parametric smoothing functions that can applied to age-specific migration data to help capturing the underlying patterns by reducing noise and variability in the data. Some commonly used smoothing functions in R are available in the <code>stats</code> package, which is loaded by default when R opens. They can fitted very quickly in comparison to Rogers-Castro model age schedules and do not require any specification on the phases.</p>
+<p>Smoothing methods involve weighting data points within specific subsections or windows of the data. These methods typically employ local regression or averaging techniques to estimate migration intensities at each age based on the data from neighboring ages.</p>
+<p>Choosing an appropriate bandwidth or window size is crucial in smoothing age-specific migration data. The bandwidth determines the range of nearby ages considered for each estimation and influences the level of smoothing applied. The default bandwidth values for the smoothing functions in R might not always be suitable for migration age schedules, as the underlying patterns and variability can vary across different contexts and the smoothing functions are more typically applied to much larger data sets (as opposed to 100 or so age groups in the age-specific migration data).</p>
+<p>In some cases, it may be necessary to censor or exclude the very oldest age groups from the smoothing process. This is because migration intensities for these age groups can become volatile and unreliable due to small numbers of migrants. By removing these extreme values, the smoothing methods can provide more stable and meaningful estimates of migration patterns across the age range.</p>
+<p>An example of the unevenness in observed age-specific migration data can be found in the <code>ipumsi_age</code> data frame of the <em>migest</em> package. The data in the object are based on census samples from Brazil 2000 and France 2006 published in the IPUMS International repository (<span class="citation">(<a href="#ref-ipums2015" role="doc-biblioref"><strong>ipums2015?</strong></a>)</span>). The data frame contains a variable <code>migrants</code> on the population weighted counts of persons who migrated between any minor (and major) administrative units determined from responses to questions on place of residence five-years prior to the census. The migration intensities are particularly uneven at the elderly age groups in the sample from the Brazil 2000 census.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="migration-age-schedules.html#cb32-1" aria-hidden="true" tabindex="-1"></a>ipumsi_age <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="migration-age-schedules.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mi =</span> migrants<span class="sc">/</span>population) <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="migration-age-schedules.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a href="migration-age-schedules.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> mi)) <span class="sc">+</span></span>
+<span id="cb32-5"><a href="migration-age-schedules.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb32-6"><a href="migration-age-schedules.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb32-7"><a href="migration-age-schedules.html#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="at">facets =</span> <span class="st">&quot;sample&quot;</span>, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Most smoothing functions in R typically require two vectors: <code>x</code> and <code>y</code>. The <code>x</code> vector represents the independent variable, such as age, and the <code>y</code> vector represents the dependent variable, such as migration intensity. These functions often have optional arguments that allow you to control the smoothness of the fit, although the names of these arguments may vary depending on the specific smoothing function.</p>
+<p>When applying a smoothing function, it will return a list with two components: <code>x</code> and <code>y</code>. It’s important to note that the length of the <code>x</code> vector may differ from the original vector provided. To control the output length, some smoothing functions offer arguments (with different names depending on the function) that allow you to specify the desired length of the output. The <code>x</code> component of the output will match the age values, while the <code>y</code> component will represent the smoothed values of the dependent variable.</p>
+<div id="kernal-smoothing" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Kernal Smoothing<a href="migration-age-schedules.html#kernal-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>ksmooth()</code> function in the <code>stats</code> package performs kernel regression smoothing. It estimates a smooth curve by applying a kernel weighting to nearby data points, allowing for flexible and localized smoothing. To demonstrate we will use the migration intensities calculated from the Brazil 2000 IPUMS International sample provided in the <code>ipums_age</code> data frame. Note, there are no intensities for ages below five as the question on previous place of residence five-years prior to the census was not applicable for the sub population.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="migration-age-schedules.html#cb33-1" aria-hidden="true" tabindex="-1"></a>bra_2000 <span class="ot">&lt;-</span> ipumsi_age <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="migration-age-schedules.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sample <span class="sc">==</span> <span class="st">&quot;BRA2000&quot;</span>,</span>
+<span id="cb33-3"><a href="migration-age-schedules.html#cb33-3" aria-hidden="true" tabindex="-1"></a>         age <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="migration-age-schedules.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mi =</span> migrants<span class="sc">/</span>population)</span>
+<span id="cb33-5"><a href="migration-age-schedules.html#cb33-5" aria-hidden="true" tabindex="-1"></a>bra_2000</span></code></pre></div>
+<pre><code>## # A tibble: 95 × 5
+##    sample    age migrants population     mi
+##    &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+##  1 BRA2000     6  355723.   3311728. 0.107 
+##  2 BRA2000     7  343852.   3307567. 0.104 
+##  3 BRA2000     8  327166.   3258046. 0.100 
+##  4 BRA2000     9  314905.   3272305. 0.0962
+##  5 BRA2000    10  324066.   3345583. 0.0969
+##  6 BRA2000    11  329525.   3451739. 0.0955
+##  7 BRA2000    12  327113.   3518160. 0.0930
+##  8 BRA2000    13  323180.   3473133. 0.0931
+##  9 BRA2000    14  334783.   3566239. 0.0939
+## 10 BRA2000    15  337297.   3528845. 0.0956
+## # … with 85 more rows</code></pre>
+<p>We can use the <code>n.points</code> argument in the <code>ksmooth()</code> function to fix the length of the smoothed points returned by the object.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="migration-age-schedules.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># default returns 100 values. corresponding ages in x no longer integers</span></span>
+<span id="cb35-2"><a href="migration-age-schedules.html#cb35-2" aria-hidden="true" tabindex="-1"></a>k1 <span class="ot">&lt;-</span> <span class="fu">ksmooth</span>(<span class="at">x =</span> bra_2000<span class="sc">$</span>age, <span class="at">y =</span> bra_2000<span class="sc">$</span>mi)</span>
+<span id="cb35-3"><a href="migration-age-schedules.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(k1)</span></code></pre></div>
+<pre><code>## List of 2
+##  $ x: num [1:100] 6 6.95 7.9 8.85 9.8 ...
+##  $ y: num [1:100] 0.1074 0.104 0.1004 0.0962 0.0969 ...</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="migration-age-schedules.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># return only 95 values to match the number of age groups in the data</span></span>
+<span id="cb37-2"><a href="migration-age-schedules.html#cb37-2" aria-hidden="true" tabindex="-1"></a>k2 <span class="ot">&lt;-</span> <span class="fu">ksmooth</span>(<span class="at">x =</span> bra_2000<span class="sc">$</span>age, <span class="at">y =</span> bra_2000<span class="sc">$</span>mi, <span class="at">n.points =</span> <span class="fu">nrow</span>(bra_2000))</span>
+<span id="cb37-3"><a href="migration-age-schedules.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(k2)</span></code></pre></div>
+<pre><code>## List of 2
+##  $ x: num [1:95] 6 7 8 9 10 11 12 13 14 15 ...
+##  $ y: num [1:95] 0.1074 0.104 0.1004 0.0962 0.0969 ...</code></pre>
+<p>The <code>ksmooth()</code> function is unlikely to smooth a migration age schedule as the default bandwidth parameter is too small for one hundred odd age groups. The <code>bandwidth</code> parameter can be increased to provide a more suitable fit</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="migration-age-schedules.html#cb39-1" aria-hidden="true" tabindex="-1"></a>bra_2000 <span class="ot">&lt;-</span> bra_2000 <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="migration-age-schedules.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb39-3"><a href="migration-age-schedules.html#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">k_default =</span> <span class="fu">ksmooth</span>(<span class="at">x =</span> age, <span class="at">y =</span> mi, <span class="at">n.points =</span> <span class="fu">n</span>())<span class="sc">$</span>y,</span>
+<span id="cb39-4"><a href="migration-age-schedules.html#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">k_5 =</span> <span class="fu">ksmooth</span>(<span class="at">x =</span> age, <span class="at">y =</span> mi, <span class="at">n.points =</span> <span class="fu">n</span>(), <span class="at">bandwidth =</span> <span class="dv">5</span>)<span class="sc">$</span>y,</span>
+<span id="cb39-5"><a href="migration-age-schedules.html#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">k_10 =</span> <span class="fu">ksmooth</span>(<span class="at">x =</span> age, <span class="at">y =</span> mi, <span class="at">n.points =</span> <span class="fu">n</span>(), <span class="at">bandwidth =</span> <span class="dv">10</span>)<span class="sc">$</span>y</span>
+<span id="cb39-6"><a href="migration-age-schedules.html#cb39-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb39-7"><a href="migration-age-schedules.html#cb39-7" aria-hidden="true" tabindex="-1"></a>bra_2000</span></code></pre></div>
+<pre><code>## # A tibble: 95 × 8
+##    sample    age migrants population     mi k_default    k_5   k_10
+##    &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 BRA2000     6  355723.   3311728. 0.107     0.107  0.104  0.100 
+##  2 BRA2000     7  343852.   3307567. 0.104     0.104  0.102  0.0990
+##  3 BRA2000     8  327166.   3258046. 0.100     0.100  0.101  0.0983
+##  4 BRA2000     9  314905.   3272305. 0.0962    0.0962 0.0986 0.0978
+##  5 BRA2000    10  324066.   3345583. 0.0969    0.0969 0.0964 0.0976
+##  6 BRA2000    11  329525.   3451739. 0.0955    0.0955 0.0949 0.0978
+##  7 BRA2000    12  327113.   3518160. 0.0930    0.0930 0.0944 0.0975
+##  8 BRA2000    13  323180.   3473133. 0.0931    0.0931 0.0942 0.0982
+##  9 BRA2000    14  334783.   3566239. 0.0939    0.0939 0.0950 0.100 
+## 10 BRA2000    15  337297.   3528845. 0.0956    0.0956 0.0973 0.103 
+## # … with 85 more rows</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="migration-age-schedules.html#cb41-1" aria-hidden="true" tabindex="-1"></a>bra_2000 <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="migration-age-schedules.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">&quot;k_&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;bandwidth&quot;</span>, <span class="at">names_prefix =</span> <span class="st">&quot;k_&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="migration-age-schedules.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> value, <span class="at">colour =</span> bandwidth)) <span class="sc">+</span></span>
+<span id="cb41-4"><a href="migration-age-schedules.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> mi), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb41-5"><a href="migration-age-schedules.html#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb41-6"><a href="migration-age-schedules.html#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="loess-smoothing" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Loess Smoothing<a href="migration-age-schedules.html#loess-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>stats</code> package also contains another smoothing function; <code>loess.smooth()</code>, which carries out local polynomial regression fitting. It fits a smooth curve to the data using a weighted least squares approach, with the degree of smoothing controlled by a <code>span</code> tuning parameter. The <code>loess.smooth()</code> function, similar to the <code>ksmooth()</code> function, may not be suitable for smoothing a migration age schedule using the default parameters. The default value of the <code>span</code> parameter, which controls the smoothness of the fit, is often too large for applying to migration age schedules. Additionally, the <code>evaluation</code> parameter specifies the number of predicted values by default as 50.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="migration-age-schedules.html#cb42-1" aria-hidden="true" tabindex="-1"></a>bra_2000 <span class="ot">&lt;-</span> bra_2000 <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="migration-age-schedules.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb42-3"><a href="migration-age-schedules.html#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">lo_default =</span> <span class="fu">loess.smooth</span>(<span class="at">x =</span> age, <span class="at">y =</span> mi, <span class="at">evaluation =</span> <span class="fu">n</span>())<span class="sc">$</span>y,</span>
+<span id="cb42-4"><a href="migration-age-schedules.html#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">lo_2 =</span> <span class="fu">loess.smooth</span>(<span class="at">x =</span> age, <span class="at">y =</span> mi, <span class="at">evaluation =</span> <span class="fu">n</span>(), <span class="at">span =</span> <span class="fl">0.2</span>)<span class="sc">$</span>y,</span>
+<span id="cb42-5"><a href="migration-age-schedules.html#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">lo_1 =</span> <span class="fu">loess.smooth</span>(<span class="at">x =</span> age, <span class="at">y =</span> mi, <span class="at">evaluation =</span> <span class="fu">n</span>(), <span class="at">span =</span> <span class="fl">0.1</span>)<span class="sc">$</span>y,</span>
+<span id="cb42-6"><a href="migration-age-schedules.html#cb42-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb42-7"><a href="migration-age-schedules.html#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="migration-age-schedules.html#cb42-8" aria-hidden="true" tabindex="-1"></a>bra_2000 <span class="sc">%&gt;%</span></span>
+<span id="cb42-9"><a href="migration-age-schedules.html#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">&quot;lo_&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;span&quot;</span>, <span class="at">names_prefix =</span> <span class="st">&quot;lo_&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-10"><a href="migration-age-schedules.html#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> value, <span class="at">colour =</span> span)) <span class="sc">+</span></span>
+<span id="cb42-11"><a href="migration-age-schedules.html#cb42-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> mi), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb42-12"><a href="migration-age-schedules.html#cb42-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb42-13"><a href="migration-age-schedules.html#cb42-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="cubic-spline-smoothing" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Cubic Spline smoothing<a href="migration-age-schedules.html#cubic-spline-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cubic spline smoothing is another popular method for smoothing data, including migration age schedules. It provides a flexible and smooth curve by connecting cubic polynomials between data points. In R, the <code>smooth.spline()</code> function in the <em>stats</em> package can be used to perform cubic spline smoothing. The function allows you to control the smoothness of the fit using the <code>spar</code> parameter (between 0 and 1), which determines the amount of smoothing applied. A smaller <code>spar</code> value results in a smoother fit, while a larger value allows for more flexibility and potential for capturing local variations in the data. The number of predicted smoothed</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="migration-age-schedules.html#cb43-1" aria-hidden="true" tabindex="-1"></a>bra_2000 <span class="ot">&lt;-</span> bra_2000 <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="migration-age-schedules.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb43-3"><a href="migration-age-schedules.html#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">s_default =</span> <span class="fu">smooth.spline</span>(<span class="at">x =</span> age, <span class="at">y =</span> mi, <span class="at">n =</span> <span class="fu">n</span>())<span class="sc">$</span>y,</span>
+<span id="cb43-4"><a href="migration-age-schedules.html#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">s_6 =</span> <span class="fu">smooth.spline</span>(<span class="at">x =</span> age, <span class="at">y =</span> mi, <span class="at">n =</span> <span class="fu">n</span>(), <span class="at">spar =</span> <span class="fl">0.6</span>)<span class="sc">$</span>y,</span>
+<span id="cb43-5"><a href="migration-age-schedules.html#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">s_8 =</span> <span class="fu">smooth.spline</span>(<span class="at">x =</span> age, <span class="at">y =</span> mi, <span class="at">n =</span> <span class="fu">n</span>(), <span class="at">spar =</span> <span class="fl">0.8</span>)<span class="sc">$</span>y</span>
+<span id="cb43-6"><a href="migration-age-schedules.html#cb43-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb43-7"><a href="migration-age-schedules.html#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="migration-age-schedules.html#cb43-8" aria-hidden="true" tabindex="-1"></a>bra_2000 <span class="sc">%&gt;%</span></span>
+<span id="cb43-9"><a href="migration-age-schedules.html#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">&quot;s_&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;spar&quot;</span>, <span class="at">names_prefix =</span> <span class="st">&quot;s_&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb43-10"><a href="migration-age-schedules.html#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> value, <span class="at">colour =</span> spar)) <span class="sc">+</span></span>
+<span id="cb43-11"><a href="migration-age-schedules.html#cb43-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> mi), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb43-12"><a href="migration-age-schedules.html#cb43-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb43-13"><a href="migration-age-schedules.html#cb43-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>As with each of the earlier smoothing methods, it’s important to experiment with smoothing parameter (<code>spar</code>, <code>span</code> in <code>loess.smooth()</code> and <code>bandwidth</code> in <code>ksmooth()</code>) to evaluate the resulting smoothed migration age schedule visually to determine the optimal level of smoothing for your requirements.</p>
+</div>
+</div>
+<div id="graduating" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Graduating<a href="migration-age-schedules.html#graduating" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When faced with migration data reported in age groups instead of single-year data, graduating methods can be employed to estimate migration for each individual age. These methods aim to distribute the reported age group totals across the corresponding ages in a way that maintains consistency and ensures that the graduated values sum up to the reported totals.</p>
+<p>One useful tool for performing the graduation process is the <code>graduate()</code> function in the DemoTools package. While originally designed for interpolating population totals, it is also suitable for estimating migration flows. The function offers several graduating methods, each with its own approach and assumptions. For a comprehensive understanding of these methods, you can refer to the guide provided <a href="https://timriffe.github.io/DemoTools/articles/graduation_with_demotools.html">here</a>.</p>
+<p>To utilize the <code>graduate()</code> function, you need to provide the reported values (<code>Value</code>) and specify the minimum age (<code>Age</code>) for which the data is available. Additionally, for certain methods like <code>pclm</code>, you can specify the maximum value for the final open age group if it exists. By applying the appropriate graduating method, you can obtain estimates of migration for each individual year based on the available age group data.</p>
+<p>To demonstrate we will use internal migration data in Italy contained in the <code>italy_area</code> data set in the <em>migest</em> package. In particular we will use the age-specific out migration counts from the Islands regions, which can be derived from using the <code>sum_region()</code> function</p>
+<!-- ```{r, eval=FALSE} -->
+<!-- ita_reg <- italy_area %>% -->
+<!--   group_by(year, age_grp) %>% -->
+<!--   sum_region() %>% -->
+<!--   separate(col = "age_grp", into = c("age_min", "age_max"), convert = TRUE) -->
+<!-- ita_reg -->
+<!-- isl_1970 <- ita_reg %>% -->
+<!--   filter(year == 1970,  -->
+<!--          region == "Islands")  -->
+<!-- ``` -->
+<!-- When we apply the `pclm` method we tell the `graduate()` function that the last age group is open and set a new maximum value of 100.  -->
+<!-- ```{r} -->
+<!-- # # install devtools from CRAN  -->
+<!-- # install.packages("devtools") -->
+<!-- # # install DemoTools from github -->
+<!-- # devtools::install_github("timriffe/DemoTools") -->
+<!-- library(DemoTools) -->
+<!-- g <- graduate(Value = isl_1970$out_mig, Age = isl_1970$age_min,  -->
+<!--               method = "pclm", OAG =  TRUE, OAnew = 100) -->
+<!-- g -->
+<!-- ``` -->
+<!-- When we plot the observed age schedule besides the graduated age schedule we see the drop in the relative scales of the single-year data, which are constrained to match the observed five-year out-migraiton totals.   -->
+<!-- ```{r} -->
+<!-- library(patchwork) -->
+<!-- p1 <- ggplot(data = isl_1970,  -->
+<!--        mapping = aes(x = age_min + 2.5, y = out_mig)) + -->
+<!--   geom_point() -->
+<!-- p2 <- tibble(age = 0:100, mx = g) %>% -->
+<!--   ggplot(mapping = aes(x = age, y = mx)) + -->
+<!--   geom_line() -->
+<!-- p1 + p2 -->
+<!-- ``` -->
+<!-- The graduation of the five-year migration counts to single-year counts can be seen by inspecting the sum of the first five estimated values in the `g` object and the obeseverd data for the out migration of the 0-4 year olds.  -->
+<!-- ```{r, eval=FALSE} -->
+<!-- # 0-4 -->
+<!-- sum(g[1:5]) -->
+<!-- # 5-9 -->
+<!-- sum(g[6:10]) -->
+<!-- isl_1970 -->
+<!-- ``` -->
+</div>
+<div id="migraiton-age-indices" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Migraiton Age Indices<a href="migration-age-schedules.html#migraiton-age-indices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Index measures for age-specific migration schedules can be used to summarizing and comparing migration age profiles. They provide a concise representation of age-specific migration rates, enabling researchers to identify distinctive features and variations in the age dynamics of migration patterns across populations or over time.</p>
+<p>There are two main families of index measures for migration age schedules. The first uses relationships between fitted parameters of a Rogers-Castro migration age schedules. The second uses empirical measures based on either the observed or smoothed age-specific migration data.</p>
+<div id="rogers-and-castro-parameter-relationships" class="section level3 hasAnchor" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Rogers and Castro Parameter Relationships<a href="migration-age-schedules.html#rogers-and-castro-parameter-relationships" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="citation">(<a href="#ref-Rogers1981" role="doc-biblioref"><strong>Rogers1981?</strong></a>)</span> highlighted the significance of the relationships between certain parameters in the model age schedules. These relationships can provide insights into important characteristics of migration patterns and can guide the derivation of customized model schedules. Four key measures, namely peaking, dominance, labor asymmetry, and regularity, were highlighted.</p>
+<p>Peaking refers to the timing of the peak migration age, indicating whether migration rates peak at an earlier or later age. In the fundamental parameters proposed by Rogers and Castro, the parameter <span class="math inline">\(\mu_2\)</span> is set to 20, representing a age where with the highest migration rates.</p>
+<p>Dominance, is captured by the relationship <span class="math inline">\(\gamma_{12} = a_1/a_2\)</span>, which represents the ratio of migration rates between two specific age groups. It serves as an index of child dependency in the migration age patterns, with the inverse <span class="math inline">\(1/\gamma_{12}\)</span> reflecting the index of labor dominance. In the fundamental parameters, <span class="math inline">\(\gamma_{12} = 1/3\)</span>.</p>
+<p>Labor asymmetry is measured by the relationship <span class="math inline">\(\sigma_2 = \lambda_2/\alpha_2\)</span>, representing the ratio of two parameters used for the upward and downward parts of the labour force curve in the age schedule. In the fundamental parameters, <span class="math inline">\(\sigma_2 = 4\)</span> indicating a faster (by four times) rise in the curve before the peak than the decline after the peak.</p>
+<p>Finally, regularity is assessed through the relationship <span class="math inline">\(\beta_{12} = \alpha_1/\alpha_2\)</span>, which compares the migration rates of parents and children. A value of <span class="math inline">\(\beta_{12} = 1\)</span>, as in the fundamental parameters, indicates a regular pattern where the migration rates of children closely match those of their parents.</p>
+<p>The <code>index_age_rc()</code> function in the <em>migest</em> package returns these ratios given a named vector of the parameters. For example, we can see the disussed values in the fundamental parameters:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="migration-age-schedules.html#cb44-1" aria-hidden="true" tabindex="-1"></a>rc_model_fund <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="migration-age-schedules.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">deframe</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="migration-age-schedules.html#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">index_age_rc</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 2
+##   measure           value
+##   &lt;chr&gt;             &lt;dbl&gt;
+## 1 peaking          20    
+## 2 child_dependency  0.333
+## 3 labor_dependency  3    
+## 4 labor_asymmetry   4    
+## 5 regularity        1</code></pre>
+<p>More practically, we can also compare migration age schedules using the relationships between the parameter estimates. To demonstrate we fit a Rogers-Castro migration age schedule for female immigrants to Cyprus during 2011:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="migration-age-schedules.html#cb46-1" aria-hidden="true" tabindex="-1"></a>f_cy_female <span class="ot">&lt;-</span> <span class="fu">mig_estimate_rc</span>(<span class="at">ages =</span> imm_cy_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="migration-age-schedules.html#cb46-2" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="migration-age-schedules.html#cb46-3" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">pull</span>(age), </span>
+<span id="cb46-4"><a href="migration-age-schedules.html#cb46-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">mx =</span> imm_cy_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb46-5"><a href="migration-age-schedules.html#cb46-5" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb46-6"><a href="migration-age-schedules.html#cb46-6" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">pull</span>(mx),</span>
+<span id="cb46-7"><a href="migration-age-schedules.html#cb46-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pre_working_age =</span> <span class="cn">TRUE</span>, <span class="at">working_age =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb46-8"><a href="migration-age-schedules.html#cb46-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">retirement =</span> <span class="cn">FALSE</span>, <span class="at">post_retirement =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+## SAMPLING FOR MODEL &#39;rcmodel_normal&#39; NOW (CHAIN 1).
+## Chain 1: 
+## Chain 1: Gradient evaluation took 0 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 1: Adjust your expectations accordingly!
+## Chain 1: 
+## Chain 1: 
+## Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 1: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 1: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 1: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 1: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 1: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 1: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 1: 
+## Chain 1:  Elapsed Time: 1.523 seconds (Warm-up)
+## Chain 1:                0.943 seconds (Sampling)
+## Chain 1:                2.466 seconds (Total)
+## Chain 1: 
+## 
+## SAMPLING FOR MODEL &#39;rcmodel_normal&#39; NOW (CHAIN 2).
+## Chain 2: 
+## Chain 2: Gradient evaluation took 0 seconds
+## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 2: Adjust your expectations accordingly!
+## Chain 2: 
+## Chain 2: 
+## Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 2: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 2: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 2: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 2: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 2: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 2: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 2: 
+## Chain 2:  Elapsed Time: 1.28 seconds (Warm-up)
+## Chain 2:                0.948 seconds (Sampling)
+## Chain 2:                2.228 seconds (Total)
+## Chain 2: 
+## 
+## SAMPLING FOR MODEL &#39;rcmodel_normal&#39; NOW (CHAIN 3).
+## Chain 3: 
+## Chain 3: Gradient evaluation took 0 seconds
+## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 3: Adjust your expectations accordingly!
+## Chain 3: 
+## Chain 3: 
+## Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 3: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 3: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 3: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 3: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 3: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 3: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 3: 
+## Chain 3:  Elapsed Time: 1.245 seconds (Warm-up)
+## Chain 3:                0.882 seconds (Sampling)
+## Chain 3:                2.127 seconds (Total)
+## Chain 3: 
+## 
+## SAMPLING FOR MODEL &#39;rcmodel_normal&#39; NOW (CHAIN 4).
+## Chain 4: 
+## Chain 4: Gradient evaluation took 0 seconds
+## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 4: Adjust your expectations accordingly!
+## Chain 4: 
+## Chain 4: 
+## Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 4: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 4: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 4: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 4: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 4: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 4: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 4: 
+## Chain 4:  Elapsed Time: 1.121 seconds (Warm-up)
+## Chain 4:                0.952 seconds (Sampling)
+## Chain 4:                2.073 seconds (Total)
+## Chain 4:</code></pre>
+<p>We can then combine the parameter estimates for the male and female fitted Rogers-Castro migration age schedules and apply the <code>index_age_rc()</code> function:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="migration-age-schedules.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb48-2"><a href="migration-age-schedules.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">sex =</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>),</span>
+<span id="cb48-3"><a href="migration-age-schedules.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">p =</span> <span class="fu">list</span>(f_cy_male<span class="sc">$</span>pars_df <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="migration-age-schedules.html#cb48-4" aria-hidden="true" tabindex="-1"></a>             <span class="fu">select</span>(variable, median) <span class="sc">%&gt;%</span></span>
+<span id="cb48-5"><a href="migration-age-schedules.html#cb48-5" aria-hidden="true" tabindex="-1"></a>             <span class="fu">deframe</span>(),</span>
+<span id="cb48-6"><a href="migration-age-schedules.html#cb48-6" aria-hidden="true" tabindex="-1"></a>           f_cy_female<span class="sc">$</span>pars_df <span class="sc">%&gt;%</span></span>
+<span id="cb48-7"><a href="migration-age-schedules.html#cb48-7" aria-hidden="true" tabindex="-1"></a>             <span class="fu">select</span>(variable, median) <span class="sc">%&gt;%</span></span>
+<span id="cb48-8"><a href="migration-age-schedules.html#cb48-8" aria-hidden="true" tabindex="-1"></a>             <span class="fu">deframe</span>())</span>
+<span id="cb48-9"><a href="migration-age-schedules.html#cb48-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-10"><a href="migration-age-schedules.html#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rc_index =</span> <span class="fu">map</span>(<span class="at">.x =</span> p, <span class="at">.f =</span> <span class="sc">~</span><span class="fu">index_age_rc</span>(<span class="at">pars =</span> .x, <span class="at">long =</span> <span class="cn">FALSE</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb48-11"><a href="migration-age-schedules.html#cb48-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> rc_index)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 7
+##   sex    p         peaking child_dependency labor_dependency labor_asy…¹ regul…²
+##   &lt;chr&gt;  &lt;list&gt;      &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;
+## 1 male   &lt;dbl [7]&gt;    21.0            0.202             4.96        3.84   0.576
+## 2 female &lt;dbl [7]&gt;    24.1            0.127             7.86        1.90   0.575
+## # … with abbreviated variable names ¹​labor_asymmetry, ²​regularity</code></pre>
+<p>The calcaultions indicate a later peak age and lower levels of asymmetry in the female immigration flows compared to the male counterparts.</p>
+</div>
+<div id="emprical-age-indices" class="section level3 hasAnchor" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Emprical Age Indices<a href="migration-age-schedules.html#emprical-age-indices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Model age schedules for migration have faced several criticisms, see for example <span class="citation">(<a href="#ref-Bell2002" role="doc-biblioref"><strong>Bell2002?</strong></a>)</span> or <span class="citation">(<a href="#ref-Bernard2014" role="doc-biblioref"><strong>Bernard2014?</strong></a>)</span>. One significant challenge is the lack of consensus on the appropriate number of parameters to include in a model schedule. Different model forms can yield varying parameter estimates, making comparisons across studies or time periods challenging. To address this issue, statistical accuracy measures are sometimes used to select the best model form, although this can risk overfitting the data.</p>
+<p>Another concern is the sensitivity of parameter estimates to the choice of initial values. However, when using the <code>mig_estimate_rc()</code> function, this issue is mitigated as the estimation process relies on MCMC sampling which discards the first few thousand iterations in the estimation procedure. Unstable parameter estimates in Roger-Castro migration age schedules can arise due to measurement error in age-specific migration data. This instability can affect the reliability and robustness of the estimated parameters, making it challenging to draw firm conclusions from the results. Furthermore, the interpretation of parameter estimates, particularly the indexes in <code>index_age_rc()</code>, has not been widely adopted. This is likely due to the difficulty in fitting model schedules accurately, resulting in skepticism regarding the practical usefulness of these indexes.</p>
+<p>Several alternative measures of age-specific migration have been proposed that do not involve fitting model age schedules. These measures often rely on the migration intensity, which is the number of migrants in a specific age group and time period as a percentage of the population at risk of moving.</p>
+<p>One such measure is the Gross Migraproduction Rate (GMR) proposed by <span class="citation">(<a href="#ref-Rogers1975" role="doc-biblioref"><strong>Rogers1975?</strong></a>)</span>. The GMR is calculated as the sum of age-specific migration intensities, <span class="math inline">\(m(x)\)</span>, taking into. It provides a measure of the overall migration intensity in a given population by aggregating the migration rates across different age groups.</p>
+<p><span class="math display">\[
+\texttt{GMR} = \sum_{x} m(x)
+\]</span></p>
+<p><span class="citation">(<a href="#ref-Bell2002" role="doc-biblioref"><strong>Bell2002?</strong></a>)</span> introduced two additional measures. The first is the peak migration intensity, which identifies the age group with the highest migration intensity. The second measure is the peak age, which corresponds to the age at which the peak migration intensity occurs (in the data rather than a fitted age scheule as used in the previous section).</p>
+<p><span class="citation">(<a href="#ref-Bell2009" role="doc-biblioref"><strong>Bell2009?</strong></a>)</span> proposed additional measures to further analyze age-specific migration patterns. The first measure is the breadth of the peak, which considers the sum of the peak migration intensity at the peak age and the five age-groups before and after the peak. This measure provides insights into the width or spread of the migration peak, indicating the range of ages where migration is concentrated.</p>
+<p>The second measure introduced by <span class="citation">(<a href="#ref-Bell2009" role="doc-biblioref"><strong>Bell2009?</strong></a>)</span> is the peak share, which calculates the percentage of the normalized migration age schedule covered by the peak age and the five age-groups before and after the peak. This measure provides an indication of the relative importance and concentration of migration in the peak age range compared to the entire age distribution.</p>
+<p><span class="citation">(<a href="#ref-Bernard2014" role="doc-biblioref"><strong>Bernard2014?</strong></a>)</span> proposed three additional measures that focus on the labor force peak. The first measure is the Maximum Upward Rate of Change (MURC), which identifies the largest gradient in the slope of the labor force peak before the peak age. This measure captures the steepest increase in migration intensity leading up to the labor force peak.</p>
+<p>The second measure is the Maximum Downward Rate of Change (MDRC), which identifies the largest gradient in the slope of the labor force peak after the peak age. This measure captures the steepest decrease in migration intensity following the labor force peak.</p>
+<p>The third measure introduced by Bernard <span class="citation">(<a href="#ref-Bernard2014" role="doc-biblioref"><strong>Bernard2014?</strong></a>)</span> is the asymmetry of the labor force peak, which is determined by the ratio of MURC and MDRC. This measure quantifies the asymmetry or imbalance in the migration intensity before and after the peak age.</p>
+<p>All of these measures, including the breadth of the peak, peak share, MURC, MDRC, and asymmetry, are calculated in the <code>age_index()</code> function in the <em>migest</em> package. <span class="citation">(<a href="#ref-Bernard2014" role="doc-biblioref"><strong>Bernard2014?</strong></a>)</span> recommends smoothing age schedules before calculating the index values. However, if the data is not extremely rough then very similar calculated values will be obtained as the <code>index_age()</code> function ignores by default values above 65 (and below 5) when calculating peak index statistics. The one exception to the sensitivity to the smoothness in the data is the <code>GMR</code> which is based on all ages, where, as seen earlier in some of the eldest age groups, the observed values might be very small (oldest in Brazil).</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="migration-age-schedules.html#cb50-1" aria-hidden="true" tabindex="-1"></a>ipumsi_age <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="migration-age-schedules.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb50-3"><a href="migration-age-schedules.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mi =</span> migrants<span class="sc">/</span>population) <span class="sc">%&gt;%</span></span>
+<span id="cb50-4"><a href="migration-age-schedules.html#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">.by =</span> sample) <span class="sc">%&gt;%</span></span>
+<span id="cb50-5"><a href="migration-age-schedules.html#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">index_age =</span> <span class="fu">map</span>(<span class="at">.x =</span> data, <span class="at">.f =</span> <span class="sc">~</span><span class="fu">index_age</span>(<span class="at">d =</span> .x, <span class="at">long =</span> <span class="cn">FALSE</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb50-6"><a href="migration-age-schedules.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(index_age)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 10
+##   sample  data       gmr peak_mi peak_age peak_bre…¹ peak_…²  murc  mdrc asymm…³
+##   &lt;chr&gt;   &lt;list&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+## 1 BRA2000 &lt;tibble&gt;  7.71    14.3       24       143.    18.6    19    32   0.594
+## 2 FRA2006 &lt;tibble&gt;  9.41    29.5       26       258.    27.4    18    30   0.6  
+## # … with abbreviated variable names ¹​peak_breadth, ²​peak_share, ³​asymmetry</code></pre>
+<p>Notice the older peak migration intensity and ages in France 2006, where the breadth of the peak is wider a lower upward and downward rate of change.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="summary-migration-indices.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/s05-age.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
